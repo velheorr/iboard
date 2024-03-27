@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {AppBar, Box, IconButton, Toolbar, Tooltip, Typography} from "@mui/material";
+import {AppBar, Box, Button, IconButton, Toolbar, Tooltip, Typography} from "@mui/material";
 import {useAuth} from "../../hook/useAuth";
 import {useNavigate} from "react-router";
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -10,6 +10,10 @@ import './header.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setMode} from './HeaderSlice'
 import {palette} from "../../utils/theme";
+import MenuIcon from "@mui/icons-material/Menu";
+import {useSidebar} from "../../hook/useSidebar";
+import {styled} from "@mui/material/styles";
+import MuiAppBar from "@mui/material/AppBar";
 
 
 const Header = () => {
@@ -18,6 +22,10 @@ const Header = () => {
     const dispatch = useDispatch();
     const mode = useSelector(state => state.header.mode);
 
+    const [sidebarState, toggleSideBar] = useSidebar()
+    const tap = ()=> {
+        toggleSideBar()
+    }
     // смена темы
     const toggleTheme = () => {
         dispatch(setMode())
@@ -46,12 +54,13 @@ const Header = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="relative" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
-                <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important'}}>
-                    <Box className='logo'>
-                        <Typography component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>
-                        <Typography component="div" sx={{fontWeight: 600}}>iBOARD</Typography>
+            <AppBar open={sidebarState} position="fixed" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
+                <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important'}}>
+                    <Box className='logo' >
+                        <Typography onClick={toggleSideBar} component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>
+                        <Typography onClick={toggleSideBar} component="div" sx={{fontWeight: 600}}>iBOARD</Typography>
                     </Box>
+                    <Button onClick={tap}>dfdddfdsf</Button>
                     <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, justifyContent: 'space-between',
                         color: mode === "dark" ? palette.white : palette.black}}
                     >
@@ -60,7 +69,7 @@ const Header = () => {
                             <Typography component="div">{ruDate}</Typography>
                         </Box>
 
-                        <Typography variant="h6" component="div" sx={{fontWeight: 600}}>Главное меню</Typography>
+                        <Typography onClick={toggleSideBar} variant="h6" component="div" sx={{fontWeight: 600}}>Главное меню</Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center'}}>
                             <Tooltip title={<Typography variant="body2" gutterBottom>Смена темы</Typography>}>
                                 <IconButton color={'inherit'} onClick={toggleTheme}>

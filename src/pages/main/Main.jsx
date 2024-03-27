@@ -25,8 +25,12 @@ import Skelet from "../../elements/Skelet";
 const Main = () => {
 	const dataFromDB = useSelector(state => state.mainData.dataFromDB);
 	const filteredDatabyKontragentChart = useSelector(state => state.mainData.filteredDatabyKontragentChart);
+
 	const dispatch = useDispatch();
 	const {data, isLoading, isError} = useGetQuery()
+
+
+
 
 	useEffect(()=>{
 		dispatch(getData(data))
