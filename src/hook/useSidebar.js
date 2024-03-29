@@ -5,8 +5,13 @@ import {widthTrue} from "../pages/sidebar/sidebarSlice";
 
 export const useSidebar = ()=> {
     const [sidebarState, setSidebarState] = useState(false);
-    const toggleSideBar = ()=>{
+    const width = useSelector(state => state.sidebar.width);
+    const dispatch = useDispatch()
 
+    const toggleSideBar = ()=>{
+        if (sidebarState){
+            dispatch(widthTrue())
+        }
         setSidebarState(!sidebarState);
     }
 
