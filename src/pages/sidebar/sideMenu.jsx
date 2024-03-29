@@ -16,6 +16,7 @@ import guardian_black from '../../img/sidebar/guardian_black.png'
 
 
 import '../layout.scss'
+import {Typography} from "@mui/material";
 
 const SideMenu = () => {
 
@@ -65,9 +66,14 @@ const SideMenu = () => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
-                    <ListItemButton sx={{height: 70,px: 2.5}}>
+                    <ListItemButton sx={{height: 80,px: 2.5}}>
                         <img className='menuIcon' src={guardian_black} alt="economics"/>
-                        <ListItemText primary='Потери Разрывы Развитие'/>
+                        {/*<ListItemText primary='Потери Разрывы Развитие'/>*/}
+                        <div>
+                            <Typography component="div">Потери</Typography>
+                            <Typography component="div">Разрывы</Typography>
+                            <Typography component="div">Развитие</Typography>
+                        </div>
                     </ListItemButton>
                 </ListItem>
             </List>
