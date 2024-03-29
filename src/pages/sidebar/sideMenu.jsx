@@ -4,6 +4,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
 
+import '../layout.scss'
+import {Typography} from "@mui/material";
+import {palette} from "../../utils/theme";
+import {useSelector} from "react-redux";
+
 import production_black from '../../img/sidebar/production_black.png'
 import sales_black from '../../img/sidebar/sales_black.png'
 import goal_black from '../../img/sidebar/goal_black.png'
@@ -15,61 +20,68 @@ import guardian_black from '../../img/sidebar/guardian_black.png'
 
 
 
-import '../layout.scss'
-import {Typography} from "@mui/material";
-
 const SideMenu = () => {
+    const mode = useSelector(state => state.header.mode);
+
+    const menuList = [
+        {
+            id: 1,
+            icon: production_black,
+            name: 'Реализация'
+        },
+        {
+            id: 2,
+            icon: sales_black,
+            name: 'Продажи'
+        },
+        {
+            id: 3,
+            icon: goal_black,
+            name: 'Цели показатели'
+        },
+        {
+            id: 4,
+            icon: economics_black,
+            name: 'Экономика'
+        },
+        {
+            id: 5,
+            icon: finance_black,
+            name: 'Финансы'
+        },
+        {
+            id: 6,
+            icon: equality_black,
+            name: 'Баланс'
+        },
+        {
+            id: 7,
+            icon: resources_black,
+            name: 'Ресурсы'
+        },
+    ]
+
+
+
 
     return (
-        <div className='sideMenu'>
+        <div className='sideMenu' style={{background: mode === "dark" ? '#7C7C7C' : palette.grey[700]}}>
             <List>
-                <ListItem disablePadding>
-                    <ListItemButton sx={{height: 48,px: 2.5}}>
-                        <img className='menuIcon' src={production_black} alt="economics"/>
-                        <ListItemText primary='Реализация'/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton sx={{height: 48,px: 2.5}}>
-                        <img className='menuIcon' src={sales_black} alt="economics"/>
-                        <ListItemText primary='Продажи'/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton sx={{height: 48}}>
-                        <img className='menuIcon' src={goal_black} alt="economics"/>
-                        <ListItemText primary='Цели показатели'/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton sx={{height: 48,px: 2.5}}>
-                        <img className='menuIcon' src={economics_black} alt="economics"/>
-                        <ListItemText primary='Экономика'/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton sx={{height: 48,px: 2.5}}>
-                        <img className='menuIcon' src={finance_black} alt="economics"/>
-                        <ListItemText primary='Финансы'/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton sx={{height: 48,px: 2.5}}>
-                        <img className='menuIcon' src={equality_black} alt="economics"/>
-                        <ListItemText primary='Баланс'/>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton sx={{height: 48,px: 2.5}}>
-                        <img className='menuIcon' src={resources_black} alt="economics"/>
-                        <ListItemText primary='Ресурсы'/>
-                    </ListItemButton>
-                </ListItem>
+                {
+                    menuList.map(item => {
+                        return <ListItem disablePadding key={item.id}>
+                            <ListItemButton sx={{height: 48,px: 2.5}}>
+                                <img className='menuIcon' src={item.icon} alt="economics" style={{filter: mode === "dark" ? 'brightness(0) invert(1)': null}}/>
+                                <div>{item.name}</div>
+                            </ListItemButton>
+                        </ListItem>
+                    })
+                }
+
                 <ListItem disablePadding>
                     <ListItemButton sx={{height: 80,px: 2.5}}>
                         <img className='menuIcon' src={guardian_black} alt="economics"/>
-                        {/*<ListItemText primary='Потери Разрывы Развитие'/>*/}
-                        <div>
+                         <div>
                             <Typography component="div">Потери</Typography>
                             <Typography component="div">Разрывы</Typography>
                             <Typography component="div">Развитие</Typography>

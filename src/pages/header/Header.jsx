@@ -10,7 +10,6 @@ import './header.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setMode} from './HeaderSlice'
 import {palette} from "../../utils/theme";
-import {useSidebar} from "../../hook/useSidebar";
 
 
 const Header = () => {
@@ -19,10 +18,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const mode = useSelector(state => state.header.mode);
 
-    const [sidebarState, toggleSideBar] = useSidebar()
-    const tap = ()=> {
-        toggleSideBar()
-    }
+
     // смена темы
     const toggleTheme = () => {
         dispatch(setMode())
@@ -51,7 +47,7 @@ const Header = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar open={sidebarState} position="fixed" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
+            <AppBar position="fixed" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
                 <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important'}}>
                     <Box className='logo' >
                         <Typography component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>
@@ -65,7 +61,7 @@ const Header = () => {
                             <Typography component="div">{ruDate}</Typography>
                         </Box>
 
-                        <Typography onClick={toggleSideBar} variant="h6" component="div" sx={{fontWeight: 600}}>Главное меню</Typography>
+                        <Typography variant="h6" component="div" sx={{fontWeight: 600}}>Главное меню</Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center'}}>
                             <Tooltip title={<Typography variant="body2" gutterBottom>Смена темы</Typography>}>
                                 <IconButton color={'inherit'} onClick={toggleTheme}>
