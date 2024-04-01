@@ -17,6 +17,7 @@ const Header = () => {
     const {signOut} = useAuth()
     const dispatch = useDispatch();
     const mode = useSelector(state => state.header.mode);
+    const activePageName = useSelector(state => state.sidemenu.activePageName);
 
 
     // смена темы
@@ -61,7 +62,7 @@ const Header = () => {
                             <Typography component="div">{ruDate}</Typography>
                         </Box>
 
-                        <Typography variant="h6" component="div" sx={{fontWeight: 600}}>Главное меню</Typography>
+                        <Typography variant="h6" component="div" sx={{fontWeight: 600}}>{activePageName}</Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center'}}>
                             <Tooltip title={<Typography variant="body2" gutterBottom>Смена темы</Typography>}>
                                 <IconButton color={'inherit'} onClick={toggleTheme}>

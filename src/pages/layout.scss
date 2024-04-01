@@ -36,6 +36,13 @@ main {
         width: 230px;
         overflow: visible;
     }
+    .active {
+        background: rgb(76, 178, 66);
+        color: white;
+        img {
+            filter: brightness(0) invert(1);
+        }
+    }
 
     .menuIcon {
         width: 24px;
