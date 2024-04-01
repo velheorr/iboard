@@ -10,7 +10,9 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 import guardian_black from '../../img/sidebar/guardian_black.png'
+
 import {setActive} from "./SideMenuSlice";
+import {Link} from "react-router-dom";
 
 
 
@@ -20,19 +22,30 @@ const SideMenu = () => {
     const dispatch = useDispatch()
 
 
+
     const renderList = (data)=>{
         if (data){
             return data.map(item => {
-                return <ListItem disablePadding key={item.id} className={item.active ? 'active' : null} onClick={()=> dispatch(setActive(item.id))}>
-                    <ListItemButton sx={{height: 48,px: 2.5}}>
-                        <img className='menuIcon' src={item.icon} alt="economics" style={{filter: mode === "dark" ? 'brightness(0) invert(1)': null}}/>
-                        <div>{item.name}</div>
-                    </ListItemButton>
-                </ListItem>
+                return  <Link to={`/${item.link}`} key={item.id}>
+                    <ListItem disablePadding  className={item.active ? 'active' : null} onClick={()=> dispatch(setActive(item.id))}>
+                        {
+                            item.id === 8
+                            ?
+                                <SpecialId8 item={item}/>
+                            :
+                                <ListItemButton sx={{height: 48,px: 2.5}}>
+                                    <img className='menuIcon' src={item.icon} alt={item.name} style={{filter: mode === "dark" ? 'brightness(0) invert(1)': null}}/>
+                                    <div>{item.name}</div>
+                                </ListItemButton>
+                        }
+                    </ListItem>
+                </Link>
             })
         }
       }
     const sidebarData = renderList(menuList)
+
+
 
 
     return (
@@ -42,7 +55,7 @@ const SideMenu = () => {
                     sidebarData? sidebarData : ''
                 }
 
-                <ListItem disablePadding>
+                {/*<ListItem disablePadding>
                     <ListItemButton sx={{height: 80,px: 2.5}}>
                         <img className='menuIcon' src={guardian_black} alt="economics"/>
                          <div>
@@ -51,10 +64,24 @@ const SideMenu = () => {
                             <Typography component="div">Развитие</Typography>
                         </div>
                     </ListItemButton>
-                </ListItem>
+                </ListItem>*/}
             </List>
         </div>
     );
 };
 
 export default SideMenu;
+
+const SpecialId8 = (item) => {
+    const mode = useSelector(state => state.header.mode);
+    return (
+            <ListItemButton sx={{height: 80,px: 2.5}}>
+                <img className='menuIcon' src={guardian_black} alt={item.name} style={{filter: mode === "dark" ? 'brightness(0) invert(1)': null}}/>
+                <div>
+                    <Typography component="div">Потери</Typography>
+                    <Typography component="div">Разрывы</Typography>
+                    <Typography component="div">Развитие</Typography>
+                </div>
+            </ListItemButton>
+    )
+}

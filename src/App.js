@@ -34,6 +34,14 @@ function App() {
                     <Route path='/' element={<Layout/>}>
                         <Route index element={<RequireAuth><Main/></RequireAuth>}/>
                         <Route  path='/detailedView' element={<RequireAuth><DetailedView /></RequireAuth>}/>
+                        <Route  path='/realisation' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/goals' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/econimics' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/finance' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/resources' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/lost_develop' element={<RequireAuth><Page404 /></RequireAuth>}/>
 
                     </Route>
                 </Routes>

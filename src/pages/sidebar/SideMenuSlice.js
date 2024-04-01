@@ -6,6 +6,7 @@ import economics_black from "../../img/sidebar/economics_black.png";
 import finance_black from "../../img/sidebar/finance_black.png";
 import equality_black from "../../img/sidebar/equality_black.png";
 import resources_black from "../../img/sidebar/resources_black.png";
+import guardian_black from '../../img/sidebar/guardian_black.png'
 
 const initialState = {
     activePageName: 'Реализация',
@@ -15,42 +16,56 @@ const initialState = {
             icon: production_black,
             name: 'Реализация',
             active: true,
+            link: 'realisation'
         },
         {
             id: 2,
             icon: sales_black,
             name: 'Продажи',
             active: false,
+            link: 'sales'
         },
         {
             id: 3,
             icon: goal_black,
             name: 'Цели показатели',
             active: false,
+            link: 'goals'
         },
         {
             id: 4,
             icon: economics_black,
             name: 'Экономика',
             active: false,
+            link: 'econimics'
         },
         {
             id: 5,
             icon: finance_black,
             name: 'Финансы',
             active: false,
+            link: 'finance'
         },
         {
             id: 6,
             icon: equality_black,
             name: 'Баланс',
             active: false,
+            link: 'balance'
         },
         {
             id: 7,
             icon: resources_black,
             name: 'Ресурсы',
             active: false,
+            link: 'resources'
+        },
+        {
+            id: 8,
+            icon: guardian_black,
+            name: 'Потери, Разрывы, Развитие',
+            active: false,
+            link: 'lost_develop'
         },
     ],
 }
