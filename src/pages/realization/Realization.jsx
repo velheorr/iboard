@@ -4,7 +4,7 @@ import {useGetRealizationData} from "../../hook/useGetQuery";
 import Skelet from "../../elements/Skelet";
 import {Typography} from "@mui/material";
 import Slider from "react-slick";
-import {settings} from "../../elements/slider/sliderSettings";
+import {settings, settingsRealisation, settingsRealization} from "../../elements/slider/sliderSettings";
 import RealizationChartBlocks from "./subpages/RealizationChartBlocks";
 import {setRealizationData} from "./RealizationSlice";
 
@@ -28,14 +28,14 @@ const Realization = () => {
     return (
         <div className='main'>
             {/*<Typography sx={{textAlign: 'center', fontWeight: 600}} variant="h5">Список объектов</Typography>*/}
-            <Slider {...settings}>
-                {/*{
+            <Slider {...settingsRealization}>
+                {
                     isLoading
                         ? <div>Нет данных</div>
                         :realisationData?.map((item, i) => {
                             return <RealizationChartBlocks item={item} key={i}/>
                         })
-                }*/}
+                }
             </Slider>
         </div>
     );
