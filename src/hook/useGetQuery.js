@@ -13,3 +13,17 @@ export const useGetQuery = () => {
             refetchOnWindowFocus: false,
         })
 }
+
+
+/*Realization block*/
+async function fetchRealizationData(){
+    return (await axios.get("http://grd228:5000/api/iboardData")).data
+}
+
+export const useGetRealizationData = () => {
+    return useQuery('data', fetchRealizationData,
+        {
+            keepPreviousData: true,
+            refetchOnWindowFocus: false,
+        })
+}

@@ -15,6 +15,7 @@ import {Register} from "./pages/login/Register";
 import {ResetPassword} from "./pages/login/ResetPassword";
 import DetailedView from "./pages/main/subpages/DetailedView";
 import TransitionsModal from "./elements/Modal/Modal";
+import Realization from "./pages/realization/Realization";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -32,9 +33,12 @@ function App() {
                     <Route path='resetPassword' element={<ResetPassword/>}/>
                     <Route path='*' element={<Page404/>}/>
                     <Route path='/' element={<Layout/>}>
-                        <Route index element={<RequireAuth><Main/></RequireAuth>}/>
+                        <Route index element={<RequireAuth><Realization/></RequireAuth>}/>
                         <Route  path='/detailedView' element={<RequireAuth><DetailedView /></RequireAuth>}/>
-                        <Route  path='/realisation' element={<RequireAuth><Page404 /></RequireAuth>}/>
+
+                        <Route  path='/main' element={<RequireAuth><Main /></RequireAuth>}/>
+
+                        <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/econimics' element={<RequireAuth><Page404 /></RequireAuth>}/>

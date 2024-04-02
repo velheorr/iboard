@@ -29,7 +29,7 @@ main {
     bottom: 0;
     height: calc(100% - 64px);
     left: 0;
-    width: 60px;
+    width: 64px;
     text-wrap: nowrap;
 
     &:hover {
@@ -63,7 +63,7 @@ main {
 .pageContainer {
     padding-left: 94px;
     flex: 1 0 auto;
-    height: 100%;
+    height: calc(100vh - 65px);
     max-width: 90%;
     .main {
         display: flex;

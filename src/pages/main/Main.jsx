@@ -20,6 +20,7 @@ import "slick-carousel/slick/slick-theme.css";
 import '../../elements/slider/slider.scss'
 import ChartBlocks from "./subpages/ChartBlocks";
 import Skelet from "../../elements/Skelet";
+import {logDOM} from "@testing-library/react";
 
 
 const Main = () => {
@@ -29,7 +30,7 @@ const Main = () => {
 	const dispatch = useDispatch();
 	const {data, isLoading, isError} = useGetQuery()
 
-
+	console.log(data)
 
 
 	useEffect(()=>{
