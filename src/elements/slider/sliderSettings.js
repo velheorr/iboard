@@ -32,7 +32,7 @@ export const settingsRealization = {
     infinite: false,
     slidesToShow: 1,
     speed: 300,
-    rows: 3,
+    rows: 2,
     slidesPerRow: 3,
     slidesToScroll: 1,
     responsive: [

@@ -29,13 +29,13 @@ const RealizationChart = ({item, variant = false}) => {
                 name: '% СПД',
                 info: '% суммы подписанных договорных документов',
                 uv:  checkNum(item.ПроцентПодписанныхДоговоров),
-                realNumber: item.ПроцентПодписанныхДоговоров
+                realNumber: item.ПроцентПодписанныхДоговоров,
             },
             {
                 name: '% СПС',
                 info: 'Суммы подписанных смет',
-                uv:  checkNum(item.ПроцентПодписанныхДоговоров),
-                realNumber: item.ПроцентПодписанныхДоговоров,
+                uv:  checkNum(item.ПроцентСуммыПодписанныхСмет),
+                realNumber: item.ПроцентСуммыПодписанныхСмет,
             },
             {
                 name: '% ОС',
@@ -138,18 +138,18 @@ const RealizationChart = ({item, variant = false}) => {
 
     return (
         <div style={{ position: "relative", padding: '5px'}}>
-            <ResponsiveContainer width={'100%'}  height={300} minWidth={100} minHeight={100} >
+            <ResponsiveContainer width={'100%'}  height={350} minWidth={100} minHeight={100} >
                 <BarChart
                     width={500}
                     height={300}
                     data={data}
                     layout="vertical"
-                    barSize={90}
+                    barSize={30}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     {/*allowDataOverflow={true}  dataKey={data.uv}*/}
                     <XAxis type="number" dataKey='uv'  domain={[0, dataMax => (125)]} scale={'linear'} tick={{ fill: colorTheme()}}/>
-                    <YAxis dataKey="name" type='category' width={100}  style={{ fontSize: "13px"}} tick={{ fill: colorTheme()}}/>
+                    <YAxis dataKey="name" type='category' width={70}  style={{ fontSize: "11px"}} tick={{ fill: colorTheme()}}/>
                     <Tooltip dataKey="uv" content={<CustomTooltip/>}/>
                     {/*<Bar dataKey="uv"  label={{ position: 'insideRight', fill: 'white', offset: '10'}}>*/}
                     <Bar dataKey="uv"  label={<CustomLabel />}>
