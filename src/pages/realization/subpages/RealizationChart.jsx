@@ -24,10 +24,9 @@ const RealizationChart = ({item, variant = false}) => {
         return mode === "dark" ? palette.white : palette.black
     }
 
-    /*onClick={()=> {setModal('projectParams')}}*/
+
     const {setModal} = useModal()
     const test = (data) =>{
-        console.log(data)
         setModal(data)
     }
 
