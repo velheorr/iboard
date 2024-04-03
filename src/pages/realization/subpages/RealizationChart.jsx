@@ -28,6 +28,7 @@ const RealizationChart = ({item, variant = false}) => {
     const {setModal} = useModal()
     const test = (data) =>{
         console.log(data)
+        setModal(data)
     }
 
     if (item){
@@ -47,8 +48,8 @@ const RealizationChart = ({item, variant = false}) => {
             {
                 name: '% ОС',
                 info: '% освоения договорных сроков',
-                uv: checkNum(item.ПроцентОсвоенияСроков),
-                realNumber: item.ПроцентОсвоенияСроков,
+                uv: checkNum(item.ПроцентОсвоенияДогСроков),
+                realNumber: item.ПроцентОсвоенияДогСроков,
             },
             {
                 name: '% ПФОТ',
@@ -71,8 +72,8 @@ const RealizationChart = ({item, variant = false}) => {
             {
                 name: '% ОиМ',
                 info: '% обеспеченности пронормированных ОиМ',
-                uv: checkNum(item.ПроцентПронормированногоОиМ),
-                realNumber: item.ПроцентПронормированногоОиМ,
+                uv: checkNum(item.ПроцентПронормированногоОИМ),
+                realNumber: item.ПроцентПронормированногоОИМ,
             },
             {
                 name: '% НТ (план)',
