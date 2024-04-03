@@ -1,7 +1,15 @@
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import {Chip, Divider} from "@mui/material";
+import {Chip} from "@mui/material";
 import './modal.scss'
+
+
+const bg = {
+    y: '#EBDA09',
+    r: '#f60209',
+    g: '#2db432',
+}
+
 
 
 export const modalData = (variant)=>{
@@ -24,9 +32,9 @@ export const modalData = (variant)=>{
                     <p>&gt;100% - сумма Договора превышает сумму Доходов от Реализации из ППЭ, необходимо проверить актуальность ППЭ.</p>
                     <p>= 100% - сумма Договора соответствует сумме Доходов от Реализации из ППЭ.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
-                    <p><Chip label="Красный: 0%" sx={{backgroundColor: '#f60209', color: 'white'}} /></p>
-                    <p><Chip label=">Желтый: от 0% до 99%, свыше 100%" sx={{backgroundColor: '#f9de05', color: 'white'}} /></p>
-                    <p><Chip label=">Зеленый: 100%" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Красный: 0%" sx={{backgroundColor: bg.r}} /></p>
+                    <p><Chip label="Желтый: от 0% до 99%, свыше 100%" sx={{backgroundColor: bg.y}} /></p>
+                    <p><Chip label="Зеленый: 100%" sx={{backgroundColor: bg.g}} /></p>
                 </div>
             </>
             break;
@@ -45,9 +53,9 @@ export const modalData = (variant)=>{
                         или не занесены в систему, необходимо обратиться к <b>Ситниковой В.А.</b> для занесения обоснования;</p>
                     <p>100% - есть обоснование объектно-ценовых параметров в полном объёме.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
-                    <p><Chip label="Красный: не равно 100%" sx={{backgroundColor: '#f60209', color: 'white'}} /></p>
-                    <p><Chip label="Желтый: отсутствует" sx={{backgroundColor: '#f9de05', color: 'white'}} /></p>
-                    <p><Chip label="Зеленый: 100% или более 90% при процентовании по факту" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Красный: не равно 100%" sx={{backgroundColor: '#f60209'}} /></p>
+                    <p><Chip label="Желтый: отсутствует" sx={{backgroundColor: '#f9de05'}} /></p>
+                    <p><Chip label="Зеленый: 100% или более 90% при процентовании по факту" sx={{backgroundColor: '#2db432'}} /></p>
                 </div>
             </>
             break;
@@ -87,9 +95,9 @@ export const modalData = (variant)=>{
                     <p>&gt;100% - размер фактического ФОТ превысил плановый и идёт ПЕРЕРАСХОД ФОТ по Проекту.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
                     <p>В сравнении с показателем % ОС.</p>
-                    <p><Chip label="Красный: разрыв более 30%" sx={{backgroundColor: '#f60209', color: 'white'}} /></p>
-                    <p><Chip label="Желтый: разрыв от 16% до 30%" sx={{backgroundColor: '#f9de05', color: 'white'}} /></p>
-                    <p><Chip label="Зеленый: разрыв 15% и менее" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Красный: разрыв более 30%" sx={{backgroundColor: '#f60209'}} /></p>
+                    <p><Chip label="Желтый: разрыв от 16% до 30%" sx={{backgroundColor: '#f9de05'}} /></p>
+                    <p><Chip label="Зеленый: разрыв 15% и менее" sx={{backgroundColor: '#2db432'}} /></p>
                 </div>
             </>
             break;
@@ -110,9 +118,9 @@ export const modalData = (variant)=>{
                     <p>&gt;100% - размер фактического ФОТ превысил плановый и идёт ПЕРЕРАСХОД ФОТ по Проекту.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
                     <p>В сравнении с показателем % ОС.</p>
-                    <p><Chip label="Красный: разрыв более 30%" sx={{backgroundColor: '#f60209', color: 'white'}} /></p>
-                    <p><Chip label="Желтый: разрыв от 16% до 30%" sx={{backgroundColor: '#f9de05', color: 'white'}} /></p>
-                    <p><Chip label="Зеленый: разрыв 15% и менее" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Красный: разрыв более 30%" sx={{backgroundColor: '#f60209'}} /></p>
+                    <p><Chip label="Желтый: разрыв от 16% до 30%" sx={{backgroundColor: '#f9de05'}} /></p>
+                    <p><Chip label="Зеленый: разрыв 15% и менее" sx={{backgroundColor: '#2db432'}} /></p>
                 </div>
             </>
             break;
@@ -137,7 +145,7 @@ export const modalData = (variant)=>{
                     <p>В сравнении с показателем % ОС.</p>
                     <p><Chip label="Красный: разрыв 30% и более" sx={{backgroundColor: '#f60209'}} /></p>
                     <p><Chip label="Желтый: разрыв от 15% до 29%" sx={{backgroundColor: '#f9de05'}} /></p>
-                    <p><Chip label="Зеленый: разрыв 14% и менее" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Зеленый: разрыв 14% и менее" sx={{backgroundColor: '#2db432'}} /></p>
                 </div>
             </>
             break;
@@ -222,9 +230,9 @@ export const modalData = (variant)=>{
                     <p>100% - всё незаконченное производство включено в себестоимость;</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
                     <p>В сравнении с показателем % ОС.</p>
-                    <p><Chip label="Красный: разрыв 59% и менее" sx={{backgroundColor: '#f60209', color: 'white'}} /></p>
-                    <p><Chip label="Желтый: разрыв от 60% до 89%" sx={{backgroundColor: '#f9de05', color: 'white'}} /></p>
-                    <p><Chip label="Зеленый: разрыв 90% и более" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Красный: разрыв 59% и менее" sx={{backgroundColor: '#f60209'}} /></p>
+                    <p><Chip label="Желтый: разрыв от 60% до 89%" sx={{backgroundColor: '#f9de05'}} /></p>
+                    <p><Chip label="Зеленый: разрыв 90% и более" sx={{backgroundColor: '#2db432'}} /></p>
                 </div>
             </>
             break;
@@ -245,9 +253,9 @@ export const modalData = (variant)=>{
                     <p>&gt;100% - запроцентована большая сумма, чем сумма Договора.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
                     <p>В сравнении с показателем % ОС.</p>
-                    <p><Chip label="Красный: разрыв 26% и более" sx={{backgroundColor: '#f60209', color: 'white'}} /></p>
-                    <p><Chip label="Желтый: разрыв от 16% до 25%" sx={{backgroundColor: '#f9de05', color: 'white'}} /></p>
-                    <p><Chip label="Зеленый: разрыв 15% и менее" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Красный: разрыв 26% и более" sx={{backgroundColor: '#f60209'}} /></p>
+                    <p><Chip label="Желтый: разрыв от 16% до 25%" sx={{backgroundColor: '#f9de05'}} /></p>
+                    <p><Chip label="Зеленый: разрыв 15% и менее" sx={{backgroundColor: '#2db432'}} /></p>
                 </div>
             </>
             break;
@@ -268,8 +276,8 @@ export const modalData = (variant)=>{
                     <p>&gt;100% - заказчик подписал Процентовки на большую сумму, чем сумма Договора.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
                     <p>В сравнении с показателем %ПРОЦ.</p>
-                    <p><Chip label="Желтый: %ПРИН > %ПРОЦ" sx={{backgroundColor: '#f9de05', color: 'white'}} /></p>
-                    <p><Chip label="Зеленый: %ПРИН = %ПРОЦ" sx={{backgroundColor: '#2db432', color: 'white'}} /></p>
+                    <p><Chip label="Желтый: %ПРИН > %ПРОЦ" sx={{backgroundColor: '#f9de05'}} /></p>
+                    <p><Chip label="Зеленый: %ПРИН = %ПРОЦ" sx={{backgroundColor: '#2db432'}} /></p>
                 </div>
             </>
             break;
