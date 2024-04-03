@@ -30,7 +30,7 @@ const Main = () => {
 	const dispatch = useDispatch();
 	const {data, isLoading, isError} = useGetQuery()
 
-	console.log(data)
+
 
 
 	useEffect(()=>{

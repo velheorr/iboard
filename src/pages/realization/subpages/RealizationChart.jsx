@@ -100,16 +100,16 @@ const RealizationChart = ({item, variant = false}) => {
         )
     }
 
-
+/*Тултип в графике*/
+    /*параментр variant = по умолчанию false? нужен для вывода доп инфы  */
     const CustomTooltip = ({ active, payload, label }) => {
-        let x= label?.slice(0, -3)
         if (active && payload && payload.length) {
             let newLabel = payload[0]?.payload.realNumber || payload[0].value
             let info = payload[0]?.payload.info || null
             return (
                 /*<div className="custom-tooltip" style={{color: colorTheme()}}>*/
                 <div className="custom-tooltip">
-                    <Typography variant="subtitle2" gutterBottom color='white'>{`${x}: ${newLabel}%`}</Typography>
+                    <Typography variant="subtitle2" gutterBottom color='white'>{`${info}: ${newLabel} %`}</Typography>
                     {
                         variant
                             ? <Typography variant="subtitle2" gutterBottom color='white'>{info}</Typography>
@@ -121,17 +121,17 @@ const RealizationChart = ({item, variant = false}) => {
         return null;
     };
 
+    /*Числовые значения в графике (позиция, цвет)*/
     const CustomLabel = (props) =>{
         const {x, y, name, width} = props;
         let find = data.find(num => num.name ===  name).realNumber
-        let countWidth = width
-        /*width < 20 ? countWidth = countWidth + 10 : countWidth = countWidth - 20*/
+        let countWidth = width || 0
         if (width < 20){
             countWidth = countWidth + 10
         } else {
             countWidth = countWidth - 20
         }
-        return <text x={x} y={y} dy={28} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{find}</text>
+        return <text x={x} y={y} dy={17} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{find}</text>
     };
 
 
@@ -154,6 +154,7 @@ const RealizationChart = ({item, variant = false}) => {
                     {/*<Bar dataKey="uv"  label={{ position: 'insideRight', fill: 'white', offset: '10'}}>*/}
                     <Bar dataKey="uv"  label={<CustomLabel />}>
                         {data.map((entry, index) => (
+                            /*тут можно ф-ю окрашивания бара в графике*/
                             <Cell cursor="pointer" fill={entry.realNumber > 100 ? '#F60209' : '#7C7C7C'} key={`cell-${index}`} interval={0} />
                         ))}
                     </Bar>
