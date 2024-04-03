@@ -78,8 +78,8 @@ const RealizationChart = ({item, variant = false}) => {
             {
                 name: '% НТ (план)',
                 info: '% запланированной нормативной трудоемкости',
-                uv: checkNum(item.ПроцентЗаплнНТ),
-                realNumber: item.ПроцентЗаплнНТ,
+                uv: checkNum(item.ПроцентПроцентЗаплНТ),
+                realNumber: item.ПроцентПроцентЗаплНТ,
             },
             {
                 name: '% НТ (факт)',
@@ -96,8 +96,8 @@ const RealizationChart = ({item, variant = false}) => {
             {
                 name: '% ПРОЦ',
                 info: '% предьявлено Заказчику',
-                uv: checkNum(item.ПроцентПредьявленныхРТИУ),
-                realNumber: item.ПроцентПредьявленныхРТИУ,
+                uv: checkNum(item.ПроцентПредъявленныхРТИУ),
+                realNumber: item.ПроцентПредъявленныхРТИУ,
             },
             {
                 name: '% ПРИН',

@@ -34,7 +34,8 @@ export default function TransitionsModal() {
         border: '1px solid rgba(0,0,0,.2)',
         borderLeft: '15px solid rgb(76, 178, 66)',
         boxShadow: 24,
-        p: 4,
+        /*p: 4*/
+        padding: '14px 32px;'
     };
 
     let modalText = modalData(variant)

@@ -10,9 +10,25 @@
 
 code {
   background-color: #f7f7f7;
-  padding: 10px 5px;
+  padding: 10px 10px;
   width: 100%;
   color: grey;
   border-radius: 4px;
   display: block;
+}
+
+.MuiChip-label {
+  color: white;
+}
+
+
+.tred {
+  color: #f60209;
+}
+.tyellow {
+  color: #EBDA09
+}
+
+.bgyellow {
+  background-color: #EBDA09;
 }
