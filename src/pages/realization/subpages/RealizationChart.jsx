@@ -12,6 +12,7 @@ import {
 import {useSelector} from "react-redux";
 import {palette} from "../../../utils/theme";
 import {Typography} from "@mui/material";
+import {useModal} from "../../../hook/useModal";
 
 const RealizationChart = ({item, variant = false}) => {
     let data = []
@@ -21,6 +22,12 @@ const RealizationChart = ({item, variant = false}) => {
     const mode = useSelector(state => state.header.mode);
     const colorTheme = () => {
         return mode === "dark" ? palette.white : palette.black
+    }
+
+    /*onClick={()=> {setModal('projectParams')}}*/
+    const {setModal} = useModal()
+    const test = (data) =>{
+        console.log(data)
     }
 
     if (item){
@@ -155,7 +162,7 @@ const RealizationChart = ({item, variant = false}) => {
                     <Bar dataKey="uv"  label={<CustomLabel />}>
                         {data.map((entry, index) => (
                             /*тут можно ф-ю окрашивания бара в графике*/
-                            <Cell cursor="pointer" fill={entry.realNumber > 100 ? '#F60209' : '#7C7C7C'} key={`cell-${index}`} interval={0} />
+                            <Cell cursor="pointer" fill={entry.realNumber > 100 ? '#F60209' : '#7C7C7C'} key={`cell-${index}`} interval={0} onClick={()=>test(entry.name)}/>
                         ))}
                     </Bar>
                     {/*<ReferenceLine x={100} stroke="black"  strokeWidth={2}>*/}

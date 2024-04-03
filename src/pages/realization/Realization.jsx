@@ -31,7 +31,6 @@ const Realization = () => {
     return (
         <div className='main'>
             {/*<Typography sx={{textAlign: 'center', fontWeight: 600}} variant="h5">Список объектов</Typography>*/}
-
             <Slider {...settingsRealization}>
                 {
                     isLoading

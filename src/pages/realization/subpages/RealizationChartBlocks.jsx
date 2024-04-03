@@ -23,8 +23,8 @@ const RealizationChartBlocks = ({item}) => {
                         <Typography variant="body2" gutterBottom><em>РП: </em><span>{item.РуководительПроекта}</span></Typography>
                         <Typography variant="body2" gutterBottom><em>Дата окончания: </em><span>{dateFormat(item.ДатаОкончанияСрокаДействияДоговора)}</span></Typography>
                         <Typography variant="body2" gutterBottom><em>Сумма договора: </em><span>{formatAmountRU(item.СуммаДоговора)}</span></Typography>
-                        <Typography variant="body2" gutterBottom><em>ВП на 1 чел, ПЛАН/ФАКТ: </em><span>{formatAmountRU(item.ВПНаЧеловека)}</span></Typography>
-                        <Typography variant="body2" gutterBottom><em>ОП, ПЛАН/ФАКТ: </em><span>{formatAmountRU(item.ОперПрибыль)}</span></Typography>
+                        <Typography variant="body2" gutterBottom><em>ВП на 1 чел, ПЛАН: </em><span>{formatAmountRU(item.ВПНаЧеловека)}</span></Typography>
+                        <Typography variant="body2" gutterBottom><em>ОП, ПЛАН: </em><span>{formatAmountRU(item.ОперПрибыль)}</span></Typography>
                     </div>
                     }
                 >
