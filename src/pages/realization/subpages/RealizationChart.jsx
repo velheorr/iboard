@@ -13,6 +13,7 @@ import {useSelector} from "react-redux";
 import {palette} from "../../../utils/theme";
 import {Typography} from "@mui/material";
 import {useModal} from "../../../hook/useModal";
+import {colorForChart} from "./realizationChartRules";
 
 const RealizationChart = ({item, variant = false}) => {
     let data = []
@@ -23,6 +24,7 @@ const RealizationChart = ({item, variant = false}) => {
     const colorTheme = () => {
         return mode === "dark" ? palette.white : palette.black
     }
+
 
 
     const {setModal} = useModal()
@@ -37,72 +39,84 @@ const RealizationChart = ({item, variant = false}) => {
                 info: '% суммы подписанных договорных документов',
                 uv:  checkNum(item.ПроцентПодписанныхДоговоров),
                 realNumber: item.ПроцентПодписанныхДоговоров,
+                forColorFunc: '',
             },
             {
                 name: '% СПС',
                 info: 'Суммы подписанных смет',
                 uv:  checkNum(item.ПроцентСуммыПодписанныхСмет),
                 realNumber: item.ПроцентСуммыПодписанныхСмет,
+                forColorFunc: '',
             },
             {
                 name: '% ОС',
                 info: '% освоения договорных сроков',
                 uv: checkNum(item.ПроцентОсвоенияДогСроков),
                 realNumber: item.ПроцентОсвоенияДогСроков,
+                forColorFunc: '',
             },
             {
                 name: '% ПФОТ',
                 info: '% прономерованного ФОТ',
                 uv: checkNum(item.ПроцентПронормированногоФОТ),
                 realNumber: item.ПроцентПронормированногоФОТ,
+                forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
                 name: '% ОФОТ',
                 info: '% освоения ФОТ СМР',
                 uv: checkNum(item.ПроцентОсвоенияФОТ),
                 realNumber: item.ПроцентОсвоенияФОТ,
+                forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
                 name: '% ОФ',
                 info: '% освоения финансирования проекта',
                 uv: checkNum(item.ПроцентОсвоенияФин),
                 realNumber: item.ПроцентОсвоенияФин,
+                forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
                 name: '% ОиМ',
                 info: '% обеспеченности пронормированных ОиМ',
                 uv: checkNum(item.ПроцентПронормированногоОИМ),
                 realNumber: item.ПроцентПронормированногоОИМ,
+                forColorFunc: '',
             },
             {
                 name: '% НТ (план)',
                 info: '% запланированной нормативной трудоемкости',
                 uv: checkNum(item.ПроцентПроцентЗаплНТ),
                 realNumber: item.ПроцентПроцентЗаплНТ,
+                forColorFunc: '',
             },
             {
                 name: '% НТ (факт)',
                 info: '% прогресса нормативной трудоемкости',
                 uv: checkNum(item.ПроцентПрогрессаНЧ),
                 realNumber: item.ПроцентПрогрессаНЧ,
+                forColorFunc: '',
             },
             {
                 name: '% НЗП',
                 info: '% превращения НЗП в Себестоимость',
                 uv: checkNum(item.ПроцентПревращенияНЗП),
                 realNumber: item.ПроцентПревращенияНЗП,
+                forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
                 name: '% ПРОЦ',
                 info: '% предьявлено Заказчику',
                 uv: checkNum(item.ПроцентПредъявленныхРТИУ),
                 realNumber: item.ПроцентПредъявленныхРТИУ,
+                forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
                 name: '% ПРИН',
                 info: '% процентовок принятых Заказчиком',
                 uv: checkNum(item.ПроцентПринятыхРТИУ),
                 realNumber: item.ПроцентПринятыхРТИУ,
+                forColorFunc: item.ПроцентПредъявленныхРТИУ,
             },
         )
     }
@@ -162,7 +176,7 @@ const RealizationChart = ({item, variant = false}) => {
                     <Bar dataKey="uv"  label={<CustomLabel />}>
                         {data.map((entry, index) => (
                             /*тут можно ф-ю окрашивания бара в графике*/
-                            <Cell cursor="pointer" fill={entry.realNumber > 100 ? '#F60209' : '#7C7C7C'} key={`cell-${index}`} interval={0} onClick={()=>test(entry.name)}/>
+                            <Cell cursor="help" fill={colorForChart(entry.name, entry.realNumber, entry.forColorFunc)} key={`cell-${index}`} interval={0} onClick={()=>test(entry.name)}/>
                         ))}
                     </Bar>
                     {/*<ReferenceLine x={100} stroke="black"  strokeWidth={2}>*/}
