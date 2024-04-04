@@ -11,8 +11,8 @@ export const colorForChart = (rule, number, extra) => {
 
     switch (rule) {
         case '% СПД':
-            /*как может быть красным если на 0  шкалы нет*/
-            if( number <= 99 || number > 100){color = bg.y}
+            if (number === 0){color = bg.r}
+            else if( number <= 99 || number > 100){color = bg.y}
             else if (number === 100) {color = bg.g}
             break
         case '% СПС':
@@ -24,16 +24,19 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break
         case '% ПФОТ':
+            /*как считать разрывы*/
             if (number >= 30){color = bg.r}
             else if (number >= 16 && number < 30){color = bg.y}
             else if (number <= 15){color = bg.g}
             break
         case '% ОФОТ':
+            /*как считать разрывы*/
             if (number >= 30){color = bg.r}
             else if (number >= 16 && number < 30){color = bg.y}
             else if (number <= 15){color = bg.g}
             break
         case '% ОФ':
+            /*как считать разрывы*/
             if (number >= 30){color = bg.r}
             else if (number >= 15 && number <= 29){color = bg.y}
             else if (number <= 14){color = bg.g}
@@ -48,6 +51,7 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break
         case '% НЗП':
+            /*как считать разрывы*/
             if (number <= 59){color = bg.r}
             else if (number >= 60 && number <= 89){color = bg.y}
             else if (number >= 90){color = bg.g}
@@ -60,7 +64,7 @@ export const colorForChart = (rule, number, extra) => {
             break
         case '% ПРИН':
             /*а если прин меньше проца?  - у меня стает серым*/
-            if (number > extra){color = bg.y}
+            if (number < extra){color = bg.y}
             else if (number === extra){color = bg.g}
             break
         default:

@@ -276,7 +276,7 @@ export const modalData = (variant)=>{
                     <p>&gt;100% - заказчик подписал Процентовки на большую сумму, чем сумма Договора.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
                     <p>В сравнении с показателем %ПРОЦ.</p>
-                    <p><Chip label="Желтый: %ПРИН > %ПРОЦ" sx={{backgroundColor: bg.y}} /></p>
+                    <p><Chip label="Желтый: %ПРИН < %ПРОЦ" sx={{backgroundColor: bg.y}} /></p>
                     <p><Chip label="Зеленый: %ПРИН = %ПРОЦ" sx={{backgroundColor: bg.g}} /></p>
                 </div>
             </>
