@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {AppBar, Box, Button, IconButton, Toolbar, Tooltip, Typography} from "@mui/material";
+import {
+    AppBar,
+    Box,
+    IconButton,
+    Toolbar,
+    Tooltip,
+    Typography
+} from "@mui/material";
 import {useAuth} from "../../hook/useAuth";
 import {useNavigate} from "react-router";
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -46,7 +53,8 @@ const Header = () => {
         .format(new Date())
         .replace(/(\u0433\.?)/, "");
 
-    return (
+
+      return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="fixed" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
                 <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important'}}>

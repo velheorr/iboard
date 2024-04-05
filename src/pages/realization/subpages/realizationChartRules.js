@@ -8,6 +8,7 @@ const bg = {
 
 export const colorForChart = (rule, number, extra) => {
     let color = bg.grey
+    let check
 
     switch (rule) {
         case '% СПД':
@@ -24,22 +25,22 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break
         case '% ПФОТ':
-            /*как считать разрывы*/
-            if (number >= 30){color = bg.r}
-            else if (number >= 16 && number < 30){color = bg.y}
-            else if (number <= 15){color = bg.g}
+            check = +(number - extra)
+            if (check >= 30){color = bg.r}
+            else if (check >= 16 && check < 30){color = bg.y}
+            else if (check <= 15){color = bg.g}
             break
         case '% ОФОТ':
-            /*как считать разрывы*/
-            if (number >= 30){color = bg.r}
-            else if (number >= 16 && number < 30){color = bg.y}
-            else if (number <= 15){color = bg.g}
+            check = +(number - extra)
+            if (check >= 30){color = bg.r}
+            else if (check >= 16 && check < 30){color = bg.y}
+            else if (check <= 15){color = bg.g}
             break
         case '% ОФ':
-            /*как считать разрывы*/
-            if (number >= 30){color = bg.r}
-            else if (number >= 15 && number <= 29){color = bg.y}
-            else if (number <= 14){color = bg.g}
+            check = +(number - extra)
+            if (check >= 30){color = bg.r}
+            else if (check >= 15 && check < 29){color = bg.y}
+            else if (check <= 14){color = bg.g}
             break
         case '% ОиМ':
             color = bg.grey;
@@ -51,19 +52,18 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break
         case '% НЗП':
-            /*как считать разрывы*/
-            if (number <= 59){color = bg.r}
-            else if (number >= 60 && number <= 89){color = bg.y}
-            else if (number >= 90){color = bg.g}
+            check = +(number - extra)
+            if (check <= 59){color = bg.r}
+            else if (check >= 60 && check <= 89){color = bg.y}
+            else if (check >= 14){color = bg.g}
             break
         case '% ПРОЦ':
-            /*как считать разрывы?*/
-            if (number >= 26){color = bg.r}
-            else if (number >= 16 && number <= 25){color = bg.y}
-            else if (number <= 15){color = bg.g}
+            check = +(number - extra)
+            if (check >= 26){color = bg.r}
+            else if (check >= 16 && check <= 25){color = bg.y}
+            else if (check <= 15){color = bg.g}
             break
         case '% ПРИН':
-            /*а если прин меньше проца?  - у меня стает серым*/
             if (number < extra){color = bg.y}
             else if (number === extra){color = bg.g}
             break
