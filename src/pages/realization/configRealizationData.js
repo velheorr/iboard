@@ -7,7 +7,6 @@ export const configRealizationData = (item) =>{
         return num > 125 ? 125 : num
     }
 
-
         data.push(
             {
                 name: '% СПД',

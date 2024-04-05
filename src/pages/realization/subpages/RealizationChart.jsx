@@ -18,9 +18,7 @@ import {configRealizationData} from "../configRealizationData";
 
 const RealizationChart = ({item, variant = false}) => {
     let data = []
-    const checkNum = (num) => {
-        return num > 125 ? 125 : num
-    }
+
     const mode = useSelector(state => state.header.mode);
     const colorTheme = () => {
         return mode === "dark" ? palette.white : palette.black

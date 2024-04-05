@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import List from "@mui/material/List";
@@ -54,17 +53,6 @@ const SideMenu = () => {
                 {
                     sidebarData? sidebarData : ''
                 }
-
-                {/*<ListItem disablePadding>
-                    <ListItemButton sx={{height: 80,px: 2.5}}>
-                        <img className='menuIcon' src={guardian_black} alt="economics"/>
-                         <div>
-                            <Typography component="div">Потери</Typography>
-                            <Typography component="div">Разрывы</Typography>
-                            <Typography component="div">Развитие</Typography>
-                        </div>
-                    </ListItemButton>
-                </ListItem>*/}
             </List>
         </div>
     );

@@ -17,9 +17,9 @@ export const colorForChart = (rule, number, extra) => {
             else if (number === 100) {color = bg.g}
             break
         case '% СПС':
-            /* непонятно условие  на зеленый*/
-            if (number < 100){color = bg.r}
-            else if(number >= 100){color = bg.g}
+            /* а если больше 100%?*/
+            if (number !== 100){color = bg.r}
+            else if(number === 100){color = bg.g}
             break
         case '% ОС':
             color = bg.grey;
@@ -71,7 +71,6 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break;
     }
-
 
     return color
 }
