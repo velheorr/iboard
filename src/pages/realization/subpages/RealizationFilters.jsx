@@ -25,6 +25,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Filter1Icon from '@mui/icons-material/Filter1';
 import Filter2Icon from '@mui/icons-material/Filter2';
 import Filter3Icon from '@mui/icons-material/Filter3';
+import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
 
 
@@ -47,9 +48,21 @@ const RealizationFilters = () => {
 
     const [alignment, setAlignment] = useState('web');
 
+
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
     };
+
+    const [search, setSearch] = useState('')
+    const resetSearch = ()=> {
+        setSearch('')
+    }
+    const handleSearch = (e) =>{
+        e.preventDefault()
+        setSearch(e.target.value)
+        console.log(e.target.value)
+    }
+
 
     return (
         <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
@@ -94,7 +107,7 @@ const RealizationFilters = () => {
                     size="small"
                     sx={{verticalAlign: 'bottom'}}
                 >
-                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по красным показателям</Typography>}>
+                    <Tooltip title={<Typography variant="body2"  gutterBottom>Фильтр по красным показателям</Typography>}>
                         <ToggleButton value="red" color='error'><Filter1Icon/></ToggleButton>
                     </Tooltip>
                     <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по желтым показателям</Typography>}>
@@ -108,20 +121,12 @@ const RealizationFilters = () => {
                     </Tooltip>
                 </ToggleButtonGroup>
             </div>
-            <div>
-
-            </div>
-
-            {/*<FormControl sx={{m: 1, width: 300,}} variant="standard">
-                <TextField id="standard-basic2" label="Standard" variant="standard" />
-            </FormControl>*/}
-            <div>
-                <FormControl sx={{m: 1, width: 300, verticalAlign: 'bottom'}}>
-                    <TextField id="realiz_search" variant="standard" placeholder='Поиск' InputProps={{startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),}}/>
-                </FormControl>
-                <FormControl sx={{verticalAlign: 'super'}}>
-                    <Typography sx={{}} variant="body1"><b>Объектов: {amount}</b></Typography>
-                </FormControl>
+            <div className='searchFilter'>
+                <TextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px'}}  variant="standard" placeholder='Поиск' value={search} onChange={handleSearch} InputProps={{
+                    startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
+                    endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon /></IconButton></InputAdornment>)
+                }}/>
+                <div><b>Объектов: {amount}</b></div>
             </div>
 
 
