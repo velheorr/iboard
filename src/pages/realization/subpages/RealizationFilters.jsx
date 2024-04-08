@@ -126,7 +126,7 @@ const RealizationFilters = () => {
                     startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
                     endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon /></IconButton></InputAdornment>)
                 }}/>
-                <div><b>Объектов: {amount}</b></div>
+                <div className='objects'><b>Объектов: {amount}</b></div>
             </div>
 
 
