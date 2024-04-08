@@ -25,10 +25,9 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break
         case '% ПФОТ':
-            check = +(number - extra)
-            if (check >= 30){color = bg.r}
-            else if (check >= 16 && check < 30){color = bg.y}
-            else if (check <= 15){color = bg.g}
+            if (number <= 69 && number > 100){color = bg.r}
+            else if (number >= 70 && number <= 89){color = bg.y}
+            else if (number >= 90 && number <= 100 ){color = bg.g}
             break
         case '% ОФОТ':
             check = +(number - extra)

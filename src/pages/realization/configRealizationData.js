@@ -34,7 +34,7 @@ export const configRealizationData = (item) =>{
                 info: '% прономерованного ФОТ',
                 uv: checkNum(item.ПроцентПронормированногоФОТ),
                 realNumber: item.ПроцентПронормированногоФОТ,
-                forColorFunc: item.ПроцентОсвоенияДогСроков,
+                forColorFunc: '',
             },
             {
                 name: '% ОФОТ',
