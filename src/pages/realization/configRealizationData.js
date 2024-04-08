@@ -13,6 +13,7 @@ export const configRealizationData = (item) =>{
                 info: '% суммы подписанных договорных документов',
                 uv:  checkNum(item.ПроцентПодписанныхДоговоров),
                 realNumber: item.ПроцентПодписанныхДоговоров,
+                dynamics: item.ПроцентПодписанныхДоговоровДинамика,
                 forColorFunc: '',
             },
             {
@@ -20,6 +21,7 @@ export const configRealizationData = (item) =>{
                 info: 'Суммы подписанных смет',
                 uv:  checkNum(item.ПроцентСуммыПодписанныхСмет),
                 realNumber: item.ПроцентСуммыПодписанныхСмет,
+                dynamics: item.ПроцентСуммыПодписанныхСметДинамика,
                 forColorFunc: '',
             },
             {
@@ -27,6 +29,7 @@ export const configRealizationData = (item) =>{
                 info: '% освоения договорных сроков',
                 uv: checkNum(item.ПроцентОсвоенияДогСроков),
                 realNumber: item.ПроцентОсвоенияДогСроков,
+                dynamics: item.ПроцентОсвоенияДогСроковДинамика,
                 forColorFunc: '',
             },
             {
@@ -34,6 +37,7 @@ export const configRealizationData = (item) =>{
                 info: '% прономерованного ФОТ',
                 uv: checkNum(item.ПроцентПронормированногоФОТ),
                 realNumber: item.ПроцентПронормированногоФОТ,
+                dynamics: item.ПроцентПронормированногоФОТДинамика,
                 forColorFunc: '',
             },
             {
@@ -41,6 +45,7 @@ export const configRealizationData = (item) =>{
                 info: '% освоения ФОТ СМР',
                 uv: checkNum(item.ПроцентОсвоенияФОТ),
                 realNumber: item.ПроцентОсвоенияФОТ,
+                dynamics: item.ПроцентОсвоенияФОТДинамика,
                 forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
@@ -48,6 +53,7 @@ export const configRealizationData = (item) =>{
                 info: '% освоения финансирования проекта',
                 uv: checkNum(item.ПроцентОсвоенияФин),
                 realNumber: item.ПроцентОсвоенияФин,
+                dynamics: item.ПроцентОсвоенияФинДинамика,
                 forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
@@ -55,6 +61,7 @@ export const configRealizationData = (item) =>{
                 info: '% обеспеченности пронормированных ОиМ',
                 uv: checkNum(item.ПроцентПронормированногоОИМ),
                 realNumber: item.ПроцентПронормированногоОИМ,
+                dynamics: item.ПроцентПронормированногоОИМДинамика,
                 forColorFunc: '',
             },
             {
@@ -62,6 +69,7 @@ export const configRealizationData = (item) =>{
                 info: '% запланированной нормативной трудоемкости',
                 uv: checkNum(item.ПроцентПроцентЗаплНТ),
                 realNumber: item.ПроцентПроцентЗаплНТ,
+                dynamics: item.ПроцентПроцентЗаплНТДинамика,
                 forColorFunc: '',
             },
             {
@@ -69,6 +77,7 @@ export const configRealizationData = (item) =>{
                 info: '% прогресса нормативной трудоемкости',
                 uv: checkNum(item.ПроцентПрогрессаНЧ),
                 realNumber: item.ПроцентПрогрессаНЧ,
+                dynamics: item.ПроцентПрогрессаНЧДинамика,
                 forColorFunc: '',
             },
             {
@@ -76,6 +85,7 @@ export const configRealizationData = (item) =>{
                 info: '% превращения НЗП в Себестоимость',
                 uv: checkNum(item.ПроцентПревращенияНЗП),
                 realNumber: item.ПроцентПревращенияНЗП,
+                dynamics: item.ПроцентПревращенияНЗПДинамика,
                 forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
@@ -83,6 +93,7 @@ export const configRealizationData = (item) =>{
                 info: '% предьявлено Заказчику',
                 uv: checkNum(item.ПроцентПредъявленныхРТИУ),
                 realNumber: item.ПроцентПредъявленныхРТИУ,
+                dynamics: item.ПроцентПредъявленныхРТИУДинамика,
                 forColorFunc: item.ПроцентОсвоенияДогСроков,
             },
             {
@@ -90,6 +101,7 @@ export const configRealizationData = (item) =>{
                 info: '% процентовок принятых Заказчиком',
                 uv: checkNum(item.ПроцентПринятыхРТИУ),
                 realNumber: item.ПроцентПринятыхРТИУ,
+                dynamics: item.ПроцентПредъявленныхРТИУДинамика,
                 forColorFunc: item.ПроцентПредъявленныхРТИУ,
             },
         )

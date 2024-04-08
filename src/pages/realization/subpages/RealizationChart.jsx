@@ -53,17 +53,26 @@ const RealizationChart = ({item, variant = false}) => {
     /*Числовые значения в графике (позиция, цвет)*/
     const CustomLabel = (props) =>{
         const {x, y, name, width} = props;
-        let find = data.find(num => num.name ===  name).realNumber
+        let findNumber = data.find(num => num.name ===  name).realNumber
+        let findDynamics = data.find(num => num.name ===  name).dynamics
+        let plus = '+'
+
+        if (findDynamics === 0 || findDynamics === undefined) {
+            findDynamics = ''
+            plus = ''
+        } else if(findDynamics.toString().includes('-')) {
+            plus = ''
+        }
+
         let countWidth = width || 0
         if (width < 20){
             countWidth = countWidth + 10
         } else {
             countWidth = countWidth - 20
         }
-        return <text x={x} y={y} dy={17} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{find}</text>
+        return <text x={x} y={y} dy={18} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{`${findNumber} ${plus}${findDynamics}`}</text>
+
     };
-
-
 
     return (
         <div style={{ position: "relative", padding: '5px'}}>

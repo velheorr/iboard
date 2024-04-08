@@ -1,3 +1,10 @@
+const findBiggerNum = (a, b) =>{
+    if (a > b) {
+        return a - b
+    }
+    return b - a
+
+}
 
 const bg = {
     y: '#FCDC2A',
@@ -17,9 +24,8 @@ export const colorForChart = (rule, number, extra) => {
             else if (number === 100) {color = bg.g}
             break
         case '% СПС':
-            /* а если больше 100%?*/
             if (number !== 100){color = bg.r}
-            else if(number === 100){color = bg.g}
+            else if(number >= 100){color = bg.g}
             break
         case '% ОС':
             color = bg.grey;
@@ -30,13 +36,13 @@ export const colorForChart = (rule, number, extra) => {
             else if (number >= 90 && number <= 100 ){color = bg.g}
             break
         case '% ОФОТ':
-            check = +(number - extra)
+            check = +(findBiggerNum(number, extra))
             if (check >= 30){color = bg.r}
             else if (check >= 16 && check < 30){color = bg.y}
             else if (check <= 15){color = bg.g}
             break
         case '% ОФ':
-            check = +(number - extra)
+            check = +(findBiggerNum(number, extra))
             if (check >= 30){color = bg.r}
             else if (check >= 15 && check < 29){color = bg.y}
             else if (check <= 14){color = bg.g}
@@ -51,13 +57,13 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break
         case '% НЗП':
-            check = +(number - extra)
+            check = +(findBiggerNum(number, extra))
             if (check <= 59){color = bg.r}
             else if (check >= 60 && check <= 89){color = bg.y}
             else if (check >= 14){color = bg.g}
             break
         case '% ПРОЦ':
-            check = +(number - extra)
+            check = +(findBiggerNum(number, extra))
             if (check >= 26){color = bg.r}
             else if (check >= 16 && check <= 25){color = bg.y}
             else if (check <= 15){color = bg.g}
