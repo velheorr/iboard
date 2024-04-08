@@ -10,3 +10,11 @@
         border-bottom: .1px dashed;
     }
 }
+
+
+.realizationFilters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}

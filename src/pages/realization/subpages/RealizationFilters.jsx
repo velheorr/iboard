@@ -1,0 +1,132 @@
+import {
+    Box,
+    FormControl,
+    IconButton, InputAdornment,
+    InputLabel,
+    MenuItem,
+    Select, styled, ToggleButton,
+    ToggleButtonGroup,
+    Tooltip,
+    Typography
+} from "@mui/material";
+import {palette} from "../../../utils/theme";
+import '../realization.scss'
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import {useSelector} from "react-redux";
+import TextField from "@mui/material/TextField";
+import {AccountCircle} from "@mui/icons-material";
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import SearchIcon from '@mui/icons-material/Search';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import InsertChartIcon from '@mui/icons-material/InsertChart';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import Filter1Icon from '@mui/icons-material/Filter1';
+import Filter2Icon from '@mui/icons-material/Filter2';
+import Filter3Icon from '@mui/icons-material/Filter3';
+import {useEffect, useState} from "react";
+
+
+const YellowButton = styled(ToggleButton)(() => ({
+    "&.Mui-selected, &.Mui-selected:hover": {
+        color: '#fcdc2a'
+    }
+}));
+
+const RealizationFilters = () => {
+    const mode = useSelector(state => state.header.mode);
+    const realisationData = useSelector(state => state.realisation.realisationData);
+    const [amount, setAmount] = useState(0)
+
+    useEffect(() => {
+        if (realisationData) {
+            setAmount(realisationData.length)
+        }
+    }, [realisationData])
+
+    const [alignment, setAlignment] = useState('web');
+
+    const handleChange = (event, newAlignment) => {
+        setAlignment(newAlignment);
+    };
+
+    return (
+        <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
+            <div>
+                <FormControl sx={{width: 300,mr: '15px'}} variant="standard">
+                    <InputLabel id="holding-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Холдинг</InputLabel>
+                    <Select
+                        labelId="holding-label"
+                        id="holding"
+                        /*value={}
+                        onChange={}*/
+                        sx={{color: mode === "dark" ? palette.white : palette.black,}}
+                    >
+                        {/*{
+                        selectHolding.map((item, i) => {
+                            let x = item === '' ? 'Не указан' : item
+                            return <MenuItem key={i} value={item}>{x}</MenuItem>
+                        })
+                    }*/}
+                    </Select>
+                </FormControl>
+                <FormControl sx={{width: 300,mr: '15px'}} variant="standard">
+                    <InputLabel id="zakazchik-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Заказчик</InputLabel>
+                    <Select
+                        labelId="zakazchik-label"
+                        id="zakazchik"
+                        /*value={zakazchik}
+                        onChange={handleChangeZakazchik}*/
+                        sx={{color: mode === "dark" ? palette.white : palette.black}}
+                    >
+                        {/*{
+                        filteredKontragentByHolding.map((item, i) => {
+                            return <MenuItem key={i} value={item}>{item}</MenuItem>
+                        })
+                    }*/}
+                    </Select>
+                </FormControl>
+                <ToggleButtonGroup
+                    value={alignment}
+                    exclusive
+                    onChange={handleChange}
+                    size="small"
+                    sx={{verticalAlign: 'bottom'}}
+                >
+                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по красным показателям</Typography>}>
+                        <ToggleButton value="red" color='error'><Filter1Icon/></ToggleButton>
+                    </Tooltip>
+                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по желтым показателям</Typography>}>
+                        <YellowButton value="yellow" color='warning'><Filter2Icon/></YellowButton>
+                    </Tooltip>
+                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по зеленым показателям</Typography>}>
+                        <ToggleButton value="green" color='success'><Filter3Icon/></ToggleButton>
+                    </Tooltip>
+                    <Tooltip title={<Typography variant="body2" gutterBottom>Сбросить все фильтры</Typography>}>
+                        <ToggleButton value="reset"><FilterAltOffIcon/></ToggleButton>
+                    </Tooltip>
+                </ToggleButtonGroup>
+            </div>
+            <div>
+
+            </div>
+
+            {/*<FormControl sx={{m: 1, width: 300,}} variant="standard">
+                <TextField id="standard-basic2" label="Standard" variant="standard" />
+            </FormControl>*/}
+            <div>
+                <FormControl sx={{m: 1, width: 300, verticalAlign: 'bottom'}}>
+                    <TextField id="realiz_search" variant="standard" placeholder='Поиск' InputProps={{startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),}}/>
+                </FormControl>
+                <FormControl sx={{verticalAlign: 'super'}}>
+                    <Typography sx={{}} variant="body1"><b>Объектов: {amount}</b></Typography>
+                </FormControl>
+            </div>
+
+
+        </Box>
+    );
+}
+
+export default RealizationFilters;

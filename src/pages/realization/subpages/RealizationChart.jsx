@@ -76,7 +76,7 @@ const RealizationChart = ({item, variant = false}) => {
 
     return (
         <div style={{ position: "relative", padding: '5px'}}>
-            <ResponsiveContainer width={'100%'}  height={350} minWidth={100} minHeight={100} >
+            <ResponsiveContainer width={'100%'}  height={340} minWidth={100} minHeight={100} >
                 <BarChart
                     width={500}
                     height={300}
@@ -85,7 +85,7 @@ const RealizationChart = ({item, variant = false}) => {
                     barSize={30}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" dataKey='uv'  domain={[0, dataMax => (125)]} scale={'linear'} tick={{ fill: colorTheme()}}/>
+                    <XAxis type="number" dataKey='uv'  domain={[0, dataMax => (125)]} scale={'linear'} style={{ fontSize: "11px"}} tick={{ fill: colorTheme()}}/>
                     <YAxis dataKey="name" type='category' width={70}  style={{ fontSize: "11px"}} tick={{ fill: colorTheme()}}/>
                     <Tooltip dataKey="uv" content={<CustomTooltip/>}/>
                     <Bar dataKey="uv"  label={<CustomLabel />}>
@@ -95,7 +95,7 @@ const RealizationChart = ({item, variant = false}) => {
                         ))}
                     </Bar>
                     <ReferenceLine x={100} stroke={colorTheme()}  strokeWidth={2}>
-                        <Label value="100" offset={-18} position="insideBottom" />
+                        {/*<Label value="100"  offset={-18} position="insideBottom" />*/}
                     </ReferenceLine>
                 </BarChart>
             </ResponsiveContainer>

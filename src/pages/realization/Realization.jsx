@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import {settingsRealization} from "../../elements/slider/sliderSettings";
 import RealizationChartBlocks from "./subpages/RealizationChartBlocks";
 import {setRealizationData} from "./RealizationSlice";
+import RealizationFilters from "./subpages/RealizationFilters";
 
 
 
@@ -40,6 +41,7 @@ const Realization = () => {
     return (
         <div className='main'>
             {/*<Typography sx={{textAlign: 'center', fontWeight: 600}} variant="h5">Список объектов</Typography>*/}
+            <RealizationFilters/>
             <Slider {...settingsRealization}>
                 {
                     isLoading
