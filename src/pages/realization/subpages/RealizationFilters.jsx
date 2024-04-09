@@ -2,8 +2,8 @@ import {
     Box,
     FormControl,
     IconButton, InputAdornment,
-    InputLabel,
-    MenuItem,
+    InputLabel, ListItemText,
+    MenuItem, OutlinedInput,
     Select, styled, ToggleButton,
     ToggleButtonGroup,
     Tooltip,
@@ -28,6 +28,45 @@ import Filter3Icon from '@mui/icons-material/Filter3';
 import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
 
+import rosneft from '../../../img/holding/rosneft.png'
+import lukoil from '../../../img/holding/lukoil.png'
+import fosagro from '../../../img/holding/fosagro.png'
+import sibur from '../../../img/holding/sibur.png'
+import novatek from '../../../img/holding/novatek.png'
+import uralkaliy from '../../../img/holding/uralkaliy.png'
+import metafraks from '../../../img/holding/metafraks.png'
+import nologo from '../../../img/holding/nologo.png'
+
+const setHoldingImg = (holdName) =>{
+    switch (holdName) {
+        case ('РОСНЕФТЬ'):
+            return  rosneft
+        break;
+        case ('НОВАТЭК'):
+            return  novatek
+            break;
+        case ('УРАЛКАЛИЙ'):
+            return  uralkaliy
+            break;
+        case ('МЕТАФРАКС'):
+            return  metafraks
+            break;
+        case ('ФОСАГРО'):
+            return  fosagro
+            break;
+        case ('ЛУКОЙЛ'):
+            return  lukoil
+            break;
+        case ('СИБУР'):
+            return  sibur
+            break;
+        default:
+            return nologo
+    }
+
+
+}
+
 
 const YellowButton = styled(ToggleButton)(() => ({
     "&.Mui-selected, &.Mui-selected:hover": {
@@ -38,6 +77,8 @@ const YellowButton = styled(ToggleButton)(() => ({
 const RealizationFilters = () => {
     const mode = useSelector(state => state.header.mode);
     const realisationData = useSelector(state => state.realisation.realisationData);
+    const holdingList = useSelector(state => state.realisation.holdingList);
+    const zakazchikList = useSelector(state => state.realisation.zakazchikList);
     const [amount, setAmount] = useState(0)
 
     useEffect(() => {
@@ -46,42 +87,60 @@ const RealizationFilters = () => {
         }
     }, [realisationData])
 
+    const [holding, setHolding] = useState('');
+    const [zakazchik, setZakazchik] = useState('');
+
+    const handleChangeHolding = (e)=>{
+        setHolding(e.target.value);
+    }
+    const handleChangeZakazchik = (e)=>{
+        setZakazchik(e.target.value);
+    }
+
+
+
+    /*Тогл кнопки*/
     const [alignment, setAlignment] = useState('web');
-
-
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
     };
 
+    /*Поиск*/
     const [search, setSearch] = useState('')
+    /*Очистка поля поиска*/
     const resetSearch = ()=> {
         setSearch('')
     }
+    /*Обновление поля поиска*/
     const handleSearch = (e) =>{
         e.preventDefault()
         setSearch(e.target.value)
-        console.log(e.target.value)
     }
 
 
     return (
         <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
             <div>
-                <FormControl sx={{width: 300,mr: '15px'}} variant="standard">
+                <FormControl sx={{width: 300,mr: '15px'}} variant="standard" >
                     <InputLabel id="holding-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Холдинг</InputLabel>
                     <Select
                         labelId="holding-label"
                         id="holding"
-                        /*value={}
-                        onChange={}*/
-                        sx={{color: mode === "dark" ? palette.white : palette.black,}}
+                        value={holding}
+                        onChange={handleChangeHolding}
+                        sx={{color: mode === "dark" ? palette.white : palette.black,width: 300, height: 32, display: 'inline-flex'}}
                     >
-                        {/*{
-                        selectHolding.map((item, i) => {
+                        {
+                            holdingList.map((item, i) => {
                             let x = item === '' ? 'Не указан' : item
-                            return <MenuItem key={i} value={item}>{x}</MenuItem>
+                            let img = setHoldingImg(item)
+                                return <MenuItem key={i} value={item}>
+                                    <img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={x} />
+                                    <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}>{x}</Typography>
+
+                            </MenuItem>
                         })
-                    }*/}
+                    }
                     </Select>
                 </FormControl>
                 <FormControl sx={{width: 300,mr: '15px'}} variant="standard">
@@ -89,15 +148,15 @@ const RealizationFilters = () => {
                     <Select
                         labelId="zakazchik-label"
                         id="zakazchik"
-                        /*value={zakazchik}
-                        onChange={handleChangeZakazchik}*/
+                        value={zakazchik}
+                        onChange={handleChangeZakazchik}
                         sx={{color: mode === "dark" ? palette.white : palette.black}}
                     >
-                        {/*{
-                        filteredKontragentByHolding.map((item, i) => {
+                        {
+                        zakazchikList.map((item, i) => {
                             return <MenuItem key={i} value={item}>{item}</MenuItem>
                         })
-                    }*/}
+                    }
                     </Select>
                 </FormControl>
                 <ToggleButtonGroup

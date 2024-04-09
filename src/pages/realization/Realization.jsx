@@ -5,7 +5,7 @@ import Skelet from "../../elements/Skelet";
 import Slider from "react-slick";
 import {settingsRealization} from "../../elements/slider/sliderSettings";
 import RealizationChartBlocks from "./subpages/RealizationChartBlocks";
-import {setRealizationData} from "./RealizationSlice";
+import {setHoldingList, setRealizationData, setZakazchikList} from "./RealizationSlice";
 import RealizationFilters from "./subpages/RealizationFilters";
 
 
@@ -26,11 +26,31 @@ const Realization = () => {
         )
 
     }*/
+    const prepareSelect = (bigData) =>{
+        let holding = []
+        let kontragent = []
+        bigData.forEach( item => {
+            if(item['Холдинг'] === ''){return}
+            if (!holding.includes(item['Холдинг'] )){
+                holding.push(item['Холдинг'])
+            } else
+            if (!kontragent.includes(item['Контрагент'])){
+                kontragent.push(item['Контрагент'])
+            }
+        })
+        dispatch(setHoldingList(holding))
+        dispatch(setZakazchikList(kontragent))
+    }
+
+
     useEffect(()=>{
         dispatch(setRealizationData(data))
+        if (realisationData){
+            prepareSelect(realisationData)
+        }
 
         /*sortData(data)*/
-    }, [data])
+    }, [data, realisationData])
 
 
     if (isLoading) {return <Skelet/>}

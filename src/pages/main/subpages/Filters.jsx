@@ -80,8 +80,7 @@ const Filters = () => {
                     >
                         {
                             selectHolding.map((item, i) => {
-                                let x = item === '' ? 'Не указан' : item
-                                return <MenuItem key={i} value={item}>{x}</MenuItem>
+                                return <MenuItem key={i} value={item}>{item}</MenuItem>
                             })
                         }
                     </Select>

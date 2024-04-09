@@ -3,6 +3,9 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     realisationData: [],
+    holdingList: [],
+    zakazchikList: [],
+
 
 }
 
@@ -13,19 +16,19 @@ const realizationSlice = createSlice({
         setRealizationData: (state, action) => {
             state.realisationData = action.payload
         },
-
+        setHoldingList: (state, action) => {
+            state.holdingList = action.payload
+        },
+        setZakazchikList: (state, action) => {
+            state.zakazchikList = action.payload
+        },
     },
-    extraReducers: (builder) => {
-        /*        builder
-                    .addCase(fetchData.fulfilled, (state, action) =>{
-                        state.dataFromDB = action.payload
-                    })*/
-    }
+
 });
 
 const {actions, reducer} = realizationSlice;
 
 export default reducer;
 export const {
-    setRealizationData
+    setRealizationData, setHoldingList, setZakazchikList
 } = actions;
