@@ -1,5 +1,5 @@
 import {
-    Box,
+    Box, Button, ButtonGroup,
     FormControl,
     IconButton, InputAdornment,
     InputLabel,
@@ -96,6 +96,13 @@ const RealizationFilters = () => {
 
     }
 
+    const [actBtn, setActBtn] = useState('reset')
+    const btnFilter = (color) =>{
+        /*if (color === actBtn) {return}*/
+        console.log(color)
+        setActBtn(color)
+    }
+
 
     return (
         <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
@@ -138,6 +145,27 @@ const RealizationFilters = () => {
                     }
                     </Select>
                 </FormControl>
+
+                <ButtonGroup variant="outlined" size='small' sx={{verticalAlign: 'bottom'}}>
+                    <Tooltip title={<Typography variant="body2"  gutterBottom>Фильтр по красным показателям</Typography>}>
+                        <Button color='error' sx={{
+                            color: actBtn === 'red'? '' : 'rgba(0, 0, 0, 0.54)',
+                            border: actBtn === 'red'? '' : '1px solid rgba(0, 0, 0, 0.12)'
+                            }}
+                            onClick={()=>btnFilter('red')}><Filter1Icon/>
+                        </Button>
+                    </Tooltip>
+                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по желтым показателям</Typography>}>
+                        <Button color='warning' onClick={()=>btnFilter('yellow')}><Filter2Icon/></Button>
+                    </Tooltip>
+                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по зеленым показателям</Typography>}>
+                        <Button color='success' onClick={()=>btnFilter('green')}><Filter3Icon/></Button>
+                    </Tooltip>
+                    <Tooltip title={<Typography variant="body2" gutterBottom>Сбросить все фильтры</Typography>}>
+                        <Button color='info' onClick={()=>btnFilter('reset')}><FilterAltOffIcon/></Button>
+                    </Tooltip>
+                </ButtonGroup>
+
                 <ToggleButtonGroup
                     value={alignment}
                     exclusive
