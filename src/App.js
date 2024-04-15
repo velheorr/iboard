@@ -7,13 +7,13 @@ import {Login} from "./pages/login/Login";
 
 import {RequireAuth} from "./hoc/RequireAuth";
 import {AuthProvider} from "./hoc/AuthProvider";
-import Main from "./pages/main/Main";
+
 import {createTheme, ThemeProvider} from "@mui/material";
 import {themeMode} from "./utils/theme";
 import {useSelector} from "react-redux";
 import {Register} from "./pages/login/Register";
 import {ResetPassword} from "./pages/login/ResetPassword";
-import DetailedView from "./pages/main/subpages/DetailedView";
+
 import TransitionsModal from "./elements/Modal/Modal";
 import Realization from "./pages/realization/Realization";
 
@@ -34,9 +34,7 @@ function App() {
                     <Route path='*' element={<Page404/>}/>
                     <Route path='/' element={<Layout/>}>
                         <Route index element={<RequireAuth><Realization/></RequireAuth>}/>
-                        <Route  path='/detailedView' element={<RequireAuth><DetailedView /></RequireAuth>}/>
 
-                        <Route  path='/main' element={<RequireAuth><Main /></RequireAuth>}/>
 
                         <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>

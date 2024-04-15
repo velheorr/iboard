@@ -3,11 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useGetRealizationData} from "../../hook/useGetQuery";
 import Skelet from "../../elements/Skelet";
 import Slider from "react-slick";
-import {settingsRealization} from "../../elements/slider/sliderSettings";
 import RealizationChartBlocks from "./subpages/RealizationChartBlocks";
 import {setHoldingList, setRealizationData, setZakazchikList} from "./RealizationSlice";
 import RealizationFilters from "./subpages/RealizationFilters";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import {settingsRealization} from "./subpages/realizationSliderSettings";
 
 
 const Realization = () => {

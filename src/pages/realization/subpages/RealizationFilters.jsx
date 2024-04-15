@@ -2,8 +2,8 @@ import {
     Box,
     FormControl,
     IconButton, InputAdornment,
-    InputLabel, ListItemText,
-    MenuItem, OutlinedInput,
+    InputLabel,
+    MenuItem,
     Select, styled, ToggleButton,
     ToggleButtonGroup,
     Tooltip,
@@ -11,61 +11,18 @@ import {
 } from "@mui/material";
 import {palette} from "../../../utils/theme";
 import '../realization.scss'
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import {useSelector} from "react-redux";
 import TextField from "@mui/material/TextField";
-import {AccountCircle} from "@mui/icons-material";
-import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import SearchIcon from '@mui/icons-material/Search';
-import LeaderboardIcon from '@mui/icons-material/Leaderboard';
-import InsertChartIcon from '@mui/icons-material/InsertChart';
-import BarChartIcon from '@mui/icons-material/BarChart';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Filter1Icon from '@mui/icons-material/Filter1';
 import Filter2Icon from '@mui/icons-material/Filter2';
 import Filter3Icon from '@mui/icons-material/Filter3';
 import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
-
-import rosneft from '../../../img/holding/rosneft.png'
-import lukoil from '../../../img/holding/lukoil.png'
-import fosagro from '../../../img/holding/fosagro.png'
-import sibur from '../../../img/holding/sibur.png'
-import novatek from '../../../img/holding/novatek.png'
-import uralkaliy from '../../../img/holding/uralkaliy.png'
-import metafraks from '../../../img/holding/metafraks.png'
-import nologo from '../../../img/holding/nologo.png'
-
-const setHoldingImg = (holdName) =>{
-    switch (holdName) {
-        case ('РОСНЕФТЬ'):
-            return  rosneft
-        break;
-        case ('НОВАТЭК'):
-            return  novatek
-            break;
-        case ('УРАЛКАЛИЙ'):
-            return  uralkaliy
-            break;
-        case ('МЕТАФРАКС'):
-            return  metafraks
-            break;
-        case ('ФОСАГРО'):
-            return  fosagro
-            break;
-        case ('ЛУКОЙЛ'):
-            return  lukoil
-            break;
-        case ('СИБУР'):
-            return  sibur
-            break;
-        default:
-            return nologo
-    }
+import {setHoldingImg} from "./realizationFilterHolding";
 
 
-}
 
 
 const YellowButton = styled(ToggleButton)(() => ({
@@ -79,6 +36,8 @@ const RealizationFilters = () => {
     const realisationData = useSelector(state => state.realisation.realisationData);
     const holdingList = useSelector(state => state.realisation.holdingList);
     const zakazchikList = useSelector(state => state.realisation.zakazchikList);
+
+    /*кол-во обьектов*/
     const [amount, setAmount] = useState(0)
 
     useEffect(() => {
