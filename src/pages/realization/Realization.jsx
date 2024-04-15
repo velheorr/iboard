@@ -3,8 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {useGetRealizationData} from "../../hook/useGetQuery";
 import Skelet from "../../elements/Skelet";
 import Slider from "react-slick";
-import RealizationChartBlocks from "./subpages/RealizationChartBlocks";
-import {configRealizData, setHoldingList, setRealizationData, setZakazchikList} from "./js/RealizationSlice";
+import {
+    setConfiguredRealizationData,
+    setFilteredData,
+    setHoldingList,
+    setRealizationData,
+    setZakazchikList
+} from "./js/RealizationSlice";
 import RealizationFilters from "./subpages/RealizationFilters";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,6 +21,7 @@ import {configRealizationData} from "./js/configRealizationData";
 const Realization = () => {
     const realisationData = useSelector(state => state.realisation.realisationData);
     const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
+    const filteredData = useSelector(state => state.realisation.filteredData);
 
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetRealizationData()
@@ -64,7 +70,7 @@ const Realization = () => {
                 else if (el.barColor === '#2db432'){colors.green = colors.green + 1}
                 else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}
             })
-            console.log(colors)
+
             return {
                 ...rest,
                 chartData,
@@ -72,7 +78,8 @@ const Realization = () => {
             }
         })
 
-        dispatch(configRealizData(prepare))
+        dispatch(setConfiguredRealizationData(prepare))
+        dispatch(setFilteredData(prepare))
     }
 
 
@@ -103,7 +110,7 @@ const Realization = () => {
                 {
                     isLoading
                         ? <div>Нет данных</div>
-                        :configuredRealizationData?.map((item, i) => {
+                        :filteredData?.map((item, i) => {
                             return <RealizationChartBlocks2 item={item} key={i}/>
                         })
                 }

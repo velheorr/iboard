@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import {palette} from "../../../utils/theme";
 import '../realization.scss'
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import TextField from "@mui/material/TextField";
 import SearchIcon from '@mui/icons-material/Search';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
@@ -21,7 +21,7 @@ import Filter3Icon from '@mui/icons-material/Filter3';
 import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
-
+import {setFilteredData} from "../js/RealizationSlice";
 
 
 
@@ -31,20 +31,23 @@ const YellowButton = styled(ToggleButton)(() => ({
     }
 }));
 
+
 const RealizationFilters = () => {
     const mode = useSelector(state => state.header.mode);
-    const realisationData = useSelector(state => state.realisation.realisationData);
+    const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
+    const filteredData = useSelector(state => state.realisation.filteredData);
     const holdingList = useSelector(state => state.realisation.holdingList);
     const zakazchikList = useSelector(state => state.realisation.zakazchikList);
 
+    const dispatch = useDispatch()
     /*кол-во обьектов*/
     const [amount, setAmount] = useState(0)
 
     useEffect(() => {
-        if (realisationData) {
-            setAmount(realisationData.length)
+        if (filteredData) {
+            setAmount(filteredData.length)
         }
-    }, [realisationData])
+    }, [filteredData])
 
     const [holding, setHolding] = useState('');
     const [zakazchik, setZakazchik] = useState('');
@@ -59,9 +62,24 @@ const RealizationFilters = () => {
 
 
     /*Тогл кнопки*/
-    const [alignment, setAlignment] = useState('web');
-    const handleChange = (event, newAlignment) => {
-        setAlignment(newAlignment);
+    const [alignment, setAlignment] = useState('reset');
+
+    const colorSort = (event, newAlignment) => {
+        console.log(alignment, newAlignment)
+
+            setAlignment(newAlignment);
+
+            if (alignment === 'reset'){
+               return  dispatch(setFilteredData(configuredRealizationData))
+            }
+
+            let filtered = [...filteredData].sort((a, b) => {
+                return b.colors[alignment] - a.colors[alignment]
+            });
+            console.log(filtered)
+            return dispatch(setFilteredData(filtered))
+
+
     };
 
     /*Поиск*/
@@ -74,6 +92,8 @@ const RealizationFilters = () => {
     const handleSearch = (e) =>{
         e.preventDefault()
         setSearch(e.target.value)
+
+
     }
 
 
@@ -121,7 +141,7 @@ const RealizationFilters = () => {
                 <ToggleButtonGroup
                     value={alignment}
                     exclusive
-                    onChange={handleChange}
+                    onChange={colorSort}
                     size="small"
                     sx={{verticalAlign: 'bottom'}}
                 >
