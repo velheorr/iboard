@@ -10,8 +10,19 @@ const bg = {
     y: '#FCDC2A',
     r: '#f60209',
     g: '#2db432',
-    grey: '#9f9f9f' /*???*/
+    grey: '#9f9f9f',
 }
+/*const isYellow = '#FCDC2A'
+const isRed = '#f60209'
+const isGreen = '#2db432'
+const isGrey = '#9f9f9f'*/
+
+/*const bg = {
+    y: 'isYellow',
+    r: 'isRed',
+    g: 'isGreen',
+    grey: 'isGrey',
+}*/
 
 export const colorForChart = (rule, number, extra) => {
     let color = bg.grey
@@ -76,6 +87,7 @@ export const colorForChart = (rule, number, extra) => {
             color = bg.grey;
             break;
     }
+
 
     return color
 }

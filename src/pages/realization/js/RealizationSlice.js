@@ -1,11 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit'
+import {configRealizationData} from "./configRealizationData";
 
 
 const initialState = {
     realisationData: [],
     holdingList: [],
     zakazchikList: [],
-
+    configuredRealizationData: []
 
 }
 
@@ -22,6 +23,9 @@ const realizationSlice = createSlice({
         setZakazchikList: (state, action) => {
             state.zakazchikList = action.payload
         },
+        configRealizData: (state, action) => {
+            state.configuredRealizationData = action.payload
+        },
     },
 
 });
@@ -30,5 +34,5 @@ const {actions, reducer} = realizationSlice;
 
 export default reducer;
 export const {
-    setRealizationData, setHoldingList, setZakazchikList
+    setRealizationData, setHoldingList, setZakazchikList, configRealizData
 } = actions;

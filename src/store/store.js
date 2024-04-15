@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import header from "../pages/header/HeaderSlice";
 import modal from '../elements/Modal/ModalSlice'
 import sidemenu from "../pages/sidebar/SideMenuSlice";
-import realisation from "../pages/realization/RealizationSlice"
+import realisation from "../pages/realization/js/RealizationSlice"
 
 
 

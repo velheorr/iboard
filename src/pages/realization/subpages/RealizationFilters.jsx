@@ -20,7 +20,7 @@ import Filter2Icon from '@mui/icons-material/Filter2';
 import Filter3Icon from '@mui/icons-material/Filter3';
 import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
-import {setHoldingImg} from "./realizationFilterHolding";
+import {setHoldingImg} from "../js/realizationFilterHolding";
 
 
 

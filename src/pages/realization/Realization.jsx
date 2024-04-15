@@ -4,15 +4,18 @@ import {useGetRealizationData} from "../../hook/useGetQuery";
 import Skelet from "../../elements/Skelet";
 import Slider from "react-slick";
 import RealizationChartBlocks from "./subpages/RealizationChartBlocks";
-import {setHoldingList, setRealizationData, setZakazchikList} from "./RealizationSlice";
+import {configRealizData, setHoldingList, setRealizationData, setZakazchikList} from "./js/RealizationSlice";
 import RealizationFilters from "./subpages/RealizationFilters";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {settingsRealization} from "./subpages/realizationSliderSettings";
+import {settingsRealization} from "./js/realizationSliderSettings";
+import RealizationChartBlocks2 from "./subpages/RealizationChartBlocks2";
+import {configRealizationData} from "./js/configRealizationData";
 
 
 const Realization = () => {
     const realisationData = useSelector(state => state.realisation.realisationData);
+    const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
 
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetRealizationData()
@@ -41,12 +44,42 @@ const Realization = () => {
         })
         dispatch(setHoldingList(holding))
         dispatch(setZakazchikList(kontragent))
+
+    }
+
+    const prepareRealizationData = (newdata) =>{
+        const prepare = newdata.map(item => {
+            const {...rest } = item;
+            let chartData = configRealizationData(item)
+
+            let colors = {
+                yellow: 0,
+                red: 0,
+                green: 0,
+                grey: 0
+            }
+            chartData.forEach(el =>{
+                if (el.barColor === '#FCDC2A'){colors.yellow = colors.yellow + 1}
+                else if (el.barColor === '#f60209'){colors.red = colors.red + 1}
+                else if (el.barColor === '#2db432'){colors.green = colors.green + 1}
+                else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}
+            })
+            console.log(colors)
+            return {
+                ...rest,
+                chartData,
+                colors,
+            }
+        })
+
+        dispatch(configRealizData(prepare))
     }
 
 
     useEffect(()=>{
         dispatch(setRealizationData(data))
         if (realisationData){
+            prepareRealizationData(realisationData)
             prepareSelect(realisationData)
         }
 
@@ -59,6 +92,9 @@ const Realization = () => {
     if (!data) {return <h3>no data</h3>}
 
 
+
+
+
     return (
         <div className='main'>
             {/*<Typography sx={{textAlign: 'center', fontWeight: 600}} variant="h5">Список объектов</Typography>*/}
@@ -67,11 +103,20 @@ const Realization = () => {
                 {
                     isLoading
                         ? <div>Нет данных</div>
+                        :configuredRealizationData?.map((item, i) => {
+                            return <RealizationChartBlocks2 item={item} key={i}/>
+                        })
+                }
+            </Slider>
+            {/*<Slider {...settingsRealization}>
+                {
+                    isLoading
+                        ? <div>Нет данных</div>
                         :realisationData?.map((item, i) => {
                             return <RealizationChartBlocks item={item} key={i}/>
                         })
                 }
-            </Slider>
+            </Slider>*/}
         </div>
     );
 };

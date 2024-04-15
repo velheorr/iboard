@@ -1,4 +1,4 @@
-
+import {colorForChart} from "./realizationChartRules";
 
 
 export const configRealizationData = (item) =>{
@@ -14,7 +14,7 @@ export const configRealizationData = (item) =>{
                 uv:  checkNum(item.ПроцентПодписанныхДоговоров),
                 realNumber: item.ПроцентПодписанныхДоговоров,
                 dynamics: item.ПроцентПодписанныхДоговоровДинамика,
-                forColorFunc: '',
+                barColor: colorForChart('% СПД', item.ПроцентПодписанныхДоговоров, '')
             },
             {
                 name: '% СПС',
@@ -22,7 +22,7 @@ export const configRealizationData = (item) =>{
                 uv:  checkNum(item.ПроцентСуммыПодписанныхСмет),
                 realNumber: item.ПроцентСуммыПодписанныхСмет,
                 dynamics: item.ПроцентСуммыПодписанныхСметДинамика,
-                forColorFunc: '',
+                barColor: colorForChart('% СПС', item.ПроцентСуммыПодписанныхСмет, '')
             },
             {
                 name: '% ОС',
@@ -30,7 +30,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентОсвоенияДогСроков),
                 realNumber: item.ПроцентОсвоенияДогСроков,
                 dynamics: item.ПроцентОсвоенияДогСроковДинамика,
-                forColorFunc: '',
+                barColor: colorForChart('% ОС', item.ПроцентОсвоенияДогСроков, ''),
             },
             {
                 name: '% ПФОТ',
@@ -38,7 +38,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентПронормированногоФОТ),
                 realNumber: item.ПроцентПронормированногоФОТ,
                 dynamics: item.ПроцентПронормированногоФОТДинамика,
-                forColorFunc: '',
+                barColor: colorForChart('% ПФОТ', item.ПроцентПронормированногоФОТ, ''),
             },
             {
                 name: '% ОФОТ',
@@ -46,7 +46,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентОсвоенияФОТ),
                 realNumber: item.ПроцентОсвоенияФОТ,
                 dynamics: item.ПроцентОсвоенияФОТДинамика,
-                forColorFunc: item.ПроцентОсвоенияДогСроков,
+                barColor: colorForChart('% ОФОТ', item.ПроцентОсвоенияФОТ, item.ПроцентОсвоенияДогСроков),
             },
             {
                 name: '% ОФ',
@@ -54,7 +54,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентОсвоенияФин),
                 realNumber: item.ПроцентОсвоенияФин,
                 dynamics: item.ПроцентОсвоенияФинДинамика,
-                forColorFunc: item.ПроцентОсвоенияДогСроков,
+                barColor: colorForChart('% ОФ', item.ПроцентОсвоенияФин, item.ПроцентОсвоенияДогСроков),
             },
             {
                 name: '% ОиМ',
@@ -62,7 +62,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентПронормированногоОИМ),
                 realNumber: item.ПроцентПронормированногоОИМ,
                 dynamics: item.ПроцентПронормированногоОИМДинамика,
-                forColorFunc: '',
+                barColor: colorForChart('% ОиМ', item.ПроцентПронормированногоОИМ, ''),
             },
             {
                 name: '% НТ (план)',
@@ -70,7 +70,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентПроцентЗаплНТ),
                 realNumber: item.ПроцентПроцентЗаплНТ,
                 dynamics: item.ПроцентПроцентЗаплНТДинамика,
-                forColorFunc: '',
+                barColor: colorForChart('% НТ (план)', item.ПроцентПроцентЗаплНТ, ''),
             },
             {
                 name: '% НТ (факт)',
@@ -78,7 +78,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентПрогрессаНЧ),
                 realNumber: item.ПроцентПрогрессаНЧ,
                 dynamics: item.ПроцентПрогрессаНЧДинамика,
-                forColorFunc: '',
+                barColor: colorForChart('% НТ (факт)', item.ПроцентПрогрессаНЧ, ''),
             },
             {
                 name: '% НЗП',
@@ -86,7 +86,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентПревращенияНЗП),
                 realNumber: item.ПроцентПревращенияНЗП,
                 dynamics: item.ПроцентПревращенияНЗПДинамика,
-                forColorFunc: item.ПроцентОсвоенияДогСроков,
+                barColor: colorForChart('% НЗП', item.ПроцентПревращенияНЗП, item.ПроцентОсвоенияДогСроков),
             },
             {
                 name: '% ПРОЦ',
@@ -94,7 +94,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентПредъявленныхРТИУ),
                 realNumber: item.ПроцентПредъявленныхРТИУ,
                 dynamics: item.ПроцентПредъявленныхРТИУДинамика,
-                forColorFunc: item.ПроцентОсвоенияДогСроков,
+                barColor: colorForChart('% ПРОЦ', item.ПроцентПредъявленныхРТИУ, item.ПроцентОсвоенияДогСроков),
             },
             {
                 name: '% ПРИН',
@@ -102,7 +102,7 @@ export const configRealizationData = (item) =>{
                 uv: checkNum(item.ПроцентПринятыхРТИУ),
                 realNumber: item.ПроцентПринятыхРТИУ,
                 dynamics: item.ПроцентПредъявленныхРТИУДинамика,
-                forColorFunc: item.ПроцентПредъявленныхРТИУ,
+                barColor: colorForChart('% ПРИН', item.ПроцентПринятыхРТИУ, item.ПроцентПредъявленныхРТИУ),
             },
         )
 

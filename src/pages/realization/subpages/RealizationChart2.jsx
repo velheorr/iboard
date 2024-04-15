@@ -13,11 +13,11 @@ import {useSelector} from "react-redux";
 import {palette} from "../../../utils/theme";
 import {Typography} from "@mui/material";
 import {useModal} from "../../../hook/useModal";
-import {colorForChart} from "../js/realizationChartRules";
-import {configRealizationData} from "../js/configRealizationData";
 
-const RealizationChart = ({item, variant = false}) => {
-    let data = []
+
+
+const RealizationChart2 = ({item, variant = false}) => {
+    let data = item || []
 
     const mode = useSelector(state => state.header.mode);
     const colorTheme = () => {
@@ -25,9 +25,6 @@ const RealizationChart = ({item, variant = false}) => {
     }
     const {setModal} = useModal()
 
-    if (item){
-        data = configRealizationData(item)
-    }
 
     /*Тултип в графике*/
     /*параментр variant = по умолчанию false? нужен для вывода доп инфы  */
@@ -91,7 +88,7 @@ const RealizationChart = ({item, variant = false}) => {
                     <Bar dataKey="uv"  label={<CustomLabel />}>
                         {data.map((entry, index) => (
                             /*тут можно ф-ю окрашивания бара в графике*/
-                            <Cell cursor="help" fill={colorForChart(entry.name, entry.realNumber, entry.forColorFunc)} key={`cell-${index}`} interval={0} onClick={()=>setModal(entry.name)}/>
+                            <Cell cursor="help" fill={entry.barColor} key={`cell-${index}`} interval={0} onClick={()=>setModal(entry.name)}/>
                         ))}
                     </Bar>
                     <ReferenceLine x={100} stroke={colorTheme()}  strokeWidth={2}>
@@ -103,7 +100,7 @@ const RealizationChart = ({item, variant = false}) => {
     );
 };
 
-export default RealizationChart;
+export default RealizationChart2;
 
 
 
