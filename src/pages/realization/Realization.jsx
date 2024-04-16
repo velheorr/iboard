@@ -41,7 +41,7 @@ const Realization = () => {
 
     }
 
-    const prepare = data?.map(item => {
+    const prepareData = data?.map(item => {
         const {...rest } = item;
         let chartData = configRealizationData(item)
         let colors = {
@@ -66,23 +66,17 @@ const Realization = () => {
 
 
     useEffect(()=>{
-        if (prepare !== undefined){
-            prepareSelect(prepare)
-            dispatch(setConfiguredRealizationData(prepare))
-            dispatch(setFilteredData(prepare))
+        dispatch(setConfiguredRealizationData(prepareData))
+        if (prepareData !== undefined){
+            prepareSelect(prepareData)
+            dispatch(setFilteredData(prepareData))
         }
     }, [data])
-
-
 
 
     if (isLoading) {return <Skelet/>}
     if (isError) {return <h3>error</h3>}
     if (!data) {return <h3>no data</h3>}
-
-
-
-
 
 
     return (

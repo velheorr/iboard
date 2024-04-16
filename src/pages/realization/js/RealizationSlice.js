@@ -23,7 +23,6 @@ const realizationSlice = createSlice({
         /*модифицированная инфа, основная для работы*/
         setConfiguredRealizationData: (state, action) => {
             state.configuredRealizationData = action.payload
-            state.filteredData = action.payload
         },
         setFilteredData: (state, action) => {
             state.filteredData = action.payload

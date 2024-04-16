@@ -20,7 +20,7 @@ import Filter3Icon from '@mui/icons-material/Filter3';
 import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
-import {setFilteredData, setHoldingList, setZakazchikList} from "../js/RealizationSlice";
+import {setFilteredData} from "../js/RealizationSlice";
 
 
 
@@ -36,8 +36,6 @@ const RealizationFilters = () => {
     const dispatch = useDispatch()
     /*кол-во обьектов*/
     const [amount, setAmount] = useState(0)
-
-
 
     useEffect(() => {
         if (filteredData) {
