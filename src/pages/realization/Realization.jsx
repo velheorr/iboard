@@ -7,7 +7,6 @@ import {
     setConfiguredRealizationData,
     setFilteredData,
     setHoldingList,
-    setRealizationData,
     setZakazchikList
 } from "./js/RealizationSlice";
 import RealizationFilters from "./subpages/RealizationFilters";
@@ -19,23 +18,12 @@ import {configRealizationData} from "./js/configRealizationData";
 
 
 const Realization = () => {
-    const realisationData = useSelector(state => state.realisation.realisationData);
     const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
     const filteredData = useSelector(state => state.realisation.filteredData);
 
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetRealizationData()
 
-    /*const sortData = (data)=>{
-        if (data) {
-            let sorted = data?.sort((a,b)=> b['КодОбъекта'] - a['КодОбъекта'])
-            dispatch(setRealizationData(sorted))
-        }
-        else (
-            dispatch(setRealizationData(data))
-        )
-
-    }*/
     const prepareSelect = (bigData) =>{
         let holding = []
         let kontragent = []
@@ -53,50 +41,45 @@ const Realization = () => {
 
     }
 
-    const prepareRealizationData = (newdata) =>{
-        const prepare = newdata.map(item => {
-            const {...rest } = item;
-            let chartData = configRealizationData(item)
-
-            let colors = {
-                yellow: 0,
-                red: 0,
-                green: 0,
-                grey: 0
-            }
-            chartData.forEach(el =>{
-                if (el.barColor === '#FCDC2A'){colors.yellow = colors.yellow + 1}
-                else if (el.barColor === '#f60209'){colors.red = colors.red + 1}
-                else if (el.barColor === '#2db432'){colors.green = colors.green + 1}
-                else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}
-            })
-
-            return {
-                ...rest,
-                chartData,
-                colors,
-            }
+    const prepare = data?.map(item => {
+        const {...rest } = item;
+        let chartData = configRealizationData(item)
+        let colors = {
+            yellow: 0,
+            red: 0,
+            green: 0,
+            grey: 0
+        }
+        chartData.forEach(el =>{
+            if (el.barColor === '#FCDC2A'){colors.yellow = colors.yellow + 1}
+            else if (el.barColor === '#f60209'){colors.red = colors.red + 1}
+            else if (el.barColor === '#2db432'){colors.green = colors.green + 1}
+            else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}
         })
 
-        dispatch(setConfiguredRealizationData(prepare))
-        dispatch(setFilteredData(prepare))
-    }
+        return {
+            ...rest,
+            chartData,
+            colors,
+        }
+    })
 
 
     useEffect(()=>{
-        dispatch(setRealizationData(data))
-        if (realisationData){
-            prepareRealizationData(realisationData)
-            prepareSelect(realisationData)
+        if (prepare !== undefined){
+            prepareSelect(prepare)
+            dispatch(setConfiguredRealizationData(prepare))
+            dispatch(setFilteredData(prepare))
         }
+    }, [data])
 
-        /*sortData(data)*/
-    }, [data, realisationData])
+
 
 
     if (isLoading) {return <Skelet/>}
     if (isError) {return <h3>error</h3>}
     if (!data) {return <h3>no data</h3>}
+
 
 
 
@@ -110,20 +93,9 @@ const Realization = () => {
                 {
                     isLoading
                         ? <div>Нет данных</div>
-                        :filteredData?.map((item, i) => {
-                            return <RealizationChartBlocks2 item={item} key={i}/>
-                        })
+                        : filteredData?.map((item, i) => <RealizationChartBlocks2 item={item} key={i}/>)
                 }
             </Slider>
-            {/*<Slider {...settingsRealization}>
-                {
-                    isLoading
-                        ? <div>Нет данных</div>
-                        :realisationData?.map((item, i) => {
-                            return <RealizationChartBlocks item={item} key={i}/>
-                        })
-                }
-            </Slider>*/}
         </div>
     );
 };

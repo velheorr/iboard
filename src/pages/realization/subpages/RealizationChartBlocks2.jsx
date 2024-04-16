@@ -3,7 +3,6 @@ import BlockShadow from "../../../elements/BlockShadow";
 import {Tooltip, Typography} from "@mui/material";
 import {palette} from "../../../utils/theme";
 import {useSelector} from "react-redux";
-import RealizationChart from "./RealizationChart";
 import '../realization.scss'
 import {dateFormat, formatAmountRU} from "../../../utils/date_number";
 import RealizationChart2 from "./RealizationChart2";

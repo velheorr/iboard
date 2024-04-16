@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-    realisationData: [],
     holdingList: [],
     zakazchikList: [],
     configuredRealizationData: [],
@@ -13,10 +12,6 @@ const realizationSlice = createSlice({
     name: 'realisation',
     initialState,
     reducers: {
-        /*общая инфа*/
-        setRealizationData: (state, action) => {
-            state.realisationData = action.payload
-        },
         /*список селектов для холдинга*/
         setHoldingList: (state, action) => {
             state.holdingList = action.payload
@@ -28,6 +23,7 @@ const realizationSlice = createSlice({
         /*модифицированная инфа, основная для работы*/
         setConfiguredRealizationData: (state, action) => {
             state.configuredRealizationData = action.payload
+            state.filteredData = action.payload
         },
         setFilteredData: (state, action) => {
             state.filteredData = action.payload
@@ -40,5 +36,5 @@ const {actions, reducer} = realizationSlice;
 
 export default reducer;
 export const {
-    setRealizationData, setHoldingList, setZakazchikList, setConfiguredRealizationData, setFilteredData
+    setHoldingList, setZakazchikList, setConfiguredRealizationData, setFilteredData
 } = actions;
