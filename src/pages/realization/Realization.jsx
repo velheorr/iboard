@@ -24,7 +24,7 @@ const Realization = () => {
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetRealizationData()
 
-    const prepareSelect = (bigData) =>{
+    /*const prepareSelect = (bigData) =>{
         let holding = []
         let kontragent = []
         bigData.forEach( item => {
@@ -39,7 +39,7 @@ const Realization = () => {
         dispatch(setHoldingList(holding))
         dispatch(setZakazchikList(kontragent))
 
-    }
+    }*/
 
     const prepareData = data?.map(item => {
         const {...rest } = item;
@@ -68,7 +68,7 @@ const Realization = () => {
     useEffect(()=>{
         dispatch(setConfiguredRealizationData(prepareData))
         if (prepareData !== undefined){
-            prepareSelect(prepareData)
+            /*prepareSelect(prepareData)*/
             dispatch(setFilteredData(prepareData))
         }
     }, [data])

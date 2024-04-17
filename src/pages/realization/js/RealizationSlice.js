@@ -4,7 +4,8 @@ const initialState = {
     holdingList: [],
     zakazchikList: [],
     configuredRealizationData: [],
-    filteredData: []
+    filteredData: [],
+    listToDisplay: 'configuredRealizationData'
 
 }
 
@@ -27,6 +28,9 @@ const realizationSlice = createSlice({
         setFilteredData: (state, action) => {
             state.filteredData = action.payload
         },
+        setListToDisplay: (state, action) => {
+            state.listToDisplay = action.payload
+        },
     },
 
 });
@@ -35,5 +39,5 @@ const {actions, reducer} = realizationSlice;
 
 export default reducer;
 export const {
-    setHoldingList, setZakazchikList, setConfiguredRealizationData, setFilteredData
+    setHoldingList, setZakazchikList, setConfiguredRealizationData, setFilteredData,setListToDisplay
 } = actions;

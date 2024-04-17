@@ -20,7 +20,7 @@ import Filter3Icon from '@mui/icons-material/Filter3';
 import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
-import {setFilteredData} from "../js/RealizationSlice";
+import {setFilteredData, setHoldingList, setZakazchikList} from "../js/RealizationSlice";
 
 
 
@@ -37,17 +37,39 @@ const RealizationFilters = () => {
     /*кол-во обьектов*/
     const [amount, setAmount] = useState(0)
 
+    const prepareSelect = (bigData) =>{
+        let holding = []
+        let kontragent = []
+        bigData.forEach( item => {
+            if(item['Холдинг'] === ''){return}
+            if (!holding.includes(item['Холдинг'] )){
+                holding.push(item['Холдинг'])
+            } else
+            if (!kontragent.includes(item['Контрагент'])){
+                kontragent.push(item['Контрагент'])
+            }
+        })
+        dispatch(setHoldingList(holding))
+        dispatch(setZakazchikList(kontragent))
+
+    }
+
+
     useEffect(() => {
         if (filteredData) {
             setAmount(filteredData.length)
+            prepareSelect(filteredData)
           }
     }, [filteredData])
 
     const [holding, setHolding] = useState('');
     const [zakazchik, setZakazchik] = useState('');
 
+
+
     const handleChangeHolding = (e)=>{
         setHolding(e.target.value);
+        console.log(e.target.value)
     }
     const handleChangeZakazchik = (e)=>{
         setZakazchik(e.target.value);
@@ -71,14 +93,10 @@ const RealizationFilters = () => {
 
     const [actBtn, setActBtn] = useState('reset')
     const btnFilter = (color) =>{
-        /*if (color === actBtn) {return}*/
-        if (actBtn === 'reset'){dispatch(setFilteredData(configuredRealizationData))}
-        console.log(color)
         setActBtn(color)
-
+        if (actBtn === 'reset'){return dispatch(setFilteredData(configuredRealizationData))}
         let filtered = [...filteredData].sort((a, b) => b.colors[actBtn] - a.colors[actBtn]);
-        console.log(filtered)
-        dispatch(setFilteredData(filtered))
+        return dispatch(setFilteredData(filtered))
     }
 
 
@@ -126,41 +144,11 @@ const RealizationFilters = () => {
                 </FormControl>
 
                 <ButtonGroup variant="outlined" size='small' sx={{verticalAlign: 'bottom'}}>
-                    <Tooltip title={<Typography variant="body2"  gutterBottom>Фильтр по красным показателям</Typography>}>
-                        <Button color='error' sx={{
-                            color: actBtn === 'red'? '' : 'rgba(0, 0, 0, 0.54)',
-                            border: actBtn === 'red'? '' : '1px solid rgba(0, 0, 0, 0.12)'
-                            }}
-                            onClick={()=>btnFilter('red')}><Filter1Icon/>
-                        </Button>
-                    </Tooltip>
-                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по желтым показателям</Typography>}>
-                        <Button color='warning' sx={{
-                            color: actBtn === 'yellow'? '' : 'rgba(0, 0, 0, 0.54)',
-                            border: actBtn === 'yellow'? '' : '1px solid rgba(0, 0, 0, 0.12)'
-                            }}
-                                onClick={()=>btnFilter('yellow')}><Filter2Icon/>
-                        </Button>
-                    </Tooltip>
-                    <Tooltip title={<Typography variant="body2" gutterBottom>Фильтр по зеленым показателям</Typography>}>
-                        <Button color='success' sx={{
-                            color: actBtn === 'green'? '' : 'rgba(0, 0, 0, 0.54)',
-                            border: actBtn === 'green'? '' : '1px solid rgba(0, 0, 0, 0.12)'
-                        }}
-                                onClick={()=>btnFilter('green')}><Filter3Icon/>
-                        </Button>
-                    </Tooltip>
-                    <Tooltip title={<Typography variant="body2" gutterBottom>Сбросить все фильтры</Typography>}>
-                        <Button color='info' sx={{
-                            color: actBtn === 'reset'? '' : 'rgba(0, 0, 0, 0.54)',
-                            border: actBtn === 'reset'? '' : '1px solid rgba(0, 0, 0, 0.12)'
-                        }}
-                                onClick={()=>btnFilter('reset')}><FilterAltOffIcon/>
-                        </Button>
-                    </Tooltip>
+                    <FilterButton color='error' actBtn={actBtn} btnFilter={btnFilter} name='red' tip={'Фильтр по красным показателям'}><Filter1Icon/></FilterButton>
+                    <FilterButton color='warning' actBtn={actBtn} btnFilter={btnFilter} name='yellow' tip={'Фильтр по желтым показателям'}><Filter2Icon/></FilterButton>
+                    <FilterButton color='success' actBtn={actBtn} btnFilter={btnFilter} name='green' tip={'Фильтр по зеленым показателям'}><Filter3Icon/></FilterButton>
+                    <FilterButton color='info' actBtn={actBtn} btnFilter={btnFilter} name='reset' tip={'Сбросить все фильтры'}><FilterAltOffIcon/></FilterButton>
                 </ButtonGroup>
-
-
             </div>
             <div className='searchFilter'>
                 <TextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px'}}  variant="standard" placeholder='Поиск' value={search} onChange={handleSearch} InputProps={{
@@ -169,10 +157,19 @@ const RealizationFilters = () => {
                 }}/>
                 <div className='objects'><b>Объектов: {amount}</b></div>
             </div>
-
-
         </Box>
     );
 }
 
 export default RealizationFilters;
+
+const FilterButton = ({color,actBtn,btnFilter, name,tip, children}) =>{
+    return <Tooltip title={<Typography variant="body2"  gutterBottom>{tip}</Typography>}>
+        <Button color={color} sx={{
+        color: actBtn === name? '' : 'rgba(0, 0, 0, 0.54)',
+        border: actBtn === name? '' : '1px solid rgba(0, 0, 0, 0.12)'
+    }} onClick={()=>btnFilter(name)}>
+        {children}
+    </Button>
+    </Tooltip>
+}
