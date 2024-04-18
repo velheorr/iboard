@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import {settingsRealization} from "./js/realizationSliderSettings";
 import RealizationChartBlocks2 from "./subpages/RealizationChartBlocks2";
 import {configRealizationData} from "./js/configRealizationData";
+import {prepareSelect} from "./js/func";
 
 
 const Realization = () => {
@@ -23,23 +24,6 @@ const Realization = () => {
 
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetRealizationData()
-
-    /*const prepareSelect = (bigData) =>{
-        let holding = []
-        let kontragent = []
-        bigData.forEach( item => {
-            if(item['Холдинг'] === ''){return}
-            if (!holding.includes(item['Холдинг'] )){
-                holding.push(item['Холдинг'])
-            } else
-            if (!kontragent.includes(item['Контрагент'])){
-                kontragent.push(item['Контрагент'])
-            }
-        })
-        dispatch(setHoldingList(holding))
-        dispatch(setZakazchikList(kontragent))
-
-    }*/
 
     const prepareData = data?.map(item => {
         const {...rest } = item;
@@ -67,9 +51,10 @@ const Realization = () => {
 
     useEffect(()=>{
         dispatch(setConfiguredRealizationData(prepareData))
-        if (prepareData !== undefined){
-            /*prepareSelect(prepareData)*/
+        if (prepareData){
             dispatch(setFilteredData(prepareData))
+            dispatch(setHoldingList(prepareSelect(prepareData, 'Холдинг')))
+            dispatch(setZakazchikList(prepareSelect(prepareData, 'Контрагент')))
         }
     }, [data])
 

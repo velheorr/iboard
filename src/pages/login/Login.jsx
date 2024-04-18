@@ -42,11 +42,13 @@ const Login = () => {
     const onSubmit = async (data) => {
         setAuthMsg('Проверка данных')
         try {
-            let result
-            await axios.post('http://grd228:5000/api/login', data).then(res => result =res.data)
+            /*let result*/
+            let result = true
+            /*await axios.post('http://grd228:5000/api/login', data).then(res => result =res.data)*/
             if (result) {
                 setAuthMsg('')
-                localStorage.setItem('auth', JSON.stringify(result));
+                /*localStorage.setItem('auth', JSON.stringify(result));*/
+                localStorage.setItem('auth', true);
                 setAuth(result)
             }
         } catch (e) {

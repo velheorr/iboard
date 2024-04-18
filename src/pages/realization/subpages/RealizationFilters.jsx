@@ -37,7 +37,7 @@ const RealizationFilters = () => {
     /*кол-во обьектов*/
     const [amount, setAmount] = useState(0)
 
-    const prepareSelect = (bigData) =>{
+    /*const prepareSelect = (bigData) =>{
         let holding = []
         let kontragent = []
         bigData.forEach( item => {
@@ -52,25 +52,44 @@ const RealizationFilters = () => {
         dispatch(setHoldingList(holding))
         dispatch(setZakazchikList(kontragent))
 
-    }
+    }*/
 
-
+    /*prepareSelect(filteredData)*/
     useEffect(() => {
         if (filteredData) {
             setAmount(filteredData.length)
-            prepareSelect(filteredData)
+
           }
     }, [filteredData])
 
-    const [holding, setHolding] = useState('');
+    const [holding, setHolding] = useState('Все');
     const [zakazchik, setZakazchik] = useState('');
 
 
+    const filtBy = (target) => {
+        let newArr = filteredData.filter(i => i.Контрагент === target)
+        return  newArr
+    }
 
     const handleChangeHolding = (e)=>{
-        setHolding(e.target.value);
-        console.log(e.target.value)
+        const item = e.target.value
+        setHolding(item);
+       /* console.log(filteredData)
+        console.log(item)
+        let arr = []
+
+        if (item === 'ПРОЧИЕ' || item === ''){
+            arr = filtBy('ПРОЧИЕ').push(filtBy(''))
+        } else {
+            arr = filtBy(item)
+        }
+
+        console.log(arr)
+        dispatch(setFilteredData(arr))*/
+
+
     }
+
     const handleChangeZakazchik = (e)=>{
         setZakazchik(e.target.value);
     }
@@ -110,16 +129,21 @@ const RealizationFilters = () => {
                         labelId="holding-label"
                         id="holding"
                         value={holding}
+                        defaultValue='Все'
                         onChange={handleChangeHolding}
                         sx={{color: mode === "dark" ? palette.white : palette.black,width: 300, height: 32, display: 'inline-flex'}}
                     >
+                        <MenuItem value={'Все'}>
+                            {/*<img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={x} />*/}
+                            <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}>Все</Typography>
+                        </MenuItem>
                         {
                             holdingList.map((item, i) => {
-                            let x = item === '' ? 'Не указан' : item
+                            /*let x = item === '' ? 'Не указан' : item*/
                             let img = setHoldingImg(item)
                                 return <MenuItem key={i} value={item}>
-                                    <img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={x} />
-                                    <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}>{x}</Typography>
+                                    <img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={item} />
+                                    <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}>{item}</Typography>
 
                             </MenuItem>
                         })
