@@ -83,8 +83,6 @@ const RealizationFilters = () => {
         dispatch(setFilteredData(forFilter))
     }
 
-
-
     /*Поиск*/
     const [search, setSearch] = useState('')
     /*Очистка поля поиска*/
@@ -100,12 +98,12 @@ const RealizationFilters = () => {
        /* dispatch(setFilteredData(filtered))*/
 
     }
+    /*ф-я поиска*/
     const handleKeyDown = (e)=>{
         if (e.key === 'Enter' && search.length > 2) {
             const searchedData = filteredData.filter(i => {
                 return i.Объект.toLowerCase().includes(search.toLowerCase()) || i.КодОбъекта.includes(search)
             })
-            console.log(searchedData)
             dispatch(setFilteredData(searchedData))
         }
     }
