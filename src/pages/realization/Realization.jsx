@@ -72,7 +72,7 @@ const Realization = () => {
                 {
                     isLoading
                         ? <div>Нет данных</div>
-                        : filteredData?.map((item, i) => <RealizationChartBlocks2 item={item} key={i}/>)
+                        : filteredData.map((item, i) => <RealizationChartBlocks2 item={item} key={i}/>)
                 }
             </Slider>
         </div>

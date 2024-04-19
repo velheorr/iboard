@@ -30,14 +30,12 @@ const RealizationFilters = () => {
     const mode = useSelector(state => state.header.mode);
     const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
     const filteredData = useSelector(state => state.realisation.filteredData);
-
     const holdingList = useSelector(state => state.realisation.holdingList);
     const zakazchikList = useSelector(state => state.realisation.zakazchikList);
-
     const dispatch = useDispatch()
-    /*кол-во обьектов*/
-    const [amount, setAmount] = useState(0)
 
+    /*отображение кол-ва обьектов*/
+    const [amount, setAmount] = useState(0)
 
     useEffect(() => {
         if (filteredData) {
@@ -72,8 +70,6 @@ const RealizationFilters = () => {
     const handleChangeZakazchik = (e)=>{
         const item = e.target.value
         setZakazchik(item);
-
-       /* const filteredByHolding = configuredRealizationData.filter(i => i.Холдинг === holding)*/
         const filteredByHolding = funcChangeHolding(holding)
 
         let forFilter = []
@@ -82,11 +78,8 @@ const RealizationFilters = () => {
         }
 
         if (item === 'Все'){forFilter = filteredByHolding}
-        else {
-            forFilter = doFilter(item)
-        }
+        else {forFilter = doFilter(item)}
 
-        /*filteredData*/
         dispatch(setFilteredData(forFilter))
     }
 
@@ -97,15 +90,27 @@ const RealizationFilters = () => {
     /*Очистка поля поиска*/
     const resetSearch = ()=> {
         setSearch('')
+        dispatch(setFilteredData(configuredRealizationData))
+        /*filteredData*/
     }
     /*Обновление поля поиска*/
     const handleSearch = (e) =>{
         e.preventDefault()
         setSearch(e.target.value)
-
+       /* dispatch(setFilteredData(filtered))*/
 
     }
+    const handleKeyDown = (e)=>{
+        if (e.key === 'Enter' && search.length > 2) {
+            const searchedData = filteredData.filter(i => {
+                return i.Объект.toLowerCase().includes(search.toLowerCase()) || i.КодОбъекта.includes(search)
+            })
+            console.log(searchedData)
+            dispatch(setFilteredData(searchedData))
+        }
+    }
 
+    /*ф-я сортировки по цветам*/
     const [actBtn, setActBtn] = useState('reset')
     const btnFilter = (color) =>{
         setActBtn(color)
@@ -171,7 +176,8 @@ const RealizationFilters = () => {
                 </ButtonGroup>
             </div>
             <div className='searchFilter'>
-                <TextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px'}}  variant="standard" placeholder='Поиск' value={search} onChange={handleSearch} InputProps={{
+                <TextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px'}}  variant="standard" placeholder='Поиск' value={search}
+                    onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
                     startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
                     endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon /></IconButton></InputAdornment>)
                 }}/>
