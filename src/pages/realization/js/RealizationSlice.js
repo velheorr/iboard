@@ -25,11 +25,9 @@ const realizationSlice = createSlice({
         setConfiguredRealizationData: (state, action) => {
             state.configuredRealizationData = action.payload
         },
+        /*отфильтрованный массив*/
         setFilteredData: (state, action) => {
             state.filteredData = action.payload
-        },
-        setListToDisplay: (state, action) => {
-            state.listToDisplay = action.payload
         },
     },
 
@@ -39,5 +37,5 @@ const {actions, reducer} = realizationSlice;
 
 export default reducer;
 export const {
-    setHoldingList, setZakazchikList, setConfiguredRealizationData, setFilteredData,setListToDisplay
+    setHoldingList, setZakazchikList, setConfiguredRealizationData, setFilteredData,
 } = actions;

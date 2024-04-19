@@ -1,23 +1,29 @@
 
 
 export const prepareSelect = (data, param, filtBy = false) =>{
-    console.log(data)
-    console.log(param)
     let changedData = data
-    if (filtBy) {
-        changedData = data.filter((i)=> i.Холдинг === filtBy )
-    }
     let x = []
 
+    const doEach = (newData)=>{
+        newData.forEach(i => {
+            if (!x.includes(i[param])){
+                x.push(i[param])
+            }
+        } )
+    }
 
-
-  /*  if (param === 'Холдинг'){
-        filter(changedData)
-        if(item['Холдинг'] === ''){return}
+    if (param === 'Холдинг'){
+        changedData = data.filter((i)=> i.Холдинг !== '' )
+    }
+    /*if (param === 'ПРОЧИЕ' || param === ''){
+        console.log(param)
+        console.log(changedData)
+    }*/
+    /*if (param === 'Контрагент'){
+        changedData = data.filter((i)=> i.Холдинг !== '' )
     }*/
 
-
-    changedData?.forEach(i => {
+    changedData.forEach(i => {
         if (!x.includes(i[param])){
             x.push(i[param])
         }

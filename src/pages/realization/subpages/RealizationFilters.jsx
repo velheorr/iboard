@@ -21,6 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
 import {setFilteredData, setHoldingList, setZakazchikList} from "../js/RealizationSlice";
+import {prepareSelect} from "../js/func";
 
 
 
@@ -37,24 +38,7 @@ const RealizationFilters = () => {
     /*кол-во обьектов*/
     const [amount, setAmount] = useState(0)
 
-    /*const prepareSelect = (bigData) =>{
-        let holding = []
-        let kontragent = []
-        bigData.forEach( item => {
-            if(item['Холдинг'] === ''){return}
-            if (!holding.includes(item['Холдинг'] )){
-                holding.push(item['Холдинг'])
-            } else
-            if (!kontragent.includes(item['Контрагент'])){
-                kontragent.push(item['Контрагент'])
-            }
-        })
-        dispatch(setHoldingList(holding))
-        dispatch(setZakazchikList(kontragent))
 
-    }*/
-
-    /*prepareSelect(filteredData)*/
     useEffect(() => {
         if (filteredData) {
             setAmount(filteredData.length)
@@ -63,35 +47,62 @@ const RealizationFilters = () => {
     }, [filteredData])
 
     const [holding, setHolding] = useState('Все');
-    const [zakazchik, setZakazchik] = useState('');
+    const [zakazchik, setZakazchik] = useState('Все');
 
 
-    const filtBy = (target) => {
-        let newArr = filteredData.filter(i => i.Контрагент === target)
-        return  newArr
-    }
-
-    const handleChangeHolding = (e)=>{
-        const item = e.target.value
-        setHolding(item);
-       /* console.log(filteredData)
-        console.log(item)
-        let arr = []
-
-        if (item === 'ПРОЧИЕ' || item === ''){
-            arr = filtBy('ПРОЧИЕ').push(filtBy(''))
-        } else {
-            arr = filtBy(item)
+    const funcChangeHolding = (item)=>{
+        let forFilter = []
+        const doFilter = (param)=>{
+            return configuredRealizationData.filter(i => i.Холдинг === param)
         }
 
-        console.log(arr)
-        dispatch(setFilteredData(arr))*/
+        if(item === 'ПРОЧИЕ' || item === ''){forFilter = doFilter('ПРОЧИЕ').concat(doFilter(''))}
+        else if (item === 'Все'){forFilter = configuredRealizationData}
+        else {forFilter = doFilter(item)}
 
+        return forFilter
+    }
 
+    const handleChangeHolding = (e = false, fromZakazchik)=>{
+        const item = e ? e.target.value : fromZakazchik
+        setHolding(item);
+        setZakazchik('Все')
+
+        /*let forFilter = []
+        const doFilter = (param)=>{
+            return configuredRealizationData.filter(i => i.Холдинг === param)
+        }
+
+        if(item === 'ПРОЧИЕ' || item === ''){forFilter = doFilter('ПРОЧИЕ').concat(doFilter(''))}
+        else if (item === 'Все'){forFilter = configuredRealizationData}
+        else {forFilter = doFilter(item)}*/
+        const filtered = funcChangeHolding(item)
+
+        dispatch(setFilteredData(filtered))
+        dispatch(setZakazchikList(prepareSelect(filtered, 'Контрагент')))
     }
 
     const handleChangeZakazchik = (e)=>{
-        setZakazchik(e.target.value);
+        const item = e.target.value
+        setZakazchik(item);
+
+        const filteredByHolding = configuredRealizationData.filter(i => i.Холдинг === holding)
+
+        let forFilter = []
+        const doFilter = (param)=>{
+            return filteredByHolding.filter(i => i.Контрагент === param)
+        }
+
+        if (item === 'Все'){
+
+            handleChangeHolding(false, holding)
+        }
+        else {
+            forFilter = doFilter(item)
+        }
+
+        /*filteredData*/
+        dispatch(setFilteredData(forFilter))
     }
 
 
@@ -134,12 +145,10 @@ const RealizationFilters = () => {
                         sx={{color: mode === "dark" ? palette.white : palette.black,width: 300, height: 32, display: 'inline-flex'}}
                     >
                         <MenuItem value={'Все'}>
-                            {/*<img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={x} />*/}
-                            <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}>Все</Typography>
+                            <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}><b>Все холдинги</b></Typography>
                         </MenuItem>
                         {
                             holdingList.map((item, i) => {
-                            /*let x = item === '' ? 'Не указан' : item*/
                             let img = setHoldingImg(item)
                                 return <MenuItem key={i} value={item}>
                                     <img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={item} />
@@ -156,9 +165,11 @@ const RealizationFilters = () => {
                         labelId="zakazchik-label"
                         id="zakazchik"
                         value={zakazchik}
+                        defaultValue='Все'
                         onChange={handleChangeZakazchik}
                         sx={{color: mode === "dark" ? palette.white : palette.black}}
                     >
+                        <MenuItem  value={'Все'}><b>Все заказчики</b></MenuItem>
                         {
                         zakazchikList.map((item, i) => {
                             return <MenuItem key={i} value={item}>{item}</MenuItem>
