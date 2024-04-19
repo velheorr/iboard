@@ -42,61 +42,46 @@ const RealizationFilters = () => {
     useEffect(() => {
         if (filteredData) {
             setAmount(filteredData.length)
-
-          }
+        }
     }, [filteredData])
 
     const [holding, setHolding] = useState('Все');
     const [zakazchik, setZakazchik] = useState('Все');
 
-
+    /*ф-я фильтра, используется селектом холдинга*/
     const funcChangeHolding = (item)=>{
         let forFilter = []
         const doFilter = (param)=>{
             return configuredRealizationData.filter(i => i.Холдинг === param)
         }
-
         if(item === 'ПРОЧИЕ' || item === ''){forFilter = doFilter('ПРОЧИЕ').concat(doFilter(''))}
         else if (item === 'Все'){forFilter = configuredRealizationData}
         else {forFilter = doFilter(item)}
-
         return forFilter
     }
-
+    /*ф-я селекта холдинга*/
     const handleChangeHolding = (e = false, fromZakazchik)=>{
         const item = e ? e.target.value : fromZakazchik
         setHolding(item);
         setZakazchik('Все')
-
-        /*let forFilter = []
-        const doFilter = (param)=>{
-            return configuredRealizationData.filter(i => i.Холдинг === param)
-        }
-
-        if(item === 'ПРОЧИЕ' || item === ''){forFilter = doFilter('ПРОЧИЕ').concat(doFilter(''))}
-        else if (item === 'Все'){forFilter = configuredRealizationData}
-        else {forFilter = doFilter(item)}*/
         const filtered = funcChangeHolding(item)
-
         dispatch(setFilteredData(filtered))
         dispatch(setZakazchikList(prepareSelect(filtered, 'Контрагент')))
     }
-
+    /*ф-я селекта заказчика*/
     const handleChangeZakazchik = (e)=>{
         const item = e.target.value
         setZakazchik(item);
 
-        const filteredByHolding = configuredRealizationData.filter(i => i.Холдинг === holding)
+       /* const filteredByHolding = configuredRealizationData.filter(i => i.Холдинг === holding)*/
+        const filteredByHolding = funcChangeHolding(holding)
 
         let forFilter = []
         const doFilter = (param)=>{
             return filteredByHolding.filter(i => i.Контрагент === param)
         }
 
-        if (item === 'Все'){
-
-            handleChangeHolding(false, holding)
-        }
+        if (item === 'Все'){forFilter = filteredByHolding}
         else {
             forFilter = doFilter(item)
         }
