@@ -17,6 +17,7 @@ import './header.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setMode} from './HeaderSlice'
 import {palette} from "../../utils/theme";
+import logo from '../../img/logo.png';
 
 
 const Header = () => {
@@ -59,8 +60,9 @@ const Header = () => {
             <AppBar position="fixed" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
                 <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important'}}>
                     <Box className='logo' >
-                        <Typography component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>
-                        <Typography component="div" sx={{fontWeight: 600}}>iBOARD</Typography>
+                        <img src={logo} alt="iBoard" style={{width: '190px'}}/>
+                        {/*<Typography component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>*/}
+                        <Typography component="div" sx={{fontWeight: 600, fontSize: '14px'}}>iBOARD</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, justifyContent: 'space-between',
                         color: mode === "dark" ? palette.white : palette.black}}
