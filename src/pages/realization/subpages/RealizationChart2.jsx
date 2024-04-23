@@ -91,7 +91,8 @@ const RealizationChart2 = ({item, variant = false}) => {
                             <Cell cursor="help" fill={entry.barColor} key={`cell-${index}`} interval={0} onClick={()=>setModal(entry.name)}/>
                         ))}
                     </Bar>
-                    <ReferenceLine x={100} stroke={colorTheme()}  strokeWidth={2}>
+                    {/*<ReferenceLine x={100} stroke={colorTheme()}  strokeWidth={2}>*/}
+                    <ReferenceLine x={100} stroke={colorTheme()}  strokeWidth={1}>
                         {/*<Label value="100"  offset={-18} position="insideBottom" />*/}
                     </ReferenceLine>
                 </BarChart>

@@ -9,12 +9,19 @@
 }
 
 code {
-  background-color: #f7f7f7;
-  padding: 10px 10px;
-  width: 100%;
+  /*background-color: #f7f7f7;*/
+  /*padding: 10px 10px;*/
+  /*width: 100%;*/
   color: grey;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   display: block;
+
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid;
+  border-color: #E4E4E4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 
 .MuiChip-label {

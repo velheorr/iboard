@@ -18,6 +18,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setMode} from './HeaderSlice'
 import {palette} from "../../utils/theme";
 import logo from '../../img/logo.png';
+import ThemeSwitch from "../../elements/ThemeSwitch/ThemeSwitch";
 
 
 const Header = () => {
@@ -58,7 +59,7 @@ const Header = () => {
       return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="fixed" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
-                <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important'}}>
+                <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important', pr: '5px !important'}}>
                     <Box className='logo' >
                         <img src={logo} alt="iBoard" style={{width: '190px'}}/>
                         {/*<Typography component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>*/}
@@ -74,11 +75,7 @@ const Header = () => {
 
                         <Typography variant="h6" component="div" sx={{fontWeight: 600}}>{activePageName}</Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center'}}>
-                            <Tooltip title={<Typography variant="body2" gutterBottom>Смена темы</Typography>}>
-                                <IconButton color={'inherit'} onClick={toggleTheme}>
-                                    {mode === 'light'? <LightModeIcon/> : <ModeNightIcon />}
-                                </IconButton>
-                            </Tooltip>
+                            <ThemeSwitch toggleTheme={toggleTheme}/>
                             <Tooltip title={<Typography variant="body2" gutterBottom>Выйти из аккаунта</Typography>}>
                                 <IconButton color={'inherit'} onClick={handleLogout}>
                                     <LogoutIcon />
