@@ -64,8 +64,8 @@ const Login = () => {
                     <div className='loginContainer'>
                         <Box className='box'>
                             <div>
-                                <img className='img' src={logo} alt="logo"/>
-                                <Typography sx={{mt: 2, fontWeight: 600}} align='center' variant="h5" gutterBottom>iBOARD</Typography>
+                                {/*<img className='img' src={logo} alt="logo"/>*/}
+                                <Typography sx={{fontWeight: 600, fontStyle: 'italic'}} align='center' variant="h5" gutterBottom>iBOARD</Typography>
                                 <Tooltip title={
                                     <>
                                         <Typography variant="body2" gutterBottom>Для тестового входа используйте:</Typography>
@@ -75,7 +75,7 @@ const Login = () => {
                                 } >
                                     <span style={{position: 'absolute'}}><IconButton size="small" ><HelpOutlineIcon /></IconButton></span>
                                 </Tooltip>
-                                <Typography sx={{mt: 2, fontWeight: 600}} align='left' variant="h6" gutterBottom>
+                                <Typography sx={{fontWeight: 600, }} align='left' variant="h6" gutterBottom>
                                     Авторизация:
                                     <em style={{color: 'orange', paddingLeft: '10px', fontSize: '18px'}}>{authMsg}</em>
                                 </Typography>
@@ -89,12 +89,20 @@ const Login = () => {
                                     <TextField fullWidth  id="login" label="E-mail"  variant="outlined" type='email' size='small'
                                                {...register("login")}
                                                error={errors.login && true}
-                                               helperText={errors.login && <span style={{color: 'red'}}>{errors.login.message}</span>}
+                                               /*helperText={errors.login && <span style={{color: 'red'}}>{errors.login.message}</span>}*/
+                                               helperText={
+                                                   errors.login ? <span style={{color: 'red'}}>{errors.login.message}</span>
+                                                       : <div style={{height: '20px'}}> </div>
+                                               }
                                     />
                                     <TextField fullWidth  id="password" label="Пароль" variant="outlined" type='password' size='small'
                                                {...register("password")}
                                                error={errors.password && true}
-                                               helperText={errors.password && <span style={{color: 'red'}}>{errors.password.message}</span>}
+                                               /*helperText={errors.password && <span style={{color: 'red'}}>{errors.password.message}</span>}*/
+                                               helperText={
+                                                   errors.password ? <span style={{color: 'red'}}>{errors.password.message}</span>
+                                                       : <div style={{height: '40px'}}> </div>
+                                               }
                                     />
                                     <Button fullWidth variant="outlined" type='submit' size='small' color="success">Войти</Button>
                                 </Box>
