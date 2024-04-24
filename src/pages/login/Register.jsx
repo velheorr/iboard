@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './login.scss'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
@@ -9,6 +9,7 @@ import {useForm} from "react-hook-form";
 import {palette} from "../../utils/theme";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {registerSchema} from "./verify";
+import axios from "axios";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -25,8 +26,24 @@ const Register = () => {
         resolver: yupResolver(registerSchema)
     });
 
-    const onSubmit = (data) => {
-        signIn('user', ()=> navigate(fromPage, {replace: true}));
+    const [regMsg, setRegMsg] = useState('')
+
+    const onSubmit = async (data) => {
+        /*signIn('user', ()=> navigate(fromPage, {replace: true}));*/
+        /*console.log(regMsg)
+        console.log(data)*/
+        try {
+           const res = await axios.post('http://grd228:5000/api/register', data)
+/*            console.log(res.data.result.id)*/
+            if (res.data.result.id === 200){
+                setRegMsg("Пользователь успешно зарегистрирован")
+                navigate(fromPage, {replace: true})
+            }
+        } catch (e) {
+
+        }
+
+
     }
 
     return (
@@ -37,6 +54,7 @@ const Register = () => {
                         <img className='img' src={logo} alt=""/>
                         <Typography sx={{mt: 2, fontWeight: 600}} align='center' variant="h5" gutterBottom>iBOARD</Typography>
                         <Typography sx={{mt: 2, fontWeight: 600}} align='left' variant="h6" gutterBottom>Регистрация:</Typography>
+                        <Typography sx={{mt: 2, fontWeight: 600}} align='left' variant="h6" color="success" gutterBottom>{regMsg}</Typography>
                         <Box
                             onSubmit={handleSubmit(onSubmit)}
                             component="form"
@@ -44,10 +62,15 @@ const Register = () => {
                             noValidate
                             autoComplete="off"
                         >
+                            <TextField fullWidth  id="name" label="Имя"  variant="outlined" type='email' size='small'
+                                       {...register("name")}
+                                       error={errors.name && true}
+                                       helperText={errors.name && <span style={{color: 'red'}}>{errors.name.message}</span>}
+                            />
                             <TextField fullWidth  id="email" label="E-mail"  variant="outlined" type='email' size='small'
-                                       {...register("email")}
-                                       error={errors.email && true}
-                                       helperText={errors.email && <span style={{color: 'red'}}>{errors.email.message}</span>}
+                                       {...register("login")}
+                                       error={errors.login && true}
+                                       helperText={errors.login && <span style={{color: 'red'}}>{errors.login.message}</span>}
                             />
                             <TextField fullWidth  id="password" label="Пароль" variant="outlined" type='password' size='small'
                                        {...register("password")}

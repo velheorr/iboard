@@ -18,7 +18,10 @@ export const loginSchema = yup.object().shape({
 });
 
 export const registerSchema = yup.object().shape({
-    email: yup.string()
+    name: yup.string()
+        .required("Необходимо ввести имя")
+        .min(4, txt.min),
+    login: yup.string()
         .required("Укажите ваш Email")
         .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,"Некорректный адрес электронной почты"),
     password: yup.string()

@@ -42,14 +42,18 @@ const Login = () => {
     const onSubmit = async (data) => {
         setAuthMsg('Проверка данных')
         try {
-            /*let result*/
-            let result = true
-            /*await axios.post('http://grd228:5000/api/login', data).then(res => result =res.data)*/
-            if (result) {
+           /* let result = false*/
+            let sendData = {...data, from: 'iboard'}
+            const response = await axios.post('http://grd228:5000/api/login', sendData)
+                /*.then(res => result = res.data)*/
+            console.log(response)
+            setAuthMsg(response.data.message)
+            if (response.status === 200) {
                 setAuthMsg('')
                 /*localStorage.setItem('auth', JSON.stringify(result));*/
                 localStorage.setItem('auth', true);
-                setAuth(result)
+                localStorage.setItem('name', response.data.name);
+                setAuth(true)
             }
         } catch (e) {
             setAuthMsg('Неверные данные')
