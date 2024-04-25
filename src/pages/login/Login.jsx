@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './login.scss'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
-import {Box, Button, IconButton, Tooltip, Typography} from "@mui/material";
+import {Box, Button, IconButton, InputAdornment, Tooltip, Typography} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import {palette} from "../../utils/theme";
@@ -10,6 +10,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {loginSchema} from "./verify";
 import axios from "axios";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 
 
 const Login = () => {
@@ -76,6 +80,11 @@ const Login = () => {
         }
     }
 
+    const [show, setShow] = useState(false)
+    const showPass = () =>{
+        setShow(!show)
+    }
+
     return (
         <div>
             <Typography sx={{fontWeight: 600,}} align='left' variant="h6" gutterBottom>
@@ -100,7 +109,7 @@ const Login = () => {
                                    : <span style={{height: '20px'}}> </span>
                            }
                 />
-                <TextField fullWidth id="password" label="Пароль" variant="outlined" type='password'
+                <TextField fullWidth id="password" label="Пароль" variant="outlined" type={ show ? 'text' : 'password'}
                            size='small'
                            {...register("password")}
                            error={errors.password && true}
@@ -109,6 +118,11 @@ const Login = () => {
                                errors.password ? <span style={{color: 'red'}}>{errors.password.message}</span>
                                    : <span style={{height: '40px'}}> </span>
                            }
+                           InputProps={{
+                               endAdornment:(<InputAdornment position="end" onClick={showPass}><IconButton sx={{padding: 0}}>
+                                  { show ?   <VisibilityOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
+                               </IconButton></InputAdornment>)
+                           }}
                 />
                 <Button fullWidth variant="outlined" type='submit' size='small' color="success">Войти</Button>
             </Box>
