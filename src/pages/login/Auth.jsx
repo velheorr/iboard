@@ -11,7 +11,8 @@ const Auth = () => {
                 <div className='lionBG'>
                     <div className='loginContainer'>
                         <Box className='box'>
-                            <Typography sx={{fontWeight: 600, fontStyle: 'italic'}} align='center' variant="h5" component="div">iBOARD</Typography>
+                            <Typography sx={{fontWeight: 600, fontStyle: 'italic', fontSize: '40px',
+                                right: '30px', top: '-74px', position: 'absolute'}} align='center' variant="h5" component="div">iBOARD</Typography>
                             <Outlet/>
                         </Box>
                     </div>
