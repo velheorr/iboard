@@ -16,6 +16,7 @@ import {ResetPassword} from "./pages/login/ResetPassword";
 
 import TransitionsModal from "./elements/Modal/Modal";
 import Realization from "./pages/realization/Realization";
+import Auth from "./pages/login/Auth";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -28,14 +29,16 @@ function App() {
         <AuthProvider>
             <ThemeProvider theme={theme}>
                 <Routes>
-                    <Route path='login' element={<Login/>}/>
-                    <Route path='register' element={<Register/>}/>
-                    <Route path='resetPassword' element={<ResetPassword/>}/>
+                    <Route element={<Auth/>}>
+                        <Route path='login' element={<Login/>}/>
+                        <Route path='register' element={<Register/>}/>
+                        <Route path='resetPassword' element={<ResetPassword/>}/>
+                    </Route>
+
+
                     <Route path='*' element={<Page404/>}/>
                     <Route path='/' element={<Layout/>}>
                         <Route index element={<RequireAuth><Realization/></RequireAuth>}/>
-
-
                         <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Page404 /></RequireAuth>}/>
@@ -44,7 +47,6 @@ function App() {
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/lost_develop' element={<RequireAuth><Page404 /></RequireAuth>}/>
-
                     </Route>
                 </Routes>
                 <TransitionsModal/>

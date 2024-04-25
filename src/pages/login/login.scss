@@ -32,7 +32,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 20px;
+      padding: 10px 20px;
       .img{
         width: 80%;
         margin: 0 auto;
@@ -41,5 +41,21 @@
     }
 
 
+  }
+}
+
+
+.blink {
+  animation: blink-animation 1s steps(10, start) infinite;
+  -webkit-animation: blink-animation 1s steps(10, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
   }
 }
