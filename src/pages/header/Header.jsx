@@ -10,8 +10,6 @@ import {
 import {useAuth} from "../../hook/useAuth";
 import {useNavigate} from "react-router";
 import LogoutIcon from '@mui/icons-material/Logout';
-import ModeNightIcon from "@mui/icons-material/ModeNight";
-import LightModeIcon from "@mui/icons-material/LightMode";
 
 import './header.scss'
 import {useDispatch, useSelector} from "react-redux";
@@ -28,6 +26,7 @@ const Header = () => {
     const mode = useSelector(state => state.header.mode);
     const activePageName = useSelector(state => state.sidemenu.activePageName);
 
+    const userName = localStorage.getItem('name') || ''
 
     // смена темы
     const toggleTheme = () => {
@@ -76,6 +75,7 @@ const Header = () => {
                         <Typography variant="h6" component="div" sx={{fontWeight: 600}}>{activePageName}</Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center'}}>
                             <ThemeSwitch toggleTheme={toggleTheme}/>
+                            <div>{userName}</div>
                             <Tooltip title={<Typography variant="body2" gutterBottom>Выйти из аккаунта</Typography>}>
                                 <IconButton color={'inherit'} onClick={handleLogout}>
                                     <LogoutIcon />

@@ -22,7 +22,21 @@ const Login = () => {
     const [auth, setAuth] = useState(false)
     const [authMsg, setAuthMsg] = useState('')
 
+    /*проверить что п-ль авторизован не более 1 дня*/
+    const checkLogin = ()=>{
+        const date = localStorage.getItem('login')
+        const today = new Date();
+        const currentDay = today.toISOString().slice(0,10);
+
+        if (date === null){
+            localStorage.setItem('login', currentDay)
+        } else if(date > currentDay){
+            localStorage.setItem('auth', false)
+        }
+    }
+
     useEffect(() => {
+        checkLogin()
         const authed = JSON.parse(localStorage.getItem('auth'))
         if (authed) {
             setAuth(true);
@@ -39,24 +53,29 @@ const Login = () => {
         resolver: yupResolver(loginSchema)
     });
 
+
+
     const onSubmit = async (data) => {
         setAuthMsg('Проверка данных')
+
+        checkLogin()
+
         try {
-           /* let result = false*/
             let sendData = {...data, from: 'iboard'}
             const response = await axios.post('http://grd228:5000/api/login', sendData)
-                /*.then(res => result = res.data)*/
-            console.log(response)
             setAuthMsg(response.data.message)
             if (response.status === 200) {
                 setAuthMsg('')
-                /*localStorage.setItem('auth', JSON.stringify(result));*/
                 localStorage.setItem('auth', true);
                 localStorage.setItem('name', response.data.name);
                 setAuth(true)
             }
         } catch (e) {
-            setAuthMsg('Неверные данные')
+            if (e.response.status === 401) {
+                setAuthMsg(e.response.data.message)
+            } else {
+                setAuthMsg('Неверные данные')
+            }
             console.log(e)
         }
     }
@@ -96,7 +115,7 @@ const Login = () => {
                                                /*helperText={errors.login && <span style={{color: 'red'}}>{errors.login.message}</span>}*/
                                                helperText={
                                                    errors.login ? <span style={{color: 'red'}}>{errors.login.message}</span>
-                                                       : <div style={{height: '20px'}}> </div>
+                                                       : <span style={{height: '20px'}}> </span>
                                                }
                                     />
                                     <TextField fullWidth  id="password" label="Пароль" variant="outlined" type='password' size='small'
@@ -105,7 +124,7 @@ const Login = () => {
                                                /*helperText={errors.password && <span style={{color: 'red'}}>{errors.password.message}</span>}*/
                                                helperText={
                                                    errors.password ? <span style={{color: 'red'}}>{errors.password.message}</span>
-                                                       : <div style={{height: '40px'}}> </div>
+                                                       : <span style={{height: '40px'}}> </span>
                                                }
                                     />
                                     <Button fullWidth variant="outlined" type='submit' size='small' color="success">Войти</Button>
