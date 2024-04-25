@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './login.scss'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
-import {Box, Button, IconButton, InputAdornment, Tooltip, Typography} from "@mui/material";
+import {Box, Button, Divider, IconButton, InputAdornment, Tooltip, Typography} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import {palette} from "../../utils/theme";
@@ -87,10 +87,8 @@ const Login = () => {
 
     return (
         <div>
-            <Typography sx={{fontWeight: 600,}} align='left' variant="h6" gutterBottom>
-                Вход
-                <em style={{color: 'orange', paddingLeft: '10px', fontSize: '18px'}}>{authMsg}</em>
-            </Typography>
+            <Divider textAlign="left" sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Войти</Divider>
+           {/* <Typography sx={{fontWeight: 600,}} align='left' variant="h6" gutterBottom>Вход</Typography>*/}
             <Typography align='right' variant="subtitle1" sx={{color: "orange"}}>{authMsg}</Typography>
 
             <Box
