@@ -10,8 +10,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import {loginSchema} from "./verify";
 import axios from "axios";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import SearchIcon from "@mui/icons-material/Search";
-import CloseIcon from "@mui/icons-material/Close";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 
@@ -87,7 +85,7 @@ const Login = () => {
 
     return (
         <div>
-            <Divider textAlign="left" sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Войти</Divider>
+            <Divider  sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Вход</Divider>
            {/* <Typography sx={{fontWeight: 600,}} align='left' variant="h6" gutterBottom>Вход</Typography>*/}
             <Typography align='right' variant="subtitle1" sx={{color: "orange"}}>{authMsg}</Typography>
 

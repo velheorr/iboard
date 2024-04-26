@@ -11,9 +11,6 @@ import lionBlack from '../img/bg_lionRight4.png'
 const Layout = () => {
     const mode = useSelector(state => state.header.mode);
 
-
-
-
     return (
         <>
             <header>

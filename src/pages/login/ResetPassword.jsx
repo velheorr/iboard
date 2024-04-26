@@ -2,7 +2,7 @@ import React from 'react';
 import './login.scss'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
-import {Box, Button, Typography} from "@mui/material";
+import {Box, Button, Divider, Typography} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import {palette} from "../../utils/theme";
@@ -30,7 +30,8 @@ const ResetPassword = () => {
 
     return (
         <div>
-            <Typography sx={{fontWeight: 600}} align='left' variant="h6" gutterBottom>Восстановить пароль</Typography>
+            <Divider  sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Восстановление пароля</Divider>
+            {/*<Typography sx={{fontWeight: 600}} align='left' variant="h6" gutterBottom>Восстановление пароля</Typography>*/}
             <Box
                 onSubmit={handleSubmit(onSubmit)}
                 component="form"

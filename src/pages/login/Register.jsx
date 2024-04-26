@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './login.scss'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hook/useAuth";
-import {Box, Button, Typography} from "@mui/material";
+import {Box, Button, Divider, Typography} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
 import {palette} from "../../utils/theme";
@@ -47,7 +47,8 @@ const Register = () => {
 
     return (
         <div>
-            <Typography sx={{fontWeight: 600}} align='left' variant="h6" gutterBottom>Регистрация</Typography>
+            <Divider  sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Регистрация в системе</Divider>
+            {/*<Typography sx={{fontWeight: 600}} align='left' variant="h6" gutterBottom>Регистрация в системе</Typography>*/}
             <Typography align='right' variant="subtitle1" sx={{color: "orange"}}>{regMsg}</Typography>
             <Box
                 onSubmit={handleSubmit(onSubmit)}
