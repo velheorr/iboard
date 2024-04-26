@@ -1,7 +1,8 @@
 import {
     Box, Button, ButtonGroup,
     FormControl,
-    IconButton, InputAdornment,
+    IconButton,
+    InputAdornment,
     InputLabel,
     MenuItem,
     Select,
@@ -89,7 +90,7 @@ const RealizationFilters = () => {
     const resetSearch = ()=> {
         setSearch('')
         dispatch(setFilteredData(configuredRealizationData))
-        /*filteredData*/
+        handleChangeHolding(false, "Все")
     }
     /*Обновление поля поиска*/
     const handleSearch = (e) =>{
