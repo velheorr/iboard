@@ -23,8 +23,7 @@ import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
 import {setFilteredData, setZakazchikList} from "../js/RealizationSlice";
 import {prepareSelect} from "../js/func";
-
-
+import {styled} from "@mui/material/styles";
 
 
 const RealizationFilters = () => {
@@ -118,13 +117,22 @@ const RealizationFilters = () => {
         return dispatch(setFilteredData(filtered))
     }
 
-
+    const GFormControl = styled(FormControl)(({ theme }) => ({
+        "& .MuiInput-underline:after": { borderBottomColor: '#4cb242'}
+    }));
+    const GInputLabel = styled(InputLabel)(({ theme }) => ({
+        color: mode === "dark" ? palette.white : palette.black,
+        '&.Mui-focused': {color: '#4cb242'},
+    }));
 
     return (
         <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
             <div>
-                <FormControl sx={{width: 300,mr: '15px'}} variant="standard" >
-                    <InputLabel id="holding-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Холдинг</InputLabel>
+                <GFormControl sx={{width: 300,mr: '15px', }} variant="standard" >
+                    <GInputLabel>Холдинг</GInputLabel>
+                    {/*<InputLabel id="holding-label" sx={{ color: mode === "dark" ? palette.white : palette.black,
+                        '&.Mui-focused': {color: '#4cb242'},
+                    }} >Холдинг</InputLabel>*/}
                     <Select
                         labelId="holding-label"
                         id="holding"
@@ -147,7 +155,7 @@ const RealizationFilters = () => {
                         })
                     }
                     </Select>
-                </FormControl>
+                </GFormControl>
                 <FormControl sx={{width: 300,mr: '15px'}} variant="standard">
                     <InputLabel id="zakazchik-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Заказчик</InputLabel>
                     <Select
