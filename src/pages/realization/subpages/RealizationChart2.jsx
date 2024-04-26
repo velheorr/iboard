@@ -7,7 +7,7 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
-    ReferenceLine, Label,
+    ReferenceLine,
 } from 'recharts';
 import {useSelector} from "react-redux";
 import {palette} from "../../../utils/theme";
@@ -53,10 +53,14 @@ const RealizationChart2 = ({item, variant = false}) => {
         let findNumber = data.find(num => num.name ===  name).realNumber
         let findDynamics = data.find(num => num.name ===  name).dynamics
         let plus = '+'
+        let skobkaL = '('
+        let skobkaR = ')'
 
         if (findDynamics === 0 || findDynamics === undefined) {
             findDynamics = ''
             plus = ''
+            skobkaL = ''
+            skobkaR = ''
         } else if(findDynamics.toString().includes('-')) {
             plus = ''
         }
@@ -67,7 +71,7 @@ const RealizationChart2 = ({item, variant = false}) => {
         } else {
             countWidth = countWidth - 25
         }
-        return <text x={x} y={y} dy={17} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{`${findNumber} ${plus}${findDynamics}`}</text>
+        return <text x={x} y={y} dy={17} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{`${findNumber} ${skobkaL}${plus}${findDynamics}${skobkaR}`}</text>
         /*fill={colorTheme()}*/
     };
 

@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {useState} from "react";
 import './header.scss'
 import ThemeSwitch from "../../elements/ThemeSwitch/ThemeSwitch";
-import {Divider, ListItemIcon, ListItemText, Tooltip, Typography} from "@mui/material";
+import {Divider, ListItemIcon, ListItemText} from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import {useSelector} from "react-redux";
 import Box from "@mui/material/Box";

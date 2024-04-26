@@ -1,18 +1,10 @@
 import {
-    Box, Button, ButtonGroup,
-    FormControl,
-    IconButton,
-    InputAdornment,
-    InputLabel,
-    MenuItem,
-    Select,
-    Tooltip,
-    Typography
+    Box, Button, ButtonGroup, IconButton, InputAdornment, MenuItem, Select,
+    Tooltip, Typography
 } from "@mui/material";
 import {palette} from "../../../utils/theme";
 import '../realization.scss'
 import {useDispatch, useSelector} from "react-redux";
-import TextField from "@mui/material/TextField";
 import SearchIcon from '@mui/icons-material/Search';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 import Filter1Icon from '@mui/icons-material/Filter1';
@@ -23,7 +15,6 @@ import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
 import {setFilteredData, setZakazchikList} from "../js/RealizationSlice";
 import {prepareSelect} from "../js/func";
-import {styled} from "@mui/material/styles";
 import {GFormControl, GInputLabel, GTextField} from "../../../elements/CustomMui/customMui";
 
 
@@ -117,7 +108,6 @@ const RealizationFilters = () => {
         let filtered = [...filteredData].sort((a, b) => b.colors[actBtn] - a.colors[actBtn]);
         return dispatch(setFilteredData(filtered))
     }
-
 
 
     return (
