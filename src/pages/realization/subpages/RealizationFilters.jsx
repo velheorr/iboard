@@ -24,6 +24,7 @@ import {setHoldingImg} from "../js/realizationFilterHolding";
 import {setFilteredData, setZakazchikList} from "../js/RealizationSlice";
 import {prepareSelect} from "../js/func";
 import {styled} from "@mui/material/styles";
+import {GFormControl, GInputLabel, GTextField} from "../../../elements/CustomMui/customMui";
 
 
 const RealizationFilters = () => {
@@ -117,22 +118,13 @@ const RealizationFilters = () => {
         return dispatch(setFilteredData(filtered))
     }
 
-    const GFormControl = styled(FormControl)(({ theme }) => ({
-        "& .MuiInput-underline:after": { borderBottomColor: '#4cb242'}
-    }));
-    const GInputLabel = styled(InputLabel)(({ theme }) => ({
-        color: mode === "dark" ? palette.white : palette.black,
-        '&.Mui-focused': {color: '#4cb242'},
-    }));
+
 
     return (
         <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
             <div>
                 <GFormControl sx={{width: 300,mr: '15px', }} variant="standard" >
-                    <GInputLabel>Холдинг</GInputLabel>
-                    {/*<InputLabel id="holding-label" sx={{ color: mode === "dark" ? palette.white : palette.black,
-                        '&.Mui-focused': {color: '#4cb242'},
-                    }} >Холдинг</InputLabel>*/}
+                    <GInputLabel sx={{color: mode === "dark" ? palette.white : palette.black}}>Холдинг</GInputLabel>
                     <Select
                         labelId="holding-label"
                         id="holding"
@@ -156,8 +148,8 @@ const RealizationFilters = () => {
                     }
                     </Select>
                 </GFormControl>
-                <FormControl sx={{width: 300,mr: '15px'}} variant="standard">
-                    <InputLabel id="zakazchik-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Заказчик</InputLabel>
+                <GFormControl sx={{width: 300,mr: '15px'}} variant="standard">
+                    <GInputLabel id="zakazchik-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Заказчик</GInputLabel>
                     <Select
                         labelId="zakazchik-label"
                         id="zakazchik"
@@ -173,7 +165,7 @@ const RealizationFilters = () => {
                         })
                     }
                     </Select>
-                </FormControl>
+                </GFormControl>
 
                 <ButtonGroup variant="outlined" size='small' sx={{verticalAlign: 'bottom'}}>
                     <FilterButton color='error' actBtn={actBtn} btnFilter={btnFilter} name='red' tip={'Сортировка по красным показателям'}><Filter1Icon/></FilterButton>
@@ -183,7 +175,7 @@ const RealizationFilters = () => {
                 </ButtonGroup>
             </div>
             <div className='searchFilter'>
-                <TextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px'}}  variant="standard" placeholder='Поиск' value={search}
+                <GTextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px'}}  variant="standard" placeholder='Поиск' value={search}
                     onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
                     startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
                     endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon /></IconButton></InputAdornment>)

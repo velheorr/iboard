@@ -67,7 +67,7 @@ const RealizationChart2 = ({item, variant = false}) => {
         } else {
             countWidth = countWidth - 25
         }
-        return <text x={x} y={y} dy={17} dx={countWidth} fill={'#e4e4e4'} fontSize={14} textAnchor="middle">{`${findNumber} ${plus}${findDynamics}`}</text>
+        return <text x={x} y={y} dy={17} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{`${findNumber} ${plus}${findDynamics}`}</text>
         /*fill={colorTheme()}*/
     };
 
