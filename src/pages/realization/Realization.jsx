@@ -60,8 +60,8 @@ const Realization = () => {
 
 
     if (isLoading) {return <Skelet/>}
-    if (isError) {return <h3>error</h3>}
-    if (!data) {return <h3>no data</h3>}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!data) {return <h3>Нет данных с сервера</h3>}
 
 
     return (

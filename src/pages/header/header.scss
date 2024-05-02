@@ -1,6 +1,6 @@
 .logo {
     /*flex-basis: 18%;*/
-    text-align: center;
+    /*text-align: center;*/
     background: rgb(76, 178, 66);
     width: 240px;
     height: 64px;
@@ -15,6 +15,10 @@
     0px 18px 23px rgba(0,0,0,0.1);
     div {
         letter-spacing: 3px;
+        width: 218px;
+        font-style: italic;
+        transform: rotate(-5deg);
+        text-align: right;
     }
 }
 

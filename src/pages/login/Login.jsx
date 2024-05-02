@@ -29,11 +29,15 @@ const Login = () => {
         const today = new Date();
         const currentDay = today.toISOString().slice(0,10);
 
-        if (date === null){
+        /*if (date === null){
             localStorage.setItem('login', currentDay)
-        } else if(date > currentDay){
+        } else */
+
+        if(date != currentDay){
+            console.log('не равно')
             localStorage.setItem('auth', false)
         }
+        return currentDay
     }
 
     useEffect(() => {
@@ -57,7 +61,8 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         setAuthMsg('Проверка данных')
-        checkLogin()
+        const loginDateChaeck = checkLogin()
+
         try {
             let sendData = {...data, from: 'iboard'}
             const response = await axios.post('http://grd228:5000/api/login', sendData)
@@ -67,6 +72,7 @@ const Login = () => {
                 localStorage.setItem('auth', true);
                 localStorage.setItem('name', response.data.name);
                 setAuth(true)
+                localStorage.setItem('login', loginDateChaeck)
             }
         } catch (e) {
             if (e.response.status === 401) {
