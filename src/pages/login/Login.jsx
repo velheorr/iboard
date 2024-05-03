@@ -29,12 +29,7 @@ const Login = () => {
         const today = new Date();
         const currentDay = today.toISOString().slice(0,10);
 
-        /*if (date === null){
-            localStorage.setItem('login', currentDay)
-        } else */
-
-        if(date != currentDay){
-            console.log('не равно')
+        if(date !== currentDay){
             localStorage.setItem('auth', false)
         }
         return currentDay
@@ -65,8 +60,9 @@ const Login = () => {
 
         try {
             let sendData = {...data, from: 'iboard'}
-            const response = await axios.post('http://grd228:5000/api/login', sendData)
+            const response = await axios.post('https://backend.s3grdn.ru/api/login', sendData)
             setAuthMsg(response.data.message)
+            console.log(response)
             if (response.status === 200) {
                 setAuthMsg('')
                 localStorage.setItem('auth', true);
