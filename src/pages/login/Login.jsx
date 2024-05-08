@@ -62,7 +62,6 @@ const Login = () => {
             let sendData = {...data, from: 'iboard'}
             const response = await axios.post('https://backend.s3grdn.ru/api/login', sendData)
             setAuthMsg(response.data.message)
-            console.log(response)
             if (response.status === 200) {
                 setAuthMsg('')
                 localStorage.setItem('auth', true);
