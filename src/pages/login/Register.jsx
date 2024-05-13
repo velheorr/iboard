@@ -26,6 +26,7 @@ const Register = () => {
     });
 
     const [regMsg, setRegMsg] = useState('')
+    const [regMsg2, setRegMsg2] = useState('')
 
     const onSubmit = async (data) => {
         /*signIn('user', ()=> navigate(fromPage, {replace: true}));*/
@@ -36,7 +37,13 @@ const Register = () => {
 /*            console.log(res.data.result.id)*/
             if (res.data.result.id === 200){
                 setRegMsg("Пользователь успешно зарегистрирован")
-                navigate(fromPage, {replace: true})
+                setTimeout(function (){
+                    setRegMsg2('Дождитесь подтверждения вашей учетной записи администратором')
+                }, 1000)
+                setTimeout(function (){
+                    navigate(fromPage, {replace: true})
+                }, 5000)
+
             }
         } catch (e) {
 
@@ -49,7 +56,8 @@ const Register = () => {
         <div>
             <Divider  sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Регистрация в системе</Divider>
             {/*<Typography sx={{fontWeight: 600}} align='left' variant="h6" gutterBottom>Регистрация в системе</Typography>*/}
-            <Typography align='right' variant="subtitle1" sx={{color: "orange"}}>{regMsg}</Typography>
+            <Typography align='right' variant="subtitle1" sx={{color: palette.grey["500"]}}>{regMsg}</Typography>
+            <Typography align='right' variant="subtitle1" sx={{color: palette.grey["500"]}}>{regMsg2}</Typography>
             <Box
                 onSubmit={handleSubmit(onSubmit)}
                 component="form"
