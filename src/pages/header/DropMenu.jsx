@@ -43,15 +43,15 @@ export default function DropMenu({userName, toggleTheme, handleLogout}) {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
+                MenuListProps={{'aria-labelledby': 'basic-button', sx: {
+                        backgroundColor: mode === "dark" ? palette.color.grey : '', color: mode === "dark" ? palette.white : palette.black
+                    }}}
                 sx={{ width: 320}}
             >
                 <MenuItem ><ThemeSwitch toggleTheme={toggleTheme}/></MenuItem>
                 <Divider />
                 <MenuItem onClick={handleLogout}>
-                        <ListItemIcon><LogoutIcon fontSize="small" sx={{color: 'black'}}/></ListItemIcon>
+                        <ListItemIcon><LogoutIcon fontSize="small" sx={{color: mode === "dark" ? palette.white : palette.black}}/></ListItemIcon>
                         <ListItemText>Выход</ListItemText>
                 </MenuItem>
             </Menu>
