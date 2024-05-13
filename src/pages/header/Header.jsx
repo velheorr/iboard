@@ -23,10 +23,19 @@ const Header = () => {
     const activePageName = useSelector(state => state.sidemenu.activePageName);
 
     const userName = localStorage.getItem('name') || ''
+   /* const [theme, setTheme] = useState(true)*/
+
+    /* получить текущую тему*/
+    const getTheme = ()=>{
+        return  JSON.parse(localStorage.getItem('theme'))
+    }
 
     // смена темы
     const toggleTheme = () => {
-        dispatch(setMode())
+        let theme = JSON.parse(localStorage.getItem('theme'))
+        let toggle = !theme
+        localStorage.setItem('theme', JSON.stringify(toggle));
+        dispatch(setMode(toggle))
     }
 
     // разлогинить
@@ -40,6 +49,7 @@ const Header = () => {
 
     useEffect(() => {
         window.setInterval(() => setTime(new Date()), 60 * 1000);
+        dispatch(setMode(getTheme()))
     }, []);
 
     const ruDate = new Intl.DateTimeFormat("ru", {
@@ -53,8 +63,8 @@ const Header = () => {
 
       return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed" sx={{background: mode === "dark" ? palette.grey[500] : palette.grey[700]}}>
-                <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important', pr: '5px !important'}}>
+            <AppBar position="fixed" sx={{background: mode === "dark" ? palette.color.grey : palette.grey[700]}}>
+                <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important', pr: '0 !important'}}>
                     <Box className='logo' >
                         <img src={logo} alt="iBoard" style={{width: '190px'}}/>
                         {/*<Typography component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>*/}
@@ -71,7 +81,7 @@ const Header = () => {
                         <Typography variant="h6" component="div" sx={{fontWeight: 600}}>{activePageName}</Typography>
 
 
-                        <DropMenu userName={userName} toggleTheme={toggleTheme} handleLogout={handleLogout}/>
+                        <DropMenu userName={userName} toggleTheme={toggleTheme} handleLogout={handleLogout} />
 
                         {/*<Box sx={{ display: 'flex', alignItems: 'center'}}>
                             <ThemeSwitch toggleTheme={toggleTheme}/>

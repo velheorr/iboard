@@ -48,7 +48,7 @@ const SideMenu = () => {
 
 
     return (
-        <div className='sideMenu' style={{background: mode === "dark" ? '#7C7C7C' : palette.grey[700]}}>
+        <div className='sideMenu' style={{background: mode === "dark" ? palette.color.grey : palette.grey[700]}}>
             <List>
                 {
                     sidebarData? sidebarData : ''
