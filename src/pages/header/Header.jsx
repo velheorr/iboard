@@ -68,7 +68,6 @@ const Header = () => {
                 <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important', pr: '0 !important'}}>
                     <Box className='logo' >
                         <img src={mode === "dark" ? logoDark : logoLight} alt="iBoard" style={{width: '190px'}}/>
-                        {/*<Typography component="div" sx={{fontWeight: 600}}>GUARDIAN</Typography>*/}
                         <Typography component="div" sx={{fontWeight: 600, fontSize: '14px', color: '#4cb242'}}>iBOARD</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, justifyContent: 'space-between',
