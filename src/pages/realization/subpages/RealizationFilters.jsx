@@ -122,6 +122,15 @@ const RealizationFilters = () => {
                         defaultValue='Все'
                         onChange={handleChangeHolding}
                         sx={{color: mode === "dark" ? palette.white : palette.black,width: 300, height: 32, display: 'inline-flex'}}
+                        inputProps={{
+                            MenuProps: {
+                                MenuListProps: {
+                                    sx: {
+                                        backgroundColor: mode === "dark" ? palette.color.grey : '', color: mode === "dark" ? palette.white : palette.black
+                                    }
+                                }
+                            }
+                        }}
                     >
                         <MenuItem value={'Все'}>
                             <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}><b>Все холдинги</b></Typography>
@@ -147,6 +156,15 @@ const RealizationFilters = () => {
                         defaultValue='Все'
                         onChange={handleChangeZakazchik}
                         sx={{color: mode === "dark" ? palette.white : palette.black}}
+                        inputProps={{
+                            MenuProps: {
+                                MenuListProps: {
+                                    sx: {
+                                        backgroundColor: mode === "dark" ? palette.color.grey : '', color: mode === "dark" ? palette.white : palette.black
+                                    }
+                                }
+                            }
+                        }}
                     >
                         <MenuItem  value={'Все'}><b>Все заказчики</b></MenuItem>
                         {
