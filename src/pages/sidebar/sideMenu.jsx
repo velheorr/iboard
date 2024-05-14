@@ -26,7 +26,8 @@ const SideMenu = () => {
         if (data){
             return data.map(item => {
                 return  <Link to={`/${item.link}`} key={item.id}>
-                    <ListItem disablePadding  className={item.active ? 'active' : null} onClick={()=> dispatch(setActive(item.id))}>
+                    <ListItem disablePadding  className={item.active ? 'active' : null} onClick={()=> dispatch(setActive(item.id))}
+                              sx={{'&:hover': {backgroundColor: mode === 'dark' ? 'rgb(81 81 81)' : ''}}}>
                         {
                             item.id === 8
                             ?
