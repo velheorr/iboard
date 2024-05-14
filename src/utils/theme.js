@@ -3,6 +3,7 @@ import { PaletteMode } from "@mui/material";
 export const palette = {
     color: {
         grey: '#333333',
+        grey_: '#33333385',
         black: '#1C1B1B',
 },
     black: "#000000",

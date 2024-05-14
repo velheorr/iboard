@@ -48,7 +48,7 @@ export default function DropMenu({userName, toggleTheme, handleLogout}) {
                     }}}
                 sx={{ width: 320}}
             >
-                <MenuItem ><ThemeSwitch toggleTheme={toggleTheme}/></MenuItem>
+                <MenuItem ><ThemeSwitch toggleTheme={toggleTheme} handleClose={handleClose}/></MenuItem>
                 <Divider />
                 <MenuItem onClick={handleLogout}>
                         <ListItemIcon><LogoutIcon fontSize="small" sx={{color: mode === "dark" ? palette.white : palette.black}}/></ListItemIcon>
