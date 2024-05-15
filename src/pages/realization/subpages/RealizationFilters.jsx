@@ -105,8 +105,10 @@ const RealizationFilters = () => {
     const btnFilter = (color) =>{
         setActBtn(color)
         if (actBtn === 'reset'){return dispatch(setFilteredData(configuredRealizationData))}
-        let filtered = [...filteredData].sort((a, b) => b.colors[actBtn] - a.colors[actBtn]);
-        return dispatch(setFilteredData(filtered))
+        let filtered = [...configuredRealizationData].sort((a, b) => {
+            return b.colors[color] - a.colors[color]
+        });
+        dispatch(setFilteredData(filtered))
     }
 
 
@@ -179,7 +181,7 @@ const RealizationFilters = () => {
                     <FilterButton color='error' actBtn={actBtn} btnFilter={btnFilter} name='red' tip={'Сортировка по красным показателям'}><Filter1Icon/></FilterButton>
                     <FilterButton color='warning' actBtn={actBtn} btnFilter={btnFilter} name='yellow' tip={'Сортировка по желтым показателям'}><Filter2Icon/></FilterButton>
                     <FilterButton color='success' actBtn={actBtn} btnFilter={btnFilter} name='green' tip={'Сортировка по зеленым показателям'}><Filter3Icon/></FilterButton>
-                    <FilterButton color='info' actBtn={actBtn} btnFilter={btnFilter} name='reset' tip={'Сбросить все фильтры'}><FilterAltOffIcon/></FilterButton>
+                    <FilterButton color='success' actBtn={actBtn} btnFilter={btnFilter} name='reset' tip={'Сбросить все фильтры'}><FilterAltOffIcon/></FilterButton>
                 </ButtonGroup>
             </div>
             <div className='searchFilter'>
@@ -206,3 +208,4 @@ const FilterButton = ({color,actBtn,btnFilter, name,tip, children}) =>{
     </Button>
     </Tooltip>
 }
+

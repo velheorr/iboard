@@ -34,11 +34,16 @@ const Realization = () => {
             green: 0,
             grey: 0
         }
+        /*Важно при смене цветов*/
         chartData.forEach(el =>{
-            if (el.barColor === '#FCDC2A'){colors.yellow = colors.yellow + 1}
+            if (el.barColor === '#EAEE29'){colors.yellow = colors.yellow + 1}
+            else if (el.barColor === '#F11010'){colors.red = colors.red + 1}
+            else if (el.barColor === '#1CC700'){colors.green = colors.green + 1}
+            else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}
+            /*if (el.barColor === '#FCDC2A'){colors.yellow = colors.yellow + 1}
             else if (el.barColor === '#f60209'){colors.red = colors.red + 1}
             else if (el.barColor === '#2db432'){colors.green = colors.green + 1}
-            else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}
+            else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}*/
         })
 
         return {
