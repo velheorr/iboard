@@ -17,7 +17,8 @@ const Layout = () => {
                 <Header/>
             </header>
             <main style={{
-                background: mode === "dark" ? palette.primary[500] : palette.white,
+                /*background: mode === "dark" ? palette.primary[500] : palette.white,*/
+                background: mode === "dark" ? palette.primary[500] : '#eeeeee',
                 color: mode === "dark" ? palette.white : palette.black,
 
             }} >

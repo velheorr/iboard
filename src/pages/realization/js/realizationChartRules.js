@@ -7,10 +7,10 @@ const findBiggerNum = (a, b) =>{
 }
 
 const bg = {
-    y: /*'#FCDC2A',*/ '#EAEE29',
-    r: /*'#f60209',*/ '#F11010',
-    g: /*'#2db432',*/ /*'#2db432a6',*/ '#1CC700',
-    grey: '#9f9f9f',
+    y: /*'#FCDC2A',*/ /*'#EAEE29',*/ '#ffa21a',
+    r: /*'#f60209',*/ /*'#F11010',*/ '#f55a4e',
+    g: /*'#2db432',*/ /*'#2db432a6',*/ /*'#1CC700',*/ '#5cb860',
+    grey: /*'#9f9f9f',*/ '#8795a1',
 }
 /*const isYellow = '#FCDC2A'
 const isRed = '#f60209'
