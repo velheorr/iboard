@@ -1,3 +1,5 @@
+import {color} from "../../../utils/theme";
+
 const findBiggerNum = (a, b) =>{
     if (a > b) {
         return a - b
@@ -6,23 +8,21 @@ const findBiggerNum = (a, b) =>{
 
 }
 
+
 const bg = {
-    y: /*'#FCDC2A',*/ /*'#EAEE29',*/ '#ffa21a',
-    r: /*'#f60209',*/ /*'#F11010',*/ '#f55a4e',
-    g: /*'#2db432',*/ /*'#2db432a6',*/ /*'#1CC700',*/ '#5cb860',
-    grey: /*'#9f9f9f',*/ '#8795a1',
+    y: color.yellow,
+    r: color.red,
+    g: color.green,
+    grey: color.grey2,
 }
-/*const isYellow = '#FCDC2A'
-const isRed = '#f60209'
-const isGreen = '#2db432'
-const isGrey = '#9f9f9f'*/
 
 /*const bg = {
-    y: 'isYellow',
-    r: 'isRed',
-    g: 'isGreen',
-    grey: 'isGrey',
+    y: /!*'#FCDC2A',*!/ /!*'#EAEE29',*!/ '#ffff00',
+    r: /!*'#f60209',*!/ /!*'#F11010',*!/ '#db2823',
+    g: /!*'#2db432',*!/ /!*'#2db432a6',*!/ /!*'#1CC700',*!/ '#9fdb21',
+    grey: /!*'#9f9f9f',*!/ '#8795a1',
 }*/
+
 
 export const colorForChart = (rule, number, extra) => {
     let color = bg.grey

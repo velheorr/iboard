@@ -1,4 +1,42 @@
-import { PaletteMode } from "@mui/material";
+import lion from '../img/bg_lionRight2.png'
+import lionBlack from '../img/bg_lionRight4.png'
+import logoLight from '../img/header/logoLight.png';
+import logoDark from '../img/header/logoDark.png';
+
+/*главная тема*/
+export const dark = {
+    text: "#ffffff", // цвет текста
+    lion: lionBlack, // фон со львом
+    logo: logoDark, // логотип
+    bg: {
+        main: "#515151",// фон основной страницы
+        sideBar: '#333333',// фон сайдбара
+        header: '#333333', // фон хедера
+    }
+
+}
+export const light = {
+    text: "#000000",
+    lion: lion,
+    logo: logoLight,
+    bg: {
+        main: "#eeeeee",
+        sideBar: '#F5F5F5',
+        header: '#F5F5F5',
+    }
+}
+
+
+export const color = {
+    grey: '#333333',
+    grey_: '#33333385',
+    black: '#1C1B1B',
+    yellow: '#ffff00',
+    red: '#db2823',
+    green: '#9fdb21',
+    grey2: '#8795a1',
+}
+
 
 export const palette = {
     color: {

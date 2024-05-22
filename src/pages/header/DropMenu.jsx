@@ -10,6 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import {useSelector} from "react-redux";
 import Box from "@mui/material/Box";
 import {palette} from "../../utils/theme";
+import {useTheme} from "../../hook/useTheme";
 
 
 
@@ -35,8 +36,8 @@ export default function DropMenu({userName, toggleTheme, handleLogout}) {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <div className='name' style={{color: mode === "dark" ? palette.white : palette.black}}>{userName}</div>
-                <div className='role' style={{color: mode === "dark" ? palette.white : palette.black}}>Администратор</div>
+                <div className='name' style={{color: useTheme('text')}}>{userName}</div>
+                <div className='role' style={{color: useTheme('text')}}>Администратор</div>
             </Button>
             <Menu
                 id="basic-menu"
@@ -44,14 +45,15 @@ export default function DropMenu({userName, toggleTheme, handleLogout}) {
                 open={open}
                 onClose={handleClose}
                 MenuListProps={{'aria-labelledby': 'basic-button', sx: {
-                        backgroundColor: mode === "dark" ? palette.color.grey : '', color: mode === "dark" ? palette.white : palette.black
+                        backgroundColor: mode === "dark" ? palette.color.grey : '',
+                        color: useTheme('text')
                     }}}
                 sx={{ width: 320}}
             >
                 <MenuItem ><ThemeSwitch toggleTheme={toggleTheme} handleClose={handleClose}/></MenuItem>
                 <Divider />
                 <MenuItem onClick={handleLogout}>
-                        <ListItemIcon><LogoutIcon fontSize="small" sx={{color: mode === "dark" ? palette.white : palette.black}}/></ListItemIcon>
+                        <ListItemIcon><LogoutIcon fontSize="small" sx={{color: useTheme('text')}}/></ListItemIcon>
                         <ListItemText>Выход</ListItemText>
                 </MenuItem>
             </Menu>

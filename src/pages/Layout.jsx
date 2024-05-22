@@ -1,28 +1,23 @@
 import './layout.scss'
 import {Outlet} from "react-router-dom";
 import Header from "./header/Header";
-import {useSelector} from "react-redux";
-import {palette} from "../utils/theme";
 import SideMenu from "./sidebar/sideMenu";
-
-import lion from '../img/bg_lionRight2.png'
-import lionBlack from '../img/bg_lionRight4.png'
+import {useTheme} from "../hook/useTheme";
 
 const Layout = () => {
-    const mode = useSelector(state => state.header.mode);
-
     return (
         <>
             <header>
                 <Header/>
             </header>
-            <main style={{
-                /*background: mode === "dark" ? palette.primary[500] : palette.white,*/
-                background: mode === "dark" ? palette.primary[500] : '#eeeeee',
-                color: mode === "dark" ? palette.white : palette.black,
-
-            }} >
-                <div style={{backgroundImage: mode === "dark" ? `url(${lionBlack})` : `url(${lion})`,backgroundRepeat: 'no-repeat',backgroundPosition: 'bottom right',backgroundSize: '34%', backgroundBlendMode: 'hard-light'}}>
+            <main style={{background: useTheme('bg', 'main'),color: useTheme('text')}} >
+                <div style={{
+                    backgroundImage: `url(${useTheme('lion')})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'bottom right',
+                    backgroundSize: '34%',
+                    backgroundBlendMode: 'hard-light'
+                }}>
                     <SideMenu/>
                     <div className='pageContainer'>
                         <Outlet />
