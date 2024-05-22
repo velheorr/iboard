@@ -1,14 +1,12 @@
 import React from 'react';
 import BlockShadow from "../../../elements/BlockShadow";
 import {Tooltip, Typography} from "@mui/material";
-import {palette} from "../../../utils/theme";
-import {useSelector} from "react-redux";
 import '../realization.scss'
 import {dateFormat, formatAmountRU} from "../../../utils/date_number";
 import RealizationChart2 from "./RealizationChart2";
+import {useTheme} from "../../../hook/useTheme";
 
 const RealizationChartBlocks2 = ({item}) => {
-    const mode = useSelector(state => state.header.mode);
 
     return (
         <div style={{display: 'inline-block', width: '33%'}} >
@@ -26,7 +24,7 @@ const RealizationChartBlocks2 = ({item}) => {
                     </div>
                 }
                 >
-                    <Typography sx={{mt: 2, pl: 1, pr: 1, color: mode === "dark" ? palette.white : palette.black, fontWeight: 600, cursor: 'help'}}
+                    <Typography sx={{mt: 2, pl: 1, pr: 1, color: useTheme('text'), fontWeight: 600, cursor: 'help'}}
                                 noWrap
                                 align='center'
                                 variant="body1"

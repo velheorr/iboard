@@ -12,6 +12,13 @@ export const dark = {
         main: "#515151",// фон основной страницы
         sideBar: '#333333',// фон сайдбара
         header: '#333333', // фон хедера
+    },
+    select : '#333333', // select, dropdown
+    chart: { // цвета для графиков
+        yellow: '#ffff00',
+        red: '#db2823',
+        green: '#9fdb21',
+        grey: '#8795a1',
     }
 
 }
@@ -20,9 +27,16 @@ export const light = {
     lion: lion,
     logo: logoLight,
     bg: {
-        main: "#eeeeee",
+        main: "#ffffff",
         sideBar: '#F5F5F5',
         header: '#F5F5F5',
+    },
+    select : '',
+    chart: {
+        yellow: '#eaee29',
+        red: '#f11010',
+        green: '#1cc700',
+        grey: '#9f9f9f',
     }
 }
 

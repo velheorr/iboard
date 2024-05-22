@@ -9,22 +9,14 @@ import {
     ResponsiveContainer,
     ReferenceLine,
 } from 'recharts';
-import {useSelector} from "react-redux";
-import {palette} from "../../../utils/theme";
 import {Typography} from "@mui/material";
 import {useModal} from "../../../hook/useModal";
-
+import {useTheme} from "../../../hook/useTheme";
 
 
 const RealizationChart2 = ({item, variant = false}) => {
     let data = item || []
-
-    const mode = useSelector(state => state.header.mode);
-    const colorTheme = () => {
-        return mode === "dark" ? palette.white : palette.black
-    }
     const {setModal} = useModal()
-
 
     /*Тултип в графике*/
     /*параментр variant = по умолчанию false? нужен для вывода доп инфы  */
@@ -71,7 +63,7 @@ const RealizationChart2 = ({item, variant = false}) => {
         } else {
             countWidth = countWidth - 25
         }
-        return <text x={x} y={y} dy={17} dx={countWidth} fill={colorTheme()} fontSize={14} textAnchor="middle">{`${findNumber} ${skobkaL}${plus}${findDynamics}${skobkaR}`}</text>
+        return <text x={x} y={y} dy={17} dx={countWidth} fill={useTheme('text')} fontSize={14} textAnchor="middle">{`${findNumber} ${skobkaL}${plus}${findDynamics}${skobkaR}`}</text>
         /*fill={colorTheme()}*/
     };
 
@@ -86,8 +78,8 @@ const RealizationChart2 = ({item, variant = false}) => {
                     barSize={30}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" dataKey='uv'  domain={[0, dataMax => (125)]} scale={'linear'} style={{ fontSize: "11px"}} tick={{ fill: colorTheme()}}/>
-                    <YAxis dataKey="name" type='category' width={70}  style={{ fontSize: "11px"}} tick={{ fill: colorTheme()}}/>
+                    <XAxis type="number" dataKey='uv'  domain={[0, dataMax => (125)]} scale={'linear'} style={{ fontSize: "11px"}} tick={{ fill: useTheme('text')}}/>
+                    <YAxis dataKey="name" type='category' width={70}  style={{ fontSize: "11px"}} tick={{ fill: useTheme('text')}}/>
                     <Tooltip dataKey="uv" content={<CustomTooltip/>}/>
                     <Bar dataKey="uv"  label={<CustomLabel />}>
                         {data.map((entry, index) => (
@@ -95,8 +87,8 @@ const RealizationChart2 = ({item, variant = false}) => {
                             <Cell cursor="help" fill={entry.barColor} key={`cell-${index}`} interval={0} onClick={()=>setModal(entry.name)}/>
                         ))}
                     </Bar>
-                    {/*<ReferenceLine x={100} stroke={colorTheme()}  strokeWidth={2}>*/}
-                    <ReferenceLine x={100} stroke={colorTheme()}  strokeWidth={1}>
+                    {/*<ReferenceLine x={100} stroke={useTheme('text')}  strokeWidth={2}>*/}
+                    <ReferenceLine x={100} strokeWidth={1}>
                         {/*<Label value="100"  offset={-18} position="insideBottom" />*/}
                     </ReferenceLine>
                 </BarChart>

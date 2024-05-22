@@ -16,18 +16,21 @@ import {settingsRealization} from "./js/realizationSliderSettings";
 import RealizationChartBlocks2 from "./subpages/RealizationChartBlocks2";
 import {configRealizationData} from "./js/configRealizationData";
 import {prepareSelect} from "./js/func";
+import {dark, light} from "../../utils/theme";
+
 
 
 const Realization = () => {
     const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
     const filteredData = useSelector(state => state.realisation.filteredData);
+    const mode = useSelector(state => state.header.mode);
 
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetRealizationData()
 
     const prepareData = data?.map(item => {
         const {...rest } = item;
-        let chartData = configRealizationData(item)
+        let chartData = configRealizationData(item, mode)
         let colors = {
             yellow: 0,
             red: 0,
@@ -35,15 +38,12 @@ const Realization = () => {
             grey: 0
         }
         /*Важно при смене цветов*/
+        const theme =  mode === "dark" ? dark : light
         chartData.forEach(el =>{
-            if (el.barColor === '#EAEE29'){colors.yellow = colors.yellow + 1}
-            else if (el.barColor === '#F11010'){colors.red = colors.red + 1}
-            else if (el.barColor === '#1CC700'){colors.green = colors.green + 1}
-            else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}
-            /*if (el.barColor === '#FCDC2A'){colors.yellow = colors.yellow + 1}
-            else if (el.barColor === '#f60209'){colors.red = colors.red + 1}
-            else if (el.barColor === '#2db432'){colors.green = colors.green + 1}
-            else if (el.barColor === '#9f9f9f'){colors.grey = colors.grey + 1}*/
+            if (el.barColor === theme.chart.yellow){colors.yellow = colors.yellow + 1}
+            else if (el.barColor === theme.chart.red){colors.red = colors.red + 1}
+            else if (el.barColor === theme.chart.green){colors.green = colors.green + 1}
+            else if (el.barColor === theme.chart.grey){colors.grey = colors.grey + 1}
         })
 
         return {
@@ -52,7 +52,6 @@ const Realization = () => {
             colors,
         }
     })
-
 
     useEffect(()=>{
         dispatch(setConfiguredRealizationData(prepareData))
@@ -63,11 +62,9 @@ const Realization = () => {
         }
     }, [data])
 
-
     if (isLoading) {return <Skelet/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
     if (!data) {return <h3>Нет данных с сервера</h3>}
-
 
     return (
         <div className='main'>

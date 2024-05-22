@@ -2,7 +2,6 @@ import {
     Box, Button, ButtonGroup, IconButton, InputAdornment, MenuItem, Select,
     Tooltip, Typography
 } from "@mui/material";
-import {palette} from "../../../utils/theme";
 import '../realization.scss'
 import {useDispatch, useSelector} from "react-redux";
 import SearchIcon from '@mui/icons-material/Search';
@@ -16,10 +15,10 @@ import {setHoldingImg} from "../js/realizationFilterHolding";
 import {setFilteredData, setZakazchikList} from "../js/RealizationSlice";
 import {prepareSelect} from "../js/func";
 import {GFormControl, GInputLabel, GTextField} from "../../../elements/CustomMui/customMui";
+import {useTheme} from "../../../hook/useTheme";
 
 
 const RealizationFilters = () => {
-    const mode = useSelector(state => state.header.mode);
     const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
     const filteredData = useSelector(state => state.realisation.filteredData);
     const holdingList = useSelector(state => state.realisation.holdingList);
@@ -111,24 +110,24 @@ const RealizationFilters = () => {
         dispatch(setFilteredData(filtered))
     }
 
-
     return (
         <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
             <div>
                 <GFormControl sx={{width: 300,mr: '15px', }} variant="standard" >
-                    <GInputLabel sx={{color: mode === "dark" ? palette.white : palette.black}}>Холдинг</GInputLabel>
+                    <GInputLabel sx={{color: useTheme('text')}}>Холдинг</GInputLabel>
                     <Select
                         labelId="holding-label"
                         id="holding"
                         value={holding}
                         defaultValue='Все'
                         onChange={handleChangeHolding}
-                        sx={{color: mode === "dark" ? palette.white : palette.black,width: 300, height: 32, display: 'inline-flex'}}
+                        sx={{color: useTheme('text'),width: 300, height: 32, display: 'inline-flex'}}
                         inputProps={{
                             MenuProps: {
                                 MenuListProps: {
                                     sx: {
-                                        backgroundColor: mode === "dark" ? palette.color.grey : '', color: mode === "dark" ? palette.white : palette.black
+                                        backgroundColor: useTheme('select'),
+                                        color: useTheme('text')
                                     }
                                 }
                             }
@@ -141,28 +140,28 @@ const RealizationFilters = () => {
                             holdingList.map((item, i) => {
                             let img = setHoldingImg(item)
                                 return <MenuItem key={i} value={item}>
-                                    <img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={item} />
-                                    <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}>{item}</Typography>
-
-                            </MenuItem>
-                        })
-                    }
+                                        <img style={{width: '35px', paddingRight: '15px', verticalAlign: 'bottom'}} src={img} alt={item} />
+                                        <Typography variant="body1" component='span' sx={{verticalAlign: 'super'}}>{item}</Typography>
+                                </MenuItem>
+                            })
+                        }
                     </Select>
                 </GFormControl>
                 <GFormControl sx={{width: 300,mr: '15px'}} variant="standard">
-                    <GInputLabel id="zakazchik-label" sx={{color: mode === "dark" ? palette.white : palette.black}}>Заказчик</GInputLabel>
+                    <GInputLabel id="zakazchik-label" sx={{color: useTheme('text')}}>Заказчик</GInputLabel>
                     <Select
                         labelId="zakazchik-label"
                         id="zakazchik"
                         value={zakazchik}
                         defaultValue='Все'
                         onChange={handleChangeZakazchik}
-                        sx={{color: mode === "dark" ? palette.white : palette.black}}
+                        sx={{color: useTheme('text')}}
                         inputProps={{
                             MenuProps: {
                                 MenuListProps: {
                                     sx: {
-                                        backgroundColor: mode === "dark" ? palette.color.grey : '', color: mode === "dark" ? palette.white : palette.black
+                                        backgroundColor: useTheme('select'),
+                                        color: useTheme('text')
                                     }
                                 }
                             }
@@ -170,10 +169,10 @@ const RealizationFilters = () => {
                     >
                         <MenuItem  value={'Все'}><b>Все заказчики</b></MenuItem>
                         {
-                        zakazchikList.map((item, i) => {
-                            return <MenuItem key={i} value={item}>{item}</MenuItem>
-                        })
-                    }
+                            zakazchikList.map((item, i) => {
+                                return <MenuItem key={i} value={item}>{item}</MenuItem>
+                            })
+                        }
                     </Select>
                 </GFormControl>
 
@@ -201,9 +200,10 @@ export default RealizationFilters;
 const FilterButton = ({color,actBtn,btnFilter, name,tip, children}) =>{
     return <Tooltip title={<Typography variant="body2"  gutterBottom>{tip}</Typography>}>
         <Button color={color} sx={{
-        color: actBtn === name? '' : 'rgba(0, 0, 0, 0.54)',
-        border: actBtn === name? '' : '1px solid rgba(0, 0, 0, 0.12)',
-    }} onClick={()=>btnFilter(name)}>
+            color: actBtn === name? '' : 'rgba(0, 0, 0, 0.54)',
+            border: actBtn === name? '' : '1px solid rgba(0, 0, 0, 0.12)',
+        }} onClick={()=>btnFilter(name)}
+        >
         {children}
     </Button>
     </Tooltip>

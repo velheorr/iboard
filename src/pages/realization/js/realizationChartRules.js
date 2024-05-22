@@ -1,4 +1,5 @@
-import {color} from "../../../utils/theme";
+import {dark, light} from "../../../utils/theme";
+
 
 const findBiggerNum = (a, b) =>{
     if (a > b) {
@@ -9,22 +10,16 @@ const findBiggerNum = (a, b) =>{
 }
 
 
-const bg = {
-    y: color.yellow,
-    r: color.red,
-    g: color.green,
-    grey: color.grey2,
-}
+export const colorForChart = (rule, number, extra, mode) => {
+    const theme =  mode === "dark" ? dark : light
 
-/*const bg = {
-    y: /!*'#FCDC2A',*!/ /!*'#EAEE29',*!/ '#ffff00',
-    r: /!*'#f60209',*!/ /!*'#F11010',*!/ '#db2823',
-    g: /!*'#2db432',*!/ /!*'#2db432a6',*!/ /!*'#1CC700',*!/ '#9fdb21',
-    grey: /!*'#9f9f9f',*!/ '#8795a1',
-}*/
+    const bg = {
+        y: theme.chart.yellow,
+        r: theme.chart.red,
+        g: theme.chart.green,
+        grey: theme.chart.grey,
+    }
 
-
-export const colorForChart = (rule, number, extra) => {
     let color = bg.grey
     let check
 
