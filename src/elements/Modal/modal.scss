@@ -1,7 +1,22 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  /*border: 1px solid rgba(0,0,0,.2);*/
+  border-left: 15px solid rgb(76, 178, 66);
+  padding: 14px 32px;
+
+}
+
 .modalBtn {
   position: absolute;
   right: -37px;
   top: -37px;
+  button {
+    color: white;
+  }
 }
 
 .modalBody2{

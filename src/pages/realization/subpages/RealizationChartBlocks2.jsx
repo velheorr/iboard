@@ -24,7 +24,7 @@ const RealizationChartBlocks2 = ({item}) => {
                     </div>
                 }
                 >
-                    <Typography sx={{mt: 2, pl: 1, pr: 1, color: useTheme('text'), fontWeight: 600, cursor: 'help'}}
+                    <Typography sx={{mt: 2, pl: 1, pr: 1, color: useTheme('text'), cursor: 'help'}}
                                 noWrap
                                 align='center'
                                 variant="body1"

@@ -6,13 +6,16 @@ export const configRealizationData = (item, mode) =>{
     const checkNum = (num) => {
         return num > 125 ? 125 : num
     }
+    const mathRound = (num) =>{
+        return Math.round(num)
+    }
 
         data.push(
             {
                 name: '% СПД',
                 info: '% суммы подписанных договорных документов',
                 uv:  checkNum(item.ПроцентПодписанныхДоговоров),
-                realNumber: item.ПроцентПодписанныхДоговоров,
+                realNumber: mathRound(item.ПроцентПодписанныхДоговоров),
                 dynamics: item.ПроцентПодписанныхДоговоровДинамика,
                 barColor: colorForChart('% СПД', item.ПроцентПодписанныхДоговоров, '', mode)
             },

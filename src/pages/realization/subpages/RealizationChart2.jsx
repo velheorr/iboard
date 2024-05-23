@@ -88,7 +88,7 @@ const RealizationChart2 = ({item, variant = false}) => {
                         ))}
                     </Bar>
                     {/*<ReferenceLine x={100} stroke={useTheme('text')}  strokeWidth={2}>*/}
-                    <ReferenceLine x={100} strokeWidth={1}>
+                    <ReferenceLine x={100}  stroke={useTheme('text')} strokeWidth={1}>
                         {/*<Label value="100"  offset={-18} position="insideBottom" />*/}
                     </ReferenceLine>
                 </BarChart>

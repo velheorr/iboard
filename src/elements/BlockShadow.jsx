@@ -1,11 +1,9 @@
 import React from 'react';
 import './elements.scss'
-import {useSelector} from "react-redux";
-import {palette} from "../utils/theme";
+import {useTheme} from "../hook/useTheme";
 
 const BlockShadow = ({children}) => {
-    const mode = useSelector(state => state.header.mode);
-    const theme = `blockShadow ${mode === 'dark'? palette.color.grey_ : ''}`
+    const theme = `blockShadow ${useTheme('select')}`
 
     return (
         <div className={theme}>

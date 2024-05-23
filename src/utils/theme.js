@@ -12,6 +12,7 @@ export const dark = {
         main: "#515151",// фон основной страницы
         sideBar: '#333333',// фон сайдбара
         header: '#333333', // фон хедера
+        modal:  "#7c7c7c", // фон модалки
     },
     select : '#333333', // select, dropdown
     chart: { // цвета для графиков
@@ -20,8 +21,8 @@ export const dark = {
         green: '#9fdb21',
         grey: '#8795a1',
     }
-
 }
+
 export const light = {
     text: "#000000",
     lion: lion,
@@ -30,6 +31,7 @@ export const light = {
         main: "#ffffff",
         sideBar: '#F5F5F5',
         header: '#F5F5F5',
+        modal:  "#fff", // фон модалки
     },
     select : '',
     chart: {
@@ -41,7 +43,7 @@ export const light = {
 }
 
 
-export const color = {
+/*export const color = {
     grey: '#333333',
     grey_: '#33333385',
     black: '#1C1B1B',
@@ -49,7 +51,7 @@ export const color = {
     red: '#db2823',
     green: '#9fdb21',
     grey2: '#8795a1',
-}
+}*/
 
 
 export const palette = {
