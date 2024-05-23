@@ -2,17 +2,21 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import {Chip} from "@mui/material";
 import './modal.scss'
-
-
-const bg = {
-    y: '#FCDC2A',
-    r: '#f60209',
-    g: '#2db432',
-}
+import {dark, light} from "../../utils/theme";
 
 
 
-export const modalData = (variant)=>{
+export const modalData = (variant, mode)=>{
+    const theme =  mode === "dark" ? dark : light
+
+    const bg = {
+        y: theme.chart.yellow,
+        r: theme.chart.red,
+        g: theme.chart.green,
+        grey: theme.chart.grey,
+    }
+
+
     let modalText = ''
 
     switch (variant){

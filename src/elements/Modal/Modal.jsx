@@ -16,18 +16,10 @@ import {useTheme} from "../../hook/useTheme";
 export default function TransitionsModal() {
     const dispatch = useDispatch();
     const handleClose = () => dispatch(closeModal());
-
-
     const open = useSelector(state => state.modal.open);
     const variant = useSelector(state => state.modal.variant);
-
-    let modalText = modalData(variant)
-
-    const esc = (e)=>{
-        if (e.key === 'Escape'){
-            handleClose()
-        }
-    }
+    const mode = useSelector(state => state.header.mode);
+    let modalText = modalData(variant, mode)
 
     return (
         <div >
