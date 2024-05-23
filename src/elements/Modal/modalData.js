@@ -36,7 +36,7 @@ export const modalData = (variant, mode)=>{
                     <p>&gt;100% - сумма Договора превышает сумму Доходов от Реализации из ППЭ, необходимо проверить актуальность ППЭ.</p>
                     <p>= 100% - сумма Договора соответствует сумме Доходов от Реализации из ППЭ.</p>
                     <p><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></p>
-                    <p><Chip label="Красный: 0%" sx={{backgroundColor: bg.r}} /></p>
+                    <p><Chip label="Красный: 0%" sx={{backgroundColor: bg.r}} /> Красный: 0%</p>
                     <p><Chip label="Желтый: от 0% до 99%, свыше 100%" sx={{backgroundColor: bg.y}}/></p>
                     <p><Chip label="Зеленый: 100%" sx={{backgroundColor: bg.g}} /></p>
                 </div>
