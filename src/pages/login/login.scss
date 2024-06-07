@@ -1,18 +1,20 @@
 .authBG{
-  background-image: url('../../img/auth/authBG.png');
+  /*background-image: url('../../img/auth/authBG.png');*/
+  background-color: rgb(255,255,255);
 }
 .logoBG{
-  background-image: url('../../img/auth/logo.png');
+  background-image: url('../../img/1logo.png');
   background-repeat: no-repeat;
   background-size: 26%;
   background-position: 5% 5%;
 }
 
 .lionBG {
-  background-image: url('../../img/auth/Lion.png');
+  /*background-image: url('../../img/auth/Lion.png');*/
+  background-image: url('../../img/bg_lionRight2.png');
   background-repeat: no-repeat;
-  background-position: right top;
-  background-size: 57%;
+  background-position: 119% 45%;
+  background-size: 36%;
 }
 
 .loginContainer {
@@ -24,6 +26,7 @@
   .box {
     background-color: #fff;
     border-left: 10px solid rgb(86 190 6);
+    border-right: 10px solid rgb(86 190 6);
     border-radius: 30px;
     box-shadow: 0 4px 17px rgba(0,0,0,.17);
     width: 350px;
@@ -34,6 +37,7 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 20px;
+      color: rgb(86 190 6);
       .img{
         width: 80%;
         margin: 0 auto;
