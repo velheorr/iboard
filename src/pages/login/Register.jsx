@@ -29,12 +29,8 @@ const Register = () => {
     const [regMsg2, setRegMsg2] = useState('')
 
     const onSubmit = async (data) => {
-        /*signIn('user', ()=> navigate(fromPage, {replace: true}));*/
-        /*console.log(regMsg)
-        console.log(data)*/
         try {
            const res = await axios.post('https://backend.s3grdn.ru/api/register', data)
-/*            console.log(res.data.result.id)*/
             if (res.data.result.id === 200){
                 setRegMsg("Пользователь успешно зарегистрирован")
                 setTimeout(function (){
