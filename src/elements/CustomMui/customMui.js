@@ -1,5 +1,5 @@
 import {styled} from "@mui/material/styles";
-import {Button, FormControl, InputLabel} from "@mui/material";
+import {FormControl, InputLabel} from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 /*инпут селекта нижняя линия зеленая*/
@@ -25,8 +25,4 @@ export const GTextField = styled(TextField)(({ theme }) => ({
      }*/
 }));
 
-export const GButton = styled(Button)(({ theme }) => ({
-    "& .MuiButton-root": { color: '#a9a9a98a'},
-
-}));
 

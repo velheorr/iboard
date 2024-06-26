@@ -14,7 +14,7 @@ import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
 import {setFilteredData, setZakazchikList} from "../js/RealizationSlice";
 import {prepareSelect} from "../js/func";
-import {GButton, GFormControl, GInputLabel, GTextField} from "../../../elements/CustomMui/customMui";
+import {GFormControl, GInputLabel, GTextField} from "../../../elements/CustomMui/customMui";
 import {useTheme} from "../../../hook/useTheme";
 
 
@@ -184,13 +184,14 @@ const RealizationFilters = () => {
                 </ButtonGroup>
             </div>
             <div className='searchFilter'>
-                <GTextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px', borderBottom: '0.1rem solid #ffffff4a;'}}  variant="standard" placeholder='Поиск' value={search}
-                    onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
-                    startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
-                    endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon /></IconButton></InputAdornment>)
+                <GTextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px', color: useTheme('text')}}  variant="standard" placeholder='Поиск' value={search}
+                            onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
+                    startAdornment: (<InputAdornment position="start"><SearchIcon sx={{color: useTheme('text')}} /></InputAdornment>),
+                    endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon sx={{color: useTheme('text')}} /></IconButton ></InputAdornment>)
                 }}/>
-                <div className='objects'><b>Объектов: {amount}</b></div>
+                <div className='objects' style={{color: useTheme('text'), zIndex: 1000}}>Объектов: {amount}</div>
             </div>
+
         </Box>
     );
 }
@@ -198,14 +199,14 @@ const RealizationFilters = () => {
 export default RealizationFilters;
 
 const FilterButton = ({color,actBtn,btnFilter, name,tip, children}) =>{
+    const txt = useTheme('text')
     return <Tooltip title={<Typography variant="body2"  gutterBottom>{tip}</Typography>}>
-        <GButton color={color} sx={{
-            color: actBtn === name? '' : 'rgba(0, 0, 0, 0.54)',
-            border: actBtn === name? '' : '1px solid rgba(0, 0, 0, 0.12)',
+        <Button color={color} sx={{
+            color: actBtn === name? '' : txt,
         }} onClick={()=>btnFilter(name)}
         >
         {children}
-    </GButton>
+    </Button>
     </Tooltip>
 }
 
