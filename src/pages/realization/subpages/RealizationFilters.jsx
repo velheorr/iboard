@@ -14,7 +14,7 @@ import {useEffect, useState} from "react";
 import {setHoldingImg} from "../js/realizationFilterHolding";
 import {setFilteredData, setZakazchikList} from "../js/RealizationSlice";
 import {prepareSelect} from "../js/func";
-import {GFormControl, GInputLabel, GTextField} from "../../../elements/CustomMui/customMui";
+import {GButton, GFormControl, GInputLabel, GTextField} from "../../../elements/CustomMui/customMui";
 import {useTheme} from "../../../hook/useTheme";
 
 
@@ -113,7 +113,7 @@ const RealizationFilters = () => {
     return (
         <Box sx={{minWidth: 120, mb: '10px'}} className='realizationFilters'>
             <div>
-                <GFormControl sx={{width: 300,mr: '15px', }} variant="standard" >
+                <GFormControl sx={{width: 300,mr: '15px', borderBottom: '0.1rem solid #ffffff4a;'}} variant="standard" >
                     <GInputLabel sx={{color: useTheme('text')}}>Холдинг</GInputLabel>
                     <Select
                         labelId="holding-label"
@@ -147,7 +147,7 @@ const RealizationFilters = () => {
                         }
                     </Select>
                 </GFormControl>
-                <GFormControl sx={{width: 300,mr: '15px'}} variant="standard">
+                <GFormControl sx={{width: 300,mr: '15px', borderBottom: '0.1rem solid #ffffff4a;'}} variant="standard">
                     <GInputLabel id="zakazchik-label" sx={{color: useTheme('text')}}>Заказчик</GInputLabel>
                     <Select
                         labelId="zakazchik-label"
@@ -176,7 +176,7 @@ const RealizationFilters = () => {
                     </Select>
                 </GFormControl>
 
-                <ButtonGroup variant="outlined" size='small' sx={{verticalAlign: 'bottom'}}>
+                <ButtonGroup variant="outlined" size='small' sx={{verticalAlign: 'bottom',}}>
                     <FilterButton color='error' actBtn={actBtn} btnFilter={btnFilter} name='red' tip={'Сортировка по красным показателям'}><Filter1Icon/></FilterButton>
                     <FilterButton color='warning' actBtn={actBtn} btnFilter={btnFilter} name='yellow' tip={'Сортировка по желтым показателям'}><Filter2Icon/></FilterButton>
                     <FilterButton color='success' actBtn={actBtn} btnFilter={btnFilter} name='green' tip={'Сортировка по зеленым показателям'}><Filter3Icon/></FilterButton>
@@ -184,7 +184,7 @@ const RealizationFilters = () => {
                 </ButtonGroup>
             </div>
             <div className='searchFilter'>
-                <GTextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px'}}  variant="standard" placeholder='Поиск' value={search}
+                <GTextField id="realiz_search" sx={{pt: '15px', width: '300px', pr: '15px', borderBottom: '0.1rem solid #ffffff4a;'}}  variant="standard" placeholder='Поиск' value={search}
                     onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
                     startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
                     endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon /></IconButton></InputAdornment>)
@@ -199,13 +199,13 @@ export default RealizationFilters;
 
 const FilterButton = ({color,actBtn,btnFilter, name,tip, children}) =>{
     return <Tooltip title={<Typography variant="body2"  gutterBottom>{tip}</Typography>}>
-        <Button color={color} sx={{
+        <GButton color={color} sx={{
             color: actBtn === name? '' : 'rgba(0, 0, 0, 0.54)',
             border: actBtn === name? '' : '1px solid rgba(0, 0, 0, 0.12)',
         }} onClick={()=>btnFilter(name)}
         >
         {children}
-    </Button>
+    </GButton>
     </Tooltip>
 }
 

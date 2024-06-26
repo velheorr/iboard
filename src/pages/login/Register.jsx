@@ -9,10 +9,12 @@ import {palette} from "../../utils/theme";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {registerSchema} from "./verify";
 import axios from "axios";
+import {useModal} from "../../hook/useModal";
 
 const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const {setModal} = useModal()
     const {signIn} = useAuth()
     const fromPage = location.state?.from?.pathname || '/';
 
@@ -33,12 +35,13 @@ const Register = () => {
            const res = await axios.post('https://backend.s3grdn.ru/api/register', data)
             if (res.data.result.id === 200){
                 setRegMsg("Пользователь успешно зарегистрирован")
-                setTimeout(function (){
+                setModal('registration')
+                /*setTimeout(function (){
                     setRegMsg2('Дождитесь подтверждения вашей учетной записи администратором')
                 }, 1000)
                 setTimeout(function (){
                     navigate(fromPage, {replace: true})
-                }, 5000)
+                }, 5000)*/
 
             }
         } catch (e) {
