@@ -1,5 +1,6 @@
 import {useQuery} from "react-query";
 import axios from "axios";
+import {BACK} from "../utils/links";
 
 /*
 async function fetchData(){
@@ -19,7 +20,7 @@ export const useGetQuery = () => {
 
 /*Realization block*/
 async function fetchRealizationData(){
-    return (await axios.get("https://backend.s3grdn.ru/api/iboardData")).data
+    return (await axios.get(`${BACK}/api/iboardData`)).data
 }
 
 export const useGetRealizationData = () => {

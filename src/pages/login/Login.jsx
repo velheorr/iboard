@@ -11,6 +11,7 @@ import {loginSchema} from "./verify";
 import axios from "axios";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import {BACK} from "../../utils/links";
 
 
 const Login = () => {
@@ -59,7 +60,7 @@ const Login = () => {
 
         try {
             let sendData = {...data, from: 'iboard'}
-            const response = await axios.post('http://grd228.grdn.ru:5000/api/login', sendData)
+            const response = await axios.post(`${BACK}/api/login`, sendData)
             setAuthMsg(response.data.message)
             if (response.status === 200) {
                 setAuthMsg('')
