@@ -12,6 +12,7 @@ import {
     Realiz_SPS
 } from "./subpages/ModalRealization";
 import ModalAuth from "./subpages/ModalAuth";
+import ModalResetPassword from "./subpages/ModalResetPassword";
 
 
 
@@ -31,6 +32,9 @@ export const modalData = (variant, mode)=>{
     switch (variant){
         case 'registration':
             modalText =  <ModalAuth />
+            break;
+            case 'resetPassword':
+            modalText =  <ModalResetPassword />
             break;
         case '% СПД':
             modalText =  <Realiz_SPD bg={bg}/>

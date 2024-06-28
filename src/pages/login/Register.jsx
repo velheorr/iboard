@@ -37,19 +37,10 @@ const Register = () => {
             if (res.data.result.id === 200){
                 setRegMsg("Пользователь успешно зарегистрирован")
                 setModal('registration')
-                /*setTimeout(function (){
-                    setRegMsg2('Дождитесь подтверждения вашей учетной записи администратором')
-                }, 1000)
-                setTimeout(function (){
-                    navigate(fromPage, {replace: true})
-                }, 5000)*/
-
             }
         } catch (e) {
 
         }
-
-
     }
 
     return (

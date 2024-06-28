@@ -87,9 +87,7 @@ const Login = () => {
     return (
         <div>
             <Divider  sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Вход</Divider>
-           {/* <Typography sx={{fontWeight: 600,}} align='left' variant="h6" gutterBottom>Вход</Typography>*/}
             <Typography align='right' variant="subtitle1" sx={{color: "orange"}}>{authMsg}</Typography>
-
             <Box
                 onSubmit={handleSubmit(onSubmit)}
                 component="form"

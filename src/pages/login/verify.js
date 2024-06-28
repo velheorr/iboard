@@ -34,7 +34,16 @@ export const registerSchema = yup.object().shape({
 });
 
 export const resetSchema = yup.object().shape({
-    email: yup.string()
+    login: yup.string()
         .required("Укажите ваш Email")
         .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,"Некорректный адрес электронной почты"),
+});
+export const resetSchemaPass = yup.object().shape({
+    password: yup.string()
+        .required("Необходимо ввести пароль")
+        .min(4, txt.min)
+        .max(16, txt.max),
+    cpassword: yup.string()
+        .required("Пароли не совпадают")
+        .oneOf([yup.ref("password")], txt.match),
 });
