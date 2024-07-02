@@ -6,9 +6,11 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {resetSchemaPass} from "../verify";
 import axios from "axios";
 import {BACK} from "../../../utils/links";
+import {useModal} from "../../../hook/useModal";
 
 
 const ResetPasswordPass = ({reset}) => {
+    const {setModal} = useModal()
     const {
         register,
         handleSubmit,
@@ -24,7 +26,7 @@ const ResetPasswordPass = ({reset}) => {
             const resetLink = reset.slice(1)
             const res = await axios.post(`${BACK}/api/newPassword/${resetLink}`, pass)
             if (res.status === 200){
-                console.log(data)
+                setModal('resetPasswordConfirm')
             }
         } catch (e) {
             console.log('error!!')

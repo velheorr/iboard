@@ -37,7 +37,7 @@ const initialState = {
             icon: economics_black,
             name: 'Экономика',
             active: false,
-            link: 'econimics'
+            link: 'economics'
         },
         {
             id: 5,

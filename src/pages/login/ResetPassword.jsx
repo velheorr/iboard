@@ -12,9 +12,7 @@ const ResetPassword = () => {
     const location = useLocation();
     const {signIn} = useAuth()
     const fromPage = location.state?.from?.pathname || '/';
-
     let { reset } = useParams();
-    console.log(reset)
 
 
 

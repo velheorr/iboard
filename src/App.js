@@ -17,6 +17,7 @@ import {ResetPassword} from "./pages/login/ResetPassword";
 import TransitionsModal from "./elements/Modal/Modal";
 import Realization from "./pages/realization/Realization";
 import Auth from "./pages/login/Auth";
+import Economics from "./pages/economics/Economics";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -43,7 +44,7 @@ function App() {
                         <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Page404 /></RequireAuth>}/>
-                        <Route  path='/econimics' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/economics' element={<RequireAuth><Economics /></RequireAuth>}/>
                         <Route  path='/finance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Page404 /></RequireAuth>}/>

@@ -13,6 +13,7 @@ import {
 } from "./subpages/ModalRealization";
 import ModalAuth from "./subpages/ModalAuth";
 import ModalResetPassword from "./subpages/ModalResetPassword";
+import ModalResetPasswordConfirm from "./subpages/ModalResetPasswordConfirm";
 
 
 
@@ -33,8 +34,11 @@ export const modalData = (variant, mode)=>{
         case 'registration':
             modalText =  <ModalAuth />
             break;
-            case 'resetPassword':
+        case 'resetPassword':
             modalText =  <ModalResetPassword />
+            break;
+        case 'resetPasswordConfirm':
+            modalText =  <ModalResetPasswordConfirm />
             break;
         case '% СПД':
             modalText =  <Realiz_SPD bg={bg}/>

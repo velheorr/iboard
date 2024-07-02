@@ -37,7 +37,7 @@ export const configRealizationData = (item, mode) =>{
             },
             {
                 name: '% ПФОТ',
-                info: '% прономерованного ФОТ',
+                info: '% пронумерованного ФОТ',
                 uv: checkNum(item.ПроцентПронормированногоФОТ),
                 realNumber: item.ПроцентПронормированногоФОТ,
                 dynamics: item.ПроцентПронормированногоФОТДинамика,
@@ -93,7 +93,7 @@ export const configRealizationData = (item, mode) =>{
             },
             {
                 name: '% ПРОЦ',
-                info: '% предьявлено Заказчику',
+                info: '% предъявлено Заказчику',
                 uv: checkNum(item.ПроцентПредъявленныхРТИУ),
                 realNumber: item.ПроцентПредъявленныхРТИУ,
                 dynamics: item.ПроцентПредъявленныхРТИУДинамика,
