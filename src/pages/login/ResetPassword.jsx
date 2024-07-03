@@ -1,6 +1,5 @@
 import './login.scss'
-import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
-import {useAuth} from "../../hook/useAuth";
+import {Link, useParams} from "react-router-dom";
 import {Box, Divider, Typography} from "@mui/material";
 import {palette} from "../../utils/theme";
 import ResetPasswordEmail from "./subResetPassword/ResetPasswordEmail";
@@ -8,13 +7,7 @@ import ResetPasswordPass from "./subResetPassword/ResetPasswordPass";
 
 
 const ResetPassword = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const {signIn} = useAuth()
-    const fromPage = location.state?.from?.pathname || '/';
     let { reset } = useParams();
-
-
 
     return (
         <div>

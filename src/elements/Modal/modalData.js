@@ -1,16 +1,7 @@
 import './modal.scss'
 import {dark, light} from "../../utils/theme";
 import {
-    Realiz_NTFACT,
-    Realiz_NTPLAN, Realiz_NZP,
-    Realiz_OF,
-    Realiz_OFOT,
-    Realiz_OIM,
-    Realiz_OS,
-    Realiz_PFOT, Realiz_PRIN, Realiz_PROC,
-    Realiz_SPD,
-    Realiz_SPS
-} from "./subpages/ModalRealization";
+    RealizNTFACT, RealizNTPLAN, RealizNZP, RealizOF, RealizOFOT, RealizOIM, RealizOS, RealizPFOT, RealizPRIN, RealizPROC, RealizSPD, RealizSPS} from "./subpages/ModalRealization";
 import ModalAuth from "./subpages/ModalAuth";
 import ModalResetPassword from "./subpages/ModalResetPassword";
 import ModalResetPasswordConfirm from "./subpages/ModalResetPasswordConfirm";
@@ -41,40 +32,40 @@ export const modalData = (variant, mode)=>{
             modalText =  <ModalResetPasswordConfirm />
             break;
         case '% СПД':
-            modalText =  <Realiz_SPD bg={bg}/>
+            modalText =  <RealizSPD bg={bg}/>
             break;
         case '% СПС':
-            modalText =  <Realiz_SPS bg={bg}/>
+            modalText =  <RealizSPS bg={bg}/>
             break;
         case '% ОС':
-            modalText =  <Realiz_OS bg={bg}/>
+            modalText =  <RealizOS bg={bg}/>
             break;
         case '% ПФОТ':
-            modalText =  <Realiz_PFOT bg={bg}/>
+            modalText =  <RealizPFOT bg={bg}/>
             break;
         case '% ОФОТ':
-            modalText =  <Realiz_OFOT bg={bg}/>
+            modalText =  <RealizOFOT bg={bg}/>
             break;
         case '% ОФ':
-            modalText =  <Realiz_OF bg={bg}/>
+            modalText =  <RealizOF bg={bg}/>
             break;
         case '% ОиМ':
-            modalText =  <Realiz_OIM bg={bg}/>
+            modalText =  <RealizOIM bg={bg}/>
             break;
         case '% НТ (план)':
-            modalText =  <Realiz_NTPLAN bg={bg}/>
+            modalText =  <RealizNTPLAN bg={bg}/>
             break;
         case '% НТ (факт)':
-            modalText =  <Realiz_NTFACT bg={bg}/>
+            modalText =  <RealizNTFACT bg={bg}/>
             break;
         case '% НЗП':
-            modalText =  <Realiz_NZP bg={bg}/>
+            modalText =  <RealizNZP bg={bg}/>
             break;
         case '% ПРОЦ':
-            modalText =  <Realiz_PROC bg={bg}/>
+            modalText =  <RealizPROC bg={bg}/>
             break;
         case '% ПРИН':
-            modalText = <Realiz_PRIN bg={bg}/>
+            modalText = <RealizPRIN bg={bg}/>
             break;
         default:
             modalText = "Default";

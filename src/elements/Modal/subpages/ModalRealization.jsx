@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import {Chip} from "@mui/material";
 
 
-export const Realiz_SPD = ({bg})=> {
+export const RealizSPD = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% Cуммы подписанных договорных документов</Typography>
@@ -26,7 +26,7 @@ export const Realiz_SPD = ({bg})=> {
         </>
     )
 }
-export const Realiz_SPS = ({bg})=> {
+export const RealizSPS = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% суммы подписанных смет</Typography>
@@ -49,7 +49,7 @@ export const Realiz_SPS = ({bg})=> {
         </>
     )
 }
-export const Realiz_OS = ({bg})=> {
+export const RealizOS = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% освоения договорных сроков</Typography>
@@ -66,7 +66,7 @@ export const Realiz_OS = ({bg})=> {
         </>
     )
 }
-export const Realiz_PFOT = ({bg})=> {
+export const RealizPFOT = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% пронормированного ФОТ</Typography>
@@ -91,7 +91,7 @@ export const Realiz_PFOT = ({bg})=> {
         </>
     )
 }
-export const Realiz_OFOT = ({bg})=> {
+export const RealizOFOT = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% освоения ФОТ СМР</Typography>
@@ -116,7 +116,7 @@ export const Realiz_OFOT = ({bg})=> {
         </>
     )
 }
-export const Realiz_OF = ({bg})=> {
+export const RealizOF = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% освоения финансирования Проекта</Typography>
@@ -143,7 +143,7 @@ export const Realiz_OF = ({bg})=> {
         </>
     )
 }
-export const Realiz_OIM = ({bg})=> {
+export const RealizOIM = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% обеспеченности пронормированных ОиМ</Typography>
@@ -164,7 +164,7 @@ export const Realiz_OIM = ({bg})=> {
         </>
     )
 }
-export const Realiz_NTPLAN = ({bg})=> {
+export const RealizNTPLAN = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% запланировано нормативной трудоемкости</Typography>
@@ -187,7 +187,7 @@ export const Realiz_NTPLAN = ({bg})=> {
         </>
     )
 }
-export const Realiz_NTFACT = ({bg})=> {
+export const RealizNTFACT = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% прогресса нормативной трудоемкости</Typography>
@@ -210,7 +210,7 @@ export const Realiz_NTFACT = ({bg})=> {
         </>
     )
 }
-export const Realiz_NZP = ({bg})=> {
+export const RealizNZP = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% превращения НЗП в Себестоимость</Typography>
@@ -238,7 +238,7 @@ export const Realiz_NZP = ({bg})=> {
         </>
     )
 }
-export const Realiz_PROC = ({bg})=> {
+export const RealizPROC = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% предъявлено Заказчику</Typography>
@@ -263,7 +263,7 @@ export const Realiz_PROC = ({bg})=> {
         </>
     )
 }
-export const Realiz_PRIN = ({bg})=> {
+export const RealizPRIN = ({bg})=> {
     return (
         <>
             <Typography variant="h5" gutterBottom sx={{fontWeight: 600}}>% процентовок принятых Заказчиком</Typography>
