@@ -24,7 +24,7 @@ async function fetchRealizationData(){
 }
 
 export const useGetRealizationData = () => {
-    return useQuery('data', fetchRealizationData,
+    return useQuery('realization', fetchRealizationData,
         {
             keepPreviousData: true,
             refetchOnWindowFocus: false,

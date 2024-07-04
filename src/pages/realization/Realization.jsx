@@ -21,14 +21,14 @@ import {dark, light} from "../../utils/theme";
 
 
 const Realization = () => {
-    const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);
+   /* const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);*/
     const filteredData = useSelector(state => state.realisation.filteredData);
     const mode = useSelector(state => state.header.mode);
 
     const dispatch = useDispatch();
-    const {data, isLoading, isError} = useGetRealizationData()
+    const {data: realization, isLoading, isError} = useGetRealizationData()
 
-    const prepareData = data?.map(item => {
+    const prepareData = realization?.map(item => {
         const {...rest } = item;
         let chartData = configRealizationData(item, mode)
         let colors = {
@@ -60,11 +60,11 @@ const Realization = () => {
             dispatch(setHoldingList(prepareSelect(prepareData, 'Холдинг')))
             dispatch(setZakazchikList(prepareSelect(prepareData, 'Контрагент')))
         }
-    }, [data])
+    }, [realization])
 
     if (isLoading) {return <Skelet/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
-    if (!data) {return <h3>Нет данных с сервера</h3>}
+    if (!realization) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div className='main'>
