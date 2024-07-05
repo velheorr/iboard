@@ -10,7 +10,6 @@ const economicsSlice = createSlice({
     initialState,
     reducers: {
         setEconData: (state, action) => {
-            console.log(action.payload)
             state.econ1 = action.payload
         },
     },

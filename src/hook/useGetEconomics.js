@@ -5,7 +5,7 @@ import {useQuery} from "react-query";
 async function fetchEconomics(){
    const year = '2024'
     const data = await axios.get(`${BACK}/api/iboardData/economics/${year}`)
-    return data.data
+    return data.data.Data
 }
 
 export const useGetEconomics = () => {
