@@ -1,5 +1,14 @@
 const mln = (num) =>{
-    return num / 1000000
+    let newNum = num !== 0 ? num / 1000000 : 0
+    return newNum.toFixed(3)
+}
+const nzpFix = (num) =>{
+    const x = mln(num)
+    return x <= 50 ? -50 : x
+}
+const maxFix = (num) =>{
+    const x = mln(num)
+    return x > 250 ? 250 : x
 }
 
 export const prepareData = (arr)=>{
@@ -12,7 +21,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактЯнварь),
             opPlan: mln(arr.ОперационнаяПрибыльПланЯнварь),
             opFact:mln( arr.ОперационнаяПрибыльФактЯнварь),
-            nzp: mln(arr.НЗПЯнварь),
+            nzp: nzpFix(arr.НЗПЯнварь),
+            nzp_real: mln(arr.НЗПЯнварь),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомЯнварь),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомЯнварь),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомЯнварь),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомЯнварь),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомЯнварь),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомЯнварь),
         },
         {
             name: "Февраль",
@@ -22,7 +38,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактФевраль),
             opPlan: mln(arr.ОперационнаяПрибыльПланФевраль),
             opFact: mln(arr.ОперационнаяПрибыльФактФевраль),
-            nzp: mln(arr.НЗПФевраль),
+            nzp: nzpFix(arr.НЗПФевраль),
+            nzp_real: mln(arr.НЗПФевраль),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомФеарвль),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомФеарвль),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомФеарвль),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомФеарвль),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомФеарвль),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомФеарвль),
         },
         {
             name: "Март",
@@ -32,7 +55,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактМарт),
             opPlan: mln(arr.ОперационнаяПрибыльПланМарт),
             opFact: mln(arr.ОперационнаяПрибыльФактМарт),
-            nzp: mln(arr.НЗПМарт),
+            nzp: nzpFix(arr.НЗПМарт),
+            nzp_real: mln(arr.НЗПМарт),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомМарт),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомМарт),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомМарт),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомМарт),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомМарт),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомМарт),
         },
         {
             name: "Апрель",
@@ -42,7 +72,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактАпрель),
             opPlan: mln(arr.ОперационнаяПрибыльПланАпрель),
             opFact: mln(arr.ОперационнаяПрибыльФактАпрель),
-            nzp: mln(arr.НЗПАпрель),
+            nzp: nzpFix(arr.НЗПАпрель),
+            nzp_real: mln(arr.НЗПАпрель),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомАпрель),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомАпрель),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомАпрель),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомАпрель),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомАпрель),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомАпрель),
         },
         {
             name: "Май",
@@ -52,7 +89,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактМай),
             opPlan: mln(arr.ОперационнаяПрибыльПланМай),
             opFact: mln(arr.ОперационнаяПрибыльФактМай),
-            nzp: mln(arr.НЗПМай),
+            nzp: nzpFix(arr.НЗПМай),
+            nzp_real: mln(arr.НЗПМай),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомМай),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомМай),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомМай),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомМай),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомМай),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомМай),
         },
         {
             name: "Июнь",
@@ -62,7 +106,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактИюнь),
             opPlan: mln(arr.ОперационнаяПрибыльПланИюнь),
             opFact: mln(arr.ОперационнаяПрибыльФактИюнь),
-            nzp: mln(arr.НЗПИюнь),
+            nzp: nzpFix(arr.НЗПИюнь),
+            nzp_real: mln(arr.НЗПИюнь),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомИюнь),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомИюнь),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомИюнь),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомИюнь),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомИюнь),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомИюнь),
         },
         {
             name: "Июль",
@@ -72,7 +123,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактИюль),
             opPlan: mln(arr.ОперационнаяПрибыльПланИюль),
             opFact: mln(arr.ОперационнаяПрибыльФактИюль),
-            nzp: mln(arr.НЗПИюль),
+            nzp: nzpFix(arr.НЗПИюль),
+            nzp_real: mln(arr.НЗПИюль),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомИюль),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомИюль),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомИюль),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомИюль),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомИюль),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомИюль),
         },
         {
             name: "Август",
@@ -82,7 +140,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактАвгуст),
             opPlan: mln(arr.ОперационнаяПрибыльПланАвгуст),
             opFact: mln(arr.ОперационнаяПрибыльФактАвгуст),
-            nzp: mln(arr.НЗПАвгуст),
+            nzp: nzpFix(arr.НЗПАвгуст),
+            nzp_real: mln(arr.НЗПАвгуст),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомАвгуст),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомАвгуст),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомАвгуст),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомАвгуст),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомАвгуст),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомАвгуст),
         },
         {
             name: "Сентябрь",
@@ -92,7 +157,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактСентябрь),
             opPlan: mln(arr.ОперационнаяПрибыльПланСентябрь),
             opFact: mln(arr.ОперационнаяПрибыльФактСентябрь),
-            nzp: mln(arr.НЗПСентябрь),
+            nzp: nzpFix(arr.НЗПСентябрь),
+            nzp_real: mln(arr.НЗПСентябрь),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомСентябрь),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомСентябрь),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомСентябрь),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомСентябрь),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомСентябрь),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомСентябрь),
         },
         {
             name: "Октябрь",
@@ -102,7 +174,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактОктябрь),
             opPlan: mln(arr.ОперационнаяПрибыльПланОктябрь),
             opFact: mln(arr.ОперационнаяПрибыльФактОктябрь),
-            nzp: mln(arr.НЗПОктябрь),
+            nzp: nzpFix(arr.НЗПОктябрь),
+            nzp_real: mln(arr.НЗПОктябрь),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомОктябрь),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомОктябрь),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомОктябрь),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомОктябрь),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомОктябрь),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомОктябрь),
         },
         {
             name: "Ноябрь",
@@ -112,7 +191,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактНоябрь),
             opPlan: mln(arr.ОперационнаяПрибыльПланНоябрь),
             opFact: mln(arr.ОперационнаяПрибыльФактНоябрь),
-            nzp: mln(arr.НЗПНоябрь),
+            nzp: nzpFix(arr.НЗПНоябрь),
+            nzp_real: mln(arr.НЗПНоябрь),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомНоябрь),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомНоябрь),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомНоябрь),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомНоябрь),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомНоябрь),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомНоябрь),
         },
         {
             name: "Декабрь",
@@ -122,7 +208,14 @@ export const prepareData = (arr)=>{
             vpFact: mln(arr.ВаловаяПрибыльФактДекабрь),
             opPlan: mln(arr.ОперационнаяПрибыльПланДекабрь),
             opFact: mln(arr.ОперационнаяПрибыльФактДекабрь),
-            nzp: mln(arr.НЗПДекабрь),
+            nzp: nzpFix(arr.НЗПДекабрь),
+            nzp_real: mln(arr.НЗПДекабрь),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомДекабрь),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомДекабрь),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомДекабрь),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомДекабрь),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомДекабрь),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомДекабрь),
         },
     ];
 

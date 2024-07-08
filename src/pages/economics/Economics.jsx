@@ -6,16 +6,15 @@ import {useGetEconomics} from "../../hook/useGetEconomics";
 import {useDispatch, useSelector} from "react-redux";
 import {setEconData} from "./js/EconomicsSlice";
 import {
-    BarChart,
+    BarChart,ComposedChart,
     Bar,
     XAxis,
     YAxis,
     CartesianGrid,
     Tooltip,
-    ReferenceLine, ResponsiveContainer,
+    ReferenceLine, ResponsiveContainer, Line,
 } from "recharts";
 import {prepareData} from "./js/prepareData";
-import {Typography} from "@mui/material";
 
 
 
@@ -44,21 +43,37 @@ const Economics = () => {
             opPlan: 'Операционная Прибыль План',
             opFact: 'Операционная Прибыль Факт',
             nzp: 'НЗП',
+            prodano: 'Продано (факт/прогноз)',
+            zaprocent: 'Запроцентовано (факт/прогноз)',
+            valprib: 'Валовая Прибыль (факт/прогноз)',
+            operprib: 'Операционная Прибыль (Факт/Прогноз)',
         }
 
         if (active && payload && payload.length) {
             const display = payload.map((item, i)=>{
+                console.log(item)
+                let valueX = ''
+                switch (item.name) {
+                    case 'nzp': valueX = item.payload.nzp_real
+                        break;
+                    case 'prodano': valueX = item.payload.prodano_real
+                        break;
+                    case 'valprib': valueX = item.payload.valprib_real
+                        break;
+                    default:
+                        valueX = item.value
+                }
                 return (
-                    <div key={i} style={{color: 'white', display: 'flex', justifyContent: 'space-between'}}>
+                    <div key={i} style={{color: 'white', display: 'flex', justifyContent: 'space-between', marginBottom: '3px'}}>
                         <em>{`${names[item.name]}:`}</em>
-                        <span style={{borderBottom: '.1px dashed',textShadow: '0px 1px black', float: 'right'}}>{`${item.value}/млн`}</span>
+                        <span style={{borderBottom: '.1px dashed',textShadow: '0px 1px black', float: 'right'}}>{`${valueX} / млн`}</span>
                     </div>
 
                 )
             })
             return (
                 <div className="custom-tooltip">
-                    <div style={{color: 'white', textAlign: 'center', fontSize: '18px', textShadow: '0px 1px black', borderBottom: '1px solid', paddingBottom: '5px'}}>{payload[0].payload.name}</div>
+                    <div style={{color: 'white',fontStyle: 'italic', textAlign: 'center', fontSize: '18px', textShadow: '0px 1px black', borderBottom: '1px solid', paddingBottom: '5px'}}>{`${payload[0].payload.name} 2024`}</div>
                     {display}
                 </div>
             );
@@ -74,7 +89,7 @@ const Economics = () => {
     return (
         <div>
             <ResponsiveContainer width={"100%"} aspect={4}>
-                <BarChart
+                <ComposedChart
                     width={500}
                     height={400}
                     data={data}
@@ -87,12 +102,11 @@ const Economics = () => {
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-                    {/*<Tooltip dataKey="uv" content={<CustomTooltip/>}/>*/}
-                    <YAxis label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} />
+                    <YAxis label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-50), dataMax => (250)]}/>
                     <Tooltip dataKey="name" content={<CustomTooltip/>}/>
                     <ReferenceLine y={0} stroke="#000" />
-                    <Bar dataKey="zPlan" stackId="a" fill="#d8e3f8" />
-                    <Bar dataKey="zFact" stackId="a" fill="#435870" />
+                    <Bar  dataKey="zPlan" stackId="a" fill="#d8e3f8" />
+                    <Bar  dataKey="zFact" stackId="a" fill="#435870" />
 
                     <Bar dataKey="vpPlan" stackId="b" fill="#f0d3ab" />
                     <Bar dataKey="vpFact" stackId="b" fill="#d78850" />
@@ -101,7 +115,12 @@ const Economics = () => {
                     <Bar dataKey="opFact" stackId="c" fill="#7eae43" />
 
                     <Bar dataKey="nzp" fill="#c72708" />
-                </BarChart>
+
+                    <Line type="monotone" dataKey="prodano" stroke="#8598d6" />
+                    <Line type="monotone" dataKey="zaprocent" stroke="#353f5f" />
+                    <Line type="monotone" dataKey="valprib" stroke="#fdb019" />
+                    <Line type="monotone" dataKey="operprib" stroke="#39fd19" />
+                </ComposedChart>
             </ResponsiveContainer>
         </div>
     );
