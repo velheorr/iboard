@@ -2,16 +2,23 @@ import axios from "axios";
 import {BACK} from "../utils/links";
 import {useQuery} from "react-query";
 
-async function fetchEconomics(){
-   const year = '2024'
-    const data = await axios.get(`${BACK}/api/iboardData/economics/${year}`)
-    return data.data.Data
-}
-
-export const useGetEconomics = () => {
-    return useQuery('economics', fetchEconomics,
+export const useGetEconomics = (year) => {
+    return useQuery('economics', async ()=> {
+            const data = await axios.get(`${BACK}/api/iboardData/economics/${year}`)
+            return data.data.Data
+        },
         {
-            keepPreviousData: true,
+            keepPreviousData: false,
+            refetchOnWindowFocus: false,
+        })
+}
+export const useGetEconomics2 = (year) => {
+    return useQuery('economics2', async ()=> {
+            const data = await axios.get(`${BACK}/api/iboardData/economics/${year}`)
+            return data.data.Data
+        },
+        {
+            keepPreviousData: false,
             refetchOnWindowFocus: false,
         })
 }
