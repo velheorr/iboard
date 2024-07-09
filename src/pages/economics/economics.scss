@@ -1,0 +1,32 @@
+.ecoChartTooltip {
+    background-color: #7C7C7C;
+    padding: 3px 5px;
+    border-radius: 5px;
+    width: 500px;
+
+    .titleChart {
+        color: white;
+        font-style: italic;
+        text-align: center;
+        text-shadow: 0px 1px black;
+        border-bottom: 1px solid;
+        padding-bottom: 5px;
+    }
+    .bodyChart{
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        margin: 3px 0;
+
+        .bodyKey {
+            padding: 3px 2px;
+        }
+
+        .bodyVal {
+            border-bottom: .1px dashed;
+            text-shadow: 0px 1px black;
+            float: right;
+        }
+    }
+
+}

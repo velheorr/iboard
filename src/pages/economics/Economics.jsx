@@ -32,7 +32,35 @@ const Economics = () => {
 
     const data = prepareData(econ1) || []
 
-
+    const chartColor = (name) => {
+        let color;
+        switch (name) {
+            case 'zPlan': color = "#d8e3f8"
+                break
+            case 'zFact': color = "#435870"
+                break
+            case 'vpPlan': color = "#f0d3ab"
+                break
+            case 'vpFact': color = "#d78850"
+                break
+            case 'opPlan': color = "#B0228C"
+                break
+            case 'opFact': color = "#7eae43"
+                break
+            case 'nzp': color = "#c72708"
+                break
+            case 'prodano': color = "#8598d6"
+                break
+            case 'zaprocent': color = "#353f5f"
+                break
+            case 'valprib': color = "#fdb019"
+                break
+            case 'operprib': color = "#39fd19"
+                break
+            default: color = 'fff'
+        }
+        return color
+    }
 
     const CustomTooltip = ({ active, payload }) => {
         const names ={
@@ -51,7 +79,6 @@ const Economics = () => {
 
         if (active && payload && payload.length) {
             const display = payload.map((item, i)=>{
-                console.log(item)
                 let valueX = ''
                 switch (item.name) {
                     case 'nzp': valueX = item.payload.nzp_real
@@ -64,22 +91,24 @@ const Economics = () => {
                         valueX = item.value
                 }
                 return (
-                    <div key={i} style={{color: 'white', display: 'flex', justifyContent: 'space-between', marginBottom: '3px'}}>
-                        <em>{`${names[item.name]}:`}</em>
-                        <span style={{borderBottom: '.1px dashed',textShadow: '0px 1px black', float: 'right'}}>{`${valueX} / млн`}</span>
+                    <div key={i} className='bodyChart'>
+                        <div className='bodyKey' style={{borderLeft: `15px solid ${chartColor(item.name)}`,}}>{`${names[item.name]}:`}</div>
+                        <span className='bodyVal'>{`${valueX} / млн`}</span>
                     </div>
 
                 )
             })
             return (
-                <div className="custom-tooltip">
-                    <div style={{color: 'white',fontStyle: 'italic', textAlign: 'center', fontSize: '18px', textShadow: '0px 1px black', borderBottom: '1px solid', paddingBottom: '5px'}}>{`${payload[0].payload.name} 2024`}</div>
+                <div className="ecoChartTooltip">
+                    <div className='titleChart'>{`${payload[0].payload.name} 2024`}</div>
                     {display}
                 </div>
             );
         }
         return null;
     };
+
+
 
 
     if (isLoading) {return <Skelet/>}
@@ -102,26 +131,30 @@ const Economics = () => {
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-                    <YAxis label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-50), dataMax => (250)]}/>
+                    <YAxis yAxisId="y1" orientation="left" label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-50), dataMax => (250)]}/>
+                    <YAxis yAxisId="y2" orientation="right" label={{ value: 'нарастающим итогом, млн', angle: 0, position: 'insideTop', dy: -30, dx: -60 }} domain={[dataMin => (-200), dataMax => (1000)]}/>
                     <Tooltip dataKey="name" content={<CustomTooltip/>}/>
-                    <ReferenceLine y={0} stroke="#000" />
-                    <Bar  dataKey="zPlan" stackId="a" fill="#d8e3f8" />
-                    <Bar  dataKey="zFact" stackId="a" fill="#435870" />
+                    <ReferenceLine y={0} yAxisId="y1" stroke="grey" strokeDasharray="3 3" label={{ value: '0 -', angle: 0, position: 'insideLeft', dx: -25 }}/>
+                    <ReferenceLine y={0} yAxisId="y2" stroke="grey" strokeDasharray="3 3" label={{ value: '- 0', angle: 0, position: 'insideRight', dx: 25 }}/>
 
-                    <Bar dataKey="vpPlan" stackId="b" fill="#f0d3ab" />
-                    <Bar dataKey="vpFact" stackId="b" fill="#d78850" />
+                    <Bar  dataKey="zPlan" stackId="a" yAxisId="y1" fill={chartColor('zPlan')} />
+                    <Bar  dataKey="zFact" stackId="a" yAxisId="y1" fill={chartColor('zFact')} />
 
-                    <Bar dataKey="opPlan" stackId="c" fill="#B0228C" />
-                    <Bar dataKey="opFact" stackId="c" fill="#7eae43" />
+                    <Bar dataKey="vpPlan" stackId="b" yAxisId="y1" fill={chartColor('vpPlan')} />
+                    <Bar dataKey="vpFact" stackId="b" yAxisId="y1" fill={chartColor('vpFact')} />
 
-                    <Bar dataKey="nzp" fill="#c72708" />
+                    <Bar dataKey="opPlan" stackId="c" yAxisId="y1" fill={chartColor('opPlan')} />
+                    <Bar dataKey="opFact" stackId="c" yAxisId="y1" fill={chartColor('opFact')} />
 
-                    <Line type="monotone" dataKey="prodano" stroke="#8598d6" />
-                    <Line type="monotone" dataKey="zaprocent" stroke="#353f5f" />
-                    <Line type="monotone" dataKey="valprib" stroke="#fdb019" />
-                    <Line type="monotone" dataKey="operprib" stroke="#39fd19" />
+                    <Bar dataKey="nzp" yAxisId="y1" fill={chartColor('nzp')} />
+
+                    <Line type="monotone" dataKey="prodano" yAxisId="y2" stroke={chartColor('prodano')} />
+                    <Line type="monotone" dataKey="zaprocent" yAxisId="y2" stroke={chartColor('zaprocent')} />
+                    <Line type="monotone" dataKey="valprib" yAxisId="y2" stroke={chartColor('valprib')} />
+                    <Line type="monotone" dataKey="operprib" yAxisId="y2" stroke={chartColor('operprib')} />
                 </ComposedChart>
             </ResponsiveContainer>
+
         </div>
     );
 };

@@ -4,11 +4,12 @@ const mln = (num) =>{
 }
 const nzpFix = (num) =>{
     const x = mln(num)
-    return x <= 50 ? -50 : x
+    return x < -50 ? -50 : x
 }
 const maxFix = (num) =>{
     const x = mln(num)
-    return x > 250 ? 250 : x
+    /*return x > 250 ? 250 : x*/
+    return x
 }
 
 export const prepareData = (arr)=>{
@@ -40,12 +41,12 @@ export const prepareData = (arr)=>{
             opFact: mln(arr.ОперационнаяПрибыльФактФевраль),
             nzp: nzpFix(arr.НЗПФевраль),
             nzp_real: mln(arr.НЗПФевраль),
-            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомФеарвль),
-            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомФеарвль),
-            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомФеарвль),
-            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомФеарвль),
-            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомФеарвль),
-            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомФеарвль),
+            prodano:  maxFix(arr.ЗапроцентованоПланНарастающимИтогомФевраль),
+            prodano_real:  mln(arr.ЗапроцентованоПланНарастающимИтогомФевраль),
+            zaprocent:  maxFix(arr.ЗапроцентованоФактНарастающимИтогомФевраль),
+            valprib:  maxFix(arr.ВаловаяПрибыльПрогнозНарастающимИтогомФевраль),
+            valprib_real:  mln(arr.ВаловаяПрибыльПрогнозНарастающимИтогомФевраль),
+            operprib:  maxFix(arr.ОперационнаяПрибыльФактНарастающимИтогомФевраль),
         },
         {
             name: "Март",

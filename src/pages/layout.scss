@@ -74,6 +74,7 @@ main .pageWrapper {
     flex: 1 0 auto;
     height: calc(100vh - 65px);
     max-width: 90%;
+    z-index: 100;
     .main {
         display: flex;
         flex-direction: column;
@@ -99,6 +100,7 @@ main .pageWrapper {
     width:100%;
     height:100%;
     display:block;
+
 }
 
 .stars {
