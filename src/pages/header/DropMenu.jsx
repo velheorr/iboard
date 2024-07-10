@@ -14,9 +14,8 @@ import {useTheme} from "../../hook/useTheme";
 
 
 
-export default function DropMenu({userName, toggleTheme, handleLogout}) {
+export default function DropMenu({user, toggleTheme, handleLogout}) {
     const [anchorEl, setAnchorEl] = useState(null);
-    const mode = useSelector(state => state.header.mode);
 
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -35,7 +34,7 @@ export default function DropMenu({userName, toggleTheme, handleLogout}) {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <div className='name' style={{color: useTheme('text')}}>{userName}</div>
+                <div className='name' style={{color: useTheme('text')}}>{user}</div>
                 <div className='role' style={{color: useTheme('text')}}>Администратор</div>
             </Button>
             <Menu

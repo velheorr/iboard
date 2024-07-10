@@ -9,13 +9,7 @@ const headerSlice = createSlice({
     initialState,
     reducers: {
         setMode: (state, action) => {
-            let newMode;
-            if (action.payload) {
-                newMode = 'light'
-            } else {
-                newMode = 'dark'
-            }
-            state.mode = newMode
+            state.mode = action.payload
         },
     },
 });

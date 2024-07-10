@@ -15,34 +15,23 @@ import {BACK} from "../../utils/links";
 
 
 const Login = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const {signIn} = useAuth()
-    const fromPage = location.state?.from?.pathname || '/';
+/*    const navigate = useNavigate();
+    const location = useLocation();*/
+    const {signIn, checkLogin} = useAuth()
+/*    const fromPage = location.state?.from?.pathname || '/';
 
-    const [auth, setAuth] = useState(false)
+    const [auth, setAuth] = useState(false)*/
     const [authMsg, setAuthMsg] = useState('')
 
-    /*проверить что п-ль авторизован не более 1 дня*/
-    const checkLogin = ()=>{
-        const date = localStorage.getItem('login')
-        const today = new Date();
-        const currentDay = today.toISOString().slice(0,10);
-
-        if(date !== currentDay){
-            localStorage.setItem('auth', false)
-        }
-        return currentDay
-    }
 
     useEffect(() => {
         checkLogin()
-        const authed = JSON.parse(localStorage.getItem('auth'))
+        /*const authed = JSON.parse(localStorage.getItem('auth'))
         if (authed) {
             setAuth(true);
             signIn('user', ()=> navigate(fromPage, {replace: true}));
-        }
-    }, [auth]);
+        }*/
+    }, []);
 
     const {
         register,
@@ -56,7 +45,7 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         setAuthMsg('Проверка данных')
-        const loginDateChaeck = checkLogin()
+        const loginDateCheck = checkLogin()
 
         try {
             let sendData = {...data, from: 'iboard'}
@@ -66,8 +55,10 @@ const Login = () => {
                 setAuthMsg('')
                 localStorage.setItem('auth', true);
                 localStorage.setItem('name', response.data.name);
-                setAuth(true)
-                localStorage.setItem('login', loginDateChaeck)
+                localStorage.setItem('position', response.data.position);
+                localStorage.setItem('logged', loginDateCheck)
+                setAuthMsg('')
+                signIn(response.data.name, response.data.position);
             }
         } catch (e) {
             if (e.response.status === 401) {

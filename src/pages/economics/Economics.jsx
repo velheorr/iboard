@@ -27,7 +27,6 @@ const Economics = () => {
 
     useEffect(()=>{
         if (status === 'success'){
-            console.log(eco)
             const x = prepareData(eco)
             dispatch(setEconData(x))
         }
@@ -40,9 +39,7 @@ const Economics = () => {
     /*const data2 = prepareData(econ2) || []*/
 
     const handleChange = (event) => {
-        console.log(event.target.value)
         setDate1(event.target.value);
-        console.log(date1)
         refetch()
 
     };

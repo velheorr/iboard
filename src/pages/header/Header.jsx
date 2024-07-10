@@ -16,30 +16,22 @@ import {useTheme} from "../../hook/useTheme";
 
 const Header = () => {
     const navigate = useNavigate();
-    const {signOut} = useAuth()
+    const {signOut,checkLogin, user} = useAuth()
     const dispatch = useDispatch();
     const activePageName = useSelector(state => state.sidemenu.activePageName);
 
-    const userName = localStorage.getItem('name') || ''
-
     /* получить текущую тему*/
-    const getTheme = ()=>{
-        const theme = localStorage.getItem('theme') || 'light'
-        return  theme
-    }
+    const getTheme = localStorage.getItem('theme')
 
     // смена темы
-    const toggleTheme = () => {
-        let theme = JSON.parse(localStorage.getItem('theme'))
-        let toggle = !theme
-        localStorage.setItem('theme', JSON.stringify(toggle));
-        dispatch(setMode(toggle))
+    const toggleTheme = (newTheme) => {
+        localStorage.setItem('theme', newTheme);
+        dispatch(setMode(newTheme))
     }
 
     // разлогинить
     const handleLogout = () => {
-        localStorage.setItem('auth', JSON.stringify(false));
-        signOut(()=> navigate('/', {replace: true}));
+        signOut()
     }
 
     const [time, setTime] = useState(new Date())
@@ -47,7 +39,9 @@ const Header = () => {
 
     useEffect(() => {
         window.setInterval(() => setTime(new Date()), 60 * 1000);
-        dispatch(setMode(getTheme()))
+        toggleTheme(getTheme)
+        dispatch(setMode(getTheme))
+        checkLogin()
     }, []);
 
     const ruDate = new Intl.DateTimeFormat("ru", {
@@ -79,7 +73,7 @@ const Header = () => {
                             <Typography component="div">{ruDate}</Typography>
                         </Box>
                         <Typography variant="h6" component="div" sx={{fontWeight: 600}}>{activePageName}</Typography>
-                        <DropMenu userName={userName} toggleTheme={toggleTheme} handleLogout={handleLogout} />
+                        <DropMenu user={user} toggleTheme={toggleTheme} handleLogout={handleLogout} />
                     </Box>
                 </Toolbar>
             </AppBar>

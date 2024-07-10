@@ -38,3 +38,41 @@
         color: #b1b1b1  !important;
     }
 }
+
+
+.f1 {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 50px;
+    margin-bottom: 3px;
+    .f2{
+        width: 50px;
+        text-align: center;
+    }
+    .f3{
+        flex-grow: 2;
+        background: aqua;
+        text-align: center;
+    }
+    .f4{
+        flex-grow: 2;
+        background: red;
+        text-align: center;
+    }
+    .f5{
+        flex-grow: 2;
+        text-align: center;
+        background: green;
+        text-align: center;
+    }
+    .f6{
+        flex-grow: 2;
+        background: gold;
+        text-align: center;
+    }
+    .f7{
+        flex-grow: 2;
+        background: fuchsia;
+        text-align: center;
+    }
+}
