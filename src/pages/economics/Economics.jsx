@@ -1,7 +1,7 @@
 import './economics.scss'
 import Skelet from "../../elements/Skelet";
 import React, {useEffect, useState} from "react";
-import {useGetEconomics, useGetEconomics2} from "../../hook/useGetEconomics";
+import {useGetEco, useGetEconomics, useGetEconomics2} from "../../hook/useGetEconomics";
 import {useDispatch, useSelector} from "react-redux";
 import {setEconData, setEconData2} from "./js/EconomicsSlice";
 import {prepareData} from "./js/prepareData";
@@ -16,40 +16,48 @@ const Economics = () => {
     const [date1, setDate1] = useState('2024')
     const [date2, setDate2] = useState('2025')
 
-    const {data: economics, isLoading: economicsLoad, isError: economicsError, refetch: economicsRefetch} = useGetEconomics(date1)
-    const {data: economics2, isLoading: economics2Load, isError: economics2Error, refetch: economics2Refetch} = useGetEconomics2(date2)
-    const mode = useSelector(state => state.header.mode);
+    /*const {data: economics, isLoading: economicsLoad, isError: economicsError, refetch: economicsRefetch} = useGetEconomics(date1)*/
+    /*const {data: economics2, isLoading: economics2Load, isError: economics2Error, refetch: economics2Refetch} = useGetEconomics2(date2)*/
+
     const econ1 = useSelector(state => state.economics.econ1);
-    const econ2 = useSelector(state => state.economics.econ2);
+    /*const econ2 = useSelector(state => state.economics.econ2);*/
     const dispatch = useDispatch();
+
+    const {data: eco, isLoading, isError, refetch, status} = useGetEco(date1)
+
     useEffect(()=>{
-        if (economics){
-           dispatch(setEconData(economics))
+        if (status === 'success'){
+            console.log(eco)
+            const x = prepareData(eco)
+            dispatch(setEconData(x))
         }
-        if (economics2){
-            dispatch(setEconData2(economics2))
-        } 
+        /*dataMaker(eco)*/
+            /*dispatch(setEconData2(eco2))*/
 
-    },[economics])
+    },[eco, date1])
 
-    const data = prepareData(econ1) || []
-    const data2 = prepareData(econ2) || []
+    /*const data = prepareData(econ1) || []*/
+    /*const data2 = prepareData(econ2) || []*/
 
     const handleChange = (event) => {
+        console.log(event.target.value)
         setDate1(event.target.value);
-        economicsRefetch()
+        console.log(date1)
+        refetch()
+
     };
-    const handleChange2 = (event) => {
+    /*const handleChange2 = (event) => {
         setDate1(event.target.value);
-        economics2Refetch()
-    };
+
+    };*/
 
     const text = useTheme('text')
     const select = useTheme('select')
 
-    if (economicsLoad && economics2Load) {return <Skelet/>}
-    if (economicsError && economics2Error) {return <h3>Нет подключения к серверу</h3>}
-    if (!economics && !economics2) {return <h3>Нет данных с сервера</h3>}
+
+    if (isLoading) {return <Skelet/>}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!eco) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div>
@@ -85,9 +93,9 @@ const Economics = () => {
                     <MenuItem  value={'2015'}><b>2015</b></MenuItem>
                 </Select>
             </GFormControl>
-            <Chart data={data} date={date1}/>
-            <GTextField id="standard-basic2" label="Год" defaultValue={date2} InputProps={{readOnly: true,}} variant="standard"/>
-            <Chart data={data2} date={date2}/>
+            {econ1.length > 0 && <Chart data={econ1} date={date1}/>}
+            {/*<GTextField id="standard-basic2" label="Год" defaultValue={date2} InputProps={{readOnly: true,}} variant="standard"/>
+            <Chart data={data2} date={date2}/>*/}
         </div>
     );
 };

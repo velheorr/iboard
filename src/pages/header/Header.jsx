@@ -24,7 +24,8 @@ const Header = () => {
 
     /* получить текущую тему*/
     const getTheme = ()=>{
-        return  JSON.parse(localStorage.getItem('theme'))
+        const theme = localStorage.getItem('theme') || 'light'
+        return  theme
     }
 
     // смена темы
