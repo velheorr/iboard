@@ -45,17 +45,6 @@ main .pageWrapper {
         width: 230px;
         overflow: visible;
     }
-    /*.active {
-        background: rgb(76, 178, 66);
-        color: white;
-        transition: color .5s ease-in-out;
-        font-style: italic;
-        text-shadow: 1px 1px black;
-        img {
-            filter: brightness(0) invert(1);
-            transition: filter .5s ease-in-out;
-        }
-    }*/
 
     .menuIcon {
         width: 24px;
@@ -69,12 +58,26 @@ main .pageWrapper {
         padding: 4px 0px;
         border-radius: 0;
         gap: 0;
+        &:hover {
+            background-color: #ffffff24;
+            &:after {
+                content: "";
+                transform: rotate(135deg);
+                border-right: 2px solid currentcolor;
+                border-bottom: 2px solid currentcolor;
+                width: 4px;
+                height: 4px;
+            }
+        }
     }
     .MuiListItemButton-root {
         padding-left: 4px;
         &:hover {
             background-color: inherit !important;
         }
+    }
+    .MuiListItemIcon-root {
+        min-width: 44px;
     }
     .Mui-selected {
         background-color: rgb(76, 178, 66) !important;
