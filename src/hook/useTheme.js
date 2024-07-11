@@ -28,6 +28,8 @@ const dark = {
     listHeader: '#333333',
     listHeaderText: '#9f9f9f',
     scroll: 'black',
+    neonGreen: '#17fa2f',
+    neonGreenShadow: '-1px 1px 10px #1dd530, 0px -2px 10px #1dd530', //неон тень на модальных окнах
 
 }
 
@@ -51,7 +53,9 @@ const light = {
     },
     listHeader: '#4cb242',
     listHeaderText: '#ffffff',
-    scroll: '',
+    scroll: '#dddddd',
+    neonGreen: '#000000',
+    neonGreenShadow: ''
 }
 
 

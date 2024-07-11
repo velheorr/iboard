@@ -25,7 +25,7 @@ main .pageWrapper {
 
 
 .sideMenu {
-    /*flex-basis: 60px;*/
+
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     overflow: hidden;
     background: #F5F5F5;
@@ -33,7 +33,7 @@ main .pageWrapper {
     transition: width .1s linear;
     -webkit-transform: translateZ(0) scale(1, 1);
     z-index: 999;
-    position: absolute;
+    position: fixed;
     top: 64px;
     bottom: 0;
     height: calc(100% - 64px);
@@ -45,7 +45,7 @@ main .pageWrapper {
         width: 230px;
         overflow: visible;
     }
-    .active {
+    /*.active {
         background: rgb(76, 178, 66);
         color: white;
         transition: color .5s ease-in-out;
@@ -55,7 +55,7 @@ main .pageWrapper {
             filter: brightness(0) invert(1);
             transition: filter .5s ease-in-out;
         }
-    }
+    }*/
 
     .menuIcon {
         width: 24px;
@@ -65,6 +65,28 @@ main .pageWrapper {
         text-decoration: none;
         color: inherit;
     }
+    .MuiTreeItem-content {
+        padding: 4px 0px;
+        border-radius: 0;
+        gap: 0;
+    }
+    .MuiListItemButton-root {
+        padding-left: 4px;
+        &:hover {
+            background-color: inherit !important;
+        }
+    }
+    .Mui-selected {
+        background-color: rgb(76, 178, 66) !important;
+        transition: color .5s ease-in-out;
+        font-weight: 600;
+        text-shadow: 1px 1px black;
+        div {
+            color: white;
+            text-shadow: 1px 1px 1px black;
+        }
+    }
+
 
 }
 
