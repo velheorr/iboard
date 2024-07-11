@@ -11,12 +11,12 @@ const dark = {
     logo: logoDark, // логотип
     bg: {
         main: '',// фон основной страницы
-        sideBar: '#333333',// фон сайдбара
-        header: '#333333', // фон хедера
+        sideBar: '#100f0f',// фон сайдбара
+        header: '#100f0f', // фон хедера
         modal:  "#7c7c7c", // фон модалки
     },
     select : '#333333', // select, dropdown
-    divider: '#00000096', // divider for SB
+    divider: '#80808096', // divider for SB
     chart: { // цвета для графиков
         yellow: '#ffff00',
         red: '#db2823',

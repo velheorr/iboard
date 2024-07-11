@@ -60,6 +60,7 @@ main .pageWrapper {
         gap: 0;
         &:hover {
             background-color: #ffffff24;
+            border-left: 3px solid green;
             &:after {
                 content: "";
                 transform: rotate(135deg);
@@ -69,6 +70,12 @@ main .pageWrapper {
                 height: 4px;
             }
         }
+    }
+    .MuiCollapse-root {
+        padding-left: 5px;
+    }
+    .MuiCollapse-wrapper {
+        border-left: 1px dashed #ffffff4d;
     }
     .MuiListItemButton-root {
         padding-left: 4px;

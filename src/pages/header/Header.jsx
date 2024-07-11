@@ -59,7 +59,8 @@ const Header = () => {
                 <Toolbar  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pl: '0 !important', pr: '0 !important'}}>
                     <Box className='logo' >
                         <img src={useTheme('logo')} alt="iBoard" style={{width: '190px'}}/>
-                        <Typography component="div" sx={{fontWeight: 600, fontSize: '14px', color: '#4cb242'}}>iBOARD</Typography>
+                        {/*<Typography component="div" sx={{fontWeight: 600, fontSize: '14px', color: '#4cb242'}}>iBOARD</Typography>*/}
+                        <Typography className='appName neonGreen' style={{color: useTheme('neonGreen')}} component="div">iBOARD</Typography>
                     </Box>
                     <Box sx={{
                         display: 'flex',
@@ -72,7 +73,8 @@ const Header = () => {
                             <Typography  component="div">{formattedTime}</Typography>
                             <Typography component="div">{ruDate}</Typography>
                         </Box>
-                        <Typography variant="h6" component="div" sx={{fontWeight: 600}}>{activePageName}</Typography>
+                        {/*<Typography variant="h6" component="div" sx={{fontWeight: 600}}>{activePageName}</Typography>*/}
+                        <Typography className='neonGreen'  component="div" sx={{fontSize: 24, fontWeight: 600, color: useTheme('neonGreen')}}>{activePageName}</Typography>
                         <DropMenu user={user} toggleTheme={toggleTheme} handleLogout={handleLogout} />
                     </Box>
                 </Toolbar>

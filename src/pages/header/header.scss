@@ -48,3 +48,18 @@
         font-size: 12px;
     }
 }
+
+.appName {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    width: 218px;
+    font-style: italic;
+    transform: rotate(-5deg);
+    text-align: right;
+    /*color: '#4cb242';*/
+}
+
+.neonGreen {
+    text-shadow: 2px 2px 22px #ffffff;
+}
