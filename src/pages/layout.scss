@@ -69,6 +69,9 @@ main .pageWrapper {
                 width: 4px;
                 height: 4px;
             }
+            img {
+                animation: swing ease-in-out 0.5s 1 alternate;
+            }
         }
     }
     .MuiCollapse-root {
@@ -99,6 +102,33 @@ main .pageWrapper {
 
 
 }
+
+@keyframes swing {
+    0%,
+    30%,
+    50%,
+    70%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(5deg);
+    }
+
+    80% {
+        transform: rotate(-5deg);
+    }
+}
+
 
 
 .pageContainer {

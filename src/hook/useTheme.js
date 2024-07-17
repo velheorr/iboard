@@ -52,7 +52,7 @@ const light = {
     listHeader: '#4cb242',
     listHeaderText: '#ffffff',
     scroll: '#dddddd',
-    neonGreen: '#000000',
+    neonGreen: '#4cb242',
     neonGreenShadow: ''
 }
 

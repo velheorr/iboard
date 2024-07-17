@@ -1,6 +1,4 @@
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import List from "@mui/material/List";
 import '../layout.scss'
 import {Divider, ListItemIcon, Typography} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
@@ -47,13 +45,7 @@ const SideMenu = () => {
 
     return (
         <div className='sideMenu' style={{background: useTheme('bg', 'sideBar')}}>
-            {/*<List>
-                {
-                    sidebarData ? sidebarData : ''
-                }
-            </List>*/}
             <SimpleTreeView>
-
                 <TreeItem itemId={'Проекты'}
                           label={
                               <ListItemButton sx={{height: 35}}>
@@ -72,7 +64,6 @@ const SideMenu = () => {
                 <Tree name={'Баланс'} img={equality_black} link={'balance'}/>
                 <Tree name={'Ресурсы'} img={resources_black} link={'resources'}/>
                 <Tree name={'ПРР'} img={guardian_black} link={'lost_develop'}/>
-
             </SimpleTreeView>
         </div>
     );
