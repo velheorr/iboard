@@ -28,7 +28,7 @@ const dark = {
     scroll: 'black',
     neonGreen: '#17fa2f',
     neonGreenShadow: '-1px 1px 10px #1dd530, 0px -2px 10px #1dd530', //неон тень на модальных окнах
-
+    skelet: '#75757580' // skeleton
 }
 
 const light = {
@@ -53,7 +53,8 @@ const light = {
     listHeaderText: '#ffffff',
     scroll: '#dddddd',
     neonGreen: '#4cb242',
-    neonGreenShadow: ''
+    neonGreenShadow: '',
+    skelet: ''
 }
 
 

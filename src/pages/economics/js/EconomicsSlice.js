@@ -24,5 +24,5 @@ const {actions, reducer} = economicsSlice;
 
 export default reducer;
 export const {
-    setEconData,setEconData2
+    setEconData, setEconData2
 } = actions;
