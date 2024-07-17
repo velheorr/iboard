@@ -90,7 +90,8 @@ main .pageWrapper {
         min-width: 44px;
     }
     .Mui-selected {
-        background-color: rgb(76, 178, 66) !important;
+        /*background-color: rgb(76, 178, 66) !important;*/
+        background-color: rgb(189 189 189 / 38%) !important;
         transition: color .5s ease-in-out;
         font-weight: 600;
         text-shadow: 1px 1px black;
