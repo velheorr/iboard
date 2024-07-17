@@ -17,7 +17,7 @@ import RealizationChartBlocks2 from "./subpages/RealizationChartBlocks2";
 import {configRealizationData} from "./js/configRealizationData";
 import {prepareSelect} from "./js/func";
 import {dark, light} from "../../utils/theme";
-import BlockShadow from "../../elements/BlockShadow";
+
 
 
 
@@ -69,35 +69,7 @@ const Realization = () => {
 
     return (
         <div className='main'>
-            {/*<Typography sx={{textAlign: 'center', fontWeight: 600}} variant="h5">Список объектов</Typography>*/}
             <RealizationFilters/>
-
-            <BlockShadow style={{width: '600px'}}>
-                <div className='f1'>
-                    <div className='f2'>СПД</div>
-                    <div className='f3'>451</div>
-                </div>
-                <div className='f1'>
-                    <div className='f2'>СПС</div>
-                    <div className='f4'>158</div>
-                </div>
-                <div className='f1'>
-                    <div className='f2'>ОС</div>
-                    <div className='f5'>451</div>
-                </div>
-                <div className='f1'>
-                    <div className='f2'>ПФОТ</div>
-                    <div className='f6'>224</div>
-                </div>
-                <div className='f1'>
-                    <div className='f2'>ОФОТ</div>
-                    <div className='f7'>125</div>
-                </div>
-            </BlockShadow>
-
-
-
-
             <Slider {...settingsRealization}>
                 {
                     isLoading

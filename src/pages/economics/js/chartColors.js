@@ -1,19 +1,19 @@
 export const chartColor = (name) => {
     let color;
     switch (name) {
-        case 'zPlan': color = "#d8e3f8"
+        case 'zPlan': color = "#04d9ff"
             break
-        case 'zFact': color = "#435870"
+        case 'zFact': color = "#5555ff"
             break
         case 'vpPlan': color = "#f0d3ab"
             break
-        case 'vpFact': color = "#d78850"
+        case 'vpFact': color = "#d78850" //+
             break
         case 'opPlan': color = "#B0228C"
             break
-        case 'opFact': color = "#7eae43"
+        case 'opFact': color = "#7eae43" //+
             break
-        case 'nzp': color = "#c72708"
+        case 'nzp': color = "#c72708" // +
             break
         case 'prodano': color = "#8598d6"
             break
@@ -21,7 +21,7 @@ export const chartColor = (name) => {
             break
         case 'valprib': color = "#fdb019"
             break
-        case 'operprib': color = "#39fd19"
+        case 'operprib': color = "#ccff00"
             break
         default: color = 'fff'
     }

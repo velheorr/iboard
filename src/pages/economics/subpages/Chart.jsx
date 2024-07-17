@@ -78,7 +78,7 @@ const Chart = ({data, date}) => {
 
 
     return (
-            <ResponsiveContainer width={"100%"} aspect={5}>
+            <ResponsiveContainer width={"100%"} aspect={4.5}>
                 <ComposedChart
                     width={500}
                     height={400}
@@ -93,7 +93,7 @@ const Chart = ({data, date}) => {
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis yAxisId="y1" orientation="left" label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-50), dataMax => (250)]}/>
-                    <YAxis yAxisId="y2" orientation="right" label={{ value: 'нарастающим итогом, млн', angle: 0, position: 'insideTop', dy: -30, dx: -60 }} domain={[dataMin => (-200), dataMax => (800)]}/>
+                    <YAxis yAxisId="y2" orientation="right" label={{ value: 'нарастающим итогом, млн', angle: 0, position: 'insideTop', dy: -30, dx: -60 }} domain={[dataMin => (-150), dataMax => (800)]}/>
                     <Tooltip dataKey="name" content={<CustomTooltip />} />
                     <ReferenceLine y={0} yAxisId="y1" stroke="grey" strokeDasharray="3 3" label={{ value: '0 -', angle: 0, position: 'insideLeft', dx: -25 }}/>
                     <ReferenceLine y={0} yAxisId="y2" stroke="grey" strokeDasharray="3 3" label={{ value: '- 0', angle: 0, position: 'insideRight', dx: 25 }}/>

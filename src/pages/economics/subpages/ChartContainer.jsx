@@ -43,7 +43,7 @@ const ChartContainer = ({econ, date}) => {
     if (!eco) {return <h3>Нет данных с сервера</h3>}
     
     return (
-        <div style={{marginBottom: ' 25px'}}>
+        <div style={{marginBottom: ' 10px'}}>
             <GFormControl sx={{width: 200,mr: '15px', borderBottom: '0.1rem solid #ffffff4a;'}} variant="standard">
                 <GInputLabel id="year" sx={{color: text}}>Год</GInputLabel>
                 <Select

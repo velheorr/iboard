@@ -50,6 +50,9 @@ main .pageWrapper {
         width: 24px;
         margin-right: 20px;
     }
+    .menuIcon.themeColor {
+        filter: brightness(0);
+    }
     a {
         text-decoration: none;
         color: inherit;
@@ -58,7 +61,7 @@ main .pageWrapper {
         padding: 4px 0px;
         border-radius: 0;
         gap: 0;
-        &:hover {
+        &:hover, &:focus {
             background-color: #ffffff24;
             border-left: 3px solid green;
             &:after {
@@ -71,6 +74,7 @@ main .pageWrapper {
             }
             img {
                 animation: swing ease-in-out 0.5s 1 alternate;
+
             }
         }
     }
@@ -90,7 +94,6 @@ main .pageWrapper {
         min-width: 44px;
     }
     .Mui-selected {
-        /*background-color: rgb(76, 178, 66) !important;*/
         background-color: rgb(189 189 189 / 38%) !important;
         transition: color .5s ease-in-out;
         font-weight: 600;
@@ -99,6 +102,9 @@ main .pageWrapper {
             color: white;
             text-shadow: 1px 1px 1px black;
         }
+    }
+    .themeColor .Mui-selected{
+        background-color: rgb(76, 178, 66) !important;
     }
 
 
