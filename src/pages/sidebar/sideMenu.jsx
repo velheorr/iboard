@@ -29,15 +29,15 @@ const SideMenu = () => {
     return (
         <div className='sideMenu' style={{background: useTheme('bg', 'sideBar')}}>
             <SimpleTreeView>
-                <TreeItem itemId={'Проекты'}
+                <TreeItem itemId={'Реализация'}
                           label={
                               <ListItemButton sx={{height: 35}}>
-                                  <img className={`menuIcon ${themeColor}`} src={projects} alt={'Проекты'}/>
-                                  <div>Проекты</div>
+                                  <img className={`menuIcon ${themeColor}`} src={projects} alt={'Реализация'}/>
+                                  <div>Реализация</div>
                               </ListItemButton>
                           }>
                     <Tree name={'Динамика'} img={dynamic} link={'realisation'}/>
-                    <Tree name={'Реализация'} img={production_black} link={'realisation'}/>
+                    <Tree name={'Процентование'} img={production_black} link={'realisation'}/>
                 </TreeItem>
                 <Divider sx={{borderColor: color}}/>
 

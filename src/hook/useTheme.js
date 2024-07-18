@@ -5,7 +5,7 @@ import logoDark from '../img/header/logoDark.png';
 import lionGreen from '../img/lionGrey10.png'
 
 /*главная тема*/
-const dark = {
+export const dark = {
     text: "#ffffff", // цвет текста
     lion: lionGreen, // фон со львом
     logo: logoDark, // логотип
@@ -19,9 +19,9 @@ const dark = {
     divider: '#80808096', // divider for SB
     chart: { // цвета для графиков
         yellow: '#ffff00',
-        red: '#db2823',
-        green: '#9fdb21',
-        grey: '#8795a1',
+        red: '#f80000',
+        green: '#17fa2f',
+        grey: '#9d9d9d',
     },
     listHeader: '#333333',
     listHeaderText: '#9f9f9f',
@@ -31,7 +31,7 @@ const dark = {
     skelet: '#75757580' // skeleton
 }
 
-const light = {
+export const light = {
     text: "#000000",
     lion: lion,
     logo: logoLight,
@@ -44,10 +44,10 @@ const light = {
     select : '',
     divider: '', // divider for SB
     chart: {
-        yellow: '#eaee29',
-        red: '#f11010',
-        green: '#1cc700',
-        grey: '#9f9f9f',
+        yellow: '#F6E69C',
+        red: '#EF7065',
+        green: '#61CE95',
+        grey: '#8690A3',
     },
     listHeader: '#4cb242',
     listHeaderText: '#ffffff',

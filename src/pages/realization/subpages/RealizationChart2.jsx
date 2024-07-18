@@ -63,7 +63,7 @@ const RealizationChart2 = ({item, variant = false}) => {
         } else {
             countWidth = countWidth - 25
         }
-        return <text x={x} y={y} dy={17} dx={countWidth} fill={useTheme('text')} fontSize={14} textAnchor="middle">{`${findNumber} ${skobkaL}${plus}${findDynamics}${skobkaR}`}</text>
+        return <text x={x} y={y} dy={17} dx={countWidth} fill={'#000000'} fontSize={14} textAnchor="middle">{`${findNumber} ${skobkaL}${plus}${findDynamics}${skobkaR}`}</text>
         /*fill={colorTheme()}*/
     };
 

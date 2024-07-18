@@ -16,45 +16,38 @@ import {GTextField} from "../../../elements/CustomMui/customMui";
 const Chart = ({data, date}) => {
 
     const CustomTooltip = ({ active, payload }) => {
-        const names ={
-            zPlan: 'Запроцентовано План',
-            zFact: 'Запроцентовано Факт',
-            vpPlan: 'Валовая Прибыль План',
-            vpFact: 'Валовая Прибыль Факт',
-            opPlan: 'Операционная Прибыль План',
-            opFact: 'Операционная Прибыль Факт',
-            nzp: 'НЗП',
-            prodano: 'Продано (факт/прогноз)',
-            zaprocent: 'Запроцентовано (факт/прогноз)',
-            valprib: 'Валовая Прибыль (факт/прогноз)',
-            operprib: 'Операционная Прибыль (Факт/Прогноз)',
-        }
-
         if (active && payload && payload.length) {
-            const display = payload.map((item, i)=>{
-                let valueX = ''
-                switch (item.name) {
-                    case 'nzp': valueX = item.payload.nzp_real
-                        break;
-                    case 'prodano': valueX = item.payload.prodano_real
-                        break;
-                    case 'valprib': valueX = item.payload.valprib_real
-                        break;
-                    default:
-                        valueX = item.value
-                }
-                return (
-                    <div key={i} className='bodyChart'>
-                        <div className='bodyKey' style={{borderLeft: `15px solid ${chartColor(item.name)}`,}}>{`${names[item.name]}:`}</div>
-                        <span className='bodyVal'>{`${valueX} / млн`}</span>
-                    </div>
 
+            const minus = (num)=>{
+                if (num < 0){
+                    return '#b60000'
+                }else {
+                    return 'white'
+                }
+            }
+
+            const ToolTipChart = ({name, number, color})=>{
+                return (
+                    <div className='bodyChart'>
+                        <div className='bodyKey'>{name}:</div>
+                        <span style={{color: color}} className='bodyVal'>{number}</span>
+                    </div>
                 )
-            })
+            }
+
             return (
                 <div className="ecoChartTooltip">
-                    <div className='titleChart'>{`${payload[0].payload.name} ${date}`}</div>
-                    {display}
+                    <div className='megaTitleChart'>{`${payload[0].payload.name} ${date}`}</div>
+                    <div className='titleChart'>За месяц</div>
+                    <ToolTipChart name={'Запроцентовано План/Факт'} number={`${payload[0].value} / ${payload[2].value} млн`}/>
+                    <ToolTipChart name={'Валовая прибыль План/Факт'} number={`${payload[3].value} / ${payload[5].value} млн`}/>
+                    <ToolTipChart name={'Операционная прибыль План/Факт'} number={`${payload[6].value} / ${payload[8].value} млн`}/>
+                    <ToolTipChart name={'НЗП'} number={`${payload[9].payload.nzp_real} млн`} color={minus(payload[9].payload.nzp_real)}/>
+                    <div className='titleChart'>Нарастающим итогом</div>
+                    <ToolTipChart name={'Продано Факт/Прогноз'} number={`${payload[10].payload.prodano_real} млн`}/>
+                    <ToolTipChart name={'Запроцентовано Факт/Прогноз'} number={`${payload[11].value} млн`}/>
+                    <ToolTipChart name={'Валовая Прибыль Факт/Прогноз'} number={`${payload[12].payload.valprib_real} млн`}/>
+                    <ToolTipChart name={'Операционная Прибыль Факт/Прогноз'} number={`${payload[13].value} млн`}/>
                 </div>
             );
         }
@@ -91,23 +84,72 @@ const Chart = ({data, date}) => {
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
+                    <defs>
+
+
+
+                    </defs>
                     <XAxis dataKey="name" />
                     <YAxis yAxisId="y1" orientation="left" label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-50), dataMax => (250)]}/>
                     <YAxis yAxisId="y2" orientation="right" label={{ value: 'нарастающим итогом, млн', angle: 0, position: 'insideTop', dy: -30, dx: -60 }} domain={[dataMin => (-150), dataMax => (800)]}/>
                     <Tooltip dataKey="name" content={<CustomTooltip />} />
                     <ReferenceLine y={0} yAxisId="y1" stroke="grey" strokeDasharray="3 3" label={{ value: '0 -', angle: 0, position: 'insideLeft', dx: -25 }}/>
                     <ReferenceLine y={0} yAxisId="y2" stroke="grey" strokeDasharray="3 3" label={{ value: '- 0', angle: 0, position: 'insideRight', dx: 25 }}/>
+                    <defs>
+                        <linearGradient id="zFact" x1="0" y1="1" x2="0" y2="0"> {/*fact svetlee*/}
+                            <stop offset="0%" stopColor="#0c2054"/>  {/*centr*/}
+                            <stop offset="100%" stopColor="#7cc1de" />  {/*verh*/}
+                        </linearGradient>
+                        <linearGradient id="zPlan" x1="0" y1="1" x2="0" y2="0"> {/*plan temnee*/}
+                            <stop offset="100%" stopColor="#0c2054" />  {/*niz*/}
+                        </linearGradient>
+                    </defs>
+                    {/*<Bar  dataKey="zPlan" stackId="a" yAxisId="y1" fill={chartColor('zPlan')} />*/}
+                    <Bar  dataKey="zPlan" stackId="a" yAxisId="y1" fill="url(#zPlan)" />
+                    {/*<Bar  dataKey="zFact" stackId="a" yAxisId="y1" fill={chartColor('zFact')} />*/}
+                    <Bar dataKey={'z'} stackId="a" yAxisId="y1" fill='transparent' />
+                    <Bar  dataKey="zFact" stackId="a" yAxisId="y1" fill="url(#zFact)" barCategoryGap={60} />
 
-                    <Bar  dataKey="zPlan" stackId="a" yAxisId="y1" fill={chartColor('zPlan')} />
-                    <Bar  dataKey="zFact" stackId="a" yAxisId="y1" fill={chartColor('zFact')} />
 
-                    <Bar dataKey="vpPlan" stackId="b" yAxisId="y1" fill={chartColor('vpPlan')} />
-                    <Bar dataKey="vpFact" stackId="b" yAxisId="y1" fill={chartColor('vpFact')} />
+                    <defs>
+                        <linearGradient id="vpFact" x1="0" y1="1" x2="0" y2="0"> {/*fact svetlee*/}
+                            <stop offset="0%" stopColor="#AB351A"/>  {/*centr*/}
+                            <stop offset="100%" stopColor="#FF6600" />  {/*verh*/}
+                        </linearGradient>
+                        <linearGradient id="vpPlan" x1="0" y1="1" x2="0" y2="0"> {/*plan temnee*/}
+                            <stop offset="100%" stopColor="#AB351A" />  {/*niz*/}
+                        </linearGradient>
+                    </defs>
+                    {/*<Bar dataKey="vpPlan" stackId="b" yAxisId="y1" fill={chartColor('vpPlan')} />*/}
+                    {/*<Bar dataKey="vpFact" stackId="b" yAxisId="y1" fill={chartColor('vpFact')} />*/}
+                    <Bar dataKey="vpPlan" stackId="b" yAxisId="y1" fill={"url(#vpPlan)"} />
+                    <Bar dataKey={'v'} stackId="b" yAxisId="y1" fill='transparent' />
+                    <Bar dataKey="vpFact" stackId="b" yAxisId="y1" fill={"url(#vpFact)"} />
 
-                    <Bar dataKey="opPlan" stackId="c" yAxisId="y1" fill={chartColor('opPlan')} />
-                    <Bar dataKey="opFact" stackId="c" yAxisId="y1" fill={chartColor('opFact')} />
 
-                    <Bar dataKey="nzp" yAxisId="y1" fill={chartColor('nzp')} />
+                    <defs>
+                        <linearGradient id="opFact" x1="0" y1="1" x2="0" y2="0"> {/*fact svetlee*/}
+                            <stop offset="0%" stopColor="#166A24"/>  {/*centr*/}
+                            <stop offset="100%" stopColor="#9BC401" />  {/*verh*/}
+                        </linearGradient>
+                        <linearGradient id="opPlan" x1="0" y1="1" x2="0" y2="0"> {/*plan temnee*/}
+                            <stop offset="100%" stopColor="#166A24" />  {/*niz*/}
+                        </linearGradient>
+                    </defs>
+                    {/*<Bar dataKey="opPlan" stackId="c" yAxisId="y1" fill={chartColor('opPlan')} />
+                    <Bar dataKey={'o'} stackId="c" yAxisId="y1" fill='transparent' />
+                    <Bar dataKey="opFact" stackId="c" yAxisId="y1" fill={chartColor('opFact')} />*/}
+                    <Bar dataKey="opPlan" stackId="c" yAxisId="y1" fill={"url(#opPlan)"} />
+                    <Bar dataKey={'o'} stackId="c" yAxisId="y1" fill='transparent' />
+                    <Bar dataKey="opFact" stackId="c" yAxisId="y1" fill={"url(#opFact)"} />
+
+                    <defs>
+                        <linearGradient id="nzp" x1="0" y1="1" x2="0" y2="0"> {/*fact svetlee*/}
+                            <stop offset="0%" stopColor="#DC0404"/>  {/*centr*/}
+                            <stop offset="100%" stopColor="#4D0E0A" />  {/*verh*/}
+                        </linearGradient>
+                    </defs>
+                    <Bar dataKey="nzp" yAxisId="y1" fill={"url(#nzp)"} />
 
                     <Line type="monotone" dataKey="prodano" yAxisId="y2" stroke={chartColor('prodano')}  dot={<CustomizedDot/>}/>
                     <Line type="monotone" dataKey="zaprocent" yAxisId="y2" stroke={chartColor('zaprocent')} dot={<CustomizedDot/>}/>

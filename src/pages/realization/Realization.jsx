@@ -63,7 +63,7 @@ const Realization = () => {
         }
     }, [realization])
 
-    if (isLoading) {return <Skelet/>}
+    if (isLoading) {return <Skelet option='realization'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
     if (!realization) {return <h3>Нет данных с сервера</h3>}
 

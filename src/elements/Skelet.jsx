@@ -10,15 +10,7 @@ const Skelet = ({option = false}) => {
     switch (option) {
         case false:
             return  newSkelet = (
-                <div style={{display: "flex", flexWrap: 'wrap'}}>
-                    <SkeletikBody/>
-                    <SkeletikBody/>
-                    <SkeletikBody/>
-                    <SkeletikBody/>
-                    <SkeletikBody/>
-                    <SkeletikBody/>
-                    <SkeletikBody/>
-                </div>
+                <SkeletLine width={200}/>
             )
             break;
         case 'eco':
@@ -34,6 +26,19 @@ const Skelet = ({option = false}) => {
                     <SkeletLine />
                 </div>
             )
+            break;
+        case 'realization':
+            return  newSkelet = (
+                <div style={{display: "flex", flexWrap: 'wrap'}}>
+                    <SkeletRealiz/>
+                    <SkeletRealiz/>
+                    <SkeletRealiz/>
+                    <SkeletRealiz/>
+                    <SkeletRealiz/>
+                    <SkeletRealiz/>
+                </div>
+            )
+            break;
     }
 
 
@@ -57,22 +62,23 @@ const SkeletLine = ({width = '99%',style, children})=>{
     )
 }
 
-const SkeletikBody = ()=>{
+const SkeletRealiz = ()=>{
     const bg = useTheme('skelet')
 
     return (
-        <BlockShadow style={{width: '30%'}}>
-            <Skeleton variant="text" sx={{ fontSize: '2rem', margin: '0 auto', backgroundColor: bg}} width={300}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}} width={500}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-            <Skeleton variant="rounded" height={20} sx={{m: 1}}/>
-        </BlockShadow>
+        <div>
+            <SkeletLine width={200}/>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+            <SkeletLine  width={500} style={{textAlign: 'center'}} >Идет загрузка данных...</SkeletLine>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+            <SkeletLine width={500}/>
+        </div>
     )
 }
