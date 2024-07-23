@@ -16,11 +16,12 @@ import resources_black from "../../img/sidebar/resources_black.png";
 import production_black from "../../img/sidebar/production_black.png";
 import dynamic from "../../img/sidebar/dynamic.png";
 import projects from "../../img/sidebar/projects.png";
+import {setActive} from "./SideMenuSlice";
 
 const SideMenu = () => {
     const mode = useSelector(state => state.header.mode);
     const menuList = useSelector(state => state.sidemenu.menuList);
-    const dispatch = useDispatch()
+
 
     const neon = useTheme('neonGreen')
     const color = useTheme('divider')
@@ -36,7 +37,7 @@ const SideMenu = () => {
                                   <div>Реализация</div>
                               </ListItemButton>
                           }>
-                    <Tree name={'Динамика'} img={dynamic} link={'realisation'}/>
+                    <Tree name={'Динамика'} img={dynamic} link={'realisation'} />
                     <Tree name={'Процентование'} img={production_black} link={'realisation'}/>
                 </TreeItem>
                 <Divider sx={{borderColor: color}}/>
@@ -59,9 +60,14 @@ const Tree = ({name, img = false, ico = false, link = false, children})=>{
     const links = link ? `/${link}` : ''
     const color = useTheme('divider')
     const themeColor = useTheme() ? 'xxx' : 'themeColor'
+    const dispatch = useDispatch()
+
+    const activate = (page)=>{
+        dispatch(setActive(page))
+    }
 
     return (
-        <Link to={links}>
+        <Link to={links} onClick={()=>{activate(name)}}>
             <TreeItem itemId={name + Math.random()} className={themeColor}
             label={
                 <ListItemButton sx={{height: 40}}>

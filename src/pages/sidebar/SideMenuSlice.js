@@ -75,7 +75,9 @@ const sidemenuSlice = createSlice({
     initialState,
     reducers: {
         setActive: (state,action) => {
-            let x = []
+            localStorage.setItem('page', action.payload);
+            state.activePageName = action.payload
+            /*let x = []
             state.menuList.forEach((item => {
                 if (item.id === action.payload){
                     item.active = true
@@ -85,7 +87,7 @@ const sidemenuSlice = createSlice({
                 }
                 x.push(item)
             }))
-            state.menuList = x
+            state.menuList = x*/
 
         },
     },

@@ -56,7 +56,7 @@ const Register = () => {
                 noValidate
                 autoComplete="off"
             >
-                <TextField fullWidth  id="name" label="Имя"  variant="outlined" type='text' size='small'
+                <TextField fullWidth  id="name" label="ФИО"  variant="outlined" type='text' size='small'
                            {...register("name")}
                            error={errors.name && true}
                            helperText={errors.name && <span style={{color: 'red'}}>{errors.name.message}</span>}

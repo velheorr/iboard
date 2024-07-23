@@ -40,14 +40,14 @@ const Chart = ({data, date}) => {
                     <div className='megaTitleChart'>{`${payload[0].payload.name} ${date}`}</div>
                     <div className='titleChart'>За месяц</div>
                     <ToolTipChart name={'Запроцентовано План/Факт'} number={`${payload[0].value} / ${payload[2].value} млн`}/>
-                    <ToolTipChart name={'Валовая прибыль План/Факт'} number={`${payload[3].value} / ${payload[5].value} млн`}/>
-                    <ToolTipChart name={'Операционная прибыль План/Факт'} number={`${payload[6].value} / ${payload[8].value} млн`}/>
+                    <ToolTipChart name={'Валовая прибыль План/Факт'} number={`${payload[3].value} / ${payload[5].value} млн`} color={minus(payload[5].value)} />
+                    <ToolTipChart name={'Операционная прибыль План/Факт'} number={`${payload[6].value} / ${payload[8].value} млн`} color={minus(payload[8].value)} />
                     <ToolTipChart name={'НЗП'} number={`${payload[9].payload.nzp_real} млн`} color={minus(payload[9].payload.nzp_real)}/>
                     <div className='titleChart'>Нарастающим итогом</div>
                     <ToolTipChart name={'Продано Факт/Прогноз'} number={`${payload[10].payload.prodano_real} млн`}/>
                     <ToolTipChart name={'Запроцентовано Факт/Прогноз'} number={`${payload[11].value} млн`}/>
                     <ToolTipChart name={'Валовая Прибыль Факт/Прогноз'} number={`${payload[12].payload.valprib_real} млн`}/>
-                    <ToolTipChart name={'Операционная Прибыль Факт/Прогноз'} number={`${payload[13].value} млн`}/>
+                    <ToolTipChart name={'Операционная Прибыль Факт/Прогноз'} number={`${payload[13].value} млн`} color={minus(payload[13].value)}/>
                 </div>
             );
         }
@@ -92,7 +92,7 @@ const Chart = ({data, date}) => {
                     <XAxis dataKey="name" />
                     <YAxis yAxisId="y1" orientation="left" label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-50), dataMax => (250)]}/>
                     <YAxis yAxisId="y2" orientation="right" label={{ value: 'нарастающим итогом, млн', angle: 0, position: 'insideTop', dy: -30, dx: -60 }} domain={[dataMin => (-150), dataMax => (800)]}/>
-                    <Tooltip dataKey="name" content={<CustomTooltip />} />
+                    <Tooltip dataKey="name" content={<CustomTooltip />} offset={100}/>
                     <ReferenceLine y={0} yAxisId="y1" stroke="grey" strokeDasharray="3 3" label={{ value: '0 -', angle: 0, position: 'insideLeft', dx: -25 }}/>
                     <ReferenceLine y={0} yAxisId="y2" stroke="grey" strokeDasharray="3 3" label={{ value: '- 0', angle: 0, position: 'insideRight', dx: 25 }}/>
                     <defs>
@@ -107,7 +107,7 @@ const Chart = ({data, date}) => {
                     {/*<Bar  dataKey="zPlan" stackId="a" yAxisId="y1" fill={chartColor('zPlan')} />*/}
                     <Bar  dataKey="zPlan" stackId="a" yAxisId="y1" fill="url(#zPlan)" />
                     {/*<Bar  dataKey="zFact" stackId="a" yAxisId="y1" fill={chartColor('zFact')} />*/}
-                    <Bar dataKey={'z'} stackId="a" yAxisId="y1" fill='transparent' />
+                    <Bar dataKey={'z'} stackId="a" yAxisId="y1" fill={'#e4e4e4'}  activeBar={{ stroke: 'red', strokeWidth: 2 }}  />
                     <Bar  dataKey="zFact" stackId="a" yAxisId="y1" fill="url(#zFact)" barCategoryGap={60} />
 
 
@@ -123,7 +123,7 @@ const Chart = ({data, date}) => {
                     {/*<Bar dataKey="vpPlan" stackId="b" yAxisId="y1" fill={chartColor('vpPlan')} />*/}
                     {/*<Bar dataKey="vpFact" stackId="b" yAxisId="y1" fill={chartColor('vpFact')} />*/}
                     <Bar dataKey="vpPlan" stackId="b" yAxisId="y1" fill={"url(#vpPlan)"} />
-                    <Bar dataKey={'v'} stackId="b" yAxisId="y1" fill='transparent' />
+                    <Bar dataKey={'v'} stackId="b" yAxisId="y1" fill={'#e4e4e4'}  activeBar={{ stroke: 'red', strokeWidth: 2 }} />
                     <Bar dataKey="vpFact" stackId="b" yAxisId="y1" fill={"url(#vpFact)"} />
 
 
@@ -137,10 +137,10 @@ const Chart = ({data, date}) => {
                         </linearGradient>
                     </defs>
                     {/*<Bar dataKey="opPlan" stackId="c" yAxisId="y1" fill={chartColor('opPlan')} />
-                    <Bar dataKey={'o'} stackId="c" yAxisId="y1" fill='transparent' />
+                    <Bar dataKey={'o'} stackId="c" yAxisId="y1" fill={'#e4e4e4'}  activeBar={{ stroke: 'red', strokeWidth: 2 }} />
                     <Bar dataKey="opFact" stackId="c" yAxisId="y1" fill={chartColor('opFact')} />*/}
                     <Bar dataKey="opPlan" stackId="c" yAxisId="y1" fill={"url(#opPlan)"} />
-                    <Bar dataKey={'o'} stackId="c" yAxisId="y1" fill='transparent' />
+                    <Bar dataKey={'o'} stackId="c" yAxisId="y1" fill={'#e4e4e4'}  activeBar={{ stroke: 'red', strokeWidth: 2 }} />
                     <Bar dataKey="opFact" stackId="c" yAxisId="y1" fill={"url(#opFact)"} />
 
                     <defs>
@@ -149,7 +149,7 @@ const Chart = ({data, date}) => {
                             <stop offset="100%" stopColor="#4D0E0A" />  {/*verh*/}
                         </linearGradient>
                     </defs>
-                    <Bar dataKey="nzp" yAxisId="y1" fill={"url(#nzp)"} />
+                    <Bar dataKey="nzp" yAxisId="y1" fill={"url(#nzp)"}  minPointSize={-50} />
 
                     <Line type="monotone" dataKey="prodano" yAxisId="y2" stroke={chartColor('prodano')}  dot={<CustomizedDot/>}/>
                     <Line type="monotone" dataKey="zaprocent" yAxisId="y2" stroke={chartColor('zaprocent')} dot={<CustomizedDot/>}/>
