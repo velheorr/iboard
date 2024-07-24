@@ -43,3 +43,43 @@
     }
 
 }
+
+.ecoDetails {
+    margin-top: 15px;
+    .month {
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 25px;
+        font-style: italic;
+    }
+    .header{
+        display: flex;
+        align-items: flex-start;
+        height: 100%;
+    }
+    .headBlock {
+        width: 25%;
+    }
+    .headBlockItem {
+        padding: 7px;
+        text-align: center;
+    }
+    .headBG{
+        background-color: #3fb329;
+        margin-bottom: 0px;
+    }
+    .lineBG{
+        border: 1px solid #80808045;
+    }
+
+    .fb33 {
+        flex-basis: 33%;
+    }
+    .fb49 {
+        flex-basis: 49%;
+    }
+    .flexYear {
+        flex: 0 5 30em;
+        text-align: center;
+    }
+}

@@ -1,6 +1,5 @@
-import React from 'react';
 import {
-    Bar,
+    Bar, Brush,
     CartesianGrid,
     ComposedChart,
     Line,
@@ -11,10 +10,13 @@ import {
     YAxis
 } from "recharts";
 import {chartColor} from "../js/chartColors";
-import {GTextField} from "../../../elements/CustomMui/customMui";
+import '../economics.scss'
+import {redirect} from "react-router";
+import {useNavigate} from "react-router-dom";
+
 
 const Chart = ({data, date}) => {
-
+    const navigate = useNavigate();
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
 
@@ -44,9 +46,9 @@ const Chart = ({data, date}) => {
                     <ToolTipChart name={'Операционная прибыль План/Факт'} number={`${payload[6].value} / ${payload[8].value} млн`} color={minus(payload[8].value)} />
                     <ToolTipChart name={'НЗП'} number={`${payload[9].payload.nzp_real} млн`} color={minus(payload[9].payload.nzp_real)}/>
                     <div className='titleChart'>Нарастающим итогом</div>
-                    <ToolTipChart name={'Продано Факт/Прогноз'} number={`${payload[10].payload.prodano_real} млн`}/>
-                    <ToolTipChart name={'Запроцентовано Факт/Прогноз'} number={`${payload[11].value} млн`}/>
-                    <ToolTipChart name={'Валовая Прибыль Факт/Прогноз'} number={`${payload[12].payload.valprib_real} млн`}/>
+                    <ToolTipChart name={'Продано Факт/Прогноз'} number={`${payload[10].payload.prodano} млн`}/>
+                    <ToolTipChart name={'Запроцентовано Факт/Прогноз'} number={`${payload[11].value} млн / -`}/>
+                    <ToolTipChart name={'Валовая Прибыль Факт/Прогноз'} number={`${payload[12].payload.valprib} млн`}/>
                     <ToolTipChart name={'Операционная Прибыль Факт/Прогноз'} number={`${payload[13].value} млн`} color={minus(payload[13].value)}/>
                 </div>
             );
@@ -70,6 +72,26 @@ const Chart = ({data, date}) => {
 
 
 
+    const CustomizedAxisTick = (props) => {
+        const {x, y, stroke, payload} = props;
+        const month = payload.value
+        const year = date
+
+        const openEcoPage2 = ()=>{
+            console.log(month)
+            console.log(year)
+            navigate('/economics/details')
+        }
+        return (
+            <g transform={`translate(${x},${y})`}>
+                <text x={20} y={0} dy={13} textAnchor="end" fill="#666" transform="rotate(0)" style={{fontWeight: 600, cursor: "pointer"}} onClick={openEcoPage2}>
+                    {month}
+                </text>
+            </g>
+        );
+    }
+
+
     return (
             <ResponsiveContainer width={"100%"} aspect={4.5}>
                 <ComposedChart
@@ -84,13 +106,8 @@ const Chart = ({data, date}) => {
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <defs>
-
-
-
-                    </defs>
-                    <XAxis dataKey="name" />
-                    <YAxis yAxisId="y1" orientation="left" label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-50), dataMax => (250)]}/>
+                    <XAxis dataKey="name" tick={<CustomizedAxisTick />} />
+                    <YAxis yAxisId="y1" orientation="left" label={{ value: 'за месяц, млн', angle: 0, position: 'insideTop', dy: -30 }} domain={[dataMin => (-30), dataMax => (150)]}/>
                     <YAxis yAxisId="y2" orientation="right" label={{ value: 'нарастающим итогом, млн', angle: 0, position: 'insideTop', dy: -30, dx: -60 }} domain={[dataMin => (-150), dataMax => (800)]}/>
                     <Tooltip dataKey="name" content={<CustomTooltip />} offset={100}/>
                     <ReferenceLine y={0} yAxisId="y1" stroke="grey" strokeDasharray="3 3" label={{ value: '0 -', angle: 0, position: 'insideLeft', dx: -25 }}/>
@@ -150,7 +167,7 @@ const Chart = ({data, date}) => {
                         </linearGradient>
                     </defs>
                     <Bar dataKey="nzp" yAxisId="y1" fill={"url(#nzp)"}  minPointSize={-50} />
-
+                    {/*<Brush dataKey="name" height={30} stroke="#8884d8" />*/}
                     <Line type="monotone" dataKey="prodano" yAxisId="y2" stroke={chartColor('prodano')}  dot={<CustomizedDot/>}/>
                     <Line type="monotone" dataKey="zaprocent" yAxisId="y2" stroke={chartColor('zaprocent')} dot={<CustomizedDot/>}/>
                     <Line type="monotone" dataKey="valprib" yAxisId="y2" stroke={chartColor('valprib')} dot={<CustomizedDot/>}/>
