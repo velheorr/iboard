@@ -14,6 +14,8 @@ export const useGetEconomics = (year) => {
         })
 }
 export const useGetEconomics2 = (year) => {
+    /*let x = ''
+    if (month){x = ``}*/
     return useQuery('economics2', async ()=> {
             const data = await axios.get(`${BACK}/api/iboardData/economics/${year}`)
             return data.data.Data
@@ -29,14 +31,14 @@ export const useGetEconomics2 = (year) => {
 
 
 
-export const useGetEco = (year) => {
-    return useQuery(['eco', year],  async ()=> {
-        const data = await axios.get(`${BACK}/api/iboardData/economics/${year}`)
+export const useGetEco = (year, month = 0) => {
+    return useQuery(['eco', year, month],  async ()=> {
+        const data = await axios.get(`${BACK}/api/iboardData/economics/${year}/${month}`)
         return data.data.Data
         },
         {
-            /*keepPreviousData: false,
-            refetchOnWindowFocus: true,*/
+            /*keepPreviousData: true,*/
+            /*refetchOnWindowFocus: true,*/
             enabled: true
         })
 }

@@ -13,10 +13,14 @@ import {chartColor} from "../js/chartColors";
 import '../economics.scss'
 import {redirect} from "react-router";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setDetails} from "../js/EconomicsSlice";
 
 
 const Chart = ({data, date}) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
 
@@ -78,8 +82,7 @@ const Chart = ({data, date}) => {
         const year = date
 
         const openEcoPage2 = ()=>{
-            console.log(month)
-            console.log(year)
+            dispatch(setDetails({month, year}))
             navigate('/economics/details')
         }
         return (
