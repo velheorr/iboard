@@ -1,5 +1,3 @@
-import React from 'react';
-import BlockShadow from "../../../elements/BlockShadow";
 import ElemTableBlock from "./ElemTableBlock";
 import '../economics.scss'
 
@@ -7,7 +5,7 @@ import '../economics.scss'
 const HeaderBlock = () => {
     return (
         <div className='header'>
-            <div className='flexYear' style={{padding: '10px'}}></div>
+            <div className='flexYear' style={{padding: '12px'}}></div>
             <ElemTableBlock name={'Запроцентовано'} bg={'headBG'}>
                 <div>План</div>
                 <div>Факт</div>

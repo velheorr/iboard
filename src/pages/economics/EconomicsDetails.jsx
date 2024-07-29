@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button} from "@mui/material";
 import './economics.scss'
 import TableBlock from "./subpagesDetails/TableBlock";
@@ -15,7 +15,24 @@ const EconomicsDetails = () => {
         navigate('/economics');
     }
 
+    let yList = {
+        y1: false,
+        y2: false,
+    }
 
+    const makeData = () => {
+        if (year === '2015'){
+            yList.y1 = +year +1
+            yList.y2 = false
+        } else if(year === '2025'){
+            yList.y1 = false
+            yList.y2 = +year -1
+        } else {
+            yList.y1 = +year +1
+            yList.y2 = +year -1
+        }
+    }
+    makeData()
 
     return (
         <div>
@@ -23,10 +40,9 @@ const EconomicsDetails = () => {
             <div className='ecoDetails'>
                 <div className='month'>{month}</div>
                 <HeaderBlock/>
-
-                <TableBlock year={year} month={month} target={'ecoDet1'}/>
-                <TableBlock year={year} month={month} target={'ecoDet2'}/>
-                <TableBlock year={year} month={month} target={'ecoDet3'}/>
+                {yList.y1 && <TableBlock year={yList.y1} month={month}/>}
+                <TableBlock year={year} month={month}/>
+                {yList.y2 && <TableBlock year={yList.y2} month={month}/>}
             </div>
         </div>
     );

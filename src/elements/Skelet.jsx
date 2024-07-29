@@ -1,6 +1,5 @@
 import React from 'react';
 import {Skeleton} from "@mui/material";
-import BlockShadow from "./BlockShadow";
 import {useTheme} from "../hook/useTheme";
 
 const Skelet = ({option = false}) => {
@@ -24,6 +23,13 @@ const Skelet = ({option = false}) => {
                     <SkeletLine />
                     <SkeletLine />
                     <SkeletLine />
+                </div>
+            )
+            break;
+        case 'ecoDet':
+            return  newSkelet = (
+                <div>
+                    <SkeletLine style={{textAlign: 'center'}} >Идет загрузка данных...</SkeletLine>
                 </div>
             )
             break;
