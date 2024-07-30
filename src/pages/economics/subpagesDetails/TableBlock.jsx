@@ -17,9 +17,9 @@ const TableBlock = ({year, month}) => {
     const converter = (data)=>{
         let x = {}
         let color = {
-            g: '#1DBE03',
+            g: /*#1DBE03'*/ '#17fa2f',
             y: '#FFF505',
-            r: '#F11010'
+            r: /*#F11010'*/ '#FF3131'
         }
         Object.entries(data).forEach(function([key, value]) {
             value = mln(value)
@@ -32,7 +32,7 @@ const TableBlock = ({year, month}) => {
             else {return color.r}
         }
         return (
-            <div className='header line'>
+            <div className='header'>
                 <BlockShadow className='flexYear headBG headBlockItem'>{year}</BlockShadow>
                 <ElemTableBlock bg={'lineBG'}>
                     <div>{x.ЗапроцентованоПлан}/{x.ЗапроцентованоПланНарастающимИтогом}</div>
