@@ -56,7 +56,10 @@
         display: flex;
         align-items: flex-start;
         height: 100%;
+        /*color: #a7a7a7;*/
+        color: #e4e4e4;
     }
+
     .headBlock {
         width: 22%;
     }
@@ -65,8 +68,10 @@
         text-align: center;
     }
     .headBG{
-        background-color: #3fb329;
+        /*background-color: #3fb329;*/
+        background-color: rgb(23, 23, 23);
         margin-bottom: 0px;
+        color: #a7a7a7;
     }
     .lineBG{
         border: 1px solid #80808045;
@@ -82,5 +87,13 @@
         /*flex: 0 5 150px;*/
         width: 10%;
         text-align: center;
+    }
+}
+
+.xAxisHover {
+    &:hover {
+        font-size: 17px;
+        text-shadow: 1px 5px 10px #ffffff;
+        letter-spacing: 1px;
     }
 }

@@ -63,14 +63,16 @@ const Chart = ({data, date}) => {
     const CustomizedDot = (props) => {
         const { cx, cy, stroke, payload, value } = props;
         return (
-            <circle
-                cx={cx}
-                cy={cy}
-                r={4}
-                stroke='grey'
-                style={{opacity: "0.9"}}
-                strokeWidth={1}
-                fill={stroke} />
+            <g>
+                <circle
+                    cx={cx}
+                    cy={cy}
+                    r={4}
+                    stroke='grey'
+                    style={{opacity: "0.9"}}
+                    strokeWidth={1}
+                    fill={stroke} />
+            </g>
         )
     };
 
@@ -86,11 +88,11 @@ const Chart = ({data, date}) => {
             navigate('/economics/details')
         }
         return (
-            <g transform={`translate(${x},${y})`}>
-                <text x={20} y={0} dy={13} textAnchor="end" fill="#666" transform="rotate(0)" style={{fontWeight: 600, cursor: "pointer"}} onClick={openEcoPage2}>
-                    {month}
-                </text>
-            </g>
+                <g transform={`translate(${x},${y})`}>
+                    <text x={20} y={0} dy={13} textAnchor="end" fill="#afafaf" transform="rotate(0)" class={'xAxisHover'} style={{fontWeight: 400, cursor: "pointer"}} onClick={openEcoPage2}>
+                        {month}
+                    </text>
+                </g>
         );
     }
 

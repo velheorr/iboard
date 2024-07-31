@@ -34,7 +34,7 @@ const TableBlock = ({year, month}) => {
         return (
             <div className='header'>
                 <BlockShadow className='flexYear headBG headBlockItem'>{year}</BlockShadow>
-                <ElemTableBlock bg={'lineBG'}>
+                <ElemTableBlock bg={'lineBG'} >
                     <div>{x.ЗапроцентованоПлан}/{x.ЗапроцентованоПланНарастающимИтогом}</div>
                     <div>
                         <span style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоФакт} </span>
