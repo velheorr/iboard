@@ -34,15 +34,28 @@ const EconomicsDetails = () => {
     }
     makeData()
 
+    const makeList = ()=>{
+        let line = []
+        let min = +year -3
+        let max = +year +3
+        for (let i = min; i <= max; i++) {
+            if (i >= 2015 && i <= 2025) {
+                line.push(i)
+            }
+        }
+        return line
+    }
+    const renderList = makeList().map(i=>{
+        return <TableBlock key={i} year={i} month={month} bg={i === +year? '#444a45': ''}/>
+    })
+
     return (
         <div>
             <Button onClick={goBack} color={'success'}>Назад</Button>
             <div className='ecoDetails'>
                 <div className='month'>{month}</div>
                 <HeaderBlock/>
-                {yList.y1 && <TableBlock year={yList.y1} month={month}/>}
-                <TableBlock year={year} month={month}/>
-                {yList.y2 && <TableBlock year={yList.y2} month={month}/>}
+                {renderList}
             </div>
         </div>
     );

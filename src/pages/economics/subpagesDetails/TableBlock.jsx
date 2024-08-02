@@ -5,7 +5,7 @@ import '../economics.scss'
 import {useGetEco} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 
-const TableBlock = ({year, month}) => {
+const TableBlock = ({year, month, bg}) => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(year, month)
     const [data, setData] = useState({})
 
@@ -32,7 +32,7 @@ const TableBlock = ({year, month}) => {
             else {return color.r}
         }
         return (
-            <div className='header'>
+            <div className='header' style={{backgroundColor: bg}}>
                 <BlockShadow className='flexYear headBG headBlockItem'>{year}</BlockShadow>
                 <ElemTableBlock bg={'lineBG'} >
                     <div>{x.ЗапроцентованоПлан}/{x.ЗапроцентованоПланНарастающимИтогом}</div>
