@@ -1,5 +1,6 @@
 import React from 'react';
 import BlockShadow from "../../../elements/BlockShadow";
+import '../economics.scss'
 
 const ElemTableBlock = ({name, children, bg}) => {
     let fb = `fb33 headBlockItem ${bg}`
@@ -12,7 +13,10 @@ const ElemTableBlock = ({name, children, bg}) => {
                 name &&
                 <>
                     <BlockShadow className='headBlockItem headBG'>{name}</BlockShadow>
-                    <BlockShadow className='headBlockItem headBG'>За месяц, млн./ Нарастающим итогом, млн.</BlockShadow>
+                    <BlockShadow className='headBlockItem headBG flexItem'>
+                        <div className='flexL'>За месяц, млн.</div>
+                        <div className='flexR'>Нарастающим итогом, млн.</div>
+                    </BlockShadow>
                 </>
             }
 

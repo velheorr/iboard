@@ -16,7 +16,8 @@ import {settingsRealization} from "./js/realizationSliderSettings";
 import RealizationChartBlocks2 from "./subpages/RealizationChartBlocks2";
 import {configRealizationData} from "./js/configRealizationData";
 import {prepareSelect} from "./js/func";
-import {dark, light} from "../../utils/theme";
+import {dark, light} from "../../hook/useTheme";
+
 
 
 

@@ -97,3 +97,15 @@
         letter-spacing: 1px;
     }
 }
+
+.flexItem {
+    display: flex;
+    justify-content: space-around;
+    .flexL {
+        border-right: 1px solid #5c5c5c;
+        width: 49%;
+    }
+    .flexR {
+        width: 49%;
+    }
+}

@@ -5,13 +5,13 @@ import {useAuth} from "../../hook/useAuth";
 import {Box, Button, Divider, IconButton, InputAdornment, Tooltip, Typography} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import {useForm} from "react-hook-form";
-import {palette} from "../../utils/theme";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {loginSchema} from "./verify";
 import axios from "axios";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import {BACK} from "../../utils/links";
+import {useTheme} from "../../hook/useTheme";
 
 
 const Login = () => {
@@ -77,7 +77,7 @@ const Login = () => {
 
     return (
         <div>
-            <Divider  sx={{color:palette.grey["500"], fontSize: '18px', mb: 1}}>Вход</Divider>
+            <Divider  sx={{color: useTheme('divider'), fontSize: '18px', mb: 1}}>Вход</Divider>
             <Typography align='right' variant="subtitle1" sx={{color: "orange"}}>{authMsg}</Typography>
             <Box
                 onSubmit={handleSubmit(onSubmit)}
@@ -113,10 +113,10 @@ const Login = () => {
                 <Button fullWidth variant="outlined" type='submit' size='small' color="success">Войти</Button>
             </Box>
             <Box sx={{textAlign: 'right', mt: 2}}>
-                <Typography variant="caption" display="block" gutterBottom color={palette.grey["500"]}>
+                <Typography variant="caption" display="block" gutterBottom color={'grey'}>
                     Ещё не зарегистрированы? <Link to='/register'>Регистрация</Link>
                 </Typography>
-                <Typography variant="caption" display="block" gutterBottom color={palette.grey["500"]}>
+                <Typography variant="caption" display="block" gutterBottom color={'grey'}>
                     Забыли пароль? <Link to='/resetPassword'>Сброс пароля</Link>
                 </Typography>
             </Box>

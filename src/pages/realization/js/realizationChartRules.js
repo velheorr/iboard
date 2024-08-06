@@ -1,7 +1,5 @@
-/*import {dark, light} from "../../../utils/theme";*/
-
-
 import {dark, light} from "../../../hook/useTheme";
+
 
 const findBiggerNum = (a, b) =>{
     if (a > b) {

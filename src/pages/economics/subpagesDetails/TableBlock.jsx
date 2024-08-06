@@ -35,47 +35,56 @@ const TableBlock = ({year, month, bg}) => {
             <div className='header' style={{backgroundColor: bg}}>
                 <BlockShadow className='flexYear headBG headBlockItem'>{year}</BlockShadow>
                 <ElemTableBlock bg={'lineBG'} >
-                    <div>{x.ЗапроцентованоПлан}/{x.ЗапроцентованоПланНарастающимИтогом}</div>
-                    <div>
-                        <span style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоФакт} </span>
-                         /
-                        <span style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПланНарастающимИтогом)}}> {x.ЗапроцентованоФактНарастающимИтогом}</span>
+                    <div className='flexItem'>
+                        <div className='flexL'>{x.ЗапроцентованоПлан}</div>
+                        <div className='flexR'>{x.ЗапроцентованоПланНарастающимИтогом}</div>
                     </div>
-                    <div>
-                        <span style={{color: colored(x.ЗапроцентованоПрогноз, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоПрогноз} </span>
-                        /
-                        <span> {x.ЗапроцентованоПрогнозНарастающимИтогом}</span>
+                    <div className='flexItem'>
+                        <div className='flexL' style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоФакт} </div>
+                        <div className='flexR' style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПланНарастающимИтогом)}}> {x.ЗапроцентованоФактНарастающимИтогом}</div>
                     </div>
-                </ElemTableBlock>
-                <ElemTableBlock bg={'lineBG'}>
-                    <div>{x.ВаловаяПрибыльПлан}/{x.ВаловаяПрибыльПланНарастающимИтогом}</div>
-                    <div>
-                        <span style={{color: colored(x.ВаловаяПрибыльФакт, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльФакт} </span>
-                        /
-                        <span style={{color: colored(x.ВаловаяПрибыльФактНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльФактНарастающимИтогом}</span>
-                    </div>
-                    <div>
-                        <span style={{color: colored(x.ВаловаяПрибыльПрогноз, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльПрогноз} </span>
-                        /
-                        <span style={{color: colored(x.ВаловаяПрибыльПрогнозНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльПрогнозНарастающимИтогом}</span>
+                    <div className='flexItem'>
+                        <div className='flexL' style={{color: colored(x.ЗапроцентованоПрогноз, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоПрогноз} </div>
+                        <div className='flexR'> {x.ЗапроцентованоПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
                 <ElemTableBlock bg={'lineBG'}>
-                    <div>{x.ОперационнаяПрибыльПлан}/{x.ОперационнаяПрибыльПланНарастающимИтогом}</div>
-                    <div>
-                        <span style={{color: colored(x.ОперационнаяПрибыльФакт, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльФакт} </span>
-                        /
-                        <span style={{color: colored(x.ОперационнаяПрибыльФактНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльФактНарастающимИтогом}</span>
+                    <div className='flexItem'>
+                        <div className='flexL'>{x.ВаловаяПрибыльПлан}</div>
+                        <div className='flexR'>{x.ВаловаяПрибыльПланНарастающимИтогом}</div>
                     </div>
-                    <div>
-                        <span style={{color: colored(x.ОперационнаяПрибыльПрогноз, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльПрогноз} </span>
-                        /
-                        <span style={{color: colored(x.ОперационнаяПрибыльПрогнозНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльПрогнозНарастающимИтогом}</span>
+                    <div className='flexItem'>
+                        <div className='flexL' style={{color: colored(x.ВаловаяПрибыльФакт, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльФакт} </div>
+                        <div className='flexR' style={{color: colored(x.ВаловаяПрибыльФактНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльФактНарастающимИтогом}</div>
+                    </div>
+                    <div className='flexItem'>
+                        <div className='flexL' style={{color: colored(x.ВаловаяПрибыльПрогноз, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльПрогноз} </div>
+                        <div className='flexR' style={{color: colored(x.ВаловаяПрибыльПрогнозНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
                 <ElemTableBlock bg={'lineBG'}>
-                    <div>{x.НЗП} /-</div>
-                    <div>-/-</div>
+                    <div className='flexItem'>
+                        <div className='flexL'>{x.ОперационнаяПрибыльПлан}</div>
+                        <div className='flexR'>{x.ОперационнаяПрибыльПланНарастающимИтогом}</div>
+                    </div>
+                    <div className='flexItem'>
+                        <div className='flexL' style={{color: colored(x.ОперационнаяПрибыльФакт, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльФакт} </div>
+                        <div className='flexR' style={{color: colored(x.ОперационнаяПрибыльФактНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльФактНарастающимИтогом}</div>
+                    </div>
+                    <div className='flexItem'>
+                        <div className='flexL' style={{color: colored(x.ОперационнаяПрибыльПрогноз, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльПрогноз} </div>
+                        <div className='flexR' style={{color: colored(x.ОперационнаяПрибыльПрогнозНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльПрогнозНарастающимИтогом}</div>
+                    </div>
+                </ElemTableBlock>
+                <ElemTableBlock bg={'lineBG'}>
+                    <div className='flexItem'>
+                        <div className='flexL'>{x.НЗП}</div>
+                        <div className='flexR'>-</div>
+                    </div>
+                    <div className='flexItem'>
+                        <div className='flexL'>-</div>
+                        <div className='flexR'>-</div>
+                    </div>
                 </ElemTableBlock>
             </div>
         )

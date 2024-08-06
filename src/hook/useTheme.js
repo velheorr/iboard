@@ -13,22 +13,24 @@ export const dark = {
         main: '',// фон основной страницы
         sideBar: '#100f0f',// фон сайдбара
         header: '#100f0f', // фон хедера
-        modal:  "#7c7c7c", // фон модалки
+        /* modal:  "#7c7c7c",*/ // фон модалки
+        modal:  "#0e0f0e", // фон модалки
     },
     select : '#333333', // select, dropdown
     divider: '#80808096', // divider for SB
     chart: { // цвета для графиков
         yellow: '#ffff00',
-        red: '#f80000',
-        green: '#17fa2f',
-        grey: '#9d9d9d',
+        red: '#db2823',
+        green: '#9fdb21',
+        grey: '#8795a1',
     },
-    listHeader: '#333333',
+    listHeader: '#171717',
     listHeaderText: '#9f9f9f',
     scroll: 'black',
     neonGreen: '#17fa2f',
     neonGreenShadow: '-1px 1px 10px #1dd530, 0px -2px 10px #1dd530', //неон тень на модальных окнах
-    skelet: '#75757580' // skeleton
+
+
 }
 
 export const light = {
@@ -44,17 +46,16 @@ export const light = {
     select : '',
     divider: '', // divider for SB
     chart: {
-        yellow: '#F6E69C',
-        red: '#EF7065',
-        green: '#61CE95',
-        grey: '#8690A3',
+        yellow: '#eaee29',
+        red: '#f11010',
+        green: '#1cc700',
+        grey: '#9f9f9f',
     },
-    listHeader: '#4cb242',
-    listHeaderText: '#ffffff',
+    listHeader: '#f5f5f5',
+    listHeaderText: '#444444',
     scroll: '#dddddd',
     neonGreen: '#4cb242',
-    neonGreenShadow: '',
-    skelet: ''
+    neonGreenShadow: ''
 }
 
 

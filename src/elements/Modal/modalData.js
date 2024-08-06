@@ -1,10 +1,10 @@
 import './modal.scss'
-import {dark, light} from "../../utils/theme";
 import {
     RealizNTFACT, RealizNTPLAN, RealizNZP, RealizOF, RealizOFOT, RealizOIM, RealizOS, RealizPFOT, RealizPRIN, RealizPROC, RealizSPD, RealizSPS} from "./subpages/ModalRealization";
 import ModalAuth from "./subpages/ModalAuth";
 import ModalResetPassword from "./subpages/ModalResetPassword";
 import ModalResetPasswordConfirm from "./subpages/ModalResetPasswordConfirm";
+import {dark, light} from "../../hook/useTheme";
 
 
 

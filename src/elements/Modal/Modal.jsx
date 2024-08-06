@@ -39,17 +39,17 @@ export default function TransitionsModal() {
             >
                 <Fade in={open}>
                     <Box sx={{backgroundColor: useTheme('bg', 'modal'),
-                        color: useTheme('text')
+                        color: useTheme('text'), boxShadow: useTheme('neonGreenShadow')
                     }} className='modal'>
-                        <div className='modalBtn'>
-                            <IconButton onClick={handleClose} size="large">
-                                <CloseIcon fontSize='inherit'/>
-                            </IconButton>
-                        </div>
-                        <div style={{color: useTheme('text')}}>
-                            {modalText}
-                        </div>
-                    </Box>
+                    <div className='modalBtn'>
+                        <IconButton onClick={handleClose} size="large">
+                            <CloseIcon fontSize='inherit'/>
+                        </IconButton>
+                    </div>
+                    <div style={{color: useTheme('text')}}>
+                        {modalText}
+                    </div>
+                </Box>
                 </Fade>
             </Modal>
         </div>
