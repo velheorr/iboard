@@ -20,6 +20,7 @@ import Auth from "./pages/login/Auth";
 import Economics from "./pages/economics/Economics";
 import Resources from "./pages/resources/Resources";
 import EconomicsDetails from "./pages/economics/EconomicsDetails";
+import VersionLog from "./pages/versionLog/VersionLog";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -52,7 +53,9 @@ function App() {
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Resources /></RequireAuth>}/>
                         <Route  path='/lost_develop' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route path='/versionLog' element={<VersionLog/>}/>
                     </Route>
+
                 </Routes>
                 <TransitionsModal/>
             </ThemeProvider>

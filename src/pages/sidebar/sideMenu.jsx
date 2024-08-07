@@ -16,12 +16,13 @@ import resources_black from "../../img/sidebar/resources_black.png";
 import production_black from "../../img/sidebar/production_black.png";
 import dynamic from "../../img/sidebar/dynamic.png";
 import projects from "../../img/sidebar/projects.png";
+import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 import {setActive} from "./SideMenuSlice";
 
 const SideMenu = () => {
     const mode = useSelector(state => state.header.mode);
     const menuList = useSelector(state => state.sidemenu.menuList);
-
+    const dispatch = useDispatch()
 
     const neon = useTheme('neonGreen')
     const color = useTheme('divider')
@@ -49,6 +50,18 @@ const SideMenu = () => {
                 <Tree name={'Баланс'} img={equality_black} link={'balance'}/>
                 <Tree name={'Ресурсы'} img={resources_black} link={'resources'}/>
                 <Tree name={'ПРР'} img={guardian_black} link={'lost_develop'}/>
+            </SimpleTreeView>
+            <SimpleTreeView sx={{position: 'absolute', bottom: 0, width: '100%'}}>
+                <Link to={'/versionLog'} onClick={()=>{dispatch(setActive('versionLog'))}}>
+                    <TreeItem itemId={'versionLog'} className={themeColor}
+                              label={
+                                  <ListItemButton sx={{height: 40}}>
+                                      <ListItemIcon sx={{width: '44px', color: useTheme('text')}}><PrivacyTipIcon/></ListItemIcon>
+                                      <div>Версия</div>
+                                  </ListItemButton>
+                              }>
+                    </TreeItem>
+                </Link>
             </SimpleTreeView>
         </div>
     );

@@ -1,0 +1,6 @@
+.scroll {
+    scrollbar-width: thin;
+    /*scrollbar-color: green black;*/
+    overflow: overlay;
+    height: calc(100vh - 166px);
+}

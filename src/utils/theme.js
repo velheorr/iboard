@@ -1,16 +1,15 @@
-/*
 import lion from '../img/bg_lionRight2.png'
 import lionBlack from '../img/bg_lionRight4.png'
 import logoLight from '../img/header/logoLight.png';
 import logoDark from '../img/header/logoDark.png';
 
-/!*главная тема*!/
+/*главная тема*/
 export const dark = {
     text: "#ffffff", // цвет текста
     lion: lionBlack, // фон со львом
     logo: logoDark, // логотип
     bg: {
-        /!*main: "#515151",// фон основной страницы*!/
+        /*main: "#515151",// фон основной страницы*/
         main: "#161627",// фон основной страницы
         sideBar: '#333333',// фон сайдбара
         header: '#333333', // фон хедера
@@ -18,14 +17,14 @@ export const dark = {
     },
     select : '#333333', // select, dropdown
     chart: { // цвета для графиков
-        /!*yellow: '#ffff00',
+        /*yellow: '#ffff00',
         red: '#db2823',
         green: '#9fdb21',
-        grey: '#8795a1',*!/
-       /!* yellow: '#F6E69C',
+        grey: '#8795a1',*/
+       /* yellow: '#F6E69C',
         red: '#EF7065',
         green: '#61CE95',
-        grey: '#8690A3',*!/
+        grey: '#8690A3',*/
         yellow: '#f7931a',
         red: '#f01c23',
         green: '#43a047',
@@ -45,10 +44,10 @@ export const light = {
     },
     select : '',
     chart: {
-        /!*yellow: '#eaee29',
+        /*yellow: '#eaee29',
         red: '#f11010',
         green: '#1cc700',
-        grey: '#9f9f9f',*!/
+        grey: '#9f9f9f',*/
         yellow: '#F6E69C',
         red: '#EF7065',
         green: '#61CE95',
@@ -57,7 +56,7 @@ export const light = {
 }
 
 
-/!*export const color = {
+/*export const color = {
     grey: '#333333',
     grey_: '#33333385',
     black: '#1C1B1B',
@@ -65,7 +64,7 @@ export const light = {
     red: '#db2823',
     green: '#9fdb21',
     grey2: '#8795a1',
-}*!/
+}*/
 
 
 export const palette = {
@@ -198,4 +197,3 @@ export const themeMode = (mode) => {
         },
     };
 };
-*/

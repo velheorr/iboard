@@ -7,7 +7,7 @@ const Economics = () => {
     return (
         <div>
             <ChartContainer econ={'econ1'} date={'2024'}/>
-            <ChartContainer econ={'econ2'} date={'2025'}/>
+            <ChartContainer econ={'econ2'} date={'2023'}/>
         </div>
     );
 };
