@@ -9,7 +9,7 @@ const VersionLog = () => {
                 <div className='verLog'>
                     <div className='version'>
                         <div>06.08.2024</div>
-                        <div>1.0.10</div>
+                        <div>1.0.2</div>
                     </div>
                     <div className='page'>Экономика</div>
                     <ul>
@@ -26,7 +26,7 @@ const VersionLog = () => {
                 <div className='verLog'>
                     <div className='version'>
                         <div>02.08.2024</div>
-                        <div>1.0.9</div>
+                        <div>1.0.1</div>
                     </div>
                     <div className='page'>Экономика</div>
                     <ul>
@@ -43,7 +43,7 @@ const VersionLog = () => {
                 <div className='verLog'>
                     <div className='version'>
                         <div>01.08.2024</div>
-                        <div>1.0.7</div>
+                        <div>1.0.0</div>
                     </div>
                     <div className='page'>Версионирование</div>
                     <ul>

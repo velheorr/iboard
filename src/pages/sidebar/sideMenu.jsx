@@ -3,7 +3,7 @@ import '../layout.scss'
 import {Divider, ListItemIcon} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import guardian_black from '../../img/sidebar/guardian_black.png'
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {useTheme} from "../../hook/useTheme";
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
@@ -53,14 +53,15 @@ const SideMenu = () => {
             </SimpleTreeView>
             <SimpleTreeView sx={{position: 'absolute', bottom: 0, width: '100%'}}>
                 <Link to={'/versionLog'} onClick={()=>{dispatch(setActive('versionLog'))}}>
-                    <TreeItem itemId={'versionLog'} className={themeColor}
+                    <Tree name={'О версии'} ico={<PrivacyTipIcon/>} link={'versionLog'} />
+                   {/* <TreeItem itemId={'versionLog'} className={themeColor}
                               label={
                                   <ListItemButton sx={{height: 40}}>
                                       <ListItemIcon className='ver' sx={{width: '44px', color: useTheme('text')}}><PrivacyTipIcon/></ListItemIcon>
                                       <div style={{color: '#18f12f'}}>О версии</div>
                                   </ListItemButton>
                               }>
-                    </TreeItem>
+                    </TreeItem>*/}
                 </Link>
             </SimpleTreeView>
         </div>
@@ -74,13 +75,14 @@ const Tree = ({name, img = false, ico = false, link = false, children})=>{
     const color = useTheme('divider')
     const themeColor = useTheme() ? 'xxx' : 'themeColor'
     const dispatch = useDispatch()
+    const neon = useTheme('neonGreen')
 
     const activate = (page)=>{
         dispatch(setActive(page))
     }
 
     return (
-        <Link to={links} onClick={()=>{activate(name)}}>
+        <NavLink to={links} onClick={()=>{activate(name)}}>
             <TreeItem itemId={name + Math.random()} className={themeColor}
             label={
                 <ListItemButton sx={{height: 40}}>
@@ -90,13 +92,13 @@ const Tree = ({name, img = false, ico = false, link = false, children})=>{
                         />
                     }
                     { ico &&
-                        <ListItemIcon sx={{width: '44px'}}>{ico}</ListItemIcon>
+                        <ListItemIcon className={`menuIcon img `} sx={{width: '44px', color: neon}}>{ico}</ListItemIcon>
                     }
                     <div>{name}</div>
                 </ListItemButton>
             }>{children}</TreeItem>
             <Divider sx={{borderColor: color}}/>
-        </Link>
+        </NavLink>
     )
 }
 
