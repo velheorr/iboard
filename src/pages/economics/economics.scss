@@ -56,8 +56,12 @@
         display: flex;
         align-items: flex-start;
         height: 100%;
-        /*color: #a7a7a7;*/
-        color: #e4e4e4;
+        &.dark {
+            color: #e4e4e4;
+        }
+        &.light {
+            color: #717272;
+        }
     }
 
     .headBlock {
@@ -66,12 +70,24 @@
     .headBlockItem {
         padding: 7px;
         text-align: center;
+        &.light {
+            &.z{background-color: #CAEDFC; }
+            &.v{background-color: #FBD5D1; }
+            &.o{background-color: #C0F3DA; }
+            &.n{background-color: #f3aca6; }
+        }
+
     }
     .headBG{
-        /*background-color: #3fb329;*/
-        background-color: rgb(23, 23, 23);
         margin-bottom: 0px;
-        color: #a7a7a7;
+        &.dark {
+            background-color: #171717;
+            color: #a7a7a7;
+        }
+        &.light {
+            background-color: #848fa145;
+            color: #7f7f7f;
+        }
     }
     .lineBG{
         border: 1px solid #80808045;
@@ -84,7 +100,6 @@
         flex-basis: 49%;
     }
     .flexYear {
-        /*flex: 0 5 150px;*/
         width: 10%;
         text-align: center;
     }

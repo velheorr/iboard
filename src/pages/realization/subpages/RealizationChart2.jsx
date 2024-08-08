@@ -25,7 +25,6 @@ const RealizationChart2 = ({item, variant = false}) => {
             let newLabel = payload[0]?.payload.realNumber || payload[0].value
             let info = payload[0]?.payload.info || null
             return (
-                /*<div className="custom-tooltip" style={{color: colorTheme()}}>*/
                 <div className="custom-tooltip">
                     <Typography variant="subtitle2" gutterBottom color='white'>{`${info}: ${newLabel} %`}</Typography>
                     {

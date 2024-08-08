@@ -56,8 +56,8 @@ const SideMenu = () => {
                     <TreeItem itemId={'versionLog'} className={themeColor}
                               label={
                                   <ListItemButton sx={{height: 40}}>
-                                      <ListItemIcon sx={{width: '44px', color: useTheme('text')}}><PrivacyTipIcon/></ListItemIcon>
-                                      <div>Версия</div>
+                                      <ListItemIcon className='ver' sx={{width: '44px', color: useTheme('text')}}><PrivacyTipIcon/></ListItemIcon>
+                                      <div style={{color: '#18f12f'}}>О версии</div>
                                   </ListItemButton>
                               }>
                     </TreeItem>

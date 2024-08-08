@@ -32,6 +32,7 @@ export default function DropMenu({user, toggleTheme, handleLogout}) {
         setSwitchState(!switchState)
         let y = x === 'dark' ? 'light' : 'dark'
         toggleTheme(y)
+        handleClose()
     }
     const tooltipState = switchState ? 'Вкл. темную тему' : 'Вкл. светлую тему'
 

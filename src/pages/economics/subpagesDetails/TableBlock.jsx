@@ -4,10 +4,12 @@ import ElemTableBlock from "./ElemTableBlock";
 import '../economics.scss'
 import {useGetEco} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
+import {useTheme} from "../../../hook/useTheme";
 
 const TableBlock = ({year, month, bg}) => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(year, month)
     const [data, setData] = useState({})
+    const theme = useTheme() ? 'dark' : 'light'
 
     const mln = (num) =>{
         let newNum = num !== 0 ? num / 1000000 : 0
@@ -17,9 +19,16 @@ const TableBlock = ({year, month, bg}) => {
     const converter = (data)=>{
         let x = {}
         let color = {
-            g: /*#1DBE03'*/ '#17fa2f',
-            y: '#FFF505',
-            r: /*#F11010'*/ '#FF3131'
+            dark: {
+                g: '#17fa2f',
+                y: '#FFF505',
+                r: '#FF3131',
+            },
+            light: {
+                g: '#138807',
+                y: '#fba104',
+                r: '#FF3131',
+            }
         }
         Object.entries(data).forEach(function([key, value]) {
             value = mln(value)
@@ -27,14 +36,14 @@ const TableBlock = ({year, month, bg}) => {
         });
         const colored = (x, y) => {
             let result = (x/y)*100
-            if (result - y <= 15){return color.g}
-            else if(result - y > 15 && result - y <= 30){return color.y}
-            else {return color.r}
+            if (result - y <= 15){return color[theme].g}
+            else if(result - y > 15 && result - y <= 30){return color[theme].y}
+            else {return color[theme].r}
         }
         return (
-            <div className='header' style={{backgroundColor: bg}}>
-                <BlockShadow className='flexYear headBG headBlockItem'>{year}</BlockShadow>
-                <ElemTableBlock bg={'lineBG'} >
+            <div className={`header ${theme}`} style={{backgroundColor: bg}}>
+                <BlockShadow className={`flexYear headBG ${theme} headBlockItem`}>{year}</BlockShadow>
+                <ElemTableBlock bg={`lineBG ${theme} z`} >
                     <div className='flexItem'>
                         <div className='flexL'>{x.ЗапроцентованоПлан}</div>
                         <div className='flexR'>{x.ЗапроцентованоПланНарастающимИтогом}</div>
@@ -48,7 +57,7 @@ const TableBlock = ({year, month, bg}) => {
                         <div className='flexR'> {x.ЗапроцентованоПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
-                <ElemTableBlock bg={'lineBG'}>
+                <ElemTableBlock bg={`lineBG ${theme} v`}>
                     <div className='flexItem'>
                         <div className='flexL'>{x.ВаловаяПрибыльПлан}</div>
                         <div className='flexR'>{x.ВаловаяПрибыльПланНарастающимИтогом}</div>
@@ -62,7 +71,7 @@ const TableBlock = ({year, month, bg}) => {
                         <div className='flexR' style={{color: colored(x.ВаловаяПрибыльПрогнозНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
-                <ElemTableBlock bg={'lineBG'}>
+                <ElemTableBlock bg={`lineBG ${theme} o`}>
                     <div className='flexItem'>
                         <div className='flexL'>{x.ОперационнаяПрибыльПлан}</div>
                         <div className='flexR'>{x.ОперационнаяПрибыльПланНарастающимИтогом}</div>
@@ -76,7 +85,7 @@ const TableBlock = ({year, month, bg}) => {
                         <div className='flexR' style={{color: colored(x.ОперационнаяПрибыльПрогнозНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
-                <ElemTableBlock bg={'lineBG'}>
+                <ElemTableBlock bg={`lineBG ${theme} n`}>
                     <div className='flexItem'>
                         <div className='flexL'>{x.НЗП}</div>
                         <div className='flexR'>-</div>

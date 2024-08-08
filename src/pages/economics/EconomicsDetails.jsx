@@ -5,11 +5,13 @@ import TableBlock from "./subpagesDetails/TableBlock";
 import HeaderBlock from "./subpagesDetails/HeaderBlock";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router";
+import {useTheme} from "../../hook/useTheme";
 
 const EconomicsDetails = () => {
     const month = useSelector(state => state.economics.monthDetails);
     const year = useSelector(state => state.economics.yearDetails);
     const navigate = useNavigate();
+    const theme = useTheme() ? 'dark' : 'light'
 
     const goBack = ()=>{
         navigate('/economics');
@@ -46,7 +48,8 @@ const EconomicsDetails = () => {
         return line
     }
     const renderList = makeList().map(i=>{
-        return <TableBlock key={i} year={i} month={month} bg={i === +year? '#444a45': ''}/>
+        let bgColor = theme === 'dark'? '#444a45' : '#c9d8f794'
+        return <TableBlock key={i} year={i} month={month} bg={i === +year? bgColor: ''}/>
     })
 
     return (
@@ -57,6 +60,7 @@ const EconomicsDetails = () => {
                 <HeaderBlock/>
                 {renderList}
             </div>
+
         </div>
     );
 };
