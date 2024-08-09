@@ -38,7 +38,7 @@ const SideMenu = () => {
                                   <div>Реализация</div>
                               </ListItemButton>
                           }>
-                    <Tree name={'Динамика'} img={dynamic} link={'realisation'} />
+                    <Tree name={'Динамика'} img={dynamic} link={'dynamic'} />
                     <Tree name={'Процентование'} img={production_black} link={'realisation'}/>
                 </TreeItem>
                 <Divider sx={{borderColor: color}}/>
@@ -54,14 +54,6 @@ const SideMenu = () => {
             <SimpleTreeView sx={{position: 'absolute', bottom: 0, width: '100%'}}>
                 <Link to={'/versionLog'} onClick={()=>{dispatch(setActive('versionLog'))}}>
                     <Tree name={'О версии'} ico={<PrivacyTipIcon/>} link={'versionLog'} />
-                   {/* <TreeItem itemId={'versionLog'} className={themeColor}
-                              label={
-                                  <ListItemButton sx={{height: 40}}>
-                                      <ListItemIcon className='ver' sx={{width: '44px', color: useTheme('text')}}><PrivacyTipIcon/></ListItemIcon>
-                                      <div style={{color: '#18f12f'}}>О версии</div>
-                                  </ListItemButton>
-                              }>
-                    </TreeItem>*/}
                 </Link>
             </SimpleTreeView>
         </div>
