@@ -1,46 +1,36 @@
-import React, {useEffect} from 'react';
-import {Button} from "@mui/material";
+import React, {useEffect, useState} from 'react';
+import {Button, FormControlLabel, IconButton, Tooltip, Typography} from "@mui/material";
 import './economics.scss'
 import TableBlock from "./subpagesDetails/TableBlock";
 import HeaderBlock from "./subpagesDetails/HeaderBlock";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import {useTheme} from "../../hook/useTheme";
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
+import Switch from "@mui/material/Switch";
 
 const EconomicsDetails = () => {
     const month = useSelector(state => state.economics.monthDetails);
     const year = useSelector(state => state.economics.yearDetails);
     const navigate = useNavigate();
     const theme = useTheme() ? 'dark' : 'light'
+    const goBack = ()=>{navigate('/economics')}
+    const [check, setCheck] = useState(false)
 
-    const goBack = ()=>{
-        navigate('/economics');
+    const analitics = () =>{
+        setCheck(!check)
     }
 
-    let yList = {
-        y1: false,
-        y2: false,
-    }
-
-    const makeData = () => {
-        if (year === '2015'){
-            yList.y1 = +year +1
-            yList.y2 = false
-        } else if(year === '2025'){
-            yList.y1 = false
-            yList.y2 = +year -1
-        } else {
-            yList.y1 = +year +1
-            yList.y2 = +year -1
-        }
-    }
-    makeData()
-
-    const makeList = ()=>{
+    const makeList = (all = false)=>{
         let line = []
-        let min = +year -3
-        let max = +year +3
-        for (let i = min; i <= max; i++) {
+        let min = +year -1
+        let max = +year +1
+        if (all){
+            min = 2015
+            max = 2025
+        }
+        /*for (let i = min; i <= max; i++) {*/
+        for (let i = max; i >= min; i--) {
             if (i >= 2015 && i <= 2025) {
                 line.push(i)
             }
@@ -51,14 +41,28 @@ const EconomicsDetails = () => {
         let bgColor = theme === 'dark'? '#444a45' : '#c9d8f794'
         return <TableBlock key={i} year={i} month={month} bg={i === +year? bgColor: ''}/>
     })
+    const renderAll = makeList(true).map(i=>{
+        let bgColor = theme === 'dark'? '#444a45' : '#c9d8f794'
+        return <TableBlock key={i} year={i} month={month} bg={i === +year? bgColor: ''}/>
+    })
 
     return (
         <div>
-            <Button onClick={goBack} color={'success'}>Назад</Button>
+            <div className='btnTopBlock'>
+                <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
+                    <Button onClick={goBack} color={'success'} variant="outlined" size='small' startIcon={<ReplyAllIcon />}>Назад</Button>
+                </Tooltip>
+                <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
+                    <FormControlLabel sx={{float: 'right'}} control={<Switch onClick={analitics} checked={check} color="success"/>} label="Включить аналитику" />
+                </Tooltip>
+            </div>
             <div className='ecoDetails'>
                 <div className='month'>{month}</div>
                 <HeaderBlock/>
-                {renderList}
+
+                {
+                    check ? renderAll : renderList
+                }
             </div>
 
         </div>
