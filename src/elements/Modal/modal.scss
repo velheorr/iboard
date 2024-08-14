@@ -66,15 +66,29 @@ code {
   .blockItem {
     padding: 7px;
     border-radius: 5px;
-    &.greyShadow {
-      box-shadow: -1px 1px 10px #8a8a8a, 0px -2px 10px #8a8a8a;
+    &.dark {
+      &.greyShadow {
+        box-shadow: -1px 1px 10px #8a8a8a, 0px -2px 10px #8a8a8a;
+      }
+      &.greenShadow {
+        box-shadow: -1px 1px 10px #1dd530, 0px -2px 10px #1dd530;
+      }
+      &.blueShadow {
+        box-shadow: -1px 1px 10px #0095b6, 0px -2px 10px #0095b6;
+      }
     }
-    &.greenShadow {
-      box-shadow: -1px 1px 10px #1dd530, 0px -2px 10px #1dd530;
+    &.light {
+      &.greyShadow {
+        background-color: #6161611f;
+      }
+      &.greenShadow {
+        background-color: #61ce9552;
+      }
+      &.blueShadow {
+
+      }
     }
-    &.blueShadow {
-      box-shadow: -1px 1px 10px #0095b6, 0px -2px 10px #0095b6;
-    }
+
     .formula {
       display: flex;
       justify-content: center;

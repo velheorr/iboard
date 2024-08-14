@@ -3,6 +3,8 @@ import {Chip, Divider} from "@mui/material";
 import {useTheme} from "../../../hook/useTheme";
 import '../modal.scss'
 
+
+
 const ModalTitle = ({text})=>{
     const neonGreen = useTheme('neonGreen')
     return <Typography variant="h5" gutterBottom className='modalAuthTitle' sx={{color: neonGreen}}>{text}</Typography>
@@ -18,9 +20,10 @@ const Formula = ({param}) => {
             </div>
 }
 const FormulaBlock = ({param, children}) => {
+    const theme = useTheme() ? 'dark' : 'light'
   return <>
       <Divider sx={{mb:'10px', mt: '10px'}}><b>ФОРМУЛА:</b></Divider>
-      <div className='blockItem greyShadow'>
+      <div className={`blockItem greyShadow ${theme}`}>
           <Formula param={param}/>
           <div>
               <p>где:</p>
@@ -30,17 +33,19 @@ const FormulaBlock = ({param, children}) => {
   </>
 }
 const RecommendBlock = ({children}) => {
+    const theme = useTheme() ? 'dark' : 'light'
     return <>
         <Divider sx={{mb:'10px', mt: '10px'}}><b>РЕКОМЕНДАЦИИ:</b></Divider>
-        <div className='blockItem greenShadow'>
+        <div className={`blockItem greenShadow ${theme}`}>
             {children}
         </div>
     </>
 }
 const RulesBlock = ({children}) => {
+    const theme = useTheme() ? 'dark' : 'light'
     return <>
         <Divider sx={{mb:'10px', mt: '10px'}}><b>УСЛОВИЯ ОКРАШИВАНИЯ:</b></Divider>
-        <div className='blockItem blueShadow'>
+        <div className={`blockItem blueShadow ${theme}`}>
             {children}
         </div>
     </>
@@ -139,7 +144,7 @@ export const RealizPFOT = ({bg})=> {
                         <Chip label="69% и менее, более 100%" sx={{backgroundColor: bg.r, width: '33%'}} />
                         <Chip label="от 70% до 89%" sx={{backgroundColor: bg.y, width: '33%'}} />
                         <Chip label="от 90% до 100%" sx={{backgroundColor: bg.g, width: '33%'}} />
-                    </div>, width: '33%', width: '33%'
+                    </div>
                 </RulesBlock>
             </div>
         </>

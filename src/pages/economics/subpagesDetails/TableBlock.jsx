@@ -45,54 +45,54 @@ const TableBlock = ({year, month, bg}) => {
                 <BlockShadow className={`flexYear headBG ${theme} headBlockItem`}>{year}</BlockShadow>
                 <ElemTableBlock bg={`lineBG ${theme} z`} >
                     <div className='flexItem'>
-                        <div className='flexL'>{x.ЗапроцентованоПлан}</div>
-                        <div className='flexR'>{x.ЗапроцентованоПланНарастающимИтогом}</div>
+                        <div className='flexL pointL'>{x.ЗапроцентованоПлан}</div>
+                        <div className='flexR pointR'>{x.ЗапроцентованоПланНарастающимИтогом}</div>
                     </div>
                     <div className='flexItem'>
-                        <div className='flexL' style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоФакт} </div>
-                        <div className='flexR' style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПланНарастающимИтогом)}}> {x.ЗапроцентованоФактНарастающимИтогом}</div>
+                        <div className='flexL pointL' style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоФакт} </div>
+                        <div className='flexR pointR' style={{color: colored(x.ЗапроцентованоФакт, x.ЗапроцентованоПланНарастающимИтогом)}}> {x.ЗапроцентованоФактНарастающимИтогом}</div>
                     </div>
                     <div className='flexItem'>
-                        <div className='flexL' style={{color: colored(x.ЗапроцентованоПрогноз, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоПрогноз} </div>
-                        <div className='flexR'> {x.ЗапроцентованоПрогнозНарастающимИтогом}</div>
+                        <div className='flexL pointL' style={{color: colored(x.ЗапроцентованоПрогноз, x.ЗапроцентованоПлан)}}>{x.ЗапроцентованоПрогноз} </div>
+                        <div className='flexR pointR'> {x.ЗапроцентованоПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
                 <ElemTableBlock bg={`lineBG ${theme} v`}>
                     <div className='flexItem'>
-                        <div className='flexL'>{x.ВаловаяПрибыльПлан}</div>
-                        <div className='flexR'>{x.ВаловаяПрибыльПланНарастающимИтогом}</div>
+                        <div className='flexL pointL'>{x.ВаловаяПрибыльПлан}</div>
+                        <div className='flexR pointR'>{x.ВаловаяПрибыльПланНарастающимИтогом}</div>
                     </div>
                     <div className='flexItem'>
-                        <div className='flexL' style={{color: colored(x.ВаловаяПрибыльФакт, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльФакт} </div>
-                        <div className='flexR' style={{color: colored(x.ВаловаяПрибыльФактНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльФактНарастающимИтогом}</div>
+                        <div className='flexL pointL' style={{color: colored(x.ВаловаяПрибыльФакт, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльФакт} </div>
+                        <div className='flexR pointR' style={{color: colored(x.ВаловаяПрибыльФактНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльФактНарастающимИтогом}</div>
                     </div>
                     <div className='flexItem'>
-                        <div className='flexL' style={{color: colored(x.ВаловаяПрибыльПрогноз, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльПрогноз} </div>
-                        <div className='flexR' style={{color: colored(x.ВаловаяПрибыльПрогнозНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльПрогнозНарастающимИтогом}</div>
+                        <div className='flexL pointL' style={{color: colored(x.ВаловаяПрибыльПрогноз, x.ВаловаяПрибыльПлан)}}>{x.ВаловаяПрибыльПрогноз} </div>
+                        <div className='flexR pointR' style={{color: colored(x.ВаловаяПрибыльПрогнозНарастающимИтогом, x.ВаловаяПрибыльПланНарастающимИтогом)}}> {x.ВаловаяПрибыльПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
                 <ElemTableBlock bg={`lineBG ${theme} o`}>
                     <div className='flexItem'>
-                        <div className='flexL'>{x.ОперационнаяПрибыльПлан}</div>
-                        <div className='flexR'>{x.ОперационнаяПрибыльПланНарастающимИтогом}</div>
+                        <div className='flexL pointL'>{x.ОперационнаяПрибыльПлан}</div>
+                        <div className='flexR pointR'>{x.ОперационнаяПрибыльПланНарастающимИтогом}</div>
                     </div>
                     <div className='flexItem'>
-                        <div className='flexL' style={{color: colored(x.ОперационнаяПрибыльФакт, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльФакт} </div>
-                        <div className='flexR' style={{color: colored(x.ОперационнаяПрибыльФактНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльФактНарастающимИтогом}</div>
+                        <div className='flexL pointL' style={{color: colored(x.ОперационнаяПрибыльФакт, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльФакт} </div>
+                        <div className='flexR pointR' style={{color: colored(x.ОперационнаяПрибыльФактНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльФактНарастающимИтогом}</div>
                     </div>
                     <div className='flexItem'>
-                        <div className='flexL' style={{color: colored(x.ОперационнаяПрибыльПрогноз, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльПрогноз} </div>
-                        <div className='flexR' style={{color: colored(x.ОперационнаяПрибыльПрогнозНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльПрогнозНарастающимИтогом}</div>
+                        <div className='flexL pointL' style={{color: colored(x.ОперационнаяПрибыльПрогноз, x.ОперационнаяПрибыльПлан)}}>{x.ОперационнаяПрибыльПрогноз} </div>
+                        <div className='flexR pointR' style={{color: colored(x.ОперационнаяПрибыльПрогнозНарастающимИтогом, x.ОперационнаяПрибыльПланНарастающимИтогом)}}> {x.ОперационнаяПрибыльПрогнозНарастающимИтогом}</div>
                     </div>
                 </ElemTableBlock>
                 <ElemTableBlock bg={`lineBG ${theme} n`}>
                     <div className='flexItem'>
-                        <div className='flexL'>{x.НЗП}</div>
-                        <div className='flexR'>-</div>
+                        <div className='flexL pointL'>{x.НЗП}</div>
+                        <div className='flexR pointR'>-</div>
                     </div>
                     <div className='flexItem'>
-                        <div className='flexL'>-</div>
-                        <div className='flexR'>-</div>
+                        <div className='flexL pointL'>-</div>
+                        <div className='flexR pointR'>-</div>
                     </div>
                 </ElemTableBlock>
             </div>
