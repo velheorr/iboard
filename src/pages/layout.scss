@@ -98,15 +98,15 @@ main .pageWrapper {
         background-color: rgb(189 189 189 / 38%) !important;
         transition: color .5s ease-in-out;
         font-weight: 600;
-        text-shadow: 1px 1px black;
+        /*text-shadow: 1px 1px black;*/
         div {
-            color: white;
-            text-shadow: 1px 1px 1px black;
+            color: #4bb141;
+            /*text-shadow: 1px 1px 1px black;*/
         }
     }
-    .active .themeColor{
-        background-color: rgb(76, 178, 66) !important;
-    }
+    /*.active .themeColor{
+        background-color: rgb(76, 178, 66);
+    }*/
 
 
 }

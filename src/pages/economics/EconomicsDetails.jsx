@@ -50,7 +50,7 @@ const EconomicsDetails = () => {
         <div>
             <div className='btnTopBlock'>
                 <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
-                    <Button onClick={goBack} color={'success'} variant="outlined" size='small' startIcon={<ReplyAllIcon />}>Назад</Button>
+                    <Button className={theme} onClick={goBack} color={'success'} variant="outlined" size='small' startIcon={<ReplyAllIcon />}>Назад</Button>
                 </Tooltip>
                 <Tooltip title={<Typography variant="body2"  gutterBottom>Вывод данных за все года</Typography>}>
                     <FormControlLabel sx={{float: 'right'}} control={<Switch onClick={analitics} checked={check} color="success"/>} label="Включить аналитику" />

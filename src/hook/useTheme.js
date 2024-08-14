@@ -46,10 +46,10 @@ export const light = {
     select : '',
     divider: '', // divider for SB
     chart: {
-        yellow: '#eaee29',
-        red: '#f11010',
-        green: '#1cc700',
-        grey: '#9f9f9f',
+        yellow: '#F6E69C',
+        red: '#EF7065',
+        green: '#61CE95',
+        grey: '#8690A3',
     },
     listHeader: '#f5f5f5',
     listHeaderText: '#444444',

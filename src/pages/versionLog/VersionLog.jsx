@@ -5,7 +5,7 @@ import VersionItem from "./subpages/VersionItem";
 const VersionLog = () => {
     const data = [
         {
-            date: '13.08.2024',
+            date: '14.08.2024',
             ver: '1.0.3',
             list: [
                 {

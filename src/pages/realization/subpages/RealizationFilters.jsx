@@ -177,10 +177,10 @@ const RealizationFilters = () => {
                 </GFormControl>
 
                 <ButtonGroup variant="outlined" size='small' sx={{verticalAlign: 'bottom',}}>
-                    <FilterButton color='error' actBtn={actBtn} btnFilter={btnFilter} name='red' tip={'Сортировка по красным показателям'}><Filter1Icon/></FilterButton>
-                    <FilterButton color='warning' actBtn={actBtn} btnFilter={btnFilter} name='yellow' tip={'Сортировка по желтым показателям'}><Filter2Icon/></FilterButton>
-                    <FilterButton color='success' actBtn={actBtn} btnFilter={btnFilter} name='green' tip={'Сортировка по зеленым показателям'}><Filter3Icon/></FilterButton>
-                    <FilterButton color='success' actBtn={actBtn} btnFilter={btnFilter} name='reset' tip={'Сбросить все фильтры'}><FilterAltOffIcon/></FilterButton>
+                    <FilterButton actBtn={actBtn} btnFilter={btnFilter} name='red' tip={'Сортировка по красным показателям'}><Filter1Icon/></FilterButton>
+                    <FilterButton actBtn={actBtn} btnFilter={btnFilter} name='yellow' tip={'Сортировка по желтым показателям'}><Filter2Icon/></FilterButton>
+                    <FilterButton actBtn={actBtn} btnFilter={btnFilter} name='green' tip={'Сортировка по зеленым показателям'}><Filter3Icon/></FilterButton>
+                    <FilterButton  actBtn={actBtn} btnFilter={btnFilter} name='reset' tip={'Сбросить все фильтры'}><FilterAltOffIcon/></FilterButton>
                 </ButtonGroup>
             </div>
             <div className='searchFilter'>
@@ -199,14 +199,13 @@ const RealizationFilters = () => {
 export default RealizationFilters;
 
 const FilterButton = ({color,actBtn,btnFilter, name,tip, children}) =>{
-    const txt = useTheme('text')
+    const txt = useTheme() ? 'dark' : 'light'
+    const active = actBtn === name ? 'active' : 'txt'
+    console.log(txt)
     return <Tooltip title={<Typography variant="body2"  gutterBottom>{tip}</Typography>}>
-        <Button color={color} sx={{
-            color: actBtn === name? '' : txt,
-        }} onClick={()=>btnFilter(name)}
-        >
-        {children}
-    </Button>
+        <Button className={`${name} ${active} ${txt}`}  onClick={()=>btnFilter(name)}>
+            {children}
+        </Button>
     </Tooltip>
 }
 
