@@ -17,15 +17,21 @@ import RealizationChartBlocks2 from "./subpages/RealizationChartBlocks2";
 import {configRealizationData} from "./js/configRealizationData";
 import {prepareSelect} from "./js/func";
 import {dark, light, useTheme} from "../../hook/useTheme";
+import {useModal} from "../../hook/useModal";
+import {wikiChecker} from "../../utils/wikiChecker";
 
 
 
 
 
 const Realization = () => {
-   /* const configuredRealizationData = useSelector(state => state.realisation.configuredRealizationData);*/
     const filteredData = useSelector(state => state.realisation.filteredData);
     const mode = useSelector(state => state.header.mode);
+    const {setModal} = useModal()
+
+    useEffect(()=>{
+        if (!wikiChecker('wiki-realizProc')){setModal('ModalRealizProcWiki')}
+    },[])
 
     const dispatch = useDispatch();
     const {data: realization, isLoading, isError} = useGetRealizationData()

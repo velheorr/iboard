@@ -5,6 +5,7 @@ import ModalAuth from "./subpages/ModalAuth";
 import ModalResetPassword from "./subpages/ModalResetPassword";
 import ModalResetPasswordConfirm from "./subpages/ModalResetPasswordConfirm";
 import {dark, light} from "../../hook/useTheme";
+import ModalRealizProcWiki from "./subpages/wiki/ModalRealizProcWiki";
 
 
 
@@ -66,6 +67,9 @@ export const modalData = (variant, mode)=>{
             break;
         case '% ПРИН':
             modalText = <RealizPRIN bg={bg}/>
+            break;
+        case 'ModalRealizProcWiki':
+            modalText = <ModalRealizProcWiki/>
             break;
         default:
             modalText = "Default";

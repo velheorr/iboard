@@ -201,7 +201,6 @@ export default RealizationFilters;
 const FilterButton = ({color,actBtn,btnFilter, name,tip, children}) =>{
     const txt = useTheme() ? 'dark' : 'light'
     const active = actBtn === name ? 'active' : 'txt'
-    console.log(txt)
     return <Tooltip title={<Typography variant="body2"  gutterBottom>{tip}</Typography>}>
         <Button className={`${name} ${active} ${txt}`}  onClick={()=>btnFilter(name)}>
             {children}
