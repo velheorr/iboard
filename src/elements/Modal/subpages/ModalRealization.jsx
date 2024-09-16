@@ -9,22 +9,40 @@ const ModalTitle = ({text})=>{
     const neonGreen = useTheme('neonGreen')
     return <Typography variant="h5" gutterBottom className='modalAuthTitle' sx={{color: neonGreen}}>{text}</Typography>
 }
-const Formula = ({param}) => {
+const Formula = ({param, extra}) => {
     return <div className='formula'>
                 <div >{param} = </div>
                 <div style={{textAlign:'center', }}>
                     <div style={{borderBottom: '1px solid'}}>X</div>
                     <div>Y</div>
                 </div>
-                <div >* 100%,</div>
+            {
+                extra !== 'no100' && <div >* 100%,</div>
+            }
+
             </div>
 }
-const FormulaBlock = ({param, children}) => {
+const FormulaNZP = ({param}) => {
+    return <div className='formula'>
+        <div >{param} = </div>
+        <div style={{textAlign:'center', }}>
+            <div style={{borderBottom: '1px solid'}}>X</div>
+            <div>Y</div>
+        </div>
+            <div >+ Z,</div>
+    </div>
+}
+
+const FormulaBlock = ({param, children, extra = 'regular'}) => {
     const theme = useTheme() ? 'dark' : 'light'
   return <>
       <Divider sx={{mb:'10px', mt: '10px'}}><b>ФОРМУЛА:</b></Divider>
       <div className={`blockItem greyShadow ${theme}`}>
-          <Formula param={param}/>
+          {
+              extra === 'FormulaNZP'
+              ? <FormulaNZP param={param}/>
+              : <Formula param={param} extra={extra}/>
+          }
           <div>
               <p>где:</p>
               {children}
@@ -211,7 +229,7 @@ export const RealizOIM = ({bg})=> {
         <>
             <ModalTitle text={'% обеспеченности пронормированных ОиМ'}/>
             <div className='modalBody2 realization'>
-                <FormulaBlock param={'%ОиМ'}>
+                <FormulaBlock param={'%ОиМ'} extra={'no100'}>
                     <p><b>X = Суммарная стоимость ОиМ по Оперативным Оприходованиям</b> - это cуммарная стоимость ОиМ из столбца “Сумма по документу” документов
                         “Оперативное поступление” по объекту</p>
                     <p><b>Y = Суммарная стоимость ОиМ по Калькуляциям</b>  это cуммарная стоимость ОиМ из столбца “Сумма ТМЦ” вкладки “Товары и услуги” по Калькуляциям Проекта</p>
@@ -286,10 +304,11 @@ export const RealizNZP = ({bg})=> {
         <>
             <ModalTitle text={'% превращения НЗП в Себестоимость'}/>
             <div className='modalBody2 realization'>
-                <FormulaBlock param={'%НЗП'}>
+                <FormulaBlock param={'%НЗП'} extra={'FormulaNZP'}>
                     <p><b>X = Нарастающим итогом сумма СС по 1С.ВПКП (списанная ГИПом)</b>- это cумма из строки Доходы (А10) - Сумма из строки Операционная прибыль,
                         А65 из отчета “Оперативная экономика по проекту с себестоимостью”</p>
-                    <p><b>Y = Остаток НЗП по Объекту (0-1-2)</b>- это cумма из строки “Операционная прибыль Проекта” столбца “НЗП не включены в себестоимость”
+                    <p><b>Y = Нарастающим итогом сумма СС по 1С.ВПКП (списанная ГИПом)</b></p>
+                    <p><b>Z = Остаток НЗП по Объекту (0-1-2)</b>- это cумма из строки “Операционная прибыль Проекта” столбца “НЗП не включены в себестоимость”
                         из отчета “Оперативная экономика по проекту с себестоимостью”</p>
                 </FormulaBlock>
                 <RecommendBlock>

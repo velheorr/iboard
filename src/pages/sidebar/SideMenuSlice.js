@@ -9,7 +9,7 @@ import resources_black from "../../img/sidebar/resources_black.png";
 import guardian_black from '../../img/sidebar/guardian_black.png'
 
 const initialState = {
-    activePageName: 'Реализация',
+    activePageName: 'Процентование',
     menuList: [
         {
             id: 1,
