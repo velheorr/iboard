@@ -21,6 +21,7 @@ import Economics from "./pages/economics/Economics";
 import Resources from "./pages/resources/Resources";
 import EconomicsDetails from "./pages/economics/EconomicsDetails";
 import VersionLog from "./pages/versionLog/VersionLog";
+import Econ from "./pages/finance/Econ";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -50,7 +51,7 @@ function App() {
                         <Route  path='/goals' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/economics' element={<RequireAuth><Economics /></RequireAuth>}/>
                         <Route  path='/economics/details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>
-                        <Route  path='/finance' element={<RequireAuth><Page404 /></RequireAuth>}/>
+                        <Route  path='/finance' element={<RequireAuth><Econ /></RequireAuth>}/>
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Resources /></RequireAuth>}/>
                         <Route  path='/lost_develop' element={<RequireAuth><Page404 /></RequireAuth>}/>

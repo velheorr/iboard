@@ -1,0 +1,24 @@
+.econMain {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 30px;
+    .ecoBlocks {
+        flex-basis: 250px;
+    }
+    .ecoBlocks2 {
+        flex-basis: calc(100% - 250px);
+    }
+
+
+}
+
+.highcharts-exporting-group {
+    color: #17fa2f !important;
+    border: 1px solid #0a8016;
+    box-shadow: 0px 0px 15px #17f82f;
+}
+/*
+.ecoLegend {
+    color: #0a8016;
+}*/
