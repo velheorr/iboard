@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {convertData} from "./convertData";
 import {useSelector} from "react-redux";
 
 const EcoLineChart = () => {
-    const ecoline = useSelector(state => state.economics.ecoline);
+    const ecoline = useSelector(state => state.economics.ecoline)
+
     const options = {
         chart: {
             type: 'line',
@@ -15,14 +16,14 @@ const EcoLineChart = () => {
         },
 
         title: {
-            text: 'Line Chart with 4 Lines',
+            text: 'Показатели нарастающим итогом',
             style:{
                 color: 'white',
                 fontSize: '25px'
             }
         },
         subtitle: {
-            text: 'График с линиями прогноза и т.д.',
+            text: 'Факт/Прогноз',
             align: 'left'
         },
         legend: {
@@ -56,7 +57,7 @@ const EcoLineChart = () => {
                 }
             },
             title: {
-                text: 'Values',
+                text: 'За месяц, млн.',
                 style:{
                     color: 'white',
                     fontSize: '14px'
@@ -86,9 +87,9 @@ const EcoLineChart = () => {
                         "downloadPNG", "downloadJPEG", "downloadPDF",
 
                     ],
-                    symbolStroke: "red",
+                    symbolStroke: "#17fa2f",
                     theme: {
-                        fill:"#17fa2f",
+                        fill:"transparent",
                     }
                 },
             }

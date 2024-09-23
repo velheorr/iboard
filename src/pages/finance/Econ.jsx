@@ -9,9 +9,10 @@ import {useDispatch} from "react-redux";
 import {useGetEco} from "../../hook/useGetEconomics";
 import Skelet from "../../elements/Skelet";
 import {convertData, prodano} from "./subPagesEcon/convertData";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import EcoLineChart from "./subPagesEcon/EcoLineChart";
 import {setEcoLine} from "../economics/js/EconomicsSlice";
+import EcoData from "./subPagesEcon/EcoData";
 
 exporting(Highcharts);
 exportData(Highcharts);
@@ -21,10 +22,15 @@ const Econ = () => {
     const dispatch = useDispatch();
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
 
+    const makeData = () => {
+        let dataForChart = convertData(eco)
+        dispatch(setEcoLine(dataForChart))
+    }
+
+
     useEffect(()=>{
         if (status === 'success'){
-            let dataForChart = convertData(eco)
-            dispatch(setEcoLine(dataForChart))
+            makeData()
         }
     }, [eco])
 
@@ -36,7 +42,7 @@ const Econ = () => {
     return (
         <div className='econMain'>
             <div className='ecoBlocks'>
-                2024
+                <EcoData/>
             </div>
             <div className='ecoBlocks2'>
                 <EcoLineChart/>
