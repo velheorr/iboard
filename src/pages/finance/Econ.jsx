@@ -14,6 +14,7 @@ import EcoLineChart from "./subPagesEcon/EcoLineChart";
 import {setEcoBar, setEcoLine} from "../economics/js/EconomicsSlice";
 import EcoData from "./subPagesEcon/EcoData";
 import EcoBarChart from "./subPagesEcon/EcoBarChart";
+import ElemTab from "../../elements/Tabs/ElemTab";
 
 exporting(Highcharts);
 exportData(Highcharts);
@@ -51,6 +52,11 @@ const Econ = () => {
             <div className='ecoBlocks2'>
                 <EcoLineChart info={eco}/>
                 <EcoBarChart info={eco}/>
+                    <ElemTab arr={['Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                    </ElemTab>
             </div>
         </div>
     );

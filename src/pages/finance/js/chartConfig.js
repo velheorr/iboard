@@ -1,7 +1,7 @@
 export const chartConfig = {
     chart: {
         /*type: 'line',*/
-        height: '300',
+        height: '280',
         backgroundColor: 'transparent',
         color: '#fff'
     },
@@ -9,7 +9,7 @@ export const chartConfig = {
         /*text: 'Показатели нарастающим итогом',*/
         style:{
             color: 'white',
-            fontSize: '18px'
+            fontSize: '16px'
         }
     },
     subtitle: {
@@ -23,7 +23,7 @@ export const chartConfig = {
         /*floating: true,*/
         layout: 'vertical',
         itemStyle: {
-            fontSize:'14px',
+            fontSize:'13px',
             color: '#A0A0A0'
         },
         itemHoverStyle: {
@@ -36,7 +36,8 @@ export const chartConfig = {
     xAxis: {
         labels: {
             style: {
-                color: 'rgb(102, 102, 102)'
+                color: 'rgb(102, 102, 102)',
+                fontSize: '13px'
             }
         },
         categories: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
@@ -44,7 +45,8 @@ export const chartConfig = {
     yAxis: {
         labels: {
             style: {
-                color: 'rgb(102, 102, 102)'
+                color: 'rgb(102, 102, 102)',
+                fontSize: '13px'
             }
         },
         title: {

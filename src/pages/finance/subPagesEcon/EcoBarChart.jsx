@@ -55,7 +55,9 @@ const EcoBarChart = ({info}) => {
                 stacking: 'overlap',
                 dataLabels: {
                     enabled: true,
-                    format: '{point.y}'
+                    format: '{point.y}',
+                    verticalAlign: 'top',
+                    inside: true,
                 }
             }
         },
