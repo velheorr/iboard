@@ -23,38 +23,12 @@ const EcoLineChart = ({info}) => {
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis},
-        yAxis: {
-            labels: {
-                style: {
-                    color: 'rgb(102, 102, 102)'
-                }
-            },
-            title: {
-                text: null,
-                style:{
-                    color: 'white',
-                    fontSize: '12px'
-                }
-            }
-        },
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 800
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
-                }
-            }]
-        },
+        yAxis: {...chartConfig.yAxis},
+        lang: {...chartConfig.lang},
         exporting: {
-            /*enabled: true,*/
             buttons: {
                 contextButton: {
+                    ...chartConfig.exporting.buttons.contextButton,
                     menuItems: [
                         'viewFullscreen',
                         {
@@ -65,14 +39,12 @@ const EcoLineChart = ({info}) => {
                         },
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
-
                     ],
-                    symbolStroke: "#17fa2f",
-                    theme: {
-                        fill:"transparent",
-                    }
                 },
-            }
+            },
+        },
+        tooltip: {
+            format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>' /*+ 'Total: {point.stackTotal}'*/
         },
         series: data,
     }), [data, isLegendVisible])

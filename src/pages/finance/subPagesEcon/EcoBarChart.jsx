@@ -23,58 +23,16 @@ const EcoBarChart = ({info}) => {
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis},
-
         yAxis: {
             allowDecimals: true,
             min: -10,
-            labels: {
-                style: {
-                    color: 'rgb(102, 102, 102)'
-                }
-            },
-            title: {
-                text: null,
-                style:{
-                    color: 'white',
-                    fontSize: '12px'
-                }
-            }
+            ...chartConfig.yAxis
         },
-
-        tooltip: {
-            format: '<b>{key}</b><br/>{series.name}: {y}<br/>' +
-                'Total: {point.stackTotal}'
-        },
-
-        plotOptions: {
-            column: {
-                stacking: 'normal'
-            }
-        },
-       /* navigation: {
-            menuItemStyle: {
-                padding: '0',
-                color: '#303030'
-            },
-            menuItemHoverStyle: {
-                background: '#33bb00',
-                color: '#FFFFFF'
-            }
-        },*/
-        lang: {
-            viewFullscreen: 'На весь экран',
-            exitFullscreen: 'Уменьшить',
-            printChart: 'Печать',
-            downloadPNG: 'Скачать PNG',
-            downloadJPEG: 'Скачать JPG',
-            downloadPDF: 'Скачать PDF',
-            /*downloadCSV: 'Download Table (CSV)',
-            viewData: "View Data Table",
-            hideData: "Hide Data Table"*/
-        },
+        lang: {...chartConfig.lang},
         exporting: {
             buttons: {
                 contextButton: {
+                    ...chartConfig.exporting.buttons.contextButton,
                     menuItems: [
                         'viewFullscreen',
                         {
@@ -83,26 +41,23 @@ const EcoBarChart = ({info}) => {
                                 setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
                             },
                         },
-                        /*{
-                            text: 'Печать',
-                            onclick: function() {this.print();}
-                        },*/
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
-
                     ],
-                    symbolStroke: "#17fa2f",
-                    theme: {
-                        fill:"transparent",
-                        states: {
-                            hover: {
-                                fill: '#0a8016',
-                            },
-                        }
-                    },
-                    /*className: 'aaa',*/
                 },
             },
+        },
+        tooltip: {
+            format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>' /*+ 'Total: {point.stackTotal}'*/
+        },
+        plotOptions: {
+            column: {
+                stacking: 'overlap',
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y}'
+                }
+            }
         },
         series: data
     }),[data, isLegendVisible])
