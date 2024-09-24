@@ -9,7 +9,7 @@ export const useGetEco = (year, month = 0) => {
         return data.data.Data
         },
         {
-            keepPreviousData: false,
+            keepPreviousData: true,
             /*refetchOnWindowFocus: true,*/
             enabled: true
         })

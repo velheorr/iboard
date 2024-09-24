@@ -4,7 +4,7 @@
     align-items: flex-start;
     gap: 20px;
     .ecoBlocks {
-        flex-basis: 230px;
+        flex-basis: 170px;
         padding-top: 15px;
         .ecoDataDate {
             display: flex;
@@ -37,7 +37,7 @@
         }
     }
     .ecoBlocks2 {
-        flex-basis: calc(100% - 230px);
+        flex-basis: calc(100% - 170px);
     }
 
 

@@ -1,15 +1,15 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import {convertData, convertForLineChart} from "./convertData";
 import {useSelector} from "react-redux";
+import {convertForBarChart} from "./convertData";
 
-const EcoLineChart = ({info}) => {
-    //const ecoline = useSelector(state => state.economics.ecoline)
+const EcoBarChart = ({info}) => {
+    //const ecoBar = useSelector(state => state.economics.ecoBar)
 
     const [data, setData] = useState([]);
     const updateData = () => {
-        setData(convertForLineChart(info));
+        setData(convertForBarChart(info));
     };
 
     useEffect(()=>{
@@ -18,26 +18,28 @@ const EcoLineChart = ({info}) => {
 
     const options = useMemo(() => ({
         chart: {
-            type: 'line',
+            type: 'column',
             height: '300',
             backgroundColor: 'rgba(225,225,225,0)',
             color: '#fff'
         },
 
         title: {
-            text: 'Показатели нарастающим итогом',
+            text: 'Месячные показатели',
             style:{
                 color: 'white',
                 fontSize: '18px'
             }
         },
         subtitle: {
-            text: 'Факт/Прогноз',
+            text: 'За месяц, млн.',
             align: 'left'
         },
         legend: {
-            layout: 'horizontal',
-            align: 'center',
+            align: 'right',
+            verticalAlign: 'middle',
+            /*floating: true,*/
+            layout: 'vertical',
 
             itemStyle: {
                 fontSize:'14px',
@@ -57,14 +59,11 @@ const EcoLineChart = ({info}) => {
                 }
             },
             categories: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-
         },
+
         yAxis: {
-            labels: {
-                style: {
-                    color: 'white'
-                }
-            },
+            allowDecimals: true,
+            min: -10,
             title: {
                 text: 'За месяц, млн.',
                 style:{
@@ -73,42 +72,21 @@ const EcoLineChart = ({info}) => {
                 }
             }
         },
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 800
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
-                }
-            }]
-        },
-        exporting: {
-            enabled: true,
-            buttons: {
-                contextButton: {
-                    menuItems: [
-                        "viewFullscreen", "printChart", "separator",
-                        "downloadPNG", "downloadJPEG", "downloadPDF",
 
-                    ],
-                    symbolStroke: "#17fa2f",
-                    theme: {
-                        fill:"transparent",
-                    }
-                },
+        tooltip: {
+            format: '<b>{key}</b><br/>{series.name}: {y}<br/>' +
+                'Total: {point.stackTotal}'
+        },
+
+        plotOptions: {
+            column: {
+                stacking: 'normal'
             }
         },
-        series: data,
-    }), [data])
 
+        series: data
 
-
-
+    }),[data])
 
     return (
         <div>
@@ -120,4 +98,4 @@ const EcoLineChart = ({info}) => {
     );
 };
 
-export default EcoLineChart;
+export default EcoBarChart;

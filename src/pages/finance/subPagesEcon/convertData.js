@@ -1,6 +1,6 @@
 const mln = (num) =>{
     let newNum = num !== 0 ? (num / 1000000).toFixed(3) : 0
-    return parseInt(newNum)
+    return parseFloat(newNum) || 0
 
 }
 
@@ -19,7 +19,7 @@ const prodano = (data, name) => {
 }
 
 
-export const convertData = (arr)=>{
+export const convertForLineChart = (arr)=>{
     const x = [
         {
             name: 'Продано',
@@ -32,14 +32,54 @@ export const convertData = (arr)=>{
             data: prodano(arr, 'ЗапроцентованоФактНарастающимИтогом'),
         },
         {
-            name: 'Валовая Прибыль',
+            name: 'ВП',
             color: '#24f813',
             data: prodano(arr, 'ВаловаяПрибыльФактНарастающимИтогом'),
         },
         {
-            name: 'Операционная Прибыль',
+            name: 'ОП',
             color: '#ffbd00',
             data: prodano(arr, 'ОперационнаяПрибыльФактНарастающимИтогом'),
+        },
+    ]
+    return x
+}
+
+export const convertForBarChart = (arr) => {
+    const x = [
+        {
+            name: 'Z План',
+            data: prodano(arr, 'ЗапроцентованоПлан'),
+            stack: 'Запроцентовано'
+        },
+        {
+            name: 'Z Факт',
+            data: prodano(arr, 'ЗапроцентованоФакт'),
+            stack: 'Запроцентовано'
+        },
+        {
+            name: 'ВП План',
+            data: prodano(arr, 'ВаловаяПрибыльПлан'),
+            stack: 'Валовая прибыль'
+        },
+        {
+            name: 'ВП Факт',
+            data: prodano(arr, 'ВаловаяПрибыльФакт'),
+            stack: 'Валовая прибыль'
+        },
+        {
+            name: 'ОП План',
+            data: prodano(arr, 'ОперационнаяПрибыльПлан'),
+            stack: 'Операционная прибыль'
+        },
+        {
+            name: 'ОП Факт',
+            data: prodano(arr, 'ОперационнаяПрибыльФакт'),
+            stack: 'Операционная прибыль'
+        },
+        {
+            name: 'НЗП',
+            data: prodano(arr, 'НЗП'),
         },
     ]
     return x

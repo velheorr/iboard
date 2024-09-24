@@ -6,6 +6,7 @@ const initialState = {
     monthDetails: '',
     yearDetails: '',
     ecoline: [],
+    ecoBar: [],
 }
 
 const economicsSlice = createSlice({
@@ -25,6 +26,9 @@ const economicsSlice = createSlice({
         setEcoLine: (state, action) => {
             state.ecoline = action.payload
         },
+        setEcoBar: (state, action) => {
+            state.ecoBar = action.payload
+        },
     },
 
 });
@@ -33,5 +37,5 @@ const {actions, reducer} = economicsSlice;
 
 export default reducer;
 export const {
-    setEconData, setEconData2,setDetails,setEcoLine
+    setEconData, setEconData2,setDetails,setEcoLine,setEcoBar
 } = actions;

@@ -8,11 +8,12 @@ import fullscreen from "highcharts/modules/full-screen";
 import {useDispatch} from "react-redux";
 import {useGetEco} from "../../hook/useGetEconomics";
 import Skelet from "../../elements/Skelet";
-import {convertData, prodano} from "./subPagesEcon/convertData";
+import {convertForBarChart, convertForLineChart} from "./subPagesEcon/convertData";
 import {useEffect, useMemo, useState} from "react";
 import EcoLineChart from "./subPagesEcon/EcoLineChart";
-import {setEcoLine} from "../economics/js/EconomicsSlice";
+import {setEcoBar, setEcoLine} from "../economics/js/EconomicsSlice";
 import EcoData from "./subPagesEcon/EcoData";
+import EcoBarChart from "./subPagesEcon/EcoBarChart";
 
 exporting(Highcharts);
 exportData(Highcharts);
@@ -22,17 +23,19 @@ const Econ = () => {
     const dispatch = useDispatch();
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
 
+/*    let dataForLineChart = eco
     const makeData = () => {
-        let dataForChart = convertData(eco)
-        dispatch(setEcoLine(dataForChart))
+        /!*let dataForLineChart = convertForLineChart(eco)
+        dispatch(setEcoLine(dataForLineChart))*!/
+        let dataForBarChart = convertForBarChart(eco)
+        dispatch(setEcoBar(dataForBarChart))
     }
-
 
     useEffect(()=>{
         if (status === 'success'){
             makeData()
         }
-    }, [eco])
+    }, [eco])*/
 
 
     if (isLoading) {return <Skelet option='eco'/>}
@@ -43,9 +46,11 @@ const Econ = () => {
         <div className='econMain'>
             <div className='ecoBlocks'>
                 <EcoData/>
+
             </div>
             <div className='ecoBlocks2'>
-                <EcoLineChart/>
+                <EcoLineChart info={eco}/>
+                <EcoBarChart info={eco}/>
             </div>
         </div>
     );
