@@ -3,10 +3,11 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {useSelector} from "react-redux";
 import {convertForBarChart} from "./convertData";
+import {chartConfig} from "../js/chartConfig";
 
 const EcoBarChart = ({info}) => {
     //const ecoBar = useSelector(state => state.economics.ecoBar)
-
+    const [isLegendVisible, setIsLegendVisible] = useState(false);
     const [data, setData] = useState([]);
     const updateData = () => {
         setData(convertForBarChart(info));
@@ -17,55 +18,22 @@ const EcoBarChart = ({info}) => {
     },[info])
 
     const options = useMemo(() => ({
-        chart: {
-            type: 'column',
-            height: '300',
-            backgroundColor: 'rgba(225,225,225,0)',
-            color: '#fff'
-        },
-
-        title: {
-            text: 'Месячные показатели',
-            style:{
-                color: 'white',
-                fontSize: '18px'
-            }
-        },
-        subtitle: {
-            text: 'За месяц, млн.',
-            align: 'left'
-        },
-        legend: {
-            align: 'right',
-            verticalAlign: 'middle',
-            /*floating: true,*/
-            layout: 'vertical',
-
-            itemStyle: {
-                fontSize:'14px',
-                color: '#A0A0A0'
-            },
-            itemHoverStyle: {
-                color: '#FFF'
-            },
-            itemHiddenStyle: {
-                color: '#444'
-            }
-        },
-        xAxis: {
-            labels: {
-                style: {
-                    color: 'white'
-                }
-            },
-            categories: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-        },
+        chart: {type: 'column', ...chartConfig.chart},
+        title: {text: 'Месячные показатели', ...chartConfig.title},
+        subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
+        legend: {enabled: isLegendVisible,...chartConfig.legend},
+        xAxis: {...chartConfig.xAxis},
 
         yAxis: {
             allowDecimals: true,
             min: -10,
+            labels: {
+                style: {
+                    color: 'rgb(102, 102, 102)'
+                }
+            },
             title: {
-                text: 'За месяц, млн.',
+                text: null,
                 style:{
                     color: 'white',
                     fontSize: '12px'
@@ -83,10 +51,61 @@ const EcoBarChart = ({info}) => {
                 stacking: 'normal'
             }
         },
+       /* navigation: {
+            menuItemStyle: {
+                padding: '0',
+                color: '#303030'
+            },
+            menuItemHoverStyle: {
+                background: '#33bb00',
+                color: '#FFFFFF'
+            }
+        },*/
+        lang: {
+            viewFullscreen: 'На весь экран',
+            exitFullscreen: 'Уменьшить',
+            printChart: 'Печать',
+            downloadPNG: 'Скачать PNG',
+            downloadJPEG: 'Скачать JPG',
+            downloadPDF: 'Скачать PDF',
+            /*downloadCSV: 'Download Table (CSV)',
+            viewData: "View Data Table",
+            hideData: "Hide Data Table"*/
+        },
+        exporting: {
+            buttons: {
+                contextButton: {
+                    menuItems: [
+                        'viewFullscreen',
+                        {
+                            text: 'Легенда',
+                            onclick: function () {
+                                setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
+                            },
+                        },
+                        /*{
+                            text: 'Печать',
+                            onclick: function() {this.print();}
+                        },*/
+                        "printChart", "separator",
+                        "downloadPNG", "downloadJPEG", "downloadPDF",
 
+                    ],
+                    symbolStroke: "#17fa2f",
+                    theme: {
+                        fill:"transparent",
+                        states: {
+                            hover: {
+                                fill: '#0a8016',
+                            },
+                        }
+                    },
+                    /*className: 'aaa',*/
+                },
+            },
+        },
         series: data
-
-    }),[data])
+    }),[data, isLegendVisible])
 
     return (
         <div>

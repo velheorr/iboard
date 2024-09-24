@@ -48,12 +48,12 @@ export const convertForLineChart = (arr)=>{
 export const convertForBarChart = (arr) => {
     const x = [
         {
-            name: 'Z План',
+            name: 'Запроцентовано План',
             data: prodano(arr, 'ЗапроцентованоПлан'),
             stack: 'Запроцентовано'
         },
         {
-            name: 'Z Факт',
+            name: 'Запроцентовано Факт',
             data: prodano(arr, 'ЗапроцентованоФакт'),
             stack: 'Запроцентовано'
         },

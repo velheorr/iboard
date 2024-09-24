@@ -3,10 +3,11 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {convertData, convertForLineChart} from "./convertData";
 import {useSelector} from "react-redux";
+import {chartConfig} from "../js/chartConfig";
 
 const EcoLineChart = ({info}) => {
     //const ecoline = useSelector(state => state.economics.ecoline)
-
+    const [isLegendVisible, setIsLegendVisible] = useState(false);
     const [data, setData] = useState([]);
     const updateData = () => {
         setData(convertForLineChart(info));
@@ -17,56 +18,19 @@ const EcoLineChart = ({info}) => {
     },[info])
 
     const options = useMemo(() => ({
-        chart: {
-            type: 'line',
-            height: '300',
-            backgroundColor: 'rgba(225,225,225,0)',
-            color: '#fff'
-        },
-
-        title: {
-            text: 'Показатели нарастающим итогом',
-            style:{
-                color: 'white',
-                fontSize: '18px'
-            }
-        },
-        subtitle: {
-            text: 'Факт/Прогноз',
-            align: 'left'
-        },
-        legend: {
-            layout: 'horizontal',
-            align: 'center',
-
-            itemStyle: {
-                fontSize:'14px',
-                color: '#A0A0A0'
-            },
-            itemHoverStyle: {
-                color: '#FFF'
-            },
-            itemHiddenStyle: {
-                color: '#444'
-            }
-        },
-        xAxis: {
-            labels: {
-                style: {
-                    color: 'white'
-                }
-            },
-            categories: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-
-        },
+        chart: {type: 'line', ...chartConfig.chart},
+        title: {text: 'Показатели нарастающим итогом', ...chartConfig.title},
+        subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
+        legend: {enabled: isLegendVisible,...chartConfig.legend},
+        xAxis: {...chartConfig.xAxis},
         yAxis: {
             labels: {
                 style: {
-                    color: 'white'
+                    color: 'rgb(102, 102, 102)'
                 }
             },
             title: {
-                text: 'За месяц, млн.',
+                text: null,
                 style:{
                     color: 'white',
                     fontSize: '12px'
@@ -88,11 +52,18 @@ const EcoLineChart = ({info}) => {
             }]
         },
         exporting: {
-            enabled: true,
+            /*enabled: true,*/
             buttons: {
                 contextButton: {
                     menuItems: [
-                        "viewFullscreen", "printChart", "separator",
+                        'viewFullscreen',
+                        {
+                            text: 'Легенда',
+                            onclick: function () {
+                                setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
+                            },
+                        },
+                        "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
 
                     ],
@@ -104,7 +75,7 @@ const EcoLineChart = ({info}) => {
             }
         },
         series: data,
-    }), [data])
+    }), [data, isLegendVisible])
 
 
 
