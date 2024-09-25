@@ -22,10 +22,12 @@
             padding: 10px;
             border: 1px solid;
             border-radius: 10px;
-            font-size: 14px;
+            font-size: 13px;
+            background-color: #232222;
             .ecoDataTitle {
                 text-align: center;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
+                font-size: 15px;
             }
             span {
                 float: right;
@@ -43,13 +45,3 @@
 
 }
 
-/*.highcharts-exporting-group {
-    color: #17fa2f !important;
-    border: 1px solid #0a8016;
-    box-shadow: 0px 0px 15px #17f82f;
-}*/
-
-/*
-.ecoLegend {
-    color: #0a8016;
-}*/

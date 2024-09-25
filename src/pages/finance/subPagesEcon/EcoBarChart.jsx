@@ -1,12 +1,10 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import {useSelector} from "react-redux";
 import {convertForBarChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
 
 const EcoBarChart = ({info}) => {
-    //const ecoBar = useSelector(state => state.economics.ecoBar)
     const [isLegendVisible, setIsLegendVisible] = useState(false);
     const [data, setData] = useState([]);
     const updateData = () => {
@@ -25,7 +23,7 @@ const EcoBarChart = ({info}) => {
         xAxis: {...chartConfig.xAxis},
         yAxis: {
             allowDecimals: true,
-            min: -10,
+            min: -10, max: 300,
             ...chartConfig.yAxis
         },
         lang: {...chartConfig.lang},
@@ -53,12 +51,12 @@ const EcoBarChart = ({info}) => {
         plotOptions: {
             column: {
                 stacking: 'overlap',
-                dataLabels: {
+               /* dataLabels: {
                     enabled: true,
                     format: '{point.y}',
                     verticalAlign: 'top',
                     inside: true,
-                }
+                }*/
             }
         },
         series: data

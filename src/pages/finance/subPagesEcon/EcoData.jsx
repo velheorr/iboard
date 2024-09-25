@@ -1,4 +1,7 @@
 import React from 'react';
+import {Button, Tooltip, Typography} from "@mui/material";
+import ReplyAllIcon from "@mui/icons-material/ReplyAll";
+import {useTheme} from "../../../hook/useTheme";
 
 
 const EcoData = () => {
@@ -24,11 +27,14 @@ const EcoData = () => {
             border: '#00FFE1',
         },
     ]
-
+    const theme = useTheme() ? 'dark' : 'light'
 
 
     return (
         <div style={{width: '100%'}}>
+            <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
+                <Button className={theme} color={'success'} variant="outlined" size='small' startIcon={<ReplyAllIcon />}>Назад</Button>
+            </Tooltip>
             <div className='ecoDataDate'>2024</div>
             { data?.map((item, i) => {
                 return <Block key={i} data={item}/>

@@ -1,16 +1,18 @@
 export const chartConfig = {
     chart: {
         /*type: 'line',*/
-        height: '280',
+        height: 250,
         backgroundColor: 'transparent',
-        color: '#fff'
+        color: '#fff',
     },
     title: {
         /*text: 'Показатели нарастающим итогом',*/
         style:{
             color: 'white',
             fontSize: '16px'
-        }
+        },
+        /*x: 0, // Adjust horizontal position
+        y: 15, // Adjust vertical position*/
     },
     subtitle: {
         /*text: 'За месяц, млн.',*/
@@ -81,18 +83,10 @@ export const chartConfig = {
     exporting: {
         buttons: {
             contextButton: {
+                x: 10, // Adjust horizontal position
+                y: 5, // Adjust vertical position
                 menuItems: [
                     'viewFullscreen',
-                    /*{
-                        text: 'Легенда',
-                        onclick: function () {
-                            setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
-                        },
-                    },*/
-                    /*{
-                        text: 'Печать',
-                        onclick: function() {this.print();}
-                    },*/
                     "printChart", "separator",
                     "downloadPNG", "downloadJPEG", "downloadPDF",
 

@@ -22,24 +22,34 @@ const prodano = (data, name) => {
 export const convertForLineChart = (arr)=>{
     const x = [
         {
-            name: 'Продано',
-            color: '#0066FF',
+            name: 'Проход МП',
+            color: '#00fd01',
             data: prodano(arr, 'ЗапроцентованоПланНарастающимИтогом'),
         },
         {
-            name: 'Запроцентовано',
+            name: 'Вложения - ЗиНЗП',
             color: '#ff0000',
             data: prodano(arr, 'ЗапроцентованоФактНарастающимИтогом'),
         },
         {
-            name: 'ВП',
-            color: '#24f813',
+            name: 'ОИ',
+            color: '#fdfd01',
             data: prodano(arr, 'ВаловаяПрибыльФактНарастающимИтогом'),
         },
         {
-            name: 'ОП',
-            color: '#ffbd00',
-            data: prodano(arr, 'ОперационнаяПрибыльФактНарастающимИтогом'),
+            name: 'УП',
+            color: '#7f8190',
+            data: prodano(arr, 'ВаловаяПрибыльФакт'),
+        },
+        {
+            name: 'Операционная прибыль',
+            color: '#00fde0',
+            data: prodano(arr, 'НЗП'),
+        },
+        {
+            name: 'Процентование',
+            color: '#0526ce',
+            data: prodano(arr, 'ЗапроцентованоФакт'),
         },
     ]
     return x
