@@ -1,6 +1,5 @@
 export const chartConfig = {
     chart: {
-        /*type: 'line',*/
         height: 250,
         backgroundColor: 'transparent',
         color: '#fff',

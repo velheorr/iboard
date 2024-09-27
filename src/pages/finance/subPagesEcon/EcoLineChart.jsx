@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {chartConfig} from "../js/chartConfig";
 
 const EcoLineChart = ({info}) => {
-    const [isLegendVisible, setIsLegendVisible] = useState(true);
+    const [isLegendVisible, setIsLegendVisible] = useState(false);
     const [data, setData] = useState([]);
     const updateData = () => {
         setData(convertForLineChart(info));

@@ -10,6 +10,7 @@ import EcoLineChart from "./subPagesEcon/EcoLineChart";
 import EcoData from "./subPagesEcon/EcoData";
 import EcoBarChart from "./subPagesEcon/EcoBarChart";
 import ElemTab from "../../elements/Tabs/ElemTab";
+import EcoAmg from "./subPagesEcon/EcoAMG";
 
 exporting(Highcharts);
 exportData(Highcharts);
@@ -32,7 +33,7 @@ const Econ = () => {
                 <EcoLineChart info={eco}/>
                 <EcoBarChart info={eco}/>
                 <ElemTab arr={['Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
-                    <div>1</div>
+                    <EcoAmg/>
                     <div>2</div>
                     <div>3</div>
                 </ElemTab>

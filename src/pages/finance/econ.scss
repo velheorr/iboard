@@ -41,7 +41,13 @@
     .ecoBlocks2 {
         flex-basis: calc(100% - 170px);
     }
-
-
 }
 
+.amg {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    .amgChart {
+        flex-basis: 32%;
+    }
+}
