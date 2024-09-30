@@ -6,6 +6,7 @@ export const chartConfig = {
     },
     title: {
         /*text: 'Показатели нарастающим итогом',*/
+        align: 'left',
         style:{
             color: 'white',
             fontSize: '16px'

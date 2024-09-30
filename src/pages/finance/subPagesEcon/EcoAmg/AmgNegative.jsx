@@ -1,26 +1,38 @@
 import React, {useMemo, useState} from 'react';
-import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts";
 import {chartConfig} from "../../js/chartConfig";
 
-const AmgStackedBar = ({className}) => {
+const AmgNegative = ({className}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
-
-
     const options = useMemo(() => ({
         chart: {type: 'bar', ...chartConfig.chart, height: 330,},
-        title: {text: 'Показатели нарастающим итогом', ...chartConfig.title},
-        subtitle: {text: null, ...chartConfig.subtitle},
+        title: {text: 'Показатели чегото там 2', ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
-                'ФОТ', 'Субподряд и Спецмеханизмы', 'Общепроизводственные', 'Ресурсные', 'Обеспечивающие', 'Накладные', 'Налоги', 'АМГ Бизнес', 'АМГ Управление',
-            ]},
-        yAxis: {...chartConfig.yAxis,
+                'Подтверждено Оим', 'Поступило ОиМ', 'Списано ОиМ', 'Начислено ФОТ (прямой)', 'Вложено на Субчиков',
+                'Вложено Спецмеханизмов', 'Вложено в Спецработы', 'Задолженность Заказчиков', 'Гарантийные ужержания',
+            ], },
+        yAxis: [{
             gridLineWidth: 0,
             labels: {
                 enabled: false // Отключаем подписи по оси
-            }},
+            },
+            max: 0,
+            offset: 0,
+            width: '50%'
+        }, {
+            ...chartConfig.yAxis,
+            gridLineWidth: 0,
+            labels: {
+                enabled: false // Отключаем подписи по оси
+            },
+            min: 0,
+            offset: 0,
+            left: '50%',
+            width: '50%'
+        }],
         lang: {...chartConfig.lang},
         exporting: {
             buttons: {
@@ -45,31 +57,21 @@ const AmgStackedBar = ({className}) => {
         },
         plotOptions: {
             series: {
-                stacking: 'normal',
                 dataLabels: {
-                    enabled: true
+                    enabled: true,
+                    align: 'center',
                 }
             }
         },
         series: [{
-            name: 'Потери',
-            data: [137, 137, 83, 68, 100, 122,54,45, 76]
-            },
-            {
-                name: 'Накоплено',
-                data: [137, 83, 70, 68, 100, 22,82,45, 76]
-            },
-            {
-                name: 'План на конец года',
-                data: [83, 70, 70, 68, 100, 75,92,45, 76]
-            },
-            {
-                name: 'Прогноз на конец года',
-                data: [70, 68, 70, 68, 100, 46,212,45, 76]
-            },
-        ]
+            name: 'Сумма',
+            data: [-15, -25, -35, -10, -15, -45, -33, -45, -21],
+        }, {
+            name: 'Дни',
+            data: [10, 20, 30, 12, 12, 25, 34, 40, 28],
+            yAxis: 1
+        }],
     }), [isLegendVisible])
-
 
     return (
         <div className={className}>
@@ -81,4 +83,4 @@ const AmgStackedBar = ({className}) => {
     );
 };
 
-export default AmgStackedBar;
+export default AmgNegative;

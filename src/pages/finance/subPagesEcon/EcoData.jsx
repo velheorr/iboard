@@ -12,11 +12,11 @@ const EcoData = () => {
         },
         {
             title: 'Вложения - ЗиНЗП',
-            border: '#FF0000',
+            border: '#FFFF00',
         },
         {
             title: 'Операционные издержки',
-            border: '#FFFF00',
+            border: '#FF0000',
         },
         {
             title: 'Управленческая прибыль',

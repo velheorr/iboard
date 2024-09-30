@@ -1,21 +1,20 @@
 import React, {useMemo, useState} from 'react';
-import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts";
 import {chartConfig} from "../../js/chartConfig";
 
-const AmgStackedBar = ({className}) => {
+const AmgDoubleBar = ({className}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
-
 
     const options = useMemo(() => ({
         chart: {type: 'bar', ...chartConfig.chart, height: 330,},
-        title: {text: 'Показатели нарастающим итогом', ...chartConfig.title},
-        subtitle: {text: null, ...chartConfig.subtitle},
+        title: {text: 'Показатели чегото там', ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
-                'ФОТ', 'Субподряд и Спецмеханизмы', 'Общепроизводственные', 'Ресурсные', 'Обеспечивающие', 'Накладные', 'Налоги', 'АМГ Бизнес', 'АМГ Управление',
-            ]},
+                'Подтверждено Оим', 'Поступило ОиМ', 'Списано ОиМ', 'Начислено ФОТ (прямой)', 'Вложено на Субчиков',
+                'Вложено Спецмеханизмов', 'Вложено в Спецработы', 'Задолженность Заказчиков', 'Гарантийные ужержания',
+            ], },
         yAxis: {...chartConfig.yAxis,
             gridLineWidth: 0,
             labels: {
@@ -45,31 +44,22 @@ const AmgStackedBar = ({className}) => {
         },
         plotOptions: {
             series: {
-                stacking: 'normal',
                 dataLabels: {
-                    enabled: true
+                    enabled: true,
+                    align: 'right',
+                    y: -2,
+                    x: 0
                 }
             }
         },
         series: [{
-            name: 'Потери',
-            data: [137, 137, 83, 68, 100, 122,54,45, 76]
-            },
-            {
-                name: 'Накоплено',
-                data: [137, 83, 70, 68, 100, 22,82,45, 76]
-            },
-            {
-                name: 'План на конец года',
-                data: [83, 70, 70, 68, 100, 75,92,45, 76]
-            },
-            {
-                name: 'Прогноз на конец года',
-                data: [70, 68, 70, 68, 100, 46,212,45, 76]
-            },
-        ]
+            name: 'Сумма',
+            data: [10, 20, 30, 12, 12, 25, 34, 40, 28]
+        }, {
+            name: 'Дни',
+            data: [15, 25, 35, 10, 15, 45, 33, 45, 21]
+        }]
     }), [isLegendVisible])
-
 
     return (
         <div className={className}>
@@ -81,4 +71,4 @@ const AmgStackedBar = ({className}) => {
     );
 };
 
-export default AmgStackedBar;
+export default AmgDoubleBar;

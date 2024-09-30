@@ -28,12 +28,12 @@ export const convertForLineChart = (arr)=>{
         },
         {
             name: 'Вложения - ЗиНЗП',
-            color: '#ff0000',
+            color: '#fdfd01',
             data: prodano(arr, 'ЗапроцентованоФактНарастающимИтогом'),
         },
         {
             name: 'ОИ',
-            color: '#fdfd01',
+            color: '#ff0000',
             data: prodano(arr, 'ВаловаяПрибыльФактНарастающимИтогом'),
         },
         {
