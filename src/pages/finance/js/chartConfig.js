@@ -2,13 +2,12 @@ export const chartConfig = {
     chart: {
         height: 250,
         backgroundColor: 'transparent',
-        color: '#fff',
     },
     title: {
         /*text: 'Показатели нарастающим итогом',*/
         align: 'left',
         style:{
-            color: 'white',
+            color: '#767676',
             fontSize: '16px'
         },
         /*x: 0, // Adjust horizontal position
@@ -19,10 +18,8 @@ export const chartConfig = {
         align: 'left'
     },
     legend: {
-        /*enabled: isLegendVisible,*/
         align: 'right',
         verticalAlign: 'middle',
-        /*floating: true,*/
         layout: 'vertical',
         itemStyle: {
             fontSize:'13px',
@@ -91,12 +88,12 @@ export const chartConfig = {
                     "downloadPNG", "downloadJPEG", "downloadPDF",
 
                 ],
-                symbolStroke: "#17fa2f",
+                symbolStroke: "#767676",
                 theme: {
                     fill:"transparent",
                     states: {
                         hover: {
-                            fill: '#0a8016',
+                            fill: '#a9a9a9',
                         },
                     }
                 },

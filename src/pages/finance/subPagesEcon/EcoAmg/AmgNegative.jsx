@@ -53,7 +53,8 @@ const AmgNegative = ({className}) => {
             },
         },
         tooltip: {
-            format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>' /*+ 'Total: {point.stackTotal}'*/
+            format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>', /*+ 'Total: {point.stackTotal}'*/
+            shared: true
         },
         plotOptions: {
             series: {

@@ -15,6 +15,7 @@ const EcoBarChart = ({info}) => {
         updateData()
     },[info])
 
+
     const options = useMemo(() => ({
         chart: {type: 'column', ...chartConfig.chart},
         title: {text: 'Месячные показатели', ...chartConfig.title},
@@ -23,8 +24,8 @@ const EcoBarChart = ({info}) => {
         xAxis: {...chartConfig.xAxis},
         yAxis: {
             allowDecimals: true,
-            min: -10, max: 300,
-            ...chartConfig.yAxis
+            min: -10, //max: 300,
+            ...chartConfig.yAxis,
         },
         lang: {...chartConfig.lang},
         exporting: {
@@ -59,6 +60,7 @@ const EcoBarChart = ({info}) => {
                 }*/
             }
         },
+
         series: data
     }),[data, isLegendVisible])
 

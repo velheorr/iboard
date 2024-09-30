@@ -1,8 +1,7 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import {convertData, convertForLineChart} from "./convertData";
-import {useSelector} from "react-redux";
+import {convertForLineChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
 
 const EcoLineChart = ({info}) => {
@@ -21,8 +20,19 @@ const EcoLineChart = ({info}) => {
         title: {text: 'Показатели нарастающим итогом', ...chartConfig.title},
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
-        xAxis: {...chartConfig.xAxis},
-        yAxis: {...chartConfig.yAxis},
+        xAxis: {...chartConfig.xAxis,
+            plotLines: [{
+                color: 'white', // Цвет линии
+                width: 1, // Ширина линии
+                value: 8, // Значение по оси X, где будет линия
+                label: {
+                    text: 'Выделенная линия', // Подпись к линии
+                    align: 'right',
+                    verticalAlign: 'top'
+                }
+            }]
+        },
+        yAxis: {...chartConfig.yAxis,},
         lang: {...chartConfig.lang},
         exporting: {
             buttons: {

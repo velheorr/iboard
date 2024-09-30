@@ -31,11 +31,10 @@ const EcoData = () => {
 
 
     return (
-        <div style={{width: '100%'}}>
+        <div style={{width: '170px', position: 'fixed'}}>
             <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
-                <Button className={theme} color={'success'} variant="outlined" size='small' startIcon={<ReplyAllIcon />}>Назад</Button>
+                <div className='ecoDataDate'>09/2024</div>
             </Tooltip>
-            <div className='ecoDataDate'>2024</div>
             { data?.map((item, i) => {
                 return <Block key={i} data={item}/>
             })}
