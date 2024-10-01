@@ -1,11 +1,8 @@
 import {useMemo, useState} from "react";
 import {chartConfig} from "../../js/chartConfig";
 import Highcharts from "highcharts/highstock";
-import bullet from "highcharts/modules/bullet.js";
 import HighchartsReact from "highcharts-react-official";
-import highchartsMore from 'highcharts/highcharts-more';
-highchartsMore(Highcharts);
-bullet(Highcharts);
+
 
 const AmgBulletChart = ({className}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
@@ -22,13 +19,26 @@ const AmgBulletChart = ({className}) => {
         xAxis: {...chartConfig.xAxis,
             categories: [
                 'ФОТ', 'Субподряд и Спецмеханизмы', 'Общепроизводственные', 'Ресурсные', 'Обеспечивающие', 'Накладные', 'Налоги', 'АМГ Бизнес', 'АМГ Управление',
-            ]
+            ],
+            /*gridLineWidth: .5,
+            gridLineDashStyle: 'Dot',*/
+            labels: {
+                style: {
+                    fontSize: '12px' // Установка размера шрифта меток по оси Y
+                }
+            },
         },
         yAxis: {
             min: 0,
-            gridLineWidth: 0,
+            gridLineWidth: .5,
+            gridLineDashStyle: 'Dot',
+            title: null,
             labels: {
-                enabled: false // Отключаем подписи по оси
+                enabled: true, // Отключаем подписи по оси
+                style: {
+                    fontSize: '12px' // Установка размера шрифта меток по оси Y
+                },
+
             },
         },
         tooltip: {
@@ -40,10 +50,10 @@ const AmgBulletChart = ({className}) => {
                 });
                 return s;
             },
-            /*format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>'*/
         },
         lang: {...chartConfig.lang},
         exporting: {
+            enabled: true, // Убедитесь, что экспорт включен
             buttons: {
                 contextButton: {
                     ...chartConfig.exporting.buttons.contextButton,
@@ -65,13 +75,13 @@ const AmgBulletChart = ({className}) => {
             column: {
                 grouping: false,
                 shadow: false,
-                borderWidth: 0
+                borderWidth: .8
             },
         },
         series: [
             {
                 name: 'План на конец года',
-                pointWidth: 25,
+                pointWidth: 20,
                 color: 'rgb(255,189,0)',
                 data: [137, 83, 70, 68, 100, 22,82,45, 76],
                 pointPadding: 0.6,
@@ -82,7 +92,7 @@ const AmgBulletChart = ({className}) => {
             name: 'Потери',
             pointWidth: 7,
             color: 'rgb(166,37,6)',
-            data: [137, 137, 83, 68, 100, 122,54,45, 76],
+            data: [10, 50, 70, 25, 16, 99,44,24,42],
             pointPadding: 0.3,
             pointPlacement: -0.0,
             zIndex: 2
@@ -90,7 +100,7 @@ const AmgBulletChart = ({className}) => {
             name: 'Накоплено',
             pointWidth: 7,
             color: 'rgb(10,128,22)',
-            data: [137, 83, 70, 68, 100, 22,82,45, 76],
+            data: [140, 60, 27, 33, 45, 56,24,45, 55],
             pointPadding: 0.4,
             pointPlacement: -0.2,
             zIndex: 2
@@ -99,7 +109,7 @@ const AmgBulletChart = ({className}) => {
             name: 'Прогноз на конец года',
             pointWidth: 7,
             color: 'rgb(246,0,0)',
-            data: [70, 68, 70, 68, 100, 46,212,45, 76],
+            data: [70, 68, 70, 68, 100, 46,140,45, 76],
             pointPadding: 0.6,
             pointPlacement: -0.4,
             zIndex: 3
