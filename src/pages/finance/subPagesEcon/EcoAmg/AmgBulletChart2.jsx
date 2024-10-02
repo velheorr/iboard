@@ -4,7 +4,7 @@ import Highcharts from "highcharts";
 import {chartConfig} from "../../js/chartConfig";
 
 const AmgBulletChart2 = ({className}) => {
-    const [isLegendVisible, setIsLegendVisible] = useState(true);
+    const [isLegendVisible, setIsLegendVisible] = useState(false);
 
     const options = useMemo(() => ({
         chart: {

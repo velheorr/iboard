@@ -49,7 +49,7 @@ const AmgDonut = ({className}) => {
             colorByPoint: true,
             dataLabels: {
                 style: {
-                    fontSize: '11px' // Измените размер шрифта здесь
+                    fontSize: '10px' // Измените размер шрифта здесь
                 }
             },
             data: [
