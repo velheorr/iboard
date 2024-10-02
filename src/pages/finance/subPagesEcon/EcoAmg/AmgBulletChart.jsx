@@ -24,6 +24,7 @@ const AmgBulletChart = ({className}) => {
             gridLineDashStyle: 'Dot',*/
             labels: {
                 style: {
+                    color: 'rgb(102, 102, 102)',
                     fontSize: '12px' // Установка размера шрифта меток по оси Y
                 }
             },

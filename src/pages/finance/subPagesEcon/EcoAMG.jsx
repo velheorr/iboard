@@ -4,6 +4,8 @@ import AmgStackedBar from "./EcoAmg/AmgStackedBar";
 import AmgDoubleBar from "./EcoAmg/AmgDoubleBar";
 import AmgNegative from "./EcoAmg/AmgNegative";
 import AmgBulletChart from "./EcoAmg/AmgBulletChart";
+import AmgBulletChart2 from "./EcoAmg/AmgBulletChart2";
+import AmgDonut from "./EcoAmg/AmgDonut";
 
 const EcoAmg = () => {
     return (
@@ -13,6 +15,8 @@ const EcoAmg = () => {
             <AmgStackedBar className='amgChart'/>
             <AmgNegative className='amgChart'/>
             <AmgBulletChart className='amgChart'/>
+            <AmgBulletChart2 className='amgChart'/>
+            <AmgDonut className='amgChart'/>
         </div>
     );
 };
