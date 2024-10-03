@@ -7,6 +7,7 @@ import AmgBulletChart from "./EcoAmg/AmgBulletChart";
 import AmgBulletChart2 from "./EcoAmg/AmgBulletChart2";
 import AmgDonut from "./EcoAmg/AmgDonut";
 import AmgPie from "./EcoAmg/AmgPie";
+import Amg2Charts from "./EcoAmg/Amg2Charts";
 
 const EcoAmg = () => {
     return (
@@ -19,6 +20,7 @@ const EcoAmg = () => {
             <AmgBulletChart2 className='amgChart'/>
             <AmgDonut className='amgChart'/>
             <AmgPie className='amgChart'/>
+            <Amg2Charts className='amgChart'/>
         </div>
     );
 };
