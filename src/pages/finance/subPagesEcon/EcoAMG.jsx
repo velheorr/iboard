@@ -13,16 +13,16 @@ import AmgCustomFunnel from "./EcoAmg/AmgCustomFunnel";
 const EcoAmg = () => {
     return (
         <div className='amg'>
-            <AmgFunnel className='amgChart'/>
             <AmgCustomFunnel className='amgChart'/>
+            <Amg2Charts className='amgChart'/>
+            <AmgBulletChart2 className='amgChart'/>
+            <AmgFunnel className='amgChart'/>
             <AmgDoubleBar className='amgChart'/>
             <AmgStackedBar className='amgChart'/>
+            <AmgDonut className='amgChart'/>
             <AmgNegative className='amgChart'/>
             <AmgBulletChart className='amgChart'/>
-            <AmgBulletChart2 className='amgChart'/>
-            <AmgDonut className='amgChart'/>
             <AmgPie className='amgChart'/>
-            <Amg2Charts className='amgChart'/>
         </div>
     );
 };

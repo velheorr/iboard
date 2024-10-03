@@ -19,10 +19,12 @@ const AmgCustomFunnel = ({className}) => {
                 'Смонтировано',
                 'Запроцентовано',
                 '<span style="color: red;">Маржинальная прибыль</span>',],
-
+            gridLineWidth: 0,
+            gridLineDashStyle: 'Dot',
         },
         yAxis: [{
-            gridLineWidth: 0,
+            gridLineWidth: .5,
+            gridLineDashStyle: 'Dot',
             labels: {
                 enabled: false // Отключаем подписи по оси
             },
@@ -34,7 +36,8 @@ const AmgCustomFunnel = ({className}) => {
             width: '50%'
         }, {
             ...chartConfig.yAxis,
-            gridLineWidth: 0,
+            gridLineWidth: .5,
+            gridLineDashStyle: 'Dot',
             labels: {
                 enabled: false // Отключаем подписи по оси
             },
@@ -63,7 +66,15 @@ const AmgCustomFunnel = ({className}) => {
             },
         },
         tooltip: {
-            format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>', /*+ 'Total: {point.stackTotal}'*/
+            formatter: function() {
+                let s = '<b>' + this.x + '</b>';
+                this.points.forEach(point => {
+                    if (point.y < 0 ) return
+                    s += `<br/><span style="color:${point.color}">${point.series.name}</span>: ${point.y}млн.`
+                });
+                return s;
+            },
+            /*format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>',*/ /*+ 'Total: {point.stackTotal}'*/
             shared: true
         },
         series: [ {
