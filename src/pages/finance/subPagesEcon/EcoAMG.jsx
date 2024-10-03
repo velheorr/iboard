@@ -8,11 +8,13 @@ import AmgBulletChart2 from "./EcoAmg/AmgBulletChart2";
 import AmgDonut from "./EcoAmg/AmgDonut";
 import AmgPie from "./EcoAmg/AmgPie";
 import Amg2Charts from "./EcoAmg/Amg2Charts";
+import AmgCustomFunnel from "./EcoAmg/AmgCustomFunnel";
 
 const EcoAmg = () => {
     return (
         <div className='amg'>
             <AmgFunnel className='amgChart'/>
+            <AmgCustomFunnel className='amgChart'/>
             <AmgDoubleBar className='amgChart'/>
             <AmgStackedBar className='amgChart'/>
             <AmgNegative className='amgChart'/>

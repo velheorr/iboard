@@ -129,13 +129,13 @@ const Amg2Charts = ({className}) => {
 
     return (
         <div className={className} style={{display: 'flex', flexWrap: 'nowrap'}}>
-            <div style={{width: '30%'}}>
+            <div style={{width: '25%'}}>
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={options}
                 />
             </div>
-            <div style={{width: '70%'}}>
+            <div style={{width: '75%'}}>
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={options2}
