@@ -11,6 +11,7 @@ import EcoData from "./subPagesEcon/EcoData";
 import EcoBarChart from "./subPagesEcon/EcoBarChart";
 import ElemTab from "../../elements/Tabs/ElemTab";
 import EcoAmg from "./subPagesEcon/EcoAMG";
+import HomeIcon from '@mui/icons-material/Home';
 
 exporting(Highcharts);
 exportData(Highcharts);
@@ -32,7 +33,7 @@ const Econ = () => {
             <div className='ecoBlocks2'>
                 <EcoLineChart info={eco}/>
                 <EcoBarChart info={eco}/>
-                <ElemTab arr={['Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
+                <ElemTab arr={['<HomeIcon/>','Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
                     <EcoAmg/>
                     <div>2</div>
                     <div>3</div>

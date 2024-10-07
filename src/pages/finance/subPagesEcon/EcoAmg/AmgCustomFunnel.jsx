@@ -53,12 +53,12 @@ const AmgCustomFunnel = ({className}) => {
                     ...chartConfig.exporting.buttons.contextButton,
                     menuItems: [
                         'viewFullscreen',
-                        {
+                        /*{
                             text: 'Легенда',
                             onclick: function () {
                                 setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
                             },
-                        },
+                        },*/
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
                     ],
