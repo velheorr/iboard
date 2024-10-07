@@ -13,7 +13,8 @@ const prodano = (data, name) => {
         })
     const newArr = []
     keysToSearch.forEach(item => {
-        newArr.push(mln(data[item]))
+        let x = mln(data[item])
+        newArr.push(x)
     })
     return newArr
 }

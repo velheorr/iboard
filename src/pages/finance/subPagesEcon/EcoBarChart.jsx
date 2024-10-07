@@ -1,19 +1,22 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import {convertForBarChart} from "./convertData";
+import {convertForBarChart, convertForLineChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
+import {useGetEco} from "../../../hook/useGetEconomics";
+import Skelet from "../../../elements/Skelet";
 
-const EcoBarChart = ({info}) => {
+const EcoBarChart = () => {
+    const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
+
     const [isLegendVisible, setIsLegendVisible] = useState(false);
     const [data, setData] = useState([]);
-    const updateData = () => {
-        setData(convertForBarChart(info));
-    };
 
     useEffect(()=>{
-        updateData()
-    },[info])
+        if (eco){
+            setData(convertForBarChart(eco));
+        }
+    },[eco])
 
 
     const options = useMemo(() => ({
@@ -61,8 +64,12 @@ const EcoBarChart = ({info}) => {
             }
         },
 
-        series: data
+        series: data || []
     }),[data, isLegendVisible])
+
+    if (isLoading) {return <Skelet option='eco'/>}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!eco) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div>

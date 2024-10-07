@@ -18,11 +18,6 @@ exportData(Highcharts);
 fullscreen(Highcharts);
 
 const Econ = () => {
-    const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
-
-    if (isLoading) {return <Skelet option='eco'/>}
-    if (isError) {return <h3>Нет подключения к серверу</h3>}
-    if (!eco) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div className='econMain'>
@@ -31,8 +26,8 @@ const Econ = () => {
 
             </div>
             <div className='ecoBlocks2'>
-                <EcoLineChart info={eco}/>
-                <EcoBarChart info={eco}/>
+                <EcoLineChart/>
+                <EcoBarChart/>
                 <ElemTab arr={['<HomeIcon/>','Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
                     <EcoAmg/>
                     <div>2</div>
