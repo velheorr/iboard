@@ -8,6 +8,7 @@ const AmgStackedBar = ({className}) => {
 
 
     const options = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {type: 'bar', ...chartConfig.chart, height: 330,},
         title: {text: 'Показатели нарастающим итогом', ...chartConfig.title},
         subtitle: {text: null, ...chartConfig.subtitle},

@@ -9,6 +9,7 @@ const AmgBulletChart = ({className}) => {
 
 
     const options = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {
             type: 'column',
             inverted: true,

@@ -13,6 +13,9 @@ export const chartConfig = {
         /*x: 0, // Adjust horizontal position
         y: 15, // Adjust vertical position*/
     },
+    accessibility: {
+        enabled: false // Включаем доступность
+    },
     subtitle: {
         /*text: 'За месяц, млн.',*/
         align: 'left'

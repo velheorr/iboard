@@ -8,6 +8,7 @@ Funnel(Highcharts);
 
 const AmgFunnel = ({className}) => {
     const options = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {
             type: 'funnel',  ...chartConfig.chart, height: 330,
         },

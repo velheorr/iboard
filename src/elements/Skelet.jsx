@@ -15,7 +15,6 @@ const Skelet = ({option = false}) => {
         case 'eco':
             return  newSkelet = (
                 <div>
-                    <SkeletLine width={200}/>
                     <SkeletLine />
                     <SkeletLine />
                     <SkeletLine style={{textAlign: 'center'}} >Идет загрузка данных...</SkeletLine>

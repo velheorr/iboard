@@ -7,6 +7,7 @@ const Amg2Charts = ({className}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
 
     const options = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {type: 'bar', ...chartConfig.chart, height: 330,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
@@ -67,6 +68,7 @@ const Amg2Charts = ({className}) => {
     }), [isLegendVisible])
 
     const options2 = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {type: 'bar', ...chartConfig.chart, height: 330,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},

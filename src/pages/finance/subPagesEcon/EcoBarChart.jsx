@@ -20,6 +20,7 @@ const EcoBarChart = () => {
 
 
     const options = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {type: 'column', ...chartConfig.chart},
         title: {text: 'Месячные показатели', ...chartConfig.title},
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},

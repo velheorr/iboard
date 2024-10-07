@@ -7,6 +7,7 @@ const AmgPie = ({className}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
 
     const options = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {
             type: 'pie', ...chartConfig.chart,height: 330,
         },

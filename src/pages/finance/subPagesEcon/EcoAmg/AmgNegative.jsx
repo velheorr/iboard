@@ -6,6 +6,7 @@ import {chartConfig} from "../../js/chartConfig";
 const AmgNegative = ({className}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
     const options = useMemo(() => ({
+        accessibility: {...chartConfig.accessibility},
         chart: {type: 'bar', ...chartConfig.chart, height: 330,},
         title: {text: 'Показатели чегото там 2', ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
