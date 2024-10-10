@@ -15,23 +15,12 @@ import {useTheme} from "../../hook/useTheme";
 
 
 const Login = () => {
-/*    const navigate = useNavigate();
-    const location = useLocation();*/
-    const {signIn, checkLogin} = useAuth()
-/*    const fromPage = location.state?.from?.pathname || '/';
-
-    const [auth, setAuth] = useState(false)*/
+    const {signIn,checkAuth, token} = useAuth()
     const [authMsg, setAuthMsg] = useState('')
 
-
     useEffect(() => {
-        checkLogin()
-        /*const authed = JSON.parse(localStorage.getItem('auth'))
-        if (authed) {
-            setAuth(true);
-            signIn('user', ()=> navigate(fromPage, {replace: true}));
-        }*/
-    }, []);
+        if (token) checkAuth()
+    }, [token]);
 
     const {
         register,
@@ -45,20 +34,14 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         setAuthMsg('Проверка данных')
-        const loginDateCheck = checkLogin()
-
         try {
             let sendData = {...data, from: 'iboard'}
             const response = await axios.post(`${BACK}/api/login`, sendData)
+            console.log(response)
             setAuthMsg(response.data.message)
             if (response.status === 200) {
                 setAuthMsg('')
-                localStorage.setItem('auth', true);
-                localStorage.setItem('name', response.data.name);
-                localStorage.setItem('position', response.data.position);
-                localStorage.setItem('logged', loginDateCheck)
-                setAuthMsg('')
-                signIn(response.data.name, response.data.position);
+                signIn(response.data.name, response.data.token);
             }
         } catch (e) {
             if (e.response.status === 401) {

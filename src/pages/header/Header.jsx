@@ -16,7 +16,7 @@ import {useTheme} from "../../hook/useTheme";
 
 const Header = () => {
     const navigate = useNavigate();
-    const {signOut,checkLogin, user} = useAuth()
+    const {signOut,checkAuth, user} = useAuth()
     const dispatch = useDispatch();
     const activePageName = useSelector(state => state.sidemenu.activePageName);
 
@@ -34,6 +34,10 @@ const Header = () => {
         signOut()
     }
 
+    /*useEffect(() => {
+        checkAuth()
+    }, []);*/
+
     const [time, setTime] = useState(new Date())
     const formattedTime = time.toLocaleTimeString().substring(0, 5);
 
@@ -41,7 +45,7 @@ const Header = () => {
         window.setInterval(() => setTime(new Date()), 60 * 1000);
         toggleTheme(getTheme)
         dispatch(setMode(getTheme))
-        checkLogin()
+        /*checkAuth()*/
     }, []);
 
     const ruDate = new Intl.DateTimeFormat("ru", {

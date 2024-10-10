@@ -1,8 +1,8 @@
 import React, {createContext, useState} from 'react';
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {redirect} from "react-router";
-import {useDispatch} from "react-redux";
-import {setActive} from "../pages/sidebar/SideMenuSlice";
+import axios from "axios";
+import {BACK} from "../utils/links";
 
 export const AuthContext = createContext(null);
 
@@ -10,50 +10,40 @@ export const AuthProvider = ({children}) => {
     const navigate = useNavigate();
     const [user, setUser] = useState('');
     const [auth, setAuth] = useState(false);
-    const dispatch = useDispatch;
 
-    const date = localStorage.getItem('logged')
-    const today = new Date();
-    const currentDay = today.toISOString().slice(0,10);
-
-    const checkLogin = ()=>{
-        const name = localStorage.getItem('name')
-        if( date !== currentDay || !name){
+    const checkAuth = async () => {
+        const token = localStorage.getItem('token')
+        if (token && token !== 'undefined'){
+            const response = await axios.post(`${BACK}/api/reauth`, {token})
+            if (!response.data) {signOut()}
+            signIn(response.data.name, response.data.token)
+        } else {
             signOut()
-        }
-        else {
-            signIn(name)
         }
     }
 
-    const signIn = (newUser)=> {
-        localStorage.setItem('auth', JSON.stringify(true));
-        localStorage.setItem('name', newUser);
-        localStorage.setItem('logged', currentDay)
-        setUser(newUser)
+    const signIn = (name, token)=> {
+        localStorage.setItem('name', name);
+        localStorage.setItem('token', token)
+        setUser(name)
         setAuth(true)
-        let page = localStorage.getItem('page')
-        /*let path = `/${page}`
-        if (page.length > 0) {
-           /!* dispatch(setActive(page))*!/
-            console.log(page)
-            redirect('path')
-        } else {
-
-        }*/
         navigate('/', {replace: true})
 
     }
     const signOut = ()=> {
-        localStorage.removeItem('auth');
         localStorage.removeItem('name');
-        localStorage.removeItem('logged');
+        localStorage.removeItem('token');
+        console.log('fdfff')
         setUser(null)
+        setAuth(false)
         redirect("/login");
-        /*navigate('/login', {replace: true})*/
     }
 
-    const value = {auth, user, signIn, signOut, checkLogin}
+    const token = () => {
+        return localStorage.getItem('token')
+    }
+
+    const value = {auth, user, signIn, signOut, checkAuth, token}
 
     return <AuthContext.Provider value={value}>
         {children}
