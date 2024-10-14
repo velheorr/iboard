@@ -2,14 +2,15 @@ import React, {useMemo, useState} from 'react';
 import {chartConfig} from "../../js/chartConfig";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
+import '../../econ.scss'
 
 const AmgCustomFunnel = ({className}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'bar', ...chartConfig.chart, height: 300,},
-        title: {text: 'Показатели чегото там 2', ...chartConfig.title},
+        chart: {type: 'bar', ...chartConfig.chart, height: 310,},
+        title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
@@ -19,12 +20,12 @@ const AmgCustomFunnel = ({className}) => {
                 'Оплачено ФОТ',
                 'Смонтировано',
                 'Запроцентовано',
-                '<span style="color: red;">Маржинальная прибыль</span>',],
+                '<span style="color: #17f82f;">Маржинальная прибыль</span>',],
             gridLineWidth: 0,
             gridLineDashStyle: 'Dot',
         },
         yAxis: [{
-            gridLineWidth: .5,
+            gridLineWidth: 0,
             gridLineDashStyle: 'Dot',
             labels: {
                 enabled: false // Отключаем подписи по оси
@@ -37,7 +38,7 @@ const AmgCustomFunnel = ({className}) => {
             width: '50%'
         }, {
             ...chartConfig.yAxis,
-            gridLineWidth: .5,
+            gridLineWidth: 0,
             gridLineDashStyle: 'Dot',
             labels: {
                 enabled: false // Отключаем подписи по оси
@@ -71,7 +72,7 @@ const AmgCustomFunnel = ({className}) => {
                 let s = '<b>' + this.x + '</b>';
                 this.points.forEach(point => {
                     if (point.y < 0 ) return
-                    s += `<br/><span style="color:${point.color}">${point.series.name}</span>: ${point.y}млн.`
+                    s += `<br/><span style="color:${point.color}">${point.series.name}</span>: ${point.y} млн.`
                 });
                 return s;
             },
@@ -82,75 +83,80 @@ const AmgCustomFunnel = ({className}) => {
             name: 'Сумма',
             data: [
                 {
-                    y: 150,
-                    color: '#2caefd',
-                },
-                {
                     y: 100,
-                    color: '#534ec4',
-                },
-                {
-                    y: 78,
-                    color: '#00e072',
+                    color: '#571f91',
                 },
                 {
                     y: 90,
-                    color: '#fc6936',
+                    color: '#2e4399',
                 },
                 {
-                    y: 120,
-                    color: '#6a89bc',
+                    y: 80,
+                    color: '#4063f3',
                 },
                 {
-                    y: 47,
-                    color: '#d367fa',
+                    y: 70,
+                    color: '#007ed3',
                 },
                 {
-                    y: 250,
-                    color: '#b60000',
+                    y: 60,
+                    color: '#3d9bda',
+                },
+                {
+                    y: 50,
+                    color: '#7eb1fe',
+                },
+                {
+                    y: 140,
+                    color: '#16b423',
                 },
             ],
             yAxis: 1,
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
+                inside: true,
                 align: 'left',
+                x: -25,
                 verticalAlign: 'middle',
+                format: '{point.y} млн.',
+                style: {
+                    color: 'white'
+                }
             }
         },
             {
                 name: 'Сумма',
                 data: [
                     {
-                        y: -150,
-                        color: '#2caefd',
-                    },
-                    {
                         y: -100,
-                        color: '#534ec4',
-                    },
-                    {
-                        y: -78,
-                        color: '#00e072',
+                        color: '#571f91',
                     },
                     {
                         y: -90,
-                        color: '#fc6936',
+                        color: '#2e4399',
                     },
                     {
-                        y: -120,
-                        color: '#6a89bc',
+                        y: -80,
+                        color: '#4063f3',
                     },
                     {
-                        y: -47,
-                        color: '#d367fa',
+                        y: -70,
+                        color: '#007ed3',
                     },
                     {
-                        y: -250,
-                        color: '#b60000',
+                        y: -60,
+                        color: '#3d9bda',
+                    },
+                    {
+                        y: -50,
+                        color: '#7eb1fe',
+                    },
+                    {
+                        y: -140,
+                        color: '#16b423',
                     },
                 ],
-                color: '#FF5733',
                 borderWidth: 0,
             },
         ],
@@ -158,6 +164,7 @@ const AmgCustomFunnel = ({className}) => {
 
     return (
         <div className={className}>
+            <div className='chartTitle'>Воронка</div>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}

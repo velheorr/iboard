@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {convertForBarChart, convertForLineChart} from "./convertData";
@@ -16,6 +16,7 @@ const EcoBarChart = () => {
         if (eco){
             setData(convertForBarChart(eco));
         }
+
     },[eco])
 
 
@@ -85,9 +86,28 @@ const EcoBarChart = () => {
                     verticalAlign: 'top',
                     inside: true,
                 }*/
-            }
+            },
+            /*series: {
+                events: {
+                    afterAnimate: function () {
+                        // Обновление цвета текста в легенде
+                        console.log(this.options.legendColor)
+                        this.color = this.options.legendColor
+                        chart.redraw();
+                       /!* this.options.legendColor.update({
+                            style: {
+                                color: this.options.legendColor // Установка цвета в легенде
+                            }
+                        });*!/
+                        /!*this.legendItem.update({
+                            style: {
+                                color: this.options.legendColor // Установка цвета в легенде
+                            }
+                        });*!/
+                    }
+                }
+            }*/
         },
-
         series: data || []
     }),[data, isLegendVisible])
 

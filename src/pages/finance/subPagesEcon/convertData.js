@@ -29,21 +29,21 @@ export const convertForLineChart = (arr)=>{
         },
         {
             name: 'Вложения - ЗиНЗП',
-            color: '#ff0000',
+            color: '#ffa420',
             data: prodano(arr, 'ЗапроцентованоФактНарастающимИтогом'),
         },
         {
             name: 'ОИ',
-            color: '#fdfd01',
+            color: '#ff0000',
             data: prodano(arr, 'ВаловаяПрибыльФактНарастающимИтогом'),
         },
         {
             name: 'УП',
-            color: '#ffa420',
+            color: '#fdfd01',
             data: prodano(arr, 'ВаловаяПрибыльФакт'),
         },
         {
-            name: 'Операционная прибыль',
+            name: 'ОП',
             color: '#00fde0',
             data: prodano(arr, 'НЗП'),
         },
@@ -59,7 +59,7 @@ export const convertForLineChart = (arr)=>{
 export const convertForBarChart = (arr) => {
     const x = [
         {
-            name: 'Запроцентовано План',
+            name: 'Выручка План',
             data: prodano(arr, 'ЗапроцентованоПлан'),
             stack: 'Запроцентовано',
             /*borderColor: '#7cb5ec',*/
@@ -69,10 +69,11 @@ export const convertForBarChart = (arr) => {
                     [0, '#9ea6bb'], // Цвет вверху
                     [1, '#6d7998']  // Цвет внизу
                 ]
-            }
+            },
+            legendColor: '#FF0000',
         },
         {
-            name: 'Запроцентовано Факт',
+            name: 'Выручка Факт',
             data: prodano(arr, 'ЗапроцентованоФакт'),
             stack: 'Запроцентовано',
             /*borderColor: "#5555ff",*/
@@ -82,71 +83,78 @@ export const convertForBarChart = (arr) => {
                     [0, '#3d4d76'], // Start color
                     [1, '#0c2054']  // End color
                 ]
-            }
+            },
+            legendColor: '#FF0000',
         },
         {
-            name: 'ВП План',
-            data: prodano(arr, 'ВаловаяПрибыльПлан'),
-            stack: 'Валовая прибыль',
-            /*borderColor: '#00fde0',*/
-            borderColor: {
-                linearGradient: { x1: 0, y1: 1, x2: 0, y2: 0 }, // Direction of the gradient
-                stops: [
-                    [0, '#AB351A'], // Start color
-                    [1, '#FF6600']  // End color
-                ]
-            }
-        },
-        {
-            name: 'ВП Факт',
-            data: prodano(arr, 'ВаловаяПрибыльФакт'),
-            stack: 'Валовая прибыль',
-            /*borderColor: '#7f8190',*/
-            borderColor: {
-                linearGradient: { x1: 0, y1: 1, x2: 0, y2: 0 }, // Direction of the gradient
-                stops: [
-                    [0, '#AB351A'], // Start color
-                    [1, '#FF6600']  // End color
-                ]
-            }
-        },
-        {
-            name: 'ОП План',
+            name: 'МП План',
             data: prodano(arr, 'ОперационнаяПрибыльПлан'),
             stack: 'Операционная прибыль',
             /*borderColor: '#fdfd01',*/
             borderColor: {
-                linearGradient: { x1: 0, y1: 1, x2: 0, y2: 0 }, // Direction of the gradient
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
-                    [0, '#166A24'], // Start color
-                    [1, '#9BC401']  // End color
+                    [0, '#649c6d'], // Start color
+                    [1, '#54925e']  // End color
                 ]
-            }
+            },
+            legendColor: '#FF0000',
         },
         {
-            name: 'ОП Факт',
+            name: 'МП Факт',
             data: prodano(arr, 'ОперационнаяПрибыльФакт'),
             stack: 'Операционная прибыль',
             /*borderColor: '#00fd01',*/
             borderColor: {
-                linearGradient: { x1: 0, y1: 1, x2: 0, y2: 0 }, // Direction of the gradient
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
-                    [0, '#166A24'], // Start color
-                    [1, '#9BC401']  // End color
+                    [0, '#267433'], // Start color
+                    [1, '#166a24']  // End color
                 ]
-            }
+            },
+            legendColor: '#FF0000',
         },
         {
-            name: 'НЗП',
+            name: 'Вложения План',
+            data: prodano(arr, 'ВаловаяПрибыльПлан'),
+            stack: 'Валовая прибыль',
+            /*borderColor: '#00fde0',*/
+            borderColor: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#ff9f60'], // Start color
+                    [1, '#ff8c40']  // End color
+                ]
+            },
+            legendColor: '#FF0000',
+        },
+        {
+            name: 'Вложения Факт',
+            data: prodano(arr, 'ВаловаяПрибыльФакт'),
+            stack: 'Валовая прибыль',
+            /*borderColor: '#7f8190',*/
+            borderColor: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#ff7920'], // Start color
+                    [1, '#ff6600']  // End color
+                ]
+            },
+            legendColor: '#FF0000',
+        },
+
+        {
+            name: 'Операционные издержки',
             data: prodano(arr, 'НЗП'),
             /*borderColor: '#ff0000',*/
             borderColor: {
-                linearGradient: { x1: 0, y1: 1, x2: 0, y2: 0 }, // Direction of the gradient
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
                     [0, '#4D0E0A'], // Start color
                     [1, '#DC0404']  // End color
                 ]
-            }
+            },
+            legendColor: '#FF0000',
         },
     ]
     return x

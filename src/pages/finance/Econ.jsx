@@ -12,6 +12,7 @@ import EcoBarChart from "./subPagesEcon/EcoBarChart";
 import ElemTab from "../../elements/Tabs/ElemTab";
 import EcoAmg from "./subPagesEcon/EcoAMG";
 import HomeIcon from '@mui/icons-material/Home';
+import {Stack, Typography} from "@mui/material";
 
 exporting(Highcharts);
 exportData(Highcharts);
@@ -28,14 +29,27 @@ const Econ = () => {
             <div className='ecoBlocks2'>
                 <EcoLineChart/>
                 <EcoBarChart/>
-                <ElemTab arr={['<HomeIcon/>','Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
-                    <EcoAmg/>
-                    <div>2</div>
-                    <div>3</div>
-                </ElemTab>
+                <div style={{padding: '0px 5px'}}>
+                    <ElemTab arr={[<HomeGuardian/>,'Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
+                        <EcoAmg/>
+                        <EcoAmg/>
+                        <EcoAmg/>
+                        <EcoAmg/>
+                    </ElemTab>
+                </div>
             </div>
         </div>
     );
 };
 
 export default Econ;
+
+const HomeGuardian = ()=>{
+
+    return (
+        <Stack direction="row" alignItems="center" gap={1}>
+            <HomeIcon  sx={{fontSize: '1.5rem'}}/>
+            <Typography sx={{fontSize: '0.9rem'}}>Гардиан</Typography>
+        </Stack>
+    )
+}

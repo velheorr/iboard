@@ -8,7 +8,7 @@ const Amg2Charts = ({className}) => {
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'bar', ...chartConfig.chart, height: 300,},
+        chart: {type: 'bar', ...chartConfig.chart, height: 310,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
@@ -53,23 +53,28 @@ const Amg2Charts = ({className}) => {
             series: {
                 dataLabels: {
                     enabled: true,
+                    inside: true,
                     align: 'right',
-                    y: -2,
-                    x: 0
-                }
-            }
+                    x: 2,
+                    y: -1,
+                    verticalAlign: 'middle',
+                    color: 'white'
+                },
+            },
         },
         series: [
             {
                 name: 'Дни',
-                data: [15, 25, 35, 10, 15, 45, 33, 45, 21]
+                data: [15, 25, 35, 10, 15, 45, 33, 45, 21],
+                borderWidth: 0,
+                color: '#0b7e93',
             }
         ]
     }), [isLegendVisible])
 
     const options2 = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'bar', ...chartConfig.chart, height: 300,},
+        chart: {type: 'bar', ...chartConfig.chart, height: 310,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
@@ -117,32 +122,41 @@ const Amg2Charts = ({className}) => {
             series: {
                 dataLabels: {
                     enabled: true,
-                    align: 'right',
-                    y: -2,
-                    x: 0
-                }
-            }
+                    inside: true,
+                    align: 'left',
+                    x: 2,
+                    y: -1,
+                    verticalAlign: 'middle',
+                    color: 'white'
+                },
+                borderWidth: 0,
+            },
         },
         series: [{
             name: 'Сумма',
-            data: [10, 20, 30, 12, 12, 25, 34, 40, 28]
+            data: [10, 20, 30, 12, 12, 25, 34, 40, 28],
+            color: '#0b7e93',
         }]
     }), [isLegendVisible])
 
     return (
-        <div className={className} style={{display: 'flex', flexWrap: 'nowrap'}}>
-            <div style={{width: '25%'}}>
-                <HighchartsReact
-                    highcharts={Highcharts}
-                    options={options}
-                />
+        <div className={className} >
+            <div className='chartTitle'>Слева-справа</div>
+            <div style={{display: 'flex', flexWrap: 'nowrap'}}>
+                <div style={{width: '25%'}}>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={options}
+                    />
+                </div>
+                <div style={{width: '75%'}}>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={options2}
+                    />
+                </div>
             </div>
-            <div style={{width: '75%'}}>
-                <HighchartsReact
-                    highcharts={Highcharts}
-                    options={options2}
-                />
-            </div>
+
 
         </div>
     );
