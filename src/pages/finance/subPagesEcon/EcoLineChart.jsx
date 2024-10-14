@@ -9,7 +9,7 @@ import Skelet from "../../../elements/Skelet";
 const EcoLineChart = () => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
 
-    const [isLegendVisible, setIsLegendVisible] = useState(false);
+    const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState(null);
 
     useEffect(()=>{
@@ -20,10 +20,23 @@ const EcoLineChart = () => {
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'line', ...chartConfig.chart},
-        title: {text: 'Показатели нарастающим итогом', ...chartConfig.title},
+        chart: {type: 'line', ...chartConfig.chart, height: 300},
+        title: {text: null, ...chartConfig.title, },
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
-        legend: {enabled: isLegendVisible,...chartConfig.legend},
+        legend: {enabled: isLegendVisible,...chartConfig.legend,
+            title: {
+                text: 'Нарастающим итогом',
+                style: {
+                    color: '#A0A0A0',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                }
+            },
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            itemMarginTop: 10
+        },
         xAxis: {...chartConfig.xAxis,
             plotLines: [{
                 color: 'white', // Цвет линии

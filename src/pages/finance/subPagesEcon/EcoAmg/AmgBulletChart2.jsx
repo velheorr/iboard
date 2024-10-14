@@ -10,7 +10,7 @@ const AmgBulletChart2 = ({className}) => {
         accessibility: {...chartConfig.accessibility},
         chart: {
             type: 'bar',
-            ...chartConfig.chart, height: 330,
+            ...chartConfig.chart, height: 300,
         },
         title: {
             text: 'Горизонтальная столбчатая',

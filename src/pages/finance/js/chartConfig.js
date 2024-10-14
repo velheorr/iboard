@@ -45,6 +45,7 @@ export const chartConfig = {
         categories: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
     },
     yAxis: {
+        gridLineWidth: .35,
         labels: {
             style: {
                 color: 'rgb(102, 102, 102)',

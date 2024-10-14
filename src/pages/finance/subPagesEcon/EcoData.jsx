@@ -8,19 +8,19 @@ const EcoData = () => {
     const data = [
         {
             title: 'Проход - МП',
-            border: '#00FF00',
+            border: "#39FF14",
         },
         {
             title: 'Вложения - ЗиНЗП',
-            border: '#FFFF00',
-        },
-        {
-            title: 'Операционные издержки',
             border: '#FF0000',
         },
         {
+            title: 'Операционные издержки',
+            border: '#FFFF00',
+        },
+        {
             title: 'Управленческая прибыль',
-            border: '#808290',
+            border: '#ffa420',
         },
         {
             title: 'Операционная прибыль',

@@ -9,7 +9,7 @@ import Skelet from "../../../elements/Skelet";
 const EcoBarChart = () => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
 
-    const [isLegendVisible, setIsLegendVisible] = useState(false);
+    const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState([]);
 
     useEffect(()=>{
@@ -21,10 +21,23 @@ const EcoBarChart = () => {
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'column', ...chartConfig.chart},
-        title: {text: 'Месячные показатели', ...chartConfig.title},
+        chart: {type: 'column', ...chartConfig.chart, height: 300},
+        title: {text: null, ...chartConfig.title},
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
-        legend: {enabled: isLegendVisible,...chartConfig.legend},
+        legend: {enabled: isLegendVisible,...chartConfig.legend,
+            title: {
+                text: 'Месячные показатели',
+                style: {
+                    color: '#A0A0A0',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                }
+            },
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            itemMarginTop: 5
+        },
         xAxis: {...chartConfig.xAxis},
         yAxis: {
             allowDecimals: true,
@@ -51,11 +64,21 @@ const EcoBarChart = () => {
             },
         },
         tooltip: {
-            format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>' /*+ 'Total: {point.stackTotal}'*/
+            /*formatter: function() {
+                    console.log(this)
+                return `<b>${this.key}</b><br/><span style="color:${this.series.userOptions.borderColor}">${this.series.name}</span>: ${this.y} млн.<br/>`
+            },*/
+            format: '<b>{key}</b><br/>' +
+                '<span style="color:{series.userOptions.borderColor}">{series.name}</span>: {y} млн.' +
+                '<br/>'
+            /*+ 'Total: {point.stackTotal}'*/
         },
         plotOptions: {
             column: {
                 stacking: 'overlap',
+                color: 'transparent',
+                borderWidth: 2,
+                borderRadius: 0
                /* dataLabels: {
                     enabled: true,
                     format: '{point.y}',

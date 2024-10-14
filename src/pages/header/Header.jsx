@@ -6,7 +6,6 @@ import {
     Typography
 } from "@mui/material";
 import {useAuth} from "../../hook/useAuth";
-import {useNavigate} from "react-router";
 import './header.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setMode} from './HeaderSlice'
@@ -15,8 +14,7 @@ import {useTheme} from "../../hook/useTheme";
 
 
 const Header = () => {
-    const navigate = useNavigate();
-    const {signOut,checkAuth, user} = useAuth()
+    const {signOut,user} = useAuth()
     const dispatch = useDispatch();
     const activePageName = useSelector(state => state.sidemenu.activePageName);
 

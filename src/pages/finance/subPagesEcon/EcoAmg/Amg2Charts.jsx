@@ -8,7 +8,7 @@ const Amg2Charts = ({className}) => {
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'bar', ...chartConfig.chart, height: 330,},
+        chart: {type: 'bar', ...chartConfig.chart, height: 300,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
@@ -69,7 +69,7 @@ const Amg2Charts = ({className}) => {
 
     const options2 = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'bar', ...chartConfig.chart, height: 330,},
+        chart: {type: 'bar', ...chartConfig.chart, height: 300,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
