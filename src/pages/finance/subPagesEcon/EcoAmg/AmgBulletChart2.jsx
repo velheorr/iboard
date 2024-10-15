@@ -67,7 +67,12 @@ const AmgBulletChart2 = ({className}) => {
             },
         },
         tooltip: {
-            format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>' /*+ 'Total: {point.stackTotal}'*/
+            formatter: function() {
+                let color = this.color
+                if (color === 'transparent'){ color = 'black'}
+                return `<b>${this.x}</b><br/><span style="color:${color}">${this.series.userOptions.name}</span>: ${this.y} млн.<br/>`
+            },
+            /*format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} млн.<br/>' /!*+ 'Total: {point.stackTotal}'*!/*/
         },
         plotOptions: {
             series: {

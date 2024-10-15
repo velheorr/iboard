@@ -9,10 +9,14 @@ import Skelet from "../../../elements/Skelet";
 const EcoBarChart = () => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
 
+    const date = new Date()
+
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState([]);
+    const [month, setMonth] = useState(null);
 
     useEffect(()=>{
+        setMonth(date.getMonth())
         if (eco){
             setData(convertForBarChart(eco));
         }
@@ -39,7 +43,18 @@ const EcoBarChart = () => {
             verticalAlign: 'middle',
             itemMarginTop: 5
         },
-        xAxis: {...chartConfig.xAxis},
+        xAxis: {...chartConfig.xAxis,
+            plotLines: [{
+                color: 'white', // Цвет линии
+                width: 1, // Ширина линии
+                value: month, // Значение по оси X, где будет линия
+                label: {
+                    text: null, // Подпись к линии
+                    align: 'right',
+                    verticalAlign: 'top'
+                }
+            }]
+        },
         yAxis: {
             allowDecimals: true,
             min: -10, //max: 300,
@@ -87,26 +102,6 @@ const EcoBarChart = () => {
                     inside: true,
                 }*/
             },
-            /*series: {
-                events: {
-                    afterAnimate: function () {
-                        // Обновление цвета текста в легенде
-                        console.log(this.options.legendColor)
-                        this.color = this.options.legendColor
-                        chart.redraw();
-                       /!* this.options.legendColor.update({
-                            style: {
-                                color: this.options.legendColor // Установка цвета в легенде
-                            }
-                        });*!/
-                        /!*this.legendItem.update({
-                            style: {
-                                color: this.options.legendColor // Установка цвета в легенде
-                            }
-                        });*!/
-                    }
-                }
-            }*/
         },
         series: data || []
     }),[data, isLegendVisible])

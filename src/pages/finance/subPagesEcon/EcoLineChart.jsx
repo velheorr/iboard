@@ -9,10 +9,14 @@ import Skelet from "../../../elements/Skelet";
 const EcoLineChart = () => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
 
+    const date = new Date()
+
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState(null);
+    const [month, setMonth] = useState(null);
 
     useEffect(()=>{
+        setMonth(date.getMonth())
         if (eco){
             setData(convertForLineChart(eco));
         }
@@ -41,9 +45,9 @@ const EcoLineChart = () => {
             plotLines: [{
                 color: 'white', // Цвет линии
                 width: 1, // Ширина линии
-                value: 8, // Значение по оси X, где будет линия
+                value: month, // Значение по оси X, где будет линия
                 label: {
-                    text: 'Выделенная линия', // Подпись к линии
+                    text: null, // Подпись к линии
                     align: 'right',
                     verticalAlign: 'top'
                 }
