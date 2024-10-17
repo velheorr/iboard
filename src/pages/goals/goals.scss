@@ -1,0 +1,27 @@
+.header {
+    padding: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.gtitle {
+    padding: 8px;
+    font-size: 14px;
+    &.red{
+        margin-left: 15px;
+    }
+}
+
+.blue {
+    color: #7bc4fe;
+}
+.red{
+    color: #fd634e;
+}
+
+.green{
+    color: #45a822;
+}
+.orange{
+    color: #e4bc56;
+}

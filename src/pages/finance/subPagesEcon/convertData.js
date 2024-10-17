@@ -59,7 +59,7 @@ export const convertForLineChart = (arr)=>{
 export const convertForBarChart = (arr) => {
     const x = [
         {
-            name: 'Выручка План',
+            name: 'Процентование План',
             data: prodano(arr, 'ЗапроцентованоПлан'),
             stack: 'Запроцентовано',
             /*borderColor: '#7cb5ec',*/
@@ -70,10 +70,9 @@ export const convertForBarChart = (arr) => {
                     [1, '#6d7998']  // Цвет внизу
                 ]
             },
-            legendColor: '#FF0000',
         },
         {
-            name: 'Выручка Факт',
+            name: 'Процентование Факт',
             data: prodano(arr, 'ЗапроцентованоФакт'),
             stack: 'Запроцентовано',
             /*borderColor: "#5555ff",*/
@@ -84,7 +83,6 @@ export const convertForBarChart = (arr) => {
                     [1, '#0c2054']  // End color
                 ]
             },
-            legendColor: '#FF0000',
         },
         {
             name: 'МП План',
@@ -98,7 +96,6 @@ export const convertForBarChart = (arr) => {
                     [1, '#54925e']  // End color
                 ]
             },
-            legendColor: '#FF0000',
         },
         {
             name: 'МП Факт',
@@ -112,10 +109,9 @@ export const convertForBarChart = (arr) => {
                     [1, '#166a24']  // End color
                 ]
             },
-            legendColor: '#FF0000',
         },
         {
-            name: 'Вложения План',
+            name: 'ЗиНЗП План',
             data: prodano(arr, 'ВаловаяПрибыльПлан'),
             stack: 'Валовая прибыль',
             /*borderColor: '#00fde0',*/
@@ -126,10 +122,9 @@ export const convertForBarChart = (arr) => {
                     [1, '#ff8c40']  // End color
                 ]
             },
-            legendColor: '#FF0000',
         },
         {
-            name: 'Вложения Факт',
+            name: 'ЗиНЗП Факт',
             data: prodano(arr, 'ВаловаяПрибыльФакт'),
             stack: 'Валовая прибыль',
             /*borderColor: '#7f8190',*/
@@ -140,11 +135,10 @@ export const convertForBarChart = (arr) => {
                     [1, '#ff6600']  // End color
                 ]
             },
-            legendColor: '#FF0000',
         },
 
         {
-            name: 'Операционные издержки',
+            name: 'ОИ',
             data: prodano(arr, 'НЗП'),
             /*borderColor: '#ff0000',*/
             borderColor: {
@@ -154,7 +148,6 @@ export const convertForBarChart = (arr) => {
                     [1, '#DC0404']  // End color
                 ]
             },
-            legendColor: '#FF0000',
         },
     ]
     return x

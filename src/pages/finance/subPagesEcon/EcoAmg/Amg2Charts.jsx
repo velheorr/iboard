@@ -88,7 +88,8 @@ const Amg2Charts = ({className}) => {
                     fontSize: '13px', // Размер шрифта
                 },
                 align: 'center', // Положение подписей
-                padding: 10
+                padding: 5,
+                x: -20
             }
         },
         yAxis: {...chartConfig.yAxis,

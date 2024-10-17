@@ -1,0 +1,66 @@
+.tableHeader {
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    div {
+        font-size: 15px;
+        word-wrap: break-word;
+    }
+    .listIcon {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        svg {
+            font-size: 1.1rem;
+            padding-right: 5px;
+        }
+    }
+}
+
+.tableItem{
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    min-height: 16px;
+    font-size: 14px;
+    border: 1px solid #80808045;
+    /*:nth-child(n+3) {
+        text-align: center;
+    }*/
+    &:hover {
+        background-color: #3fb329;
+        color: black;
+        .edit {
+            display: block;
+        }
+    }
+    .edit {
+        position: absolute;
+        right: 2px;
+        bottom: 3px;
+        display: none;
+        .MuiButtonBase-root {min-width: 40px !important;}
+    }
+    .status {
+        position: absolute;
+        bottom: -8px;
+        left: 10px;
+    }
+}
+
+.transport {
+    width: fit-content;
+    background: white;
+    color: black;
+    padding: .2rem;
+    margin: 0 auto;
+    font-weight: 600;
+}
+.flexCenter {
+    justify-content: center;
+}
+
+.grey {
+    color: grey;
+}
