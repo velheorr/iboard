@@ -21,10 +21,10 @@ const GoalMatrix = () => {
             <div>
                 <BlockShadow >
                     <TableHead extra={'tac fs13'}>
-                        <div className='blue' style={{width: '3%'}} >сфера</div>
-                        <div className='red' style={{width: '3%'}} >цель</div>
-                        <div className='green' style={{width: '7%'}} >РЕЗУЛЬТИРУЮЩИЕ</div>
-                        <div className='orange' style={{width: '7%'}} >ОПЕРЕЖАЮЩИЕ</div>
+                        <div className='blue' style={{width: '3%', fontStyle: 'italic'}} >сфера</div>
+                        <div className='red' style={{width: '3%', fontStyle: 'italic'}} >цель</div>
+                        <div className='green' style={{width: '7%', fontStyle: 'italic'}} >РЕЗУЛЬТИРУЮЩИЕ</div>
+                        <div className='orange' style={{width: '7%', fontStyle: 'italic'}} >ОПЕРЕЖАЮЩИЕ</div>
 
                         <div style={{width: '10%'}} >Вектор:</div>
                         <div style={{width: '10%'}} >Вес показателя</div>
