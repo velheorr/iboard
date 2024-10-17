@@ -3,11 +3,11 @@ import BlockShadow from "../BlockShadow";
 
 const TableItem = ({children, extra = ''}) => {
     return (
-        <BlockShadow>
-            <div className={`tableItem ${extra}`}>
+        /*<BlockShadow>*/
+            <div className={`tableItem ${extra}`} style={{margin: '5px'}}>
                 {children}
             </div>
-        </BlockShadow>
+        /*</BlockShadow>*/
     );
 };
 

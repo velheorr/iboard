@@ -8,7 +8,7 @@ import MiniLineChart from "./MiniLineChart";
 const GoalMatrix = () => {
     return (
         <div>
-            <div className='header'>
+            <div className='headerGoal'>
                 <div>Винокуров АВ</div>
                 <div>ПРОЕКТНЫЙ ДИРЕКТОР</div>
                 <div>
@@ -20,78 +20,113 @@ const GoalMatrix = () => {
             </div>
             <div>
                 <BlockShadow >
-                    <TableHead>
+                    <TableHead extra={'tac fs13'}>
                         <div className='blue' style={{width: '3%'}} >сфера</div>
                         <div className='red' style={{width: '3%'}} >цель</div>
-                        <div className='green' style={{width: '7%'}} >Показатели РЕЗУЛЬТИРУЮЩИЕ:</div>
-                        <div className='orange' style={{width: '7%'}} >Показатели ОПЕРЕЖАЮЩИЕ:</div>
+                        <div className='green' style={{width: '7%'}} >РЕЗУЛЬТИРУЮЩИЕ</div>
+                        <div className='orange' style={{width: '7%'}} >ОПЕРЕЖАЮЩИЕ</div>
 
-                        <div style={{width: '10%'}} >Целевой вектор:</div>
-                        <div style={{width: '5%'}} >Вес показателя</div>
+                        <div style={{width: '10%'}} >Вектор:</div>
+                        <div style={{width: '10%'}} >Вес показателя</div>
                         <div style={{width: '10%'}} >РЕЗУЛЬТАТИВНОСТЬ</div>
-                        <div style={{width: '6%'}} >СверхЦелевое значение</div>
-                        <div style={{width: '6%'}} >Целевое значение</div>
-                        <div style={{width: '6%'}} >Приемлемое значение</div>
-                        <div style={{width: '6%'}} >Критическое значение</div>
+                        <div style={{width: '6%'}} >СверхЦелевое</div>
+                        <div style={{width: '6%'}} >Целевое</div>
+                        <div style={{width: '6%'}} >Приемлемое</div>
+                        <div style={{width: '6%'}} >Критическое</div>
                         <div style={{width: '10%'}} >Миниграфик (-6 мес)</div>
                         <div style={{width: '10%'}} >Тренд</div>
-                        <div style={{width: '6%'}} >Фактическое текущее значение
-                        </div>
+                        <div style={{width: '6%'}} >ФАКТ значение</div>
                     </TableHead>
                 </BlockShadow>
                 <Scroll h='h268'>
                     <div className='gtitle blue'>Репутация (Предсказуемость)</div>
                     <div className='gtitle red'>Ускорение объемов выполнения Работ</div>
                     <GreenBlock text={'Количество Проектов завершенных позже договорного срока, шт'}>
-                        <div style={{width: '10%'}} >Снижение -</div>
-                        <div style={{width: '5%'}} >10%</div>
-                        <div style={{width: '10%'}} >86%</div>
-                        <div style={{width: '6%'}} >10</div>
-                        <div style={{width: '6%'}} >10</div>
-                        <div style={{width: '6%'}} >2</div>
-                        <div style={{width: '6%'}} >5</div>
-                        <div style={{width: '10%'}} ><MiniLineChart/></div>
-                        <div style={{width: '10%'}} >Чрезвычайное</div>
-                        <div style={{width: '6%'}} >1</div>
+                        <div className='tac' style={{width: '10%'}} >Снижение -</div>
+                        <div className='tac' style={{width: '10%'}} >10%</div>
+                        <div className='tac' style={{width: '10%'}} >86%</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >2</div>
+                        <div className='tac' style={{width: '6%'}} >5</div>
+                        <div className='tac' style={{width: '10%'}} ><MiniLineChart/></div>
+                        <div className='tac' style={{width: '10%'}} >Чрезвычайное</div>
+                        <div className='tac' style={{width: '6%'}} >1</div>
                     </GreenBlock>
                     <OrangeBlock text={'Процентная пара: % освоения сроков / % освоения Процентования (по-Проектно)'}>
-                        <div style={{width: '8%'}} >Рост +</div>
-                        <div style={{width: '8%'}} >10%</div>
-                        <div style={{width: '8%'}} >86%</div>
-                        <div style={{width: '8%'}} >-</div>
-                        <div style={{width: '8%'}} >-</div>
-                        <div style={{width: '8%'}} >2</div>
-                        <div style={{width: '8%'}} >5</div>
-                        <div style={{width: '8%'}} ><MiniLineChart/></div>
-                        <div style={{width: '8%'}} >Чрезвычайное</div>
-                        <div style={{width: '8%'}} >1</div>
+                        <div className='tac' style={{width: '10%'}} >Рост +</div>
+                        <div className='tac' style={{width: '10%'}} >10%</div>
+                        <div className='tac' style={{width: '10%'}} >86%</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >2</div>
+                        <div className='tac' style={{width: '6%'}} >5</div>
+                        <div className='tac' style={{width: '10%'}} ><MiniLineChart/></div>
+                        <div className='tac' style={{width: '10%'}} >Чрезвычайное</div>
+                        <div className='tac' style={{width: '6%'}} >1</div>
                     </OrangeBlock>
                     <GreenBlock text={'% Проектов (по сумме договора) завершенных позже договорного срока, %'}>
-                        <div style={{width: '8%'}} >Снижение -</div>
-                        <div style={{width: '8%'}} >10%</div>
-                        <div style={{width: '8%'}} >86%</div>
-                        <div style={{width: '8%'}} >-</div>
-                        <div style={{width: '8%'}} >-</div>
-                        <div style={{width: '8%'}} >2</div>
-                        <div style={{width: '8%'}} >5</div>
-                        <div style={{width: '8%'}} ><MiniLineChart/></div>
-                        <div style={{width: '8%'}} >Чрезвычайное</div>
-                        <div style={{width: '8%'}} >1</div>
+                        <div className='tac' style={{width: '10%'}} >Снижение -</div>
+                        <div className='tac' style={{width: '10%'}} >10%</div>
+                        <div className='tac' style={{width: '10%'}} >86%</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >2</div>
+                        <div className='tac' style={{width: '6%'}} >5</div>
+                        <div className='tac' style={{width: '10%'}} ><MiniLineChart/></div>
+                        <div className='tac' style={{width: '10%'}} >Чрезвычайное</div>
+                        <div className='tac' style={{width: '6%'}} >1</div>
                     </GreenBlock>
                     <div className='gtitle blue'>Эффективность</div>
                     <div className='gtitle red'>Минимизировать Потери в Проектах (в тч простои)</div>
                     <GreenBlock text={'Среднее отклонение фактической Рентабельности проектов по ВП от плановой, %'}>
-
+                        <div className='tac' style={{width: '10%'}} >Снижение -</div>
+                        <div className='tac' style={{width: '10%'}} >10%</div>
+                        <div className='tac' style={{width: '10%'}} >86%</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >2</div>
+                        <div className='tac' style={{width: '6%'}} >5</div>
+                        <div className='tac' style={{width: '10%'}} ><MiniLineChart/></div>
+                        <div className='tac' style={{width: '10%'}} >Чрезвычайное</div>
+                        <div className='tac' style={{width: '6%'}} >1</div>
                     </GreenBlock>
                     <OrangeBlock text={'Сумма Потерь в Проектах (Накинеши, Простои, Штрафы, Переплаты по спецтехнике…), руб'}>
-
+                        <div className='tac' style={{width: '10%'}} >Снижение -</div>
+                        <div className='tac' style={{width: '10%'}} >10%</div>
+                        <div className='tac' style={{width: '10%'}} >86%</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >2</div>
+                        <div className='tac' style={{width: '6%'}} >5</div>
+                        <div className='tac' style={{width: '10%'}} ><MiniLineChart/></div>
+                        <div className='tac' style={{width: '10%'}} >Чрезвычайное</div>
+                        <div className='tac' style={{width: '6%'}} >1</div>
                     </OrangeBlock>
                     <OrangeBlock text={'Процентное трио: Плановая Рентабельность / Фактическая (накопленная) Рент / Прогнозная Рент'}>
-
+                        <div className='tac' style={{width: '10%'}} >Снижение -</div>
+                        <div className='tac' style={{width: '10%'}} >10%</div>
+                        <div className='tac' style={{width: '10%'}} >86%</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >2</div>
+                        <div className='tac' style={{width: '6%'}} >5</div>
+                        <div className='tac' style={{width: '10%'}} ><MiniLineChart/></div>
+                        <div className='tac' style={{width: '10%'}} >Чрезвычайное</div>
+                        <div className='tac' style={{width: '6%'}} >1</div>
                     </OrangeBlock>
                     <div className='gtitle red'>Повышать операционную эффективность в Проектах</div>
                     <GreenBlock text={'ВП на одного рабочего в год, руб'}>
-
+                        <div className='tac' style={{width: '10%'}} >Снижение -</div>
+                        <div className='tac' style={{width: '10%'}} >10%</div>
+                        <div className='tac' style={{width: '10%'}} >86%</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >10</div>
+                        <div className='tac' style={{width: '6%'}} >2</div>
+                        <div className='tac' style={{width: '6%'}} >5</div>
+                        <div className='tac' style={{width: '10%'}} ><MiniLineChart/></div>
+                        <div className='tac' style={{width: '10%'}} >Чрезвычайное</div>
+                        <div className='tac' style={{width: '6%'}} >1</div>
                     </GreenBlock>
                     <OrangeBlock text={'ВП на 1 Рабочего в месяц в среднем по всем Проектам, руб'}>
 
@@ -129,20 +164,20 @@ const GoalMatrix = () => {
 
 export default GoalMatrix;
 
-const GreenBlock = ({text, children}) => {
+const GreenBlock = ({text,extra, children}) => {
 
     return (
-        <TableItem >
+        <TableItem extra={'pad0'}>
             <div style={{width: '2%'}} ></div>
             <div className='green' style={{width: '18%'}}>{text}</div>
             {children}
         </TableItem>
     )
 }
-const OrangeBlock = ({text, children}) => {
+const OrangeBlock = ({text,extra, children}) => {
 
     return (
-        <TableItem >
+        <TableItem extra={'pad0'}>
             <div style={{width: '3%'}} ></div>
             <div className='orange' style={{width: '17%'}}>{text}</div>
             {children}

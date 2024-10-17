@@ -9,7 +9,7 @@ const MiniLineChart = () => {
         credits: {
             enabled: false // Отключить отображение ссылки
         },
-        chart: {type: 'line', ...chartConfig.chart, height: 45},
+        chart: {type: 'line', ...chartConfig.chart, height: 34},
         title: {text: null, ...chartConfig.title},
         subtitle: {text: null, ...chartConfig.subtitle},
         legend: {enabled: false,...chartConfig.legend},
@@ -18,6 +18,7 @@ const MiniLineChart = () => {
             labels: {
                 enabled: false // Hide x-axis labels for a cleaner look
             },
+            lineWidth: 0
         },
         yAxis: {
             title: {
@@ -35,7 +36,7 @@ const MiniLineChart = () => {
         },
         series: [{
             name: 'Data',
-            data: [1, 2, 4, 3, 5],
+            data: [10, 2, 44, 3, 50],
             marker: {
                 enabled: false // Hide markers for a more streamlined appearance
             },

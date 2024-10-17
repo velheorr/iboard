@@ -24,12 +24,14 @@
     position: relative;
     min-height: 16px;
     font-size: 14px;
-    border: 1px solid #80808045;
+    border: 1px solid rgb(142 142 142 / 18%);
+
     /*:nth-child(n+3) {
         text-align: center;
     }*/
     &:hover {
-        background-color: #3fb329;
+        /*background-color: #3fb329;*/
+        background-color: #3fb32975;
         color: black;
         .edit {
             display: block;
