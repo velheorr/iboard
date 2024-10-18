@@ -2,12 +2,13 @@ import './goals.scss';
 import ElemTab from "../../elements/Tabs/ElemTab";
 import GoalMatrix from "./subPagesGoals/GoalMatrix";
 import f16 from '../../img/f16.mp4'
+import GoalsSelect from "./GoalsSelect";
 
 const Goals = () => {
     return (
         <div>
             <ElemTab arr={['Руководитель проекта', 'Руководитель строительства', 'ГИП']} inner={true}>
-                <GoalMatrix/>
+                <GoalsSelect/>
                 <GoalMatrix/>
                 <div>
                     <div style={{margin: '50px auto'}}>
