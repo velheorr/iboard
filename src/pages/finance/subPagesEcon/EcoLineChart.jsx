@@ -24,6 +24,7 @@ const EcoLineChart = () => {
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
+        credits: {...chartConfig.credits},
         chart: {type: 'line', ...chartConfig.chart, height: 300},
         title: {text: null, ...chartConfig.title, },
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},

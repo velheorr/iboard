@@ -9,6 +9,7 @@ const AmgCustomFunnel = ({className}) => {
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
+        credits: {...chartConfig.credits},
         chart: {type: 'bar', ...chartConfig.chart, height: 310,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},

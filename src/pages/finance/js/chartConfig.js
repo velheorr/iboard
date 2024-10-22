@@ -16,6 +16,9 @@ export const chartConfig = {
     accessibility: {
         enabled: false // Включаем доступность
     },
+    credits: {
+        enabled: false // Отключить отображение ссылки
+    },
     subtitle: {
         /*text: 'За месяц, млн.',*/
         align: 'left'

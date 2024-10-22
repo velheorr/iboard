@@ -13,7 +13,9 @@ import ElemTab from "../../elements/Tabs/ElemTab";
 import EcoAmg from "./subPagesEcon/EcoAMG";
 import HomeIcon from '@mui/icons-material/Home';
 import {Stack, Typography} from "@mui/material";
+import CustomEvents from "highcharts-custom-events";
 
+CustomEvents(Highcharts);
 exporting(Highcharts);
 exportData(Highcharts);
 fullscreen(Highcharts);

@@ -8,6 +8,7 @@ const AmgBulletChart2 = ({className}) => {
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
+        credits: {...chartConfig.credits},
         chart: {
             type: 'bar',
             ...chartConfig.chart, height: 310,

@@ -5,6 +5,7 @@ import {convertForBarChart, convertForLineChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
 import {useGetEco} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
+import '../econ.scss'
 
 const EcoBarChart = () => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
@@ -23,10 +24,11 @@ const EcoBarChart = () => {
 
     },[eco])
 
-
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
-        chart: {type: 'column', ...chartConfig.chart, height: 300},
+        credits: {...chartConfig.credits},
+        chart: {type: 'column', ...chartConfig.chart, height: 300,
+        },
         title: {text: null, ...chartConfig.title},
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
         legend: {enabled: isLegendVisible,...chartConfig.legend,
@@ -44,16 +46,28 @@ const EcoBarChart = () => {
             itemMarginTop: 5
         },
         xAxis: {...chartConfig.xAxis,
+            labels: {
+                useHTML: true, // Enable HTML for styling
+                formatter: function () {
+                    return `<span class="xaxis-label">${this.value}</span>`;
+                },
+                style: {
+                    color: 'rgb(102, 102, 102)',
+                    fontSize: '13px',
+                    cursor: 'pointer'
+                },
+                events: {
+                    click: function () {
+                        alert('Вы кликнули на категорию: ' + this.value);
+                    }
+                },
+            },
             plotLines: [{
                 color: 'white', // Цвет линии
                 width: 1, // Ширина линии
                 value: month, // Значение по оси X, где будет линия
-                label: {
-                    text: null, // Подпись к линии
-                    align: 'right',
-                    verticalAlign: 'top'
-                }
-            }]
+            }],
+
         },
         yAxis: {
             allowDecimals: true,
@@ -103,7 +117,7 @@ const EcoBarChart = () => {
                 }*/
             },
         },
-        series: data || []
+        series: data || [],
     }),[data, isLegendVisible])
 
     if (isLoading) {return <Skelet option='eco'/>}

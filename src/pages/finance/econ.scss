@@ -42,6 +42,14 @@
     }
 }
 
+.xaxis-label {
+    transition: color 0.3s;
+}
+.xaxis-label:hover {
+    color: red; /* Change color on hover */
+}
+
+
 .amg {
     display: flex;
     flex-wrap: wrap;

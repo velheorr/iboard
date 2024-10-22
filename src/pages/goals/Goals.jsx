@@ -1,24 +1,40 @@
 import './goals.scss';
 import ElemTab from "../../elements/Tabs/ElemTab";
 import GoalMatrix from "./subPagesGoals/GoalMatrix";
-import f16 from '../../img/f16.mp4'
 import GoalsSelect from "./GoalsSelect";
+import React, {useState} from "react";
+import {Button, Tooltip, Typography} from "@mui/material";
+import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 
 const Goals = () => {
+    const [show, setShow] = useState(false)
+
+    const toggleShow = () => {
+        setShow(!show)
+    }
+
     return (
         <div>
-            <ElemTab arr={['Руководитель проекта', 'Руководитель строительства', 'ГИП']} inner={true}>
-                <GoalsSelect/>
-                <GoalMatrix/>
-                <div>
-                    <div style={{margin: '50px auto'}}>
-                        <video className="bubbles" width="1024" height="760" loop="loop" autoPlay="autoplay"
-                               muted="muted">
-                            <source src={f16} type='video/mp4; codecs="avc1.42E030, mp4a.40.2"'/>
-                        </video>
+            {
+                !show
+                    ?
+                    <div>
+                        <GoalsSelect toggleShow={toggleShow}/>
                     </div>
-                </div>
-            </ElemTab>
+                    :
+                    <div>
+                        <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
+                            <Button onClick={toggleShow} color={'success'} variant="outlined" size='small' startIcon={<ReplyAllIcon />}>Назад</Button>
+                        </Tooltip>
+                        <ElemTab arr={['Руководитель проекта', 'Руководитель строительства', 'ГИП']} inner={true}>
+                            <GoalMatrix/>
+                            <GoalMatrix/>
+                            <GoalMatrix/>
+                        </ElemTab>
+                    </div>
+            }
+
+
         </div>
     );
 };
