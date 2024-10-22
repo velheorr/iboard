@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {Button, FormControlLabel, IconButton, Tooltip, Typography} from "@mui/material";
-import './economics.scss'
-import TableBlock from "./subpagesDetails/TableBlock";
-import HeaderBlock from "./subpagesDetails/HeaderBlock";
+import {useState} from 'react';
+import {Button, FormControlLabel, Tooltip, Typography} from "@mui/material";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router";
-import {useTheme} from "../../hook/useTheme";
+import {useTheme} from "../../../hook/useTheme";
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import Switch from "@mui/material/Switch";
+import TableBlock from "./subpagesDetails/TableBlock";
+import HeaderBlock from "./subpagesDetails/HeaderBlock";
+import '../econ.scss'
 
 const EconomicsDetails = () => {
-    const month = useSelector(state => state.economics.monthDetails);
-    const year = useSelector(state => state.economics.yearDetails);
+    const month = useSelector(state => state.eco.monthDetails);
+    const year = useSelector(state => state.eco.yearDetails);
     const navigate = useNavigate();
     const theme = useTheme() ? 'dark' : 'light'
     const goBack = ()=>{navigate('/economics')}
@@ -45,6 +45,8 @@ const EconomicsDetails = () => {
         let bgColor = theme === 'dark'? '#444a45' : '#c9d8f794'
         return <TableBlock key={i} year={i} month={month} bg={i === +year? bgColor: ''}/>
     })
+
+
 
     return (
         <div>

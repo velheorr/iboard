@@ -1,13 +1,13 @@
-import {GFormControl, GInputLabel} from "../../../elements/CustomMui/customMui";
+import {GFormControl, GInputLabel} from "../../../../elements/CustomMui/customMui";
 import {MenuItem, Select} from "@mui/material";
 import Chart from "./Chart";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useGetEco} from "../../../hook/useGetEconomics";
+import {useGetEco} from "../../../../hook/useGetEconomics";
 import {prepareData} from "../js/prepareData";
 import {setEconData, setEconData2} from "../js/EconomicsSlice";
-import {useTheme} from "../../../hook/useTheme";
-import Skelet from "../../../elements/Skelet";
+import {useTheme} from "../../../../hook/useTheme";
+import Skelet from "../../../../elements/Skelet";
 
 const ChartContainer = ({econ, date}) => {
     const [date1, setDate1] = useState(date)

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import BlockShadow from "../../../elements/BlockShadow";
+import BlockShadow from "../../../../elements/BlockShadow";
 import ElemTableBlock from "./ElemTableBlock";
-import '../economics.scss'
-import {useGetEco} from "../../../hook/useGetEconomics";
-import Skelet from "../../../elements/Skelet";
-import {useTheme} from "../../../hook/useTheme";
+import '../../econ.scss'
+import {useGetEco} from "../../../../hook/useGetEconomics";
+import Skelet from "../../../../elements/Skelet";
+import {useTheme} from "../../../../hook/useTheme";
 
 const TableBlock = ({year, month, bg}) => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(year, month)

@@ -17,12 +17,14 @@ import {ResetPassword} from "./pages/login/ResetPassword";
 import TransitionsModal from "./elements/Modal/Modal";
 import Realization from "./pages/realization/Realization";
 import Auth from "./pages/login/Auth";
-import Economics from "./pages/economics/Economics";
+/*import Economics from "./pages/economics/Economics";*/
 import Resources from "./pages/resources/Resources";
-import EconomicsDetails from "./pages/economics/EconomicsDetails";
+/*import EconomicsDetails from "./pages/economics/EconomicsDetails";*/
 import VersionLog from "./pages/versionLog/VersionLog";
-import Econ from "./pages/finance/Econ";
+import Econ from "./pages/economics/Econ";
 import Goals from "./pages/goals/Goals";
+import Finance from "./pages/finance/Finance";
+import EconomicsDetails from "./pages/economics/subPagesEcon/EconomicsDetails";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -50,9 +52,11 @@ function App() {
                         <Route  path='/dynamic' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Goals /></RequireAuth>}/>
-                        <Route  path='/economics' element={<RequireAuth><Economics /></RequireAuth>}/>
+                        <Route  path='/economics' element={<RequireAuth><Econ /></RequireAuth>}/>
                         <Route  path='/economics/details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>
-                        <Route  path='/finance' element={<RequireAuth><Econ /></RequireAuth>}/>
+                        {/*<Route  path='/economics' element={<RequireAuth><Economics /></RequireAuth>}/>
+                        <Route  path='/economics/details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>*/}
+                        <Route  path='/finance' element={<RequireAuth><Finance /></RequireAuth>}/>
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Resources /></RequireAuth>}/>
                         <Route  path='/lost_develop' element={<RequireAuth><Page404 /></RequireAuth>}/>

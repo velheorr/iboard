@@ -1,6 +1,6 @@
 import ElemTableBlock from "./ElemTableBlock";
-import '../economics.scss'
-import {useTheme} from "../../../hook/useTheme";
+import "../../econ.scss"
+import {useTheme} from "../../../../hook/useTheme";
 
 
 const HeaderBlock = () => {

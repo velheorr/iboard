@@ -1,0 +1,150 @@
+.econMain {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 20px;
+    .ecoBlocks {
+        flex-basis: 170px;
+        padding-top: 15px;
+        .ecoDataDate {
+            display: flex;
+            justify-content: center;
+            padding: 25px;
+            color: #0a8016;
+            font-size: 20px;
+            font-weight: 600;
+            border: 1px solid #454444;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .ecoDataNum {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 10px;
+            font-size: 13px;
+            .ecoDataTitle {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+            span {
+                float: right;
+            }
+            .ecoDataCurrentMonth {
+                font-weight: 600;
+                color: #4cb242;
+            }
+        }
+    }
+    .ecoBlocks2 {
+        flex-basis: calc(100% - 170px);
+    }
+}
+
+.ecoDetails {
+    margin-top: 15px;
+    .month {
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 25px;
+        font-style: italic;
+    }
+    .header{
+        display: flex;
+        align-items: flex-start;
+        height: 100%;
+        &.dark {
+            color: #e4e4e4;
+        }
+        &.light {
+            color: #717272;
+        }
+    }
+
+    .headBlock {
+        width: 22%;
+    }
+    .headBlockItem {
+        padding: 7px;
+        text-align: center;
+        &.light {
+            &.z{background-color: #CAEDFC; }
+            &.v{background-color: #FBD5D1; }
+            &.o{background-color: #C0F3DA; }
+            &.n{background-color: #f3aca6; }
+        }
+
+    }
+    .headBG{
+        margin-bottom: 0px;
+        &.dark {
+            background-color: #171717;
+            color: #a7a7a7;
+        }
+        &.light {
+            background-color: #848fa117;
+            color: #7f7f7f;
+        }
+    }
+    .lineBG{
+        border: 1px solid #80808045;
+    }
+
+    .fb33 {
+        flex-basis: 33%;
+    }
+    .fb49 {
+        flex-basis: 49%;
+    }
+    .flexYear {
+        width: 10%;
+        text-align: center;
+    }
+}
+.btnTopBlock {
+    margin-top: 25px;
+    margin-left: 15px;
+    .dark {
+        color: #17fa2f !important;
+        border: 1px solid #0a8016;
+        box-shadow: 0px 0px 15px #17f82f;
+    }
+}
+
+.flexItem {
+    display: flex;
+    justify-content: space-around;
+    .flexL {
+        border-right: 1px solid #5c5c5c;
+        width: 49%;
+    }
+    .flexR {width: 49%;}
+    .pointL {font-size: .9rem;}
+    .pointR {font-weight: 600;}
+}
+
+
+/*barchart  xaxis click style*/
+.xaxis-label {
+    transition: color 0.3s;
+}
+.xaxis-label:hover {
+    color: red; /* Change color on hover */
+}
+
+
+.amg {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    .amgChart {
+        flex-basis: 32%;
+    }
+}
+
+.chartTitle {
+    text-align: center;
+    margin: 3px 0px;
+    font-size: 14px;
+}

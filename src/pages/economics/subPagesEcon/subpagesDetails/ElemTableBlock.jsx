@@ -1,7 +1,7 @@
 import React from 'react';
-import BlockShadow from "../../../elements/BlockShadow";
-import '../economics.scss'
-import {useTheme} from "../../../hook/useTheme";
+import BlockShadow from "../../../../elements/BlockShadow";
+import '../../econ.scss'
+import {useTheme} from "../../../../hook/useTheme";
 
 const ElemTableBlock = ({name, children, bg}) => {
     const theme = useTheme() ? 'dark' : 'light'

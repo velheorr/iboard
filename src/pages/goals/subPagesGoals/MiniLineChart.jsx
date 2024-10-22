@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react';
-import {chartConfig} from "../../finance/js/chartConfig";
+import {chartConfig} from "../../economics/js/chartConfig";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 

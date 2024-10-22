@@ -1,16 +1,20 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import {convertForBarChart, convertForLineChart} from "./convertData";
+import {convertForBarChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
 import {useGetEco} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 import '../econ.scss'
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {setDetails} from "../js/EcoSlice";
 
 const EcoBarChart = () => {
     const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
-
     const date = new Date()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState([]);
@@ -23,6 +27,11 @@ const EcoBarChart = () => {
         }
 
     },[eco])
+
+    const openEcoPage2 = (month, year)=>{
+        dispatch(setDetails({month, year}))
+        navigate('/economics/details')
+    }
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -54,11 +63,12 @@ const EcoBarChart = () => {
                 style: {
                     color: 'rgb(102, 102, 102)',
                     fontSize: '13px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                 },
                 events: {
-                    click: function () {
-                        alert('Вы кликнули на категорию: ' + this.value);
+                    click: function (e) {
+                        //alert('Вы кликнули на категорию: ' + this.value);
+                        openEcoPage2(e.target.innerText, date.getFullYear())
                     }
                 },
             },
