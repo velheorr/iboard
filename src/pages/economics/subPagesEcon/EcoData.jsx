@@ -1,38 +1,36 @@
-import React from 'react';
-import {Button, Tooltip, Typography} from "@mui/material";
-import ReplyAllIcon from "@mui/icons-material/ReplyAll";
-import {useTheme} from "../../../hook/useTheme";
+import '../econ.scss'
+import {Tooltip, Typography} from "@mui/material";
+
 
 
 const EcoData = () => {
     const data = [
         {
             title: 'Проход - МП',
-            border: "#39FF14",
+            border: "ecoGreen",
         },
         {
             title: 'Вложения - ЗиНЗП',
-            border: '#ffa420',
+            border: 'ecoOrange',
         },
         {
             title: 'Операционные издержки',
-            border: '#FF0000',
+            border: 'ecoRed',
         },
         {
             title: 'Управленческая прибыль',
-            border: '#FFFF00',
+            border: 'ecoYellow',
         },
         {
             title: 'Операционная прибыль',
-            border: '#00FFE1',
+            border: 'ecoLblue',
         },
     ]
-    const theme = useTheme() ? 'dark' : 'light'
 
 
     return (
         <div style={{width: '170px', position: 'fixed'}}>
-            <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
+            <Tooltip title={<Typography variant="body2"  gutterBottom>тултип</Typography>}>
                 <div className='ecoDataDate'>09/2024</div>
             </Tooltip>
             { data?.map((item, i) => {
@@ -47,7 +45,7 @@ export default EcoData;
 const Block = ({data}) => {
   const {title, border} = data
     return (
-        <div className='ecoDataNum' style={{borderColor: border}}>
+        <div className={`ecoDataNum ${data.border}`} style={{borderColor: border}}>
             <div className='ecoDataTitle'>{title}</div>
             <div>Август <span> +120млн</span></div>
             <div className='ecoDataCurrentMonth'>Сентябрь <span> +555млн</span></div>

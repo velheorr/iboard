@@ -8,6 +8,7 @@ import Switch from "@mui/material/Switch";
 import TableBlock from "./subpagesDetails/TableBlock";
 import HeaderBlock from "./subpagesDetails/HeaderBlock";
 import '../econ.scss'
+import NeonButton from "../../../elements/NeonButton/NeonButton";
 
 const EconomicsDetails = () => {
     const month = useSelector(state => state.eco.monthDetails);
@@ -50,10 +51,8 @@ const EconomicsDetails = () => {
 
     return (
         <div>
-            <div className='btnTopBlock'>
-                <Tooltip title={<Typography variant="body2"  gutterBottom>Вернуться назад</Typography>}>
-                    <Button className={theme} onClick={goBack} color={'success'} variant="outlined" size='small' startIcon={<ReplyAllIcon />}>Назад</Button>
-                </Tooltip>
+            <div style={{marginTop: '25px', marginLeft: '15px'}}>
+                <NeonButton text={'Назад'} tooltip={'Вернуться назад'} func={goBack} startIcon={<ReplyAllIcon />}/>
                 <Tooltip title={<Typography variant="body2"  gutterBottom>Вывод данных за все года</Typography>}>
                     <FormControlLabel sx={{float: 'right'}} control={<Switch onClick={analitics} checked={check} color="success"/>} label="Включить аналитику" />
                 </Tooltip>

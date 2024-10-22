@@ -23,6 +23,33 @@
             border: 1px solid;
             border-radius: 10px;
             font-size: 13px;
+            cursor: default;
+            transition: box-shadow 0.3s;
+            $green: #39FF14;
+            $orange: #ffa420;
+            $red: #FF0000;
+            $yellow: #FFFF00;
+            $lblue: #00FFE1;
+            &.ecoGreen {
+                border-color: $green;
+                &:hover {box-shadow: 0px 0px 15px $green;}
+            }
+            &.ecoOrange {
+                border-color: $orange;
+                &:hover {box-shadow: 0px 0px 15px $orange;}
+            }
+            &.ecoRed {
+                border-color: $red;
+                &:hover {box-shadow: 0px 0px 15px $red;}
+            }
+            &.ecoYellow {
+                border-color: $yellow;
+                &:hover {box-shadow: 0px 0px 15px $yellow;}
+            }
+            &.ecoLblue {
+                border-color: $lblue;
+                &:hover {box-shadow: 0px 0px 15px $lblue;}
+            }
             .ecoDataTitle {
                 text-align: center;
                 margin-bottom: 10px;
@@ -35,6 +62,7 @@
                 font-weight: 600;
                 color: #4cb242;
             }
+
         }
     }
     .ecoBlocks2 {
@@ -87,30 +115,16 @@
             color: #7f7f7f;
         }
     }
-    .lineBG{
-        border: 1px solid #80808045;
-    }
-
-    .fb33 {
-        flex-basis: 33%;
-    }
-    .fb49 {
-        flex-basis: 49%;
-    }
+    .lineBG{border: 1px solid #80808045;}
+    .fb33 {flex-basis: 33%;}
+    .fb49 {flex-basis: 49%;}
     .flexYear {
         width: 10%;
         text-align: center;
     }
 }
-.btnTopBlock {
-    margin-top: 25px;
-    margin-left: 15px;
-    .dark {
-        color: #17fa2f !important;
-        border: 1px solid #0a8016;
-        box-shadow: 0px 0px 15px #17f82f;
-    }
-}
+
+
 
 .flexItem {
     display: flex;
@@ -140,11 +154,11 @@
     gap: 10px;
     .amgChart {
         flex-basis: 32%;
+        .chartTitle {
+            text-align: center;
+            margin: 3px 0px;
+            font-size: 14px;
+        }
     }
 }
 
-.chartTitle {
-    text-align: center;
-    margin: 3px 0px;
-    font-size: 14px;
-}
