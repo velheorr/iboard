@@ -20,11 +20,7 @@ import PrivacyTipIcon from '@mui/icons-material/PrivacyTip';
 import {setActive} from "./SideMenuSlice";
 
 const SideMenu = () => {
-    const mode = useSelector(state => state.header.mode);
-    const menuList = useSelector(state => state.sidemenu.menuList);
     const dispatch = useDispatch()
-
-    const neon = useTheme('neonGreen')
     const color = useTheme('divider')
     const themeColor = useTheme() ? '' : 'themeColor'
 
@@ -49,6 +45,7 @@ const SideMenu = () => {
                 <Tree name={'Финансы'} img={finance_black} link={'finance'}/>
                 <Tree name={'Баланс'} img={equality_black} link={'balance'}/>
                 <Tree name={'Ресурсы'} img={resources_black} link={'resources'}/>
+                <Tree name={'Персонал'} img={resources_black} link={'hr'}/>
                 <Tree name={'ПРР'} img={guardian_black} link={'lost_develop'}/>
             </SimpleTreeView>
             <SimpleTreeView sx={{position: 'absolute', bottom: 0, width: '100%'}}>

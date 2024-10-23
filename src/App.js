@@ -17,15 +17,14 @@ import {ResetPassword} from "./pages/login/ResetPassword";
 import TransitionsModal from "./elements/Modal/Modal";
 import Realization from "./pages/realization/Realization";
 import Auth from "./pages/login/Auth";
-/*import Economics from "./pages/economics/Economics";*/
 import Resources from "./pages/resources/Resources";
-/*import EconomicsDetails from "./pages/economics/EconomicsDetails";*/
 import VersionLog from "./pages/versionLog/VersionLog";
 import Econ from "./pages/economics/Econ";
 import Goals from "./pages/goals/Goals";
 import Finance from "./pages/finance/Finance";
 import EconomicsDetails from "./pages/economics/subPagesEcon/EconomicsDetails";
 import Dynamics from "./pages/realization/Dynamics/Dynamics";
+import HR from "./pages/hr/HR";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -60,6 +59,7 @@ function App() {
                         <Route  path='/finance' element={<RequireAuth><Finance /></RequireAuth>}/>
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Resources /></RequireAuth>}/>
+                        <Route  path='/hr' element={<RequireAuth><HR /></RequireAuth>}/>
                         <Route  path='/lost_develop' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route path='/versionLog' element={<VersionLog/>}/>
                     </Route>

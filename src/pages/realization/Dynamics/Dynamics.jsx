@@ -17,7 +17,7 @@ const Dynamics = () => {
             backgroundColor: 'transparent',
             type: 'bubble',
             zoomType: 'xy',
-            //height: 310,
+            height: 600,
         },
         accessibility: {
             enabled: false // Включаем доступность
@@ -143,7 +143,14 @@ const Dynamics = () => {
         series: [
             {
                 name: 'Метафракс',
-                data: [{ x: 0, y: 0, z: 10}]
+                data: [{ x: 0, y: 0, z: 15}],
+                marker: {
+                    fillColor: 'rgb(255,189,0)', // Цвет кружков
+                    lineWidth: 2,
+                    lineColor: 'orange',
+                    minSize: 10, // Минимальный размер кружков
+                    maxSize: 50  // Максимальный размер кружков
+                },
             },
             {
                 name: 'Уралкалий',
