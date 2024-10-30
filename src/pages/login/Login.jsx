@@ -37,7 +37,6 @@ const Login = () => {
         try {
             let sendData = {...data, from: 'iboard'}
             const response = await axios.post(`${BACK}/api/login`, sendData)
-            console.log(response)
             setAuthMsg(response.data.message)
             if (response.status === 200) {
                 setAuthMsg('')

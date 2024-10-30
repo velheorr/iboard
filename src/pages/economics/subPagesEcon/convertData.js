@@ -1,3 +1,4 @@
+/*
 const mln = (num) =>{
     let newNum = num !== 0 ? (num / 1000000).toFixed(3) : 0
     return parseFloat(newNum) || 0
@@ -18,51 +19,38 @@ const prodano = (data, name) => {
     })
     return newArr
 }
+*/
 
 
 export const convertForLineChart = (arr)=>{
-    const x = [
-        {
-            name: 'Проход МП',
-            color: "#39FF14",
-            data: prodano(arr, 'ЗапроцентованоПланНарастающимИтогом'),
-        },
-        {
-            name: 'Вложения - ЗиНЗП',
-            color: '#ffa420',
-            data: prodano(arr, 'ЗапроцентованоФактНарастающимИтогом'),
-        },
-        {
-            name: 'ОИ',
-            color: '#ff0000',
-            data: prodano(arr, 'ВаловаяПрибыльФактНарастающимИтогом'),
-        },
-        {
-            name: 'УП',
-            color: '#fdfd01',
-            data: prodano(arr, 'ВаловаяПрибыльФакт'),
-        },
-        {
-            name: 'ОП',
-            color: '#00fde0',
-            data: prodano(arr, 'НЗП'),
-        },
-        {
-            name: 'Процентование',
-            color: "#5555ff",
-            data: prodano(arr, 'ЗапроцентованоФакт'),
-        },
-    ]
-    return x
+    const arred = arr.data.response.data
+
+    const colors = {
+        'Проход МП': "#39FF14",
+        'Вложения - ЗиНЗП': '#ffa420',
+        'ОИ': '#ff0000',
+        'УП': '#fdfd01',
+        'ОП': '#00fde0',
+        'Процентование': "#5555ff",
+    }
+    let ara = []
+    arred.forEach(i =>{
+        return ara.push( {
+            name: i.Name,
+            color: colors[i.Name],
+            data: i.Data,
+        })
+    })
+    return ara
 }
 
 export const convertForBarChart = (arr) => {
-    const x = [
+    const arred = arr.data.response.data
+    let ishodnik = [
         {
             name: 'Процентование План',
-            data: prodano(arr, 'ЗапроцентованоПлан'),
+            data: '',
             stack: 'Запроцентовано',
-            /*borderColor: '#7cb5ec',*/
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -73,9 +61,8 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'Процентование Факт',
-            data: prodano(arr, 'ЗапроцентованоФакт'),
+            data: '',
             stack: 'Запроцентовано',
-            /*borderColor: "#5555ff",*/
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -86,9 +73,8 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'МП План',
-            data: prodano(arr, 'ОперационнаяПрибыльПлан'),
+            data: '',
             stack: 'Операционная прибыль',
-            /*borderColor: '#fdfd01',*/
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -99,9 +85,8 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'МП Факт',
-            data: prodano(arr, 'ОперационнаяПрибыльФакт'),
+            data: '',
             stack: 'Операционная прибыль',
-            /*borderColor: '#00fd01',*/
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -111,10 +96,9 @@ export const convertForBarChart = (arr) => {
             },
         },
         {
-            name: 'ЗиНЗП План',
-            data: prodano(arr, 'ВаловаяПрибыльПлан'),
+            name: 'Вложения - ЗиНЗП План',
+            data: '',
             stack: 'Валовая прибыль',
-            /*borderColor: '#00fde0',*/
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -124,10 +108,9 @@ export const convertForBarChart = (arr) => {
             },
         },
         {
-            name: 'ЗиНЗП Факт',
-            data: prodano(arr, 'ВаловаяПрибыльФакт'),
+            name: 'Вложения - ЗиНЗП Факт',
+            data: '',
             stack: 'Валовая прибыль',
-            /*borderColor: '#7f8190',*/
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -136,19 +119,40 @@ export const convertForBarChart = (arr) => {
                 ]
             },
         },
-
         {
-            name: 'ОИ',
-            data: prodano(arr, 'НЗП'),
-            /*borderColor: '#ff0000',*/
+            name: "ОИ План",
+            data: '',
+            stack: 'ОИ',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
                     [0, '#4D0E0A'], // Start color
-                    [1, '#DC0404']  // End color
+                    [1, '#622a27']  // End color
+                ]
+            },
+        },
+        {
+            name: "ОИ Факт",
+            data: '',
+            stack: 'ОИ',
+            borderColor: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#DC0404'], // Start color
+                    [1, '#e02222']  // End color
                 ]
             },
         },
     ]
-    return x
+
+    ishodnik.forEach(i =>{
+        arred.forEach(o =>{
+            if (i.name === o.Name){
+                i.data = o.Data
+            }
+        })
+    })
+
+    return ishodnik
 }
+

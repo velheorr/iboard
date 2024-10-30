@@ -3,7 +3,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {convertForBarChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
-import {useGetEco} from "../../../hook/useGetEconomics";
+import {useGetEcoBarChart} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 import '../econ.scss'
 import {useDispatch} from "react-redux";
@@ -11,7 +11,7 @@ import {useNavigate} from "react-router-dom";
 import {setDetails} from "../js/EcoSlice";
 
 const EcoBarChart = () => {
-    const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
+    const {data: ecobarchart, isLoading, isError, refetch, status} = useGetEcoBarChart(2024)
     const date = new Date()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -22,11 +22,11 @@ const EcoBarChart = () => {
 
     useEffect(()=>{
         setMonth(date.getMonth())
-        if (eco){
-            setData(convertForBarChart(eco));
+        if (ecobarchart){
+            setData(convertForBarChart(ecobarchart));
         }
 
-    },[eco])
+    },[ecobarchart])
 
     const openEcoPage2 = (month, year)=>{
         dispatch(setDetails({month, year}))
@@ -132,7 +132,7 @@ const EcoBarChart = () => {
 
     if (isLoading) {return <Skelet option='eco'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
-    if (!eco) {return <h3>Нет данных с сервера</h3>}
+    if (!ecobarchart) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div>

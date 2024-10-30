@@ -33,7 +33,6 @@ export const AuthProvider = ({children}) => {
     const signOut = ()=> {
         localStorage.removeItem('name');
         localStorage.removeItem('token');
-        console.log('fdfff')
         setUser(null)
         setAuth(false)
         redirect("/login");

@@ -3,11 +3,11 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {convertForLineChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
-import {useGetEco} from "../../../hook/useGetEconomics";
+import {useGetEco, useGetEcoLineChart} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 
-const EcoLineChart = () => {
-    const {data: eco, isLoading, isError, refetch, status} = useGetEco(2024)
+const EcoLineChart = ({year}) => {
+    const {data: ecolinechart, isLoading, isError, refetch, status} = useGetEcoLineChart(year)
 
     const date = new Date()
 
@@ -17,10 +17,10 @@ const EcoLineChart = () => {
 
     useEffect(()=>{
         setMonth(date.getMonth())
-        if (eco){
-            setData(convertForLineChart(eco));
+        if (ecolinechart){
+            setData(convertForLineChart(ecolinechart));
         }
-    },[eco])
+    },[ecolinechart])
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -84,7 +84,7 @@ const EcoLineChart = () => {
 
     if (isLoading) {return <Skelet option='eco'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
-    if (!eco) {return <h3>Нет данных с сервера</h3>}
+    if (!ecolinechart) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div>
