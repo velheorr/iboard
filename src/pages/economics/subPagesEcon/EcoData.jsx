@@ -6,29 +6,34 @@ import {useEffect} from "react";
 
 
 
-const EcoData = ({year, month}) => {
-    const {data: ecocards, isLoading, isError, refetch, status} = useGetEcoCards(year, month)
+const EcoData = ({year, month, type}) => {
+    const {data: ecocards, isLoading, isError, refetch, status} = useGetEcoCards(year, month, type)
 
     let data = [
         {
             title: "Проход МП",
             border: "ecoGreen",
+            order: 1,
         },
         {
             title: 'Вложения - ЗиНЗП',
             border: 'ecoOrange',
+            order: 2,
         },
         {
-            title: 'ОИ',
+            title: 'Операционные издержки',
             border: 'ecoRed',
+            order: 3,
         },
         {
-            title: 'УП',
+            title: 'Управленческая прибыль',
             border: 'ecoYellow',
+            order: 4,
         },
         {
-            title: 'ОП',
+            title: 'Операционная прибыль',
             border: 'ecoLblue',
+            order: 5,
         },
     ]
 
@@ -37,12 +42,16 @@ const EcoData = ({year, month}) => {
              data.forEach(i =>{
                  if (i.title === e.Name){
                      e.border = i.border
+                     e.order = i.order
                  }
              })
          })
+         x?.sort((a, b) => a.order - b.order)
          return x?.map((item, i) => {
              if (item.Name === 'Процентование'){return }
-             return <Block key={i} data={item}/>})
+             return <Block key={i} data={item}/>
+         })
+
     }
 
     useEffect(()=>{
@@ -77,11 +86,11 @@ const Block = ({data}) => {
     return (
         <div className={`ecoDataNum ${border}`} style={{borderColor: border}}>
             <div className='ecoDataTitle'>{Name}</div>
-            <div>{prevName} <span> {prevAmount} млн</span></div>
-            <div className='ecoDataCurrentMonth'>{currentName} <span> {currentAmount} млн</span></div>
-            <div>{nextName} <span> {nextAmount} млн</span></div>
-            <div>Цель года <span> {goal} млн</span></div>
-            <div style={{color: 'red'}}>Прогноз <span> {prognoz} млн</span></div>
+            <div>{prevName} <span> {prevAmount}</span></div>
+            <div className='ecoDataCurrentMonth'>{currentName} <span> {currentAmount}</span></div>
+            <div>{nextName} <span> {nextAmount}</span></div>
+            <div>Цель года <span> {goal}</span></div>
+            <div style={{color: 'red'}}>Прогноз <span> {prognoz}</span></div>
         </div>
     )
 }

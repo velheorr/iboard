@@ -28,9 +28,9 @@ export const convertForLineChart = (arr)=>{
     const colors = {
         'Проход МП': "#39FF14",
         'Вложения - ЗиНЗП': '#ffa420',
-        'ОИ': '#ff0000',
-        'УП': '#fdfd01',
-        'ОП': '#00fde0',
+        'Операционные издержки': '#ff0000',
+        'Управленческая прибыль': '#fdfd01',
+        'Операционная прибыль': '#00fde0',
         'Процентование': "#5555ff",
     }
     let ara = []
@@ -46,6 +46,7 @@ export const convertForLineChart = (arr)=>{
 
 export const convertForBarChart = (arr) => {
     const arred = arr.data.response.data
+    console.log(arred)
     let ishodnik = [
         {
             name: 'Процентование План',
@@ -120,7 +121,7 @@ export const convertForBarChart = (arr) => {
             },
         },
         {
-            name: "ОИ План",
+            name: "Операционные издержки План",
             data: '',
             stack: 'ОИ',
             borderColor: {
@@ -132,7 +133,7 @@ export const convertForBarChart = (arr) => {
             },
         },
         {
-            name: "ОИ Факт",
+            name: "Операционные издержки Факт",
             data: '',
             stack: 'ОИ',
             borderColor: {

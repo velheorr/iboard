@@ -10,8 +10,8 @@ import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {setDetails} from "../js/EcoSlice";
 
-const EcoBarChart = () => {
-    const {data: ecobarchart, isLoading, isError, refetch, status} = useGetEcoBarChart(2024)
+const EcoBarChart = ({year, type}) => {
+    const {data: ecobarchart, isLoading, isError, refetch, status} = useGetEcoBarChart(year, type)
     const date = new Date()
     const dispatch = useDispatch()
     const navigate = useNavigate()

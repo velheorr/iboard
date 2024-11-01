@@ -165,7 +165,7 @@ const AmgCustomFunnel = ({className}) => {
 
     return (
         <div className={className}>
-            <div className='chartTitle'>Воронка</div>
+            <div className='chartTitle'>Проход</div>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}

@@ -88,43 +88,7 @@ const AmgBulletChart2 = ({className}) => {
                 },
             }
         },
-        series: [{
-            name: 'Потери',
-            data: [83, 70, 68, 100, 22,82,45, 76],
-            pointWidth: 10,
-            zIndex: 2,
-            stack: 'inner', // Указываем, что это внутренний показатель
-            dataLabels: {
-                formatter: function() {
-                    return this.total
-                }
-            },
-            color: {
-                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
-                stops: [
-                    [0, '#56c2c5'], // Начальный цвет градиента
-                    [1, '#1dadb1']  // Конечный цвет градиента
-                ]
-            }
-        }, {
-            name: 'Накоплено',
-            data: [50, 70, 25, 16, 99,44,24,42],
-            pointWidth: 10,
-            zIndex: 2,
-            stack: 'inner', // Указываем, что это внутренний показатель
-            dataLabels: {
-                formatter: function() {
-                    return this.point.stackY
-                }
-            },
-            color: {
-                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
-                stops: [
-                    [0, '#79b3b1'], // Начальный цвет градиента
-                    [1, '#4c9a97']  // Конечный цвет градиента
-                ]
-            }
-        }, {
+        series: [  {
             name: 'Прогноз на конец года',
             data: [60, 27, 33, 45, 56,24,45, 55],
             pointWidth: 10,
@@ -138,7 +102,46 @@ const AmgBulletChart2 = ({className}) => {
                 ]
             }
 
-        }, {
+        },
+            {
+                name: 'Накоплено',
+                data: [50, 70, 25, 16, 99,44,24,42],
+                pointWidth: 10,
+                zIndex: 2,
+                stack: 'inner', // Указываем, что это внутренний показатель
+                dataLabels: {
+                    formatter: function() {
+                        return this.point.stackY
+                    }
+                },
+                color: {
+                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
+                    stops: [
+                        [0, '#79b3b1'], // Начальный цвет градиента
+                        [1, '#4c9a97']  // Конечный цвет градиента
+                    ]
+                }
+            },
+            {
+                name: 'Потери',
+                data: [83, 70, 68, 100, 22,82,45, 76],
+                pointWidth: 10,
+                zIndex: 2,
+                stack: 'inner', // Указываем, что это внутренний показатель
+                dataLabels: {
+                    formatter: function() {
+                        return this.total
+                    }
+                },
+                color: {
+                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
+                    stops: [
+                        [0, '#56c2c5'], // Начальный цвет градиента
+                        [1, '#1dadb1']  // Конечный цвет градиента
+                    ]
+                }
+            },
+            {
             name: 'План на конец года',
             data: [198, 170, 168, 100, 46,140,45, 176],
             pointPlacement: .3,
@@ -163,7 +166,7 @@ const AmgBulletChart2 = ({className}) => {
 
     return (
         <div className={className}>
-            <div className='chartTitle'>Пуля</div>
+            <div className='chartTitle'>Издержки</div>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}

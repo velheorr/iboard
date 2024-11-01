@@ -9,8 +9,16 @@ const Amg2Charts = ({className}) => {
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
-        chart: {type: 'bar', ...chartConfig.chart, height: 310,},
-        title: {text: null, ...chartConfig.title},
+        chart: {type: 'bar', ...chartConfig.chart, height: 310},
+        title: {
+            text: 'Дни',
+            align: 'right',
+            y: 20,
+            style:{
+                color: '#767676',
+                fontSize: '12px'
+            },
+        },
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
@@ -77,7 +85,14 @@ const Amg2Charts = ({className}) => {
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {type: 'bar', ...chartConfig.chart, height: 310,},
-        title: {text: null, ...chartConfig.title},
+        title: {text: 'Сумма',
+            align: 'center',
+            y: 20,
+            style:{
+                color: '#767676',
+                fontSize: '12px'
+            },
+        },
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
@@ -144,7 +159,7 @@ const Amg2Charts = ({className}) => {
 
     return (
         <div className={className} >
-            <div className='chartTitle'>Слева-справа</div>
+            <div className='chartTitle'>Вложения</div>
             <div style={{display: 'flex', flexWrap: 'nowrap'}}>
                 <div style={{width: '25%'}}>
                     <HighchartsReact

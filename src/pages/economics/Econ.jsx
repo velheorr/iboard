@@ -24,15 +24,16 @@ fullscreen(Highcharts);
 const Econ = () => {
     const [year, setYear] = useState(2024)
     const [month, setMonth] = useState(10)
+    const [type, setType] = useState('all')
 
     return (
         <div className='econMain'>
             <div className='ecoBlocks'>
-                <EcoData year={year} month={month}/>
+                <EcoData year={year} month={month} type={type}/>
             </div>
             <div className='ecoBlocks2'>
-                <EcoLineChart year={year}/>
-                <EcoBarChart year={year}/>
+                <EcoLineChart year={year} type={type}/>
+                <EcoBarChart year={year} type={type}/>
                 <div style={{padding: '0px 5px'}}>
                     <ElemTab arr={[<HomeGuardian/>,'Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
                         <EcoAmg/>

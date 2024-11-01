@@ -6,8 +6,8 @@ import {chartConfig} from "../js/chartConfig";
 import {useGetEco, useGetEcoLineChart} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 
-const EcoLineChart = ({year}) => {
-    const {data: ecolinechart, isLoading, isError, refetch, status} = useGetEcoLineChart(year)
+const EcoLineChart = ({year, type}) => {
+    const {data: ecolinechart, isLoading, isError, refetch, status} = useGetEcoLineChart(year,type)
 
     const date = new Date()
 

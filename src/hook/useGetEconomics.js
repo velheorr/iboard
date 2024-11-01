@@ -16,9 +16,9 @@ export const useGetEco = (year, month = 0) => {
         })
 }
 
-export const useGetEcoLineChart = (year = 0) => {
+export const useGetEcoLineChart = (year = 0, type = 'all') => {
     return useQuery(['ecolinechart', year],  async ()=> {
-            const data = await axios.get(`${link}/linechart/${year}`)
+            const data = await axios.get(`${link}/linechart/${year}/${type}`)
             return data
         },
         {
@@ -28,9 +28,9 @@ export const useGetEcoLineChart = (year = 0) => {
         })
 }
 
-export const useGetEcoBarChart = (year = 0) => {
+export const useGetEcoBarChart = (year = 0, type = 'all') => {
     return useQuery(['ecobarchart', year],  async ()=> {
-            const data = await axios.get(`${link}/barchart/${year}`)
+            const data = await axios.get(`${link}/barchart/${year}/${type}`)
             return data
         },
         {
@@ -40,9 +40,9 @@ export const useGetEcoBarChart = (year = 0) => {
         })
 }
 
-export const useGetEcoCards = (year = 0, month = 0) => {
+export const useGetEcoCards = (year = 0, month = 0, type = 'all') => {
     return useQuery(['ecocards', year, month],  async ()=> {
-            const data = await axios.get(`${link}/cards/${year}/${month}`)
+            const data = await axios.get(`${link}/cards/${year}/${month}/${type}`)
             return data
         },
         {
