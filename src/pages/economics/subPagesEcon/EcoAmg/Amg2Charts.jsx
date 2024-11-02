@@ -2,24 +2,22 @@ import React, {useEffect, useMemo, useState} from 'react';
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts/highstock";
 import {chartConfig} from "../../js/chartConfig";
-import {useGet2charts} from "../../../../hook/useGetEconomics";
+import {useGetEco2charts} from "../../../../hook/useGetEconomics";
 
 import Skelet from "../../../../elements/Skelet";
 
 const Amg2Charts = ({className, year,month, type, rp}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
-    const {data: twocharts, isLoading, isError, refetch, status} = useGet2charts(year,month,rp, type)
+    const {data: twocharts, isLoading, isError, refetch, status} = useGetEco2charts(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
 
     useEffect(()=>{
         if (twocharts){
             const x = twocharts.data.response.data[0]
-            console.log(twocharts.data.response.data[0])
             setData(x.days)
             setData2(x.amount)
         }
-
     },[twocharts])
 
     const options = useMemo(() => ({

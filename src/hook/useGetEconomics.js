@@ -64,9 +64,20 @@ export const useGetEcoFunnel = (year = 0, month = 0,rp = 'all', type = 'all') =>
         })
 }
 
-export const useGet2charts = (year = 0, month = 0,rp = 'all', type = 'all') => {
+export const useGetEco2charts = (year = 0, month = 0,rp = 'all', type = 'all') => {
     return useQuery(['twocharts', year, month, rp, type],  async ()=> {
             const data = await axios.get(`${link}/twocharts/${year}/${month}/${rp}/${type}`)
+            return data
+        },
+        {
+            keepPreviousData: true,
+            /*refetchOnWindowFocus: true,*/
+            enabled: true
+        })
+}
+export const useGetEcoBullet = (year = 0, month = 0,rp = 'all', type = 'all') => {
+    return useQuery(['bullet', year, month, rp, type],  async ()=> {
+            const data = await axios.get(`${link}/bullet/${year}/${month}/${rp}/${type}`)
             return data
         },
         {

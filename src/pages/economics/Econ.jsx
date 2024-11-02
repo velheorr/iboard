@@ -4,8 +4,6 @@ import Highcharts from 'highcharts';
 import exportData from "highcharts/modules/export-data";
 import exporting from "highcharts/modules/exporting";
 import fullscreen from "highcharts/modules/full-screen";
-import {useGetEco} from "../../hook/useGetEconomics";
-import Skelet from "../../elements/Skelet";
 import EcoLineChart from "./subPagesEcon/EcoLineChart";
 import EcoData from "./subPagesEcon/EcoData";
 import EcoBarChart from "./subPagesEcon/EcoBarChart";
@@ -23,7 +21,7 @@ fullscreen(Highcharts);
 
 const Econ = () => {
     const [year, setYear] = useState(2024)
-    const [month, setMonth] = useState(10)
+    const [month, setMonth] = useState(11)
     const [type, setType] = useState('all')
     const [rp, setRp] = useState('all')
 

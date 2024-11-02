@@ -194,3 +194,96 @@ export const convertFunnel2 = (arr) =>{
     return x
 }
 
+export const convertBullet = (arr)=>{
+    const ishodnik = [
+        {
+            name: 'Прогноз на конец года',
+            data: [],
+            pointWidth: 10,
+            zIndex: 2,
+            stack: 'inner', // Указываем, что это внутренний показатель
+            dataLabels: {
+                formatter: function() {
+                    return this.total
+                }
+            },
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
+                stops: [
+                    [0, '#456264'], // Начальный цвет градиента
+                    [1, '#072e30']  // Конечный цвет градиента
+                ]
+            }
+
+        },
+        {
+            name: 'Накоплено',
+            data: [],
+            pointWidth: 10,
+            zIndex: 2,
+            stack: 'inner', // Указываем, что это внутренний показатель
+            dataLabels: {
+                formatter: function() {
+                    return this.point.stackY
+                }
+            },
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
+                stops: [
+                    [0, '#79b3b1'], // Начальный цвет градиента
+                    [1, '#4c9a97']  // Конечный цвет градиента
+                ]
+            }
+        },
+        {
+            name: 'Потери',
+            data: [],
+            pointWidth: 10,
+            zIndex: 2,
+            stack: 'inner', // Указываем, что это внутренний показатель
+            /*dataLabels: {
+                formatter: function() {
+                    return this.total
+                }
+            },*/
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
+                stops: [
+                    [0, '#56c2c5'], // Начальный цвет градиента
+                    [1, '#1dadb1']  // Конечный цвет градиента
+                ]
+            }
+        },
+        {
+            name: 'План на конец года',
+            data: [],
+            pointPlacement: .3,
+            pointWidth: 20,
+            zIndex: 1,
+            stack: 'outer', // Указываем, что это отдельный столбик
+            dataLabels: {
+                align: 'right',
+                verticalAlign: 'top',
+                x: 5,
+                y: 13,
+                format: 'План: {point.y}',
+                style: {
+                    color: 'grey'
+                }
+            },
+            color: 'transparent',
+            borderWidth: 2,
+            borderColor: 'grey',
+        }
+    ]
+
+
+    ishodnik.forEach(i =>{
+        arr.forEach(a =>{
+            if (i.name === a.Name){
+                i.data = a.Data
+            }
+        })
+    })
+    return ishodnik
+}
