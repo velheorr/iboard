@@ -25,6 +25,7 @@ const Econ = () => {
     const [year, setYear] = useState(2024)
     const [month, setMonth] = useState(10)
     const [type, setType] = useState('all')
+    const [rp, setRp] = useState('all')
 
     return (
         <div className='econMain'>
@@ -36,7 +37,7 @@ const Econ = () => {
                 <EcoBarChart year={year} type={type}/>
                 <div style={{padding: '0px 5px'}}>
                     <ElemTab arr={[<HomeGuardian/>,'Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
-                        <EcoAmg/>
+                        <EcoAmg year={year} month={month} type={type} rp={rp}/>
                         <EcoAmg/>
                         <EcoAmg/>
                         <EcoAmg/>

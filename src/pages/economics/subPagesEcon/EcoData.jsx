@@ -86,10 +86,10 @@ const Block = ({data}) => {
     return (
         <div className={`ecoDataNum ${border}`} style={{borderColor: border}}>
             <div className='ecoDataTitle'>{Name}</div>
-            <div>{prevName} <span> {prevAmount}</span></div>
-            <div className='ecoDataCurrentMonth'>{currentName} <span> {currentAmount}</span></div>
-            <div>{nextName} <span> {nextAmount}</span></div>
-            <div>Цель года <span> {goal}</span></div>
+            <div className='textTrans'>{prevName} <span> {prevAmount}</span></div>
+            <div className='ecoDataCurrentMonth textTrans'>{currentName} <span> {currentAmount}</span></div>
+            <div className='textTrans'>{nextName} <span> {nextAmount}</span></div>
+            <div>Цель <span> {goal}</span></div>
             <div style={{color: 'red'}}>Прогноз <span> {prognoz}</span></div>
         </div>
     )

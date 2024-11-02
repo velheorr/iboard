@@ -1,18 +1,31 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {chartConfig} from "../../js/chartConfig";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import '../../econ.scss'
+import {useGetEcoFunnel} from "../../../../hook/useGetEconomics";
+import {convertFunnel, convertFunnel2} from "../convertData";
+import Skelet from "../../../../elements/Skelet";
 
-const AmgCustomFunnel = ({className}) => {
-    const [isLegendVisible, setIsLegendVisible] = useState(false);
+const AmgCustomFunnel = ({className, year,month, type, rp}) => {
+    const {data: ecofunnel, isLoading, isError, refetch, status} = useGetEcoFunnel(year,month,rp, type)
+    const [data, setData] = useState([]);
+    const [data2, setData2] = useState([]);
+
+    useEffect(()=>{
+        if (ecofunnel){
+            setData(convertFunnel(ecofunnel.data.Data));
+            setData2(convertFunnel2(ecofunnel.data.Data));
+        }
+
+    },[ecofunnel])
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {type: 'bar', ...chartConfig.chart, height: 310,},
         title: {text: null, ...chartConfig.title},
-        legend: {enabled: isLegendVisible,...chartConfig.legend},
+        legend: {enabled: false,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
                 'Продано ТКП',
@@ -82,36 +95,7 @@ const AmgCustomFunnel = ({className}) => {
         },
         series: [ {
             name: 'Сумма',
-            data: [
-                {
-                    y: 100,
-                    color: '#571f91',
-                },
-                {
-                    y: 90,
-                    color: '#2e4399',
-                },
-                {
-                    y: 80,
-                    color: '#4063f3',
-                },
-                {
-                    y: 70,
-                    color: '#007ed3',
-                },
-                {
-                    y: 60,
-                    color: '#3d9bda',
-                },
-                {
-                    y: 50,
-                    color: '#7eb1fe',
-                },
-                {
-                    y: 140,
-                    color: '#16b423',
-                },
-            ],
+            data: data || [],
             yAxis: 1,
             borderWidth: 0,
             dataLabels: {
@@ -128,40 +112,15 @@ const AmgCustomFunnel = ({className}) => {
         },
             {
                 name: 'Сумма',
-                data: [
-                    {
-                        y: -100,
-                        color: '#571f91',
-                    },
-                    {
-                        y: -90,
-                        color: '#2e4399',
-                    },
-                    {
-                        y: -80,
-                        color: '#4063f3',
-                    },
-                    {
-                        y: -70,
-                        color: '#007ed3',
-                    },
-                    {
-                        y: -60,
-                        color: '#3d9bda',
-                    },
-                    {
-                        y: -50,
-                        color: '#7eb1fe',
-                    },
-                    {
-                        y: -140,
-                        color: '#16b423',
-                    },
-                ],
+                data: data2 || [],
                 borderWidth: 0,
             },
         ],
-    }), [isLegendVisible])
+    }), [data, data2])
+
+    if (isLoading) {return <Skelet option='eco'/>}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!ecofunnel) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div className={className}>

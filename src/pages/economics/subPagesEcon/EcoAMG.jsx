@@ -3,12 +3,12 @@ import AmgBulletChart2 from "./EcoAmg/AmgBulletChart2";
 import Amg2Charts from "./EcoAmg/Amg2Charts";
 import AmgCustomFunnel from "./EcoAmg/AmgCustomFunnel";
 
-const EcoAmg = () => {
+const EcoAmg = ({year,month, type, rp}) => {
     return (
         <div className='amg'>
-            <AmgCustomFunnel className='amgChart'/>
-            <Amg2Charts className='amgChart'/>
-            <AmgBulletChart2 className='amgChart'/>
+            <AmgCustomFunnel className='amgChart' year={year} month={month} type={type} rp={rp}/>
+            <Amg2Charts className='amgChart' year={year} month={month} type={type} rp={rp}/>
+            <AmgBulletChart2 className='amgChart' year={year} month={month} type={type} rp={rp}/>
             {/*<AmgFunnel className='amgChart'/>
             <AmgDoubleBar className='amgChart'/>
             <AmgStackedBar className='amgChart'/>

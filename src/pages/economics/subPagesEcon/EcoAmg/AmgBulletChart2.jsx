@@ -94,6 +94,11 @@ const AmgBulletChart2 = ({className}) => {
             pointWidth: 10,
             zIndex: 2,
             stack: 'inner', // Указываем, что это внутренний показатель
+            dataLabels: {
+                formatter: function() {
+                    return this.total
+                }
+            },
             color: {
                 linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
                 stops: [
@@ -128,11 +133,11 @@ const AmgBulletChart2 = ({className}) => {
                 pointWidth: 10,
                 zIndex: 2,
                 stack: 'inner', // Указываем, что это внутренний показатель
-                dataLabels: {
+                /*dataLabels: {
                     formatter: function() {
                         return this.total
                     }
-                },
+                },*/
                 color: {
                     linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
                     stops: [

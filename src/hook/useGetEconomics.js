@@ -51,3 +51,27 @@ export const useGetEcoCards = (year = 0, month = 0, type = 'all') => {
             enabled: true
         })
 }
+
+export const useGetEcoFunnel = (year = 0, month = 0,rp = 'all', type = 'all') => {
+    return useQuery(['ecofunnel', year, month, rp, type],  async ()=> {
+            const data = await axios.get(`${link}/funnel/${year}/${month}/${rp}/${type}`)
+            return data
+        },
+        {
+            keepPreviousData: true,
+            /*refetchOnWindowFocus: true,*/
+            enabled: true
+        })
+}
+
+export const useGet2charts = (year = 0, month = 0,rp = 'all', type = 'all') => {
+    return useQuery(['twocharts', year, month, rp, type],  async ()=> {
+            const data = await axios.get(`${link}/twocharts/${year}/${month}/${rp}/${type}`)
+            return data
+        },
+        {
+            keepPreviousData: true,
+            /*refetchOnWindowFocus: true,*/
+            enabled: true
+        })
+}

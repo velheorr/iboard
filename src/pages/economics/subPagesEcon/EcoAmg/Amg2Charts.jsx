@@ -1,10 +1,26 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts/highstock";
 import {chartConfig} from "../../js/chartConfig";
+import {useGet2charts} from "../../../../hook/useGetEconomics";
 
-const Amg2Charts = ({className}) => {
+import Skelet from "../../../../elements/Skelet";
+
+const Amg2Charts = ({className, year,month, type, rp}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
+    const {data: twocharts, isLoading, isError, refetch, status} = useGet2charts(year,month,rp, type)
+    const [data, setData] = useState([]);
+    const [data2, setData2] = useState([]);
+
+    useEffect(()=>{
+        if (twocharts){
+            const x = twocharts.data.response.data[0]
+            console.log(twocharts.data.response.data[0])
+            setData(x.days)
+            setData2(x.amount)
+        }
+
+    },[twocharts])
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -74,12 +90,12 @@ const Amg2Charts = ({className}) => {
         series: [
             {
                 name: 'Дни',
-                data: [15, 25, 35, 10, 15, 45, 33, 45, 21],
+                data: data || [],
                 borderWidth: 0,
                 color: '#0b7e93',
             }
         ]
-    }), [isLegendVisible])
+    }), [isLegendVisible, data])
 
     const options2 = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -152,10 +168,14 @@ const Amg2Charts = ({className}) => {
         },
         series: [{
             name: 'Сумма',
-            data: [10, 20, 30, 12, 12, 25, 34, 40, 28],
+            data: data2 || [],
             color: '#0b7e93',
         }]
-    }), [isLegendVisible])
+    }), [isLegendVisible, data2])
+
+    if (isLoading) {return <Skelet option='eco'/>}
+    if (isError) {return <h3>Нет подключения к серверу</h3>}
+    if (!twocharts) {return <h3>Нет данных с сервера</h3>}
 
     return (
         <div className={className} >

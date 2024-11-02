@@ -1,26 +1,3 @@
-/*
-const mln = (num) =>{
-    let newNum = num !== 0 ? (num / 1000000).toFixed(3) : 0
-    return parseFloat(newNum) || 0
-
-}
-
-const month = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-
-const prodano = (data, name) => {
-    const keysToSearch = [];
-        month.forEach(item => {
-            keysToSearch.push(name + item)
-        })
-    const newArr = []
-    keysToSearch.forEach(item => {
-        let x = mln(data[item])
-        newArr.push(x)
-    })
-    return newArr
-}
-*/
-
 
 export const convertForLineChart = (arr)=>{
     const arred = arr.data.response.data
@@ -46,7 +23,7 @@ export const convertForLineChart = (arr)=>{
 
 export const convertForBarChart = (arr) => {
     const arred = arr.data.response.data
-    console.log(arred)
+
     let ishodnik = [
         {
             name: 'Процентование План',
@@ -155,5 +132,65 @@ export const convertForBarChart = (arr) => {
     })
 
     return ishodnik
+}
+
+
+
+
+
+const funnel = (arr)=>{
+    let ishodnik = [
+        {
+            name: 'ТКП',
+            color: '#571f91',
+        },
+        {
+            name: 'Подписано смет/договоров',
+            color: '#2e4399',
+        },
+        {
+            name: 'Поставлено Оим',
+            color: '#4063f3',
+        },
+        {
+            name: 'Оплачено ФОТ',
+            color: '#007ed3',
+        },
+        {
+            name: 'Смонтировано',
+            color: '#3d9bda',
+        },
+        {
+            name: 'Запроцентовано',
+            color: '#7eb1fe',
+        },
+        {
+            name: 'Маржинальная прибыль',
+            color: '#16b423',
+        },
+    ]
+
+    const keys = Object.keys(arr);
+    ishodnik.forEach(i =>{
+        keys.forEach(k => {
+            if (i.name === k){
+                i.y = arr[k]
+            }
+        })
+    })
+    return ishodnik
+}
+
+export const convertFunnel = (arr) =>{
+    const x = funnel(arr)
+    return x
+}
+
+export const convertFunnel2 = (arr) =>{
+    const x = funnel(arr)
+    x.forEach(i =>{
+        i.y = Math.abs(i.y) * -1
+    })
+    return x
 }
 
