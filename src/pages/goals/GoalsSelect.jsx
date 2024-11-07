@@ -26,11 +26,11 @@ const GoalCard = ({toggleShow}) =>{
             </div>
             <div className='goalText'>
                 <span >ФИО</span>
-                <div>Владимир В.А.</div>
+                <div>Геннадий</div>
                 <span >Должность</span>
                 <div>Самый главный</div>
                 <span >Организация</span>
-                <div>Летак</div>
+                <div>ООО Рога и копыта</div>
             </div>
             <div style={{position: 'absolute', right: '-5px'}}>
                 <div className='goalRole rp'>РП</div>
@@ -45,10 +45,11 @@ const GoalCard2 = () =>{
     return (
         <div className='goalCard'>
             <div>
-                <video className="bubbles" width="150"  loop="loop" autoPlay="autoplay"
+                {/*<video className="bubbles" width="150"  loop="loop" autoPlay="autoplay"
                        muted="muted">
                     <source src={f16} type='video/mp4; codecs="avc1.42E030, mp4a.40.2"'/>
-                </video>
+                </video>*/}
+                <img src={lion} alt="" style={{height: '150px'}}/>
             </div>
             <div className='goalText'>
                 <span >ФИО</span>

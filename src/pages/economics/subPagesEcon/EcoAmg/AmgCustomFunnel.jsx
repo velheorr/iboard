@@ -8,7 +8,7 @@ import {convertFunnel, convertFunnel2} from "../convertData";
 import Skelet from "../../../../elements/Skelet";
 
 const AmgCustomFunnel = ({className, year,month, type, rp}) => {
-    const {data: ecofunnel, isLoading, isError, refetch, status} = useGetEcoFunnel(year,month,rp, type)
+    const {data: ecofunnel, isLoading, isError} = useGetEcoFunnel(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
 

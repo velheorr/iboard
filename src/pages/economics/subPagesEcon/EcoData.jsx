@@ -1,13 +1,13 @@
 import '../econ.scss'
 import {Tooltip, Typography} from "@mui/material";
-import {useGetEcoCards, useGetEcoLineChart} from "../../../hook/useGetEconomics";
+import {useGetEcoCards} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 import {useEffect} from "react";
 
 
 
-const EcoData = ({year, month, type}) => {
-    const {data: ecocards, isLoading, isError, refetch, status} = useGetEcoCards(year, month, type)
+const EcoData = ({year, month, type,openModal}) => {
+    const {data: ecocards, isLoading, isError} = useGetEcoCards(year, month, type)
 
     let data = [
         {
@@ -68,8 +68,8 @@ const EcoData = ({year, month, type}) => {
 
     return (
         <div style={{width: '170px', position: 'fixed'}}>
-            <Tooltip title={<Typography variant="body2"  gutterBottom>тултип</Typography>}>
-                <div className='ecoDataDate'>10/2024</div>
+            <Tooltip title={<Typography variant="body2"  gutterBottom>Нажмите для изменения настроек</Typography>}>
+                <div className='ecoDataDate' onClick={openModal}>11/2024</div>
             </Tooltip>
             { renderCards}
         </div>
@@ -83,14 +83,27 @@ const Block = ({data}) => {
       Name, border, currentAmount, currentName, goal, nextAmount, nextName,
       prevAmount, prevName, prognoz
   } = data
+
+    const convert = (num) => {
+        if ((num ^ 0) === num)  {
+            return `${num}.0`
+        } else {
+            return num
+        }
+    }
+
+
     return (
         <div className={`ecoDataNum ${border}`} style={{borderColor: border}}>
             <div className='ecoDataTitle'>{Name}</div>
-            <div className='textTrans'>{prevName} <span> {prevAmount}</span></div>
-            <div className='ecoDataCurrentMonth textTrans'>{currentName} <span> {currentAmount}</span></div>
-            <div className='textTrans'>{nextName} <span> {nextAmount}</span></div>
-            <div>Цель <span> {goal}</span></div>
-            <div style={{color: 'red'}}>Прогноз <span> {prognoz}</span></div>
+            <div className='textTrans'>{prevName} <span style={{fontSize: '14px'}}> {convert(prevAmount)}</span></div>
+            <div className='ecoDataCurrentMonth textTrans'> {currentName} <span style={{fontSize: '14px'}}> {convert(currentAmount)}</span></div>
+            <div className='textTrans'>{nextName} <span style={{fontSize: '14px'}}> {convert(nextAmount)}</span></div>
+            <div>Цель <span style={{fontSize: '14px'}}> {convert(goal)}</span></div>
+            <div className='textTrans' style={{color: '#ff0000', display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+                <div>Прогноз</div>
+                <div style={{fontSize: '14px', textAlign: 'right'}}> {convert(prognoz)}</div>
+            </div>
         </div>
     )
 }

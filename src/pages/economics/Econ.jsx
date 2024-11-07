@@ -13,6 +13,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import {Stack, Typography} from "@mui/material";
 import CustomEvents from "highcharts-custom-events";
 import {useState} from "react";
+import {useModal} from "../../hook/useModal";
 
 CustomEvents(Highcharts);
 exporting(Highcharts);
@@ -24,11 +25,16 @@ const Econ = () => {
     const [month, setMonth] = useState(11)
     const [type, setType] = useState('all')
     const [rp, setRp] = useState('all')
+    const {setModal} = useModal()
+
+    const openModal = () => {
+        setModal('ModalEcon')
+    }
 
     return (
         <div className='econMain'>
             <div className='ecoBlocks'>
-                <EcoData year={year} month={month} type={type}/>
+                <EcoData year={year} month={month} type={type} openModal={openModal}/>
             </div>
             <div className='ecoBlocks2'>
                 <EcoLineChart year={year} type={type}/>

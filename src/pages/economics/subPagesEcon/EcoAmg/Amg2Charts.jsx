@@ -8,7 +8,7 @@ import Skelet from "../../../../elements/Skelet";
 
 const Amg2Charts = ({className, year,month, type, rp}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
-    const {data: twocharts, isLoading, isError, refetch, status} = useGetEco2charts(year,month,rp, type)
+    const {data: twocharts, isLoading, isError} = useGetEco2charts(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
 

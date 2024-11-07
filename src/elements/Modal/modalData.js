@@ -6,6 +6,7 @@ import ModalResetPassword from "./subpages/ModalResetPassword";
 import ModalResetPasswordConfirm from "./subpages/ModalResetPasswordConfirm";
 import {dark, light} from "../../hook/useTheme";
 import ModalRealizProcWiki from "./subpages/wiki/ModalRealizProcWiki";
+import ModalEcon from "./subpages/ModalEcon";
 
 
 
@@ -73,6 +74,9 @@ export const modalData = (variant, mode)=>{
             break;
         default:
             modalText = "Default";
+            break;
+        case 'ModalEcon':
+            modalText = <ModalEcon/>
             break;
     }
 

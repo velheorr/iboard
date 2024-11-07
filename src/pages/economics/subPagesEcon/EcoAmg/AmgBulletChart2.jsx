@@ -2,13 +2,13 @@ import React, {useEffect, useMemo, useState} from 'react';
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import {chartConfig} from "../../js/chartConfig";
-import {useGetEco2charts, useGetEcoBullet} from "../../../../hook/useGetEconomics";
+import {useGetEcoBullet} from "../../../../hook/useGetEconomics";
 import {convertBullet} from "../convertData";
 import Skelet from "../../../../elements/Skelet";
 
 const AmgBulletChart2 = ({className, year,month, type, rp}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
-    const {data: bullet, isLoading, isError, refetch, status} = useGetEcoBullet(year,month,rp, type)
+    const {data: bullet, isLoading, isError} = useGetEcoBullet(year,month,rp, type)
     const [data, setData] = useState([]);
 
     useEffect(()=>{

@@ -81,7 +81,7 @@ const EcoBarChart = ({year, type}) => {
         },
         yAxis: {
             allowDecimals: true,
-            min: -10, //max: 300,
+            //min: -10, //max: 300,
             ...chartConfig.yAxis,
         },
         lang: {...chartConfig.lang},

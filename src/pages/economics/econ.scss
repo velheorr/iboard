@@ -32,7 +32,7 @@
             $lblue: #00FFE1;
             &.ecoGreen {
                 border-color: $green;
-                &:hover {box-shadow: 0px 0px 15px $green;}
+                &:hover {box-shadow: 0px 0px 15px $green; }
             }
             &.ecoOrange {
                 border-color: $orange;
@@ -60,7 +60,7 @@
             }
             .ecoDataCurrentMonth {
                 font-weight: 600;
-                color: #4cb242;
+                color: #17fa2f;
             }
 
         }
@@ -164,4 +164,5 @@
 
 .textTrans {
     text-transform: capitalize;
+    line-height: 14px;
 }
