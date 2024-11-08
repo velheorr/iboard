@@ -101,6 +101,3 @@ const Month = () => {
 
 export default Month;
 
-const BTN = ({id}) => {
-
-}

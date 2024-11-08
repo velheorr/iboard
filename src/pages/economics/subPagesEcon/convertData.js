@@ -27,7 +27,7 @@ export const convertForBarChart = (arr) => {
     let ishodnik = [
         {
             name: 'Процентование План',
-            data: '',
+            data: [],
             stack: 'Запроцентовано',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -39,7 +39,7 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'Процентование Факт',
-            data: '',
+            data: [],
             stack: 'Запроцентовано',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -51,7 +51,7 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'МП План',
-            data: '',
+            data: [],
             stack: 'Операционная прибыль',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -63,7 +63,7 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'МП Факт',
-            data: '',
+            data: [],
             stack: 'Операционная прибыль',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -75,7 +75,7 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'Вложения - ЗиНЗП План',
-            data: '',
+            data: [],
             stack: 'Валовая прибыль',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -87,7 +87,7 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: 'Вложения - ЗиНЗП Факт',
-            data: '',
+            data: [],
             stack: 'Валовая прибыль',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -99,7 +99,7 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: "Операционные издержки План",
-            data: '',
+            data: [],
             stack: 'ОИ',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -111,7 +111,7 @@ export const convertForBarChart = (arr) => {
         },
         {
             name: "Операционные издержки Факт",
-            data: '',
+            data: [],
             stack: 'ОИ',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -126,7 +126,16 @@ export const convertForBarChart = (arr) => {
     ishodnik.forEach(i =>{
         arred.forEach(o =>{
             if (i.name === o.Name){
-                i.data = o.Data
+                let x = []
+                o.Data.forEach(g =>{
+                    if (typeof g === 'string'){
+                        let y = g.replace(/\,/g, '.')
+                        x.push(+y)
+                    } else {
+                        x.push(g)
+                    }
+                })
+                i.data = x
             }
         })
     })

@@ -127,8 +127,10 @@ const EcoBarChart = ({year, type}) => {
                 }*/
             },
         },
-        series: data || [],
+        series: data,
     }),[data, isLegendVisible])
+
+
 
     if (isLoading) {return <Skelet option='eco'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
