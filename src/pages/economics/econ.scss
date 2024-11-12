@@ -30,25 +30,62 @@
             $red: #FF0000;
             $yellow: #FFFF00;
             $lblue: #00FFE1;
+
+            $greenL: #61CE95;
+            $orangeL: #F7A25C;
+            $redL: #EF7065;
+            $yellowL: #d0c900;
+            $lblueL: #79C3E2;
+
             &.ecoGreen {
-                border-color: $green;
-                &:hover {box-shadow: 0px 0px 15px $green; }
+                &.D {
+                    border-color: $green;
+                    &:hover {box-shadow: 0px 0px 15px $green; }
+                }
+                &.L {
+                    border-color: $greenL;
+                    &:hover {box-shadow: 0px 0px 15px $greenL; }
+                }
             }
             &.ecoOrange {
-                border-color: $orange;
-                &:hover {box-shadow: 0px 0px 15px $orange;}
+                &.D {
+                    border-color: $orange;
+                    &:hover {box-shadow: 0px 0px 15px $orange;}
+                }
+                &.L {
+                    border-color: $orangeL;
+                    &:hover {box-shadow: 0px 0px 15px $orangeL;}
+                }
             }
             &.ecoRed {
-                border-color: $red;
-                &:hover {box-shadow: 0px 0px 15px $red;}
+                &.D {
+                    border-color: $red;
+                    &:hover {box-shadow: 0px 0px 15px $red;}
+                }
+                &.L {
+                    border-color: $redL;
+                    &:hover {box-shadow: 0px 0px 15px $redL;}
+                }
             }
             &.ecoYellow {
-                border-color: $yellow;
-                &:hover {box-shadow: 0px 0px 15px $yellow;}
+                &.D {
+                    border-color: $yellow;
+                    &:hover {box-shadow: 0px 0px 15px $yellow;}
+                }
+                &.L {
+                    border-color: $yellowL;
+                    &:hover {box-shadow: 0px 0px 15px $yellowL;}
+                }
             }
             &.ecoLblue {
-                border-color: $lblue;
-                &:hover {box-shadow: 0px 0px 15px $lblue;}
+                &.D {
+                    border-color: $lblue;
+                    &:hover {box-shadow: 0px 0px 15px $lblue;}
+                }
+                &.L {
+                    border-color: $lblueL;
+                    &:hover {box-shadow: 0px 0px 15px $lblueL;}
+                }
             }
             .ecoDataTitle {
                 text-align: center;
@@ -58,9 +95,16 @@
             span {
                 float: right;
             }
+            $mainGreenD: #39FF14;
+            $mainGreenL: #4bb141;
             .ecoDataCurrentMonth {
                 font-weight: 600;
-                color: #17fa2f;
+                &.D {
+                    color: $mainGreenD;
+                }
+                &.L {
+                    color: $mainGreenL;
+                }
             }
 
         }
@@ -155,9 +199,12 @@
     .amgChart {
         flex-basis: 32%;
         .chartTitle {
+            padding-top: 7px;
             text-align: center;
             margin: 3px 0px;
             font-size: 14px;
+            color: #a7a7a7;
+            font-weight: 600;
         }
     }
 }

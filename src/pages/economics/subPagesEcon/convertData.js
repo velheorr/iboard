@@ -1,14 +1,15 @@
 
-export const convertForLineChart = (arr)=>{
+export const convertForLineChart = (arr, dark )=>{
     const arred = arr.data.response.data
 
+
     const colors = {
-        'Проход МП': "#39FF14",
-        'Вложения - ЗиНЗП': '#ffa420',
-        'Операционные издержки': '#ff0000',
-        'Управленческая прибыль': '#fdfd01',
-        'Операционная прибыль': '#00fde0',
-        'Процентование': "#5555ff",
+        'Проход МП': dark? "#39FF14" : '#61CE95',
+        'Вложения - ЗиНЗП': dark ? '#ffa420' : '#F7A25C',
+        'Операционные издержки': dark ? '#ff0000' : '#EF7065',
+        'Управленческая прибыль': dark ? '#fdfd01' : '#d0c900',
+        'Операционная прибыль': dark ? '#00fde0' : '#79C3E2',
+        'Процентование': dark ? "#5555ff" : '#649EFF',
     }
     let ara = []
     arred.forEach(i =>{
@@ -21,26 +22,28 @@ export const convertForLineChart = (arr)=>{
     return ara
 }
 
-export const convertForBarChart = (arr) => {
+export const convertForBarChart = (arr, dark) => {
     const arred = arr.data.response.data
 
-    let ishodnik = [
+    let ishodnikD = [
         {
             name: 'Процентование План',
             data: [],
             stack: 'Запроцентовано',
+            color: 'transparent',
             borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1}, // Direction of the gradient
                 stops: [
                     [0, '#9ea6bb'], // Цвет вверху
                     [1, '#6d7998']  // Цвет внизу
                 ]
-            },
+            }
         },
         {
             name: 'Процентование Факт',
             data: [],
             stack: 'Запроцентовано',
+            color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -53,6 +56,7 @@ export const convertForBarChart = (arr) => {
             name: 'МП План',
             data: [],
             stack: 'Операционная прибыль',
+            color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -65,6 +69,7 @@ export const convertForBarChart = (arr) => {
             name: 'МП Факт',
             data: [],
             stack: 'Операционная прибыль',
+            color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -77,6 +82,7 @@ export const convertForBarChart = (arr) => {
             name: 'Вложения - ЗиНЗП План',
             data: [],
             stack: 'Валовая прибыль',
+            color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -89,6 +95,7 @@ export const convertForBarChart = (arr) => {
             name: 'Вложения - ЗиНЗП Факт',
             data: [],
             stack: 'Валовая прибыль',
+            color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -101,6 +108,7 @@ export const convertForBarChart = (arr) => {
             name: "Операционные издержки План",
             data: [],
             stack: 'ОИ',
+            color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -113,6 +121,7 @@ export const convertForBarChart = (arr) => {
             name: "Операционные издержки Факт",
             data: [],
             stack: 'ОИ',
+            color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -123,7 +132,108 @@ export const convertForBarChart = (arr) => {
         },
     ]
 
-    ishodnik.forEach(i =>{
+    let ishodnikL = [
+        {
+            name: 'Процентование План',
+            data: [],
+            stack: 'Запроцентовано',
+            color: {
+                linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1}, // Direction of the gradient
+                stops: [
+                    [0, '#badcf9'], // Цвет вверху
+                    [1, '#63b4f4']  // Цвет внизу
+                ]
+            },
+        },
+        {
+            name: 'Процентование Факт',
+            data: [],
+            stack: 'Запроцентовано',
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#2195f1'], // Start color
+                    [1, '#1975d0'/*'#3e1d57'*/ /*'#3d4d76'*/]  // End color
+                ]
+            },
+        },
+        {
+            name: 'МП План',
+            data: [],
+            stack: 'Операционная прибыль',
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#c6e4c7'], // Start color
+                    [1, '#80c583']  // End color
+                ]
+            },
+        },
+        {
+            name: 'МП Факт',
+            data: [],
+            stack: 'Операционная прибыль',
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#4bae4f'], // Start color
+                    [1, '#388d3c']  // End color
+                ]
+            },
+        },
+        {
+            name: 'Вложения - ЗиНЗП План',
+            data: [],
+            stack: 'Валовая прибыль',
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#fddeb1'], // Start color
+                    [1, '#fdb64c']  // End color
+                ]
+            },
+        },
+        {
+            name: 'Вложения - ЗиНЗП Факт',
+            data: [],
+            stack: 'Валовая прибыль',
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#fd9700'], // Start color
+                    [1, '#f37b00']  // End color
+                ]
+            },
+        },
+        {
+            name: "Операционные издержки План",
+            data: [],
+            stack: 'ОИ',
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#fdcbd0'], // Start color
+                    [1, '#ed524f']  // End color
+                ]
+            },
+        },
+        {
+            name: "Операционные издержки Факт",
+            data: [],
+            stack: 'ОИ',
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
+                stops: [
+                    [0, '#f24236'], // Start color
+                    [1, '#c42828']  // End color
+                ]
+            },
+        },
+    ]
+
+    const vihod = dark? ishodnikD : ishodnikL
+
+    vihod.forEach(i =>{
         arred.forEach(o =>{
             if (i.name === o.Name){
                 let x = []
@@ -140,42 +250,42 @@ export const convertForBarChart = (arr) => {
         })
     })
 
-    return ishodnik
+    return vihod
 }
 
 
 
 
 
-const funnel = (arr)=>{
+const funnel = (arr, dark)=>{
     let ishodnik = [
         {
             name: 'ТКП',
-            color: '#571f91',
+            color: dark? '#571f91' : 'rgba(87,31,145,0.60)',
         },
         {
             name: 'Подписано смет/договоров',
-            color: '#2e4399',
+            color: dark? '#2e4399' : 'rgba(46,67,153,0.60)',
         },
         {
             name: 'Поставлено Оим',
-            color: '#4063f3',
+            color: dark? '#4063f3' : 'rgba(64,99,243,0.60)',
         },
         {
             name: 'Оплачено ФОТ',
-            color: '#007ed3',
+            color: dark? '#007ed3' : 'rgba(0,126,211,0.60)',
         },
         {
             name: 'Смонтировано',
-            color: '#3d9bda',
+            color: dark? '#3d9bda' : 'rgba(61,155,218,0.60)',
         },
         {
             name: 'Запроцентовано',
-            color: '#7eb1fe',
+            color: dark? '#7eb1fe' : 'rgba(126,177,254,0.60)',
         },
         {
             name: 'Маржинальная прибыль',
-            color: '#16b423',
+            color: dark ? '#17f82f' : 'rgba(29,204,46,0.5)',
         },
     ]
 
@@ -203,7 +313,7 @@ export const convertFunnel2 = (arr) =>{
     return x
 }
 
-export const convertBullet = (arr)=>{
+export const convertBullet = (arr, dark)=>{
     const ishodnik = [
         {
             name: 'Прогноз на конец года',
@@ -219,8 +329,8 @@ export const convertBullet = (arr)=>{
             color: {
                 linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
                 stops: [
-                    [0, '#456264'], // Начальный цвет градиента
-                    [1, '#072e30']  // Конечный цвет градиента
+                    [0, dark? '#7834b4' : 'rgba(120,52,180,0.44)'], // Начальный цвет градиента
+                    [1, dark? '#50417d' : 'rgba(80,65,125,0.47)']  // Конечный цвет градиента
                 ]
             }
 
@@ -239,8 +349,8 @@ export const convertBullet = (arr)=>{
             color: {
                 linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
                 stops: [
-                    [0, '#79b3b1'], // Начальный цвет градиента
-                    [1, '#4c9a97']  // Конечный цвет градиента
+                    [0, dark ? '#4c4480' : 'rgba(76,68,128,0.5)'], // Начальный цвет градиента
+                    [1, dark ? '#353665' : 'rgba(53,54,101,0.6)']  // Конечный цвет градиента
                 ]
             }
         },
@@ -258,8 +368,8 @@ export const convertBullet = (arr)=>{
             color: {
                 linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, // Градиент по горизонтали
                 stops: [
-                    [0, '#56c2c5'], // Начальный цвет градиента
-                    [1, '#1dadb1']  // Конечный цвет градиента
+                    [0, dark ? '#303765' : 'rgba(48,55,101,0.6)'], // Начальный цвет градиента
+                    [1, dark ? '#1f294b' : 'rgba(31,41,75,0.7)']  // Конечный цвет градиента
                 ]
             }
         },
@@ -281,8 +391,8 @@ export const convertBullet = (arr)=>{
                 }
             },
             color: 'transparent',
-            borderWidth: 2,
-            borderColor: 'grey',
+            borderWidth: 1,
+            borderColor: '#938c8c',
         }
     ]
 

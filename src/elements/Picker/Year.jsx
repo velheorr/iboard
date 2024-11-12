@@ -1,28 +1,45 @@
-import React, {useState} from 'react';
-import {GTextField} from "../CustomMui/customMui";
-import {Button, IconButton} from "@mui/material";
+import React, {useEffect, useState} from 'react';
+import {IconButton} from "@mui/material";
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 
-const Year = () => {
-    const [year, setYear] = useState('2024')
+const Year = ({setEcoYear}) => {
+    const [year, setYear] = useState(null)
+    const min = 2015
+    const max = new Date().getFullYear() + 1
+    const today = new Date().getFullYear()
 
-    const select = (e) => {
-        setYear(e.target.value)
-    }
-    const move = (dir) =>{
-        if (dir){
-            setYear(year - 1)
+    useEffect(()=>{
+        setYear(today)
+        setEcoYear(today)
+    },[today])
+
+    const yearChecker = (y) => {
+        if (y < min){
+            return min
+        }  else if (y > max) {
+            return max
         } else {
-            setYear(year + 1)
+            return y
         }
+    }
+
+    const move = (dir) =>{
+        let number
+        if (dir){
+            number = yearChecker(year - 1)
+        } else {
+            number = yearChecker(year + 1)
+        }
+        setYear(number)
+        setEcoYear(number)
     }
 
     return (
         <div style={{display:'flex', justifyContent: 'center'}}>
             <IconButton onClick={()=>move(true)} color="success"><KeyboardDoubleArrowLeftIcon /> </IconButton>
-            <GTextField sx={{width: '60px'}} id="name"  variant="standard" type='number' size='small' min={2015} max={2025} step={1} value={year} onChange={select}/>
+            <div style={{display: 'flex', alignItems: 'center'}}>{year}</div>
             <IconButton onClick={()=>move(false)} color="success"><KeyboardDoubleArrowRightIcon /> </IconButton>
         </div>
     );

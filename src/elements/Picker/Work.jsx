@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Switch from "@mui/material/Switch";
 import {FormControlLabel, Tooltip, Typography} from "@mui/material";
 
 
-const Work = () => {
+const Work = ({setEcoWork}) => {
     const [work, setWork] = useState([
         {
             id: 'all',
@@ -37,16 +37,21 @@ const Work = () => {
         },
     ])
 
+    useEffect(()=>{
+        select('all')
+    },[])
+
     const select = (id)=>{
         setWork(work.map(work => ({
             ...work,
             checked: work.id === id,
         })));
+        setEcoWork(id)
     }
 
     const renderSwitch = () => {
         return work.map(i =>{
-            return <Tooltip title={<Typography variant="body2"  gutterBottom>{i.info}</Typography>}>
+            return <Tooltip key={i.id} title={<Typography variant="body2"  gutterBottom>{i.info}</Typography>}>
                         <FormControlLabel sx={{width: '48%'}} control={<Switch checked={i.checked} color="success" onChange={()=>select(i.id)}/>} label={i.name}/>
                     </Tooltip>
         })

@@ -9,12 +9,14 @@ import '../econ.scss'
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {setDetails} from "../js/EcoSlice";
+import {useTheme} from "../../../hook/useTheme";
 
 const EcoBarChart = ({year, type}) => {
     const {data: ecobarchart, isLoading, isError, refetch, status} = useGetEcoBarChart(year, type)
     const date = new Date()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const dark = useTheme() // тема
 
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState([]);
@@ -23,10 +25,10 @@ const EcoBarChart = ({year, type}) => {
     useEffect(()=>{
         setMonth(date.getMonth())
         if (ecobarchart){
-            setData(convertForBarChart(ecobarchart));
+            setData(convertForBarChart(ecobarchart, dark));
         }
 
-    },[ecobarchart])
+    },[ecobarchart, dark])
 
     const openEcoPage2 = (month, year)=>{
         dispatch(setDetails({month, year}))
@@ -48,6 +50,9 @@ const EcoBarChart = ({year, type}) => {
                     fontSize: '16px',
                     fontWeight: 'bold'
                 }
+            },
+            itemHoverStyle: {
+                color: dark ? '#FFF' : '#4bb141'
             },
             layout: 'vertical',
             align: 'right',
@@ -117,7 +122,7 @@ const EcoBarChart = ({year, type}) => {
             column: {
                 stacking: 'overlap',
                 color: 'transparent',
-                borderWidth: 2,
+                borderWidth: dark? 2 : 0,
                 borderRadius: 0
                /* dataLabels: {
                     enabled: true,

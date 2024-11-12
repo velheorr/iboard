@@ -5,18 +5,20 @@ import {chartConfig} from "../../js/chartConfig";
 import {useGetEcoBullet} from "../../../../hook/useGetEconomics";
 import {convertBullet} from "../convertData";
 import Skelet from "../../../../elements/Skelet";
+import {useTheme} from "../../../../hook/useTheme";
 
 const AmgBulletChart2 = ({className, year,month, type, rp}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
     const {data: bullet, isLoading, isError} = useGetEcoBullet(year,month,rp, type)
     const [data, setData] = useState([]);
+    const dark = useTheme() // тема
 
     useEffect(()=>{
         if (bullet){
             const x = bullet.data.response.data
-            setData(convertBullet(x))
+            setData(convertBullet(x, dark))
         }
-    },[bullet])
+    },[bullet, dark])
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -109,6 +111,8 @@ const AmgBulletChart2 = ({className, year,month, type, rp}) => {
                         color: 'white'
                     },
                 },
+                borderWidth: 1,
+                borderColor: '#bbabab'
             }
         },
         series: data || []

@@ -5,12 +5,14 @@ import {chartConfig} from "../../js/chartConfig";
 import {useGetEco2charts} from "../../../../hook/useGetEconomics";
 
 import Skelet from "../../../../elements/Skelet";
+import {useTheme} from "../../../../hook/useTheme";
 
 const Amg2Charts = ({className, year,month, type, rp}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
     const {data: twocharts, isLoading, isError} = useGetEco2charts(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
+    const dark = useTheme() // тема
 
     useEffect(()=>{
         if (twocharts){
@@ -90,7 +92,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                 name: 'Дни',
                 data: data || [],
                 borderWidth: 0,
-                color: '#0b7e93',
+                color: dark ? '#0b7e93' : 'rgba(11,126,147,0.57)',
             }
         ]
     }), [isLegendVisible, data])
@@ -167,7 +169,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
         series: [{
             name: 'Сумма',
             data: data2 || [],
-            color: '#0b7e93',
+            color: dark ? '#0b7e93' : 'rgba(11,126,147,0.57)',
         }]
     }), [isLegendVisible, data2])
 

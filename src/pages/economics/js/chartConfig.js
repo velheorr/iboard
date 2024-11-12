@@ -1,17 +1,16 @@
+
+
 export const chartConfig = {
     chart: {
         height: 250,
         backgroundColor: 'transparent',
     },
     title: {
-        /*text: 'Показатели нарастающим итогом',*/
         align: 'left',
         style:{
             color: '#767676',
             fontSize: '16px'
         },
-        /*x: 0, // Adjust horizontal position
-        y: 15, // Adjust vertical position*/
     },
     accessibility: {
         enabled: false // Включаем доступность
@@ -20,7 +19,6 @@ export const chartConfig = {
         enabled: false // Отключить отображение ссылки
     },
     subtitle: {
-        /*text: 'За месяц, млн.',*/
         align: 'left'
     },
     legend: {
@@ -74,16 +72,6 @@ export const chartConfig = {
         viewData: "View Data Table",
         hideData: "Hide Data Table"*/
     },
-    /* navigation: {
-            menuItemStyle: {
-                padding: '0',
-                color: '#303030'
-            },
-            menuItemHoverStyle: {
-                background: '#33bb00',
-                color: '#FFFFFF'
-            }
-        },*/
     exporting: {
         buttons: {
             contextButton: {

@@ -6,19 +6,21 @@ import '../../econ.scss'
 import {useGetEcoFunnel} from "../../../../hook/useGetEconomics";
 import {convertFunnel, convertFunnel2} from "../convertData";
 import Skelet from "../../../../elements/Skelet";
+import {useTheme} from "../../../../hook/useTheme";
 
 const AmgCustomFunnel = ({className, year,month, type, rp}) => {
     const {data: ecofunnel, isLoading, isError} = useGetEcoFunnel(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
+    const dark = useTheme() // тема
 
     useEffect(()=>{
         if (ecofunnel){
-            setData(convertFunnel(ecofunnel.data.Data));
-            setData2(convertFunnel2(ecofunnel.data.Data));
+            setData(convertFunnel(ecofunnel.data.Data, dark));
+            setData2(convertFunnel2(ecofunnel.data.Data, dark));
         }
 
-    },[ecofunnel])
+    },[ecofunnel, dark])
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -34,7 +36,7 @@ const AmgCustomFunnel = ({className, year,month, type, rp}) => {
                 'Оплачено ФОТ',
                 'Смонтировано',
                 'Запроцентовано',
-                '<span style="color: #17f82f;">Маржинальная прибыль</span>',],
+                '<span style="color: #16b323/*#17f82f*/;">Маржинальная прибыль</span>',],
             gridLineWidth: 0,
             gridLineDashStyle: 'Dot',
         },

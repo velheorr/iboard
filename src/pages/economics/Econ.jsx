@@ -12,8 +12,9 @@ import EcoAmg from "./subPagesEcon/EcoAMG";
 import HomeIcon from '@mui/icons-material/Home';
 import {Stack, Typography} from "@mui/material";
 import CustomEvents from "highcharts-custom-events";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useModal} from "../../hook/useModal";
+import {useSelector} from "react-redux";
 
 CustomEvents(Highcharts);
 exporting(Highcharts);
@@ -21,11 +22,22 @@ exportData(Highcharts);
 fullscreen(Highcharts);
 
 const Econ = () => {
-    const [year, setYear] = useState(2024)
-    const [month, setMonth] = useState(11)
+    const ecoYear = new Date().getFullYear()
+    const ecoMonth = new Date().getMonth() + 1
+    const stateYear = useSelector(state => state.eco.year)
+
+    const [year, setYear] = useState(ecoYear)
+    const [month, setMonth] = useState(ecoMonth)
     const [type, setType] = useState('all')
     const [rp, setRp] = useState('all')
     const {setModal} = useModal()
+
+    useEffect(()=>{
+        setYear(stateYear)
+
+    },[stateYear])
+
+    console.log(stateYear)
 
     const openModal = () => {
         setModal('ModalEcon')

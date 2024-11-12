@@ -3,12 +3,13 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {convertForLineChart} from "./convertData";
 import {chartConfig} from "../js/chartConfig";
-import {useGetEco, useGetEcoLineChart} from "../../../hook/useGetEconomics";
+import {useGetEcoLineChart} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
+import {useTheme} from "../../../hook/useTheme";
 
 const EcoLineChart = ({year, type}) => {
-    const {data: ecolinechart, isLoading, isError, refetch, status} = useGetEcoLineChart(year,type)
-
+    const {data: ecolinechart, isLoading, isError} = useGetEcoLineChart(year,type)
+    const dark = useTheme() // тема
     const date = new Date()
 
     const [isLegendVisible, setIsLegendVisible] = useState(true);
@@ -18,9 +19,11 @@ const EcoLineChart = ({year, type}) => {
     useEffect(()=>{
         setMonth(date.getMonth())
         if (ecolinechart){
-            setData(convertForLineChart(ecolinechart));
+            setData(convertForLineChart(ecolinechart, dark));
         }
-    },[ecolinechart])
+    },[ecolinechart, dark])
+
+
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -36,6 +39,9 @@ const EcoLineChart = ({year, type}) => {
                     fontSize: '16px',
                     fontWeight: 'bold'
                 }
+            },
+            itemHoverStyle: {
+                color: dark ? '#FFF' : '#4bb141'
             },
             layout: 'vertical',
             align: 'right',

@@ -3,36 +3,38 @@ import {Tooltip, Typography} from "@mui/material";
 import {useGetEcoCards} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 import {useEffect} from "react";
+import {useTheme} from "../../../hook/useTheme";
 
 
 
 const EcoData = ({year, month, type,openModal}) => {
     const {data: ecocards, isLoading, isError} = useGetEcoCards(year, month, type)
-
+    const dark = useTheme() // тема
+    console.log(year)
     let data = [
         {
             title: "Проход МП",
-            border: "ecoGreen",
+            border: dark? "ecoGreen D" : 'ecoGreen L',
             order: 1,
         },
         {
             title: 'Вложения - ЗиНЗП',
-            border: 'ecoOrange',
+            border: dark? 'ecoOrange D' : 'ecoOrange L',
             order: 2,
         },
         {
             title: 'Операционные издержки',
-            border: 'ecoRed',
+            border: dark? 'ecoRed D' : 'ecoRed L',
             order: 3,
         },
         {
             title: 'Управленческая прибыль',
-            border: 'ecoYellow',
+            border: dark? 'ecoYellow D' : 'ecoYellow L',
             order: 4,
         },
         {
             title: 'Операционная прибыль',
-            border: 'ecoLblue',
+            border: dark? 'ecoLblue D' : 'ecoLblue L',
             order: 5,
         },
     ]
@@ -69,7 +71,7 @@ const EcoData = ({year, month, type,openModal}) => {
     return (
         <div style={{width: '170px', position: 'fixed'}}>
             <Tooltip title={<Typography variant="body2"  gutterBottom>Нажмите для изменения настроек</Typography>}>
-                <div className='ecoDataDate' onClick={openModal}>11/2024</div>
+                <div className='ecoDataDate' onClick={openModal}>{year}</div>
             </Tooltip>
             { renderCards}
         </div>
@@ -84,6 +86,9 @@ const Block = ({data}) => {
       prevAmount, prevName, prognoz
   } = data
 
+    const dark = useTheme() // тема
+    let color = dark? 'D' : 'L'
+
     const convert = (num) => {
         if ((num ^ 0) === num)  {
             return `${num}.0`
@@ -97,7 +102,7 @@ const Block = ({data}) => {
         <div className={`ecoDataNum ${border}`} style={{borderColor: border}}>
             <div className='ecoDataTitle'>{Name}</div>
             <div className='textTrans'>{prevName} <span style={{fontSize: '14px'}}> {convert(prevAmount)}</span></div>
-            <div className='ecoDataCurrentMonth textTrans'> {currentName} <span style={{fontSize: '14px'}}> {convert(currentAmount)}</span></div>
+            <div className={`ecoDataCurrentMonth ${color} textTrans`}> {currentName} <span style={{fontSize: '14px'}}> {convert(currentAmount)}</span></div>
             <div className='textTrans'>{nextName} <span style={{fontSize: '14px'}}> {convert(nextAmount)}</span></div>
             <div>Цель <span style={{fontSize: '14px'}}> {convert(goal)}</span></div>
             <div className='textTrans' style={{color: '#ff0000', display: 'flex', justifyContent: 'space-between', width: '100%'}}>
