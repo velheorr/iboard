@@ -25,7 +25,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
         credits: {...chartConfig.credits},
         chart: {type: 'bar', ...chartConfig.chart, height: 310},
         title: {
-            text: 'Дни',
+            text: null,
             align: 'right',
             y: 20,
             style:{
@@ -37,7 +37,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
         xAxis: {...chartConfig.xAxis,
             categories: [
                 'Подтверждено Оим', 'Поступило ОиМ', 'Списано ОиМ', 'Начислено ФОТ (прямой)', 'Вложено на Субчиков',
-                'Вложено Спецмеханизмов', 'Вложено в Спецработы', 'Задолженность Заказчиков', 'Гарантийные ужержания',
+                'Вложено Спецмеханизмов', 'Вложено в Спецработы', 'Задолженность Заказчиков', 'Гарантийные ужержания', '<span style="color: #17f82f;">Итого</span>'
             ],
             labels: {
                 enabled: false, // Отключаем подписи по оси
@@ -99,7 +99,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {type: 'bar', ...chartConfig.chart, height: 310,},
-        title: {text: 'Сумма',
+        title: {text: null,
             align: 'center',
             y: 20,
             style:{
@@ -111,7 +111,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
         xAxis: {...chartConfig.xAxis,
             categories: [
                 'Подтверждено Оим', 'Поступило ОиМ', 'Списано ОиМ', 'Начислено ФОТ (прямой)', 'Вложено на Субчиков',
-                'Вложено Спецмеханизмов', 'Вложено в Спецработы', 'Задолженность Заказчиков', 'Гарантийные ужержания',
+                'Вложено Спецмеханизмов', 'Вложено в Спецработы', 'Задолженность Заказчиков', 'Гарантийные ужержания', '<span style="color: #17f82f;">Итого</span>'
             ],
             labels: {
                 style: {

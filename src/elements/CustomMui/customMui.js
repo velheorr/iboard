@@ -13,10 +13,16 @@ export const GInputLabel = styled(InputLabel)(({ theme }) => ({
 /*инпут поиска нижняя линия зеленая*/
 export const GTextField = styled(TextField)(({ theme }) => ({
     "& .MuiInput-underline:after": { borderBottomColor: '#4cb242'},
+    "& .MuiInput-root:before": {borderBottom: '1px solid rgb(132 132 132 / 74%)'},
     '& .Mui-focused': {color: '#4cb242 !important'},
     'input:before': {borderBottomColor: '#7d7d7d6b'},
-    /*'& .MuiInput-root' : {color: '#242424'},*/
-    /*'& .MuiInput-input' : {color: 'aliceblue'},*/
+    '& .MuiFormLabel-root': {color: 'grey'},
+    '& .MuiInput-root' : {color: '#fff'},
+    /*'& .MuiInputAdornment-root' : {color:'white'},*/
+    '& .MuiButtonBase-root .black' : {backgroundColor: 'white'},
+    '&:hover .black': {backgroundColor: 'grey'},
+    '& .MuiInput-input.Mui-disabled': {'-webkitTextFillColor': 'grey'},
+    '& .MuiInputLabel-root.Mui-disabled': {color: 'grey'},
     /* '& .MuiInputAdornment-root' : {color: '#4cb242'},*/
     /* 'input': {
          '&::placeholder': {
@@ -24,5 +30,6 @@ export const GTextField = styled(TextField)(({ theme }) => ({
          }
      }*/
 }));
+
 
 
