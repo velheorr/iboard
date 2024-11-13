@@ -23,7 +23,13 @@ const EcoBarChart = ({year, type}) => {
     const [month, setMonth] = useState(null);
 
     useEffect(()=>{
-        setMonth(date.getMonth())
+        const currentYear = new Date().getFullYear()
+        if (year !== currentYear){
+            setMonth(null)
+        } else {
+            setMonth(date.getMonth())
+        }
+
         if (ecobarchart){
             setData(convertForBarChart(ecobarchart, dark));
         }

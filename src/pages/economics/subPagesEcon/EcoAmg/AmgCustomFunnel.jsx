@@ -8,7 +8,7 @@ import {convertFunnel, convertFunnel2} from "../convertData";
 import Skelet from "../../../../elements/Skelet";
 import {useTheme} from "../../../../hook/useTheme";
 
-const AmgCustomFunnel = ({className, year,month, type, rp}) => {
+const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
     const {data: ecofunnel, isLoading, isError} = useGetEcoFunnel(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
@@ -18,6 +18,8 @@ const AmgCustomFunnel = ({className, year,month, type, rp}) => {
         if (ecofunnel){
             setData(convertFunnel(ecofunnel.data.Data, dark));
             setData2(convertFunnel2(ecofunnel.data.Data, dark));
+            if (setRp){setRp(ecofunnel.data.Data.RpList)}
+
         }
 
     },[ecofunnel, dark])

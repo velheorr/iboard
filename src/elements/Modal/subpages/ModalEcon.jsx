@@ -7,7 +7,8 @@ import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import {useDispatch} from "react-redux";
 import {setDate} from "../../../pages/economics/js/EcoSlice";
 import {useModal} from "../../../hook/useModal";
-
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import {useTheme} from "../../../hook/useTheme";
 
 const ModalEcon = () => {
     const [ecoYear, setEcoYear] = useState()
@@ -15,6 +16,8 @@ const ModalEcon = () => {
     const [ecoWork, setEcoWork] = useState()
     const dispatch = useDispatch()
     const {exitModal} = useModal()
+    const neonGreen = useTheme('neonGreen')
+    const neonGreenShadow = useTheme('neonGreenShadow')
 
     const submit = ()=>{
         dispatch(setDate({ecoYear, ecoMonth, ecoWork}))
@@ -22,14 +25,17 @@ const ModalEcon = () => {
     }
 
     return (
-        <div>
-            <div style={{borderBottom: 'thin solid grey', margin: '15px 0'}}><span>1 Год</span></div>
+        <div className='ecoModal'>
+            <div className='modalIcon' style={{boxShadow: neonGreenShadow}}><CalendarMonthIcon/></div>
+            <Typography variant="h5" gutterBottom className='modalAuthTitle' sx={{color: neonGreen}}>Настройки параметров</Typography>
+
+            <div className='divider'><span className='title'>Год</span></div>
             <Year setEcoYear={setEcoYear}/>
-            <div style={{borderBottom: 'thin solid grey', margin: '15px 0'}}><span>2 Месяц</span></div>
+            <div className='divider'><span className='title'>Месяц</span></div>
             <div style={{width: '50%', margin: '0 auto'}}>
                 <Month setEcoMonth={setEcoMonth}/>
             </div>
-            <div style={{borderBottom: 'thin solid grey', margin: '15px 0'}}><span>3 Тип работ</span></div>
+            <div className='divider'><span className='title'>Тип работ</span></div>
             <Work setEcoWork={setEcoWork}/>
             <Tooltip title={<Typography variant="body2"  gutterBottom>Сохранить данные</Typography>}>
                 <Button onClick={submit} sx={{float: 'right', marginTop: '25px'}}  variant="contained" type='submit' size='small' color="success" startIcon={<ContentPasteGoIcon />}>Сформировать</Button>

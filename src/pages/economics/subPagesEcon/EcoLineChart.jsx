@@ -14,10 +14,17 @@ const EcoLineChart = ({year, type}) => {
 
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState(null);
+
     const [month, setMonth] = useState(null);
 
     useEffect(()=>{
-        setMonth(date.getMonth())
+        const currentYear = new Date().getFullYear()
+        if (year !== currentYear){
+            setMonth(null)
+        } else {
+            setMonth(date.getMonth())
+        }
+
         if (ecolinechart){
             setData(convertForLineChart(ecolinechart, dark));
         }

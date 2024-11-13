@@ -16,6 +16,7 @@ import {useEffect, useState} from "react";
 import {useModal} from "../../hook/useModal";
 import {useSelector} from "react-redux";
 
+
 CustomEvents(Highcharts);
 exporting(Highcharts);
 exportData(Highcharts);
@@ -42,11 +43,35 @@ const Econ = () => {
         }
     },[stateYear, stateMonth, stateWork])
 
-
-
     const openModal = () => {
         setModal('ModalEcon')
     }
+
+    let tab = [<div onClick={()=>handleTab()}><HomeGuardian/></div>]
+    useEffect(()=>{
+        if (Array.isArray(rp)){
+            renderTabs()
+        }
+
+    },[rp, tab])
+
+
+    const [rpId, setRpId] = useState(false)
+    const handleTab = (id = false) => {
+        setRpId(id)
+    }
+    const renderTabs = () => {
+        if ( Array.isArray(rp)){
+            rp.forEach(i =>{
+                tab.push(<div onClick={()=>handleTab(i.id)}>{i.name}</div>)
+            })
+        }
+        tab.sort()
+        return tab
+    }
+
+
+
 
     return (
         <div className='econMain'>
@@ -57,12 +82,14 @@ const Econ = () => {
                 <EcoLineChart year={year} type={type}/>
                 <EcoBarChart year={year} type={type}/>
                 <div style={{padding: '0px 5px'}}>
-                    <ElemTab arr={[<HomeGuardian/>,'Бельтюков', 'Болотников', 'Исаков', 'Исмайлов', 'Кряжевских', 'Куликов', 'Пермяков']} inner={true}>
-                        <EcoAmg year={year} month={month} type={type} rp={rp}/>
-                        <EcoAmg/>
-                        <EcoAmg/>
-                        <EcoAmg/>
+                    <ElemTab arr={renderTabs()} >
+                        <EcoAmg year={year} month={month} type={type} rp={rp} setRp={setRp}/>
+                        <div></div>
                     </ElemTab>
+                    {
+                        rpId &&
+                        <EcoAmg year={year} month={month} type={type} rp={rpId} setRp={setRp}/>
+                    }
                 </div>
             </div>
         </div>

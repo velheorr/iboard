@@ -45,8 +45,9 @@ const ElemTab = ({arr = [], children, inner = false}) => {
     const renderPanel = panelMaker(children)
 
     return (
-        <Box sx={{position: inner ? '' : 'fixed', right: 0, left: '75px'}}>
-            <Tabs value={value} onChange={handleChange}
+        /*<Box sx={{position: inner ? inner : 'fixed', right: 0, left: '75px'}}>*/
+        <Box>
+            <Tabs value={value} onChange={handleChange}  variant="scrollable" scrollButtons="auto"
                   sx={{
                       "& .MuiTabs-indicator": { backgroundColor: "#12c325" },
                       "& .MuiTab-root.Mui-selected": { color: "#12c325", fontWeight:"700" },

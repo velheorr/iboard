@@ -108,3 +108,19 @@ code {
     }
   }
 }
+
+
+.ecoModal {
+  .divider {
+    border-bottom: thin solid grey;
+    margin: 15px 0;
+    position: relative;
+    .title {
+      position: absolute;
+      top: -15px;
+      background: grey;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  }
+}

@@ -4,13 +4,14 @@ import {useGetEcoCards} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 import {useEffect} from "react";
 import {useTheme} from "../../../hook/useTheme";
+import {workTypes} from "../../../elements/Picker/Work";
 
 
 
 const EcoData = ({year, month, type,openModal}) => {
     const {data: ecocards, isLoading, isError} = useGetEcoCards(year, month, type)
     const dark = useTheme() // тема
-    console.log(year)
+
     let data = [
         {
             title: "Проход МП",
@@ -64,6 +65,13 @@ const EcoData = ({year, month, type,openModal}) => {
     },[ecocards])
     const renderCards = updateData(ecocards?.data.response.data)
 
+
+    const findWork = () => {
+        let x = workTypes.find(i => i.id === type)
+        return x.name
+    }
+
+
     if (isLoading) {return <Skelet option='eco'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
     if (!ecocards) {return <h3>Нет данных с сервера</h3>}
@@ -71,7 +79,10 @@ const EcoData = ({year, month, type,openModal}) => {
     return (
         <div style={{width: '170px', position: 'fixed'}}>
             <Tooltip title={<Typography variant="body2"  gutterBottom>Нажмите для изменения настроек</Typography>}>
-                <div className='ecoDataDate' onClick={openModal}>{year}</div>
+                <div className='ecoDataDate' onClick={openModal}>
+                    <div><span style={{color: 'grey', fontSize: '12px'}}>Дата: </span> {month} / {year}</div>
+                    <div><span style={{color: 'grey', fontSize: '12px'}}>Вид работ: </span>{findWork()}</div>
+                </div>
             </Tooltip>
             { renderCards}
         </div>
