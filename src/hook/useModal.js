@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {openModal} from "../elements/Modal/ModalSlice";
+import {closeModal, openModal} from "../elements/Modal/ModalSlice";
 
 
 export const useModal = ()=> {
@@ -7,5 +7,11 @@ export const useModal = ()=> {
 
     const setModal= (variant) => dispatch(openModal(variant))
 
-    return {setModal}
+    const exitModal = (time = 100) => {
+        setTimeout(() => {
+            dispatch(closeModal())
+        }, time);
+    }
+
+    return {setModal,exitModal}
 }

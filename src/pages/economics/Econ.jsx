@@ -25,6 +25,8 @@ const Econ = () => {
     const ecoYear = new Date().getFullYear()
     const ecoMonth = new Date().getMonth() + 1
     const stateYear = useSelector(state => state.eco.year)
+    const stateMonth = useSelector(state => state.eco.month)
+    const stateWork = useSelector(state => state.eco.work)
 
     const [year, setYear] = useState(ecoYear)
     const [month, setMonth] = useState(ecoMonth)
@@ -33,11 +35,14 @@ const Econ = () => {
     const {setModal} = useModal()
 
     useEffect(()=>{
-        setYear(stateYear)
+        if (stateYear || stateMonth || stateWork){
+            setYear(stateYear)
+            setMonth(stateMonth)
+            setType(stateWork)
+        }
+    },[stateYear, stateMonth, stateWork])
 
-    },[stateYear])
 
-    console.log(stateYear)
 
     const openModal = () => {
         setModal('ModalEcon')

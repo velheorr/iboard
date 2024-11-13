@@ -17,10 +17,9 @@ const ecoSlice = createSlice({
             state.yearDetails = action.payload.year
         },
         setDate: (state, action) =>{
-            console.log(action.payload)
-            state.year = action.payload.year
-            state.month = action.payload.month
-            state.work = action.payload.work
+            state.year = action.payload.ecoYear
+            state.month = action.payload.ecoMonth
+            state.work = action.payload.ecoWork
         }
     },
 

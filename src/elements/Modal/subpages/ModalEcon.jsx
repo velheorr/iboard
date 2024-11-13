@@ -6,17 +6,19 @@ import {Button, Tooltip, Typography} from "@mui/material";
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import {useDispatch} from "react-redux";
 import {setDate} from "../../../pages/economics/js/EcoSlice";
+import {useModal} from "../../../hook/useModal";
 
 
 const ModalEcon = () => {
     const [ecoYear, setEcoYear] = useState()
     const [ecoMonth, setEcoMonth] = useState()
     const [ecoWork, setEcoWork] = useState()
-    console.log(ecoYear, ecoMonth, ecoWork)
     const dispatch = useDispatch()
+    const {exitModal} = useModal()
 
     const submit = ()=>{
         dispatch(setDate({ecoYear, ecoMonth, ecoWork}))
+        exitModal()
     }
 
     return (
