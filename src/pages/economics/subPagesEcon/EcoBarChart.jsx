@@ -88,7 +88,6 @@ const EcoBarChart = ({year, type}) => {
                 width: 1, // Ширина линии
                 value: month, // Значение по оси X, где будет линия
             }],
-
         },
         yAxis: {
             allowDecimals: true,

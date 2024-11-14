@@ -1,0 +1,20 @@
+.chartTooltipTitle {
+    text-shadow: 0px 1px black;
+    .head {
+        text-align: center;
+        border-bottom: 1px solid;
+        padding-bottom: 4px;
+    }
+    span {
+        float: right;
+        border-bottom: .1px dashed;
+    }
+}
+
+/*barchart  xaxis click style*/
+.xaxis-label {
+    transition: color 0.3s;
+}
+.xaxis-label:hover {
+    color: red; /* Change color on hover */
+}

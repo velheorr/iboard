@@ -1,7 +1,7 @@
 import ListItemButton from "@mui/material/ListItemButton";
 import '../layout.scss'
 import {Divider, ListItemIcon} from "@mui/material";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import guardian_black from '../../img/sidebar/guardian_black.png'
 import {Link, NavLink} from "react-router-dom";
 import {useTheme} from "../../hook/useTheme";
@@ -36,6 +36,7 @@ const SideMenu = () => {
                           }>
                     <Tree name={'Динамика'} img={dynamic} link={'dynamic'} />
                     <Tree name={'Процентование'} img={production_black} link={'realisation'}/>
+                    <Tree name={'Процентование 2'} img={production_black} link={'proc'}/>
                 </TreeItem>
                 <Divider sx={{borderColor: color}}/>
 
@@ -76,9 +77,7 @@ const Tree = ({name, img = false, ico = false, link = false, children})=>{
             label={
                 <ListItemButton sx={{height: 40}}>
                     { img &&
-                        <img className={`menuIcon ${themeColor}`} src={img} alt={name}
-                             /*style={{filter: useTheme() ? 'brightness(0) invert(1)': null}}*/
-                        />
+                        <img className={`menuIcon ${themeColor}`} src={img} alt={name}/>
                     }
                     { ico &&
                         <ListItemIcon className={`menuIcon img `} sx={{width: '44px', color: neon}}>{ico}</ListItemIcon>

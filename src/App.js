@@ -25,6 +25,7 @@ import Finance from "./pages/finance/Finance";
 import EconomicsDetails from "./pages/economics/subPagesEcon/EconomicsDetails";
 import Dynamics from "./pages/realization/Dynamics/Dynamics";
 import HR from "./pages/hr/HR";
+import Proc from "./pages/realization/Proc/Proc";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -49,6 +50,7 @@ function App() {
                     <Route path='/' element={<Layout/>}>
                         <Route index element={<RequireAuth><Realization/></RequireAuth>}/>
                         <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
+                        <Route  path='/proc' element={<RequireAuth><Proc /></RequireAuth>}/>
                         <Route  path='/dynamic' element={<RequireAuth><Dynamics /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Goals /></RequireAuth>}/>
