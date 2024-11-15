@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useModal} from "../../../hook/useModal";
 import {wikiChecker} from "../../../utils/wikiChecker";
 import {useGetRealizationData} from "../../../hook/useGetQuery";
@@ -13,6 +13,7 @@ import CustomEvents from "highcharts-custom-events";
 import exporting from "highcharts/modules/exporting";
 import exportData from "highcharts/modules/export-data";
 import fullscreen from "highcharts/modules/full-screen";
+import ProcFilters from "./subpages/ProcFilters";
 CustomEvents(Highcharts);
 exporting(Highcharts);
 exportData(Highcharts);
@@ -23,10 +24,16 @@ fullscreen(Highcharts);
 const Proc = () => {
     const {setModal} = useModal()
     const {data: realization, isLoading, isError} = useGetRealizationData()
+    const [allData, setAllData] = useState([])
 
     useEffect(()=>{
         if (!wikiChecker('wiki-realizProc')){setModal('ModalRealizProcWiki')}
+        if (realization) {
+            setAllData(realization)
+        }
     },[])
+
+
 
 
     if (isLoading) {return <Skelet option='realization'/>}
@@ -35,12 +42,12 @@ const Proc = () => {
 
     return (
         <div style={{padding: '0 30px'}}>
-
+            <ProcFilters allData={allData} realization={realization} setAllData={setAllData}/>
             <Slider {...settingsProc}>
                 {
                     isLoading
                         ? <div>Нет данных</div>
-                        : realization.map((item, i) => <ProcBlock item={item} key={i}/>)
+                        : allData.map((item, i) => <ProcBlock item={item} key={i}/>)
                 }
             </Slider>
         </div>

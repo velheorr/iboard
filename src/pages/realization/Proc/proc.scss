@@ -18,3 +18,19 @@
 .xaxis-label:hover {
     color: red; /* Change color on hover */
 }
+
+.procFilters {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    .searchFilter {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        .objects {
+            padding-bottom: 5px;
+        }
+    }
+}

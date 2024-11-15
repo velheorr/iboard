@@ -15,13 +15,6 @@ export const prepareSelect = (data, param, filtBy = false) =>{
     if (param === 'Холдинг'){
         changedData = data.filter((i)=> i.Холдинг !== '' )
     }
-    /*if (param === 'ПРОЧИЕ' || param === ''){
-        console.log(param)
-        console.log(changedData)
-    }*/
-    /*if (param === 'Контрагент'){
-        changedData = data.filter((i)=> i.Холдинг !== '' )
-    }*/
 
     changedData.forEach(i => {
         if (!x.includes(i[param])){

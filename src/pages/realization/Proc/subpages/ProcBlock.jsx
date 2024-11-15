@@ -11,7 +11,6 @@ import {useModal} from "../../../../hook/useModal";
 
 
 const ProcBlock = ({item}) => {
-    const [isLegendVisible, setIsLegendVisible] = useState(false);
     const dark = useTheme() // тема
     const {setModal} = useModal()
 
@@ -22,7 +21,7 @@ const ProcBlock = ({item}) => {
         if (item){
             setData(convert(item))
         }
-    },[item])
+    },[item, dark])
 
     //setModal
     const convert = (info) => {
@@ -134,23 +133,6 @@ const ProcBlock = ({item}) => {
             text: null,
             align: 'left'
         },
-        legend: {
-            enabled: isLegendVisible,
-            itemStyle: {
-                fontSize:'13px',
-                color: '#A0A0A0'
-            },
-            itemHoverStyle: {
-                color: dark ? '#FFF' : '#4bb141'
-            },
-            itemHiddenStyle: {
-                color: '#444'
-            },
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            itemMarginTop: 5
-        },
         xAxis: {
             zIndex: 10,
             labels: {
@@ -176,7 +158,6 @@ const ProcBlock = ({item}) => {
         },
         yAxis: {
             gridLineWidth: .35,
-            allowDecimals: true,
             max: 125,
             labels: {
                 style: {
@@ -199,6 +180,9 @@ const ProcBlock = ({item}) => {
             }]
 
         },
+        legend: {
+          enabled: false
+        },
         lang: {
             viewFullscreen: 'На весь экран',
             exitFullscreen: 'Уменьшить',
@@ -211,12 +195,6 @@ const ProcBlock = ({item}) => {
                     y: -15, // Adjust vertical position
                     menuItems: [
                         'viewFullscreen',
-                        {
-                            text: 'Легенда',
-                            onclick: function () {
-                                setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
-                            },
-                        },
                         {
                             text: 'Поменять',
                             onclick: function () {
@@ -268,6 +246,7 @@ const ProcBlock = ({item}) => {
         },
         plotOptions: {
             series: {
+                borderWidth: 0,
                 dataLabels: {
                     enabled: true,
                     inside: true,
@@ -275,31 +254,28 @@ const ProcBlock = ({item}) => {
                     x: 2,
                     y: -1,
                     verticalAlign: 'middle',
-                    color: 'white'
+                    color: 'white',
+                    formatter: function () {
+                        // Добавляем свои данные в метки данных
+                        let text
+                        if (this.point.dynamics === 0) {
+                            text = ''
+                        } else if (this.point.dynamics < 0) {
+                            text = this.point.dynamics
+                        } else {
+                            text = ' + ' + this.point.dynamics
+                        }
+                        return this.y + text
+                    }
                 },
             },
         },
         series: [
             {
-            data: data || [],
-            borderWidth: 0,
-            dataLabels: {
-                enabled: true,
-                formatter: function() {
-                    // Добавляем свои данные в метки данных
-                    let text
-                    if (this.point.dynamics === 0){
-                        text = ''
-                    } else if (this.point.dynamics < 0) {
-                        text = this.point.dynamics
-                    } else {
-                        text = ' + ' + this.point.dynamics
-                    }
-                    return this.y + text
-                }
-            }
+            data: data,
         }],
-    }),[isLegendVisible, data, type])
+       /* series: data,*/
+    }),[data, type])
 
     return (
         <div style={{display: 'inline-block', width: '33%'}} >
