@@ -5,10 +5,11 @@ import {FormControlLabel} from "@mui/material";
 import Switch from "@mui/material/Switch";
 
 const ModalRealizProcWiki = () => {
+
     const [check, setCheck] = useState(false)
     const turnOff = () => {
         setCheck(!check)
-        localStorage.setItem('wiki-realizProc', JSON.stringify(true));
+        localStorage.setItem('wiki-Proc', JSON.stringify(true));
 
     }
 

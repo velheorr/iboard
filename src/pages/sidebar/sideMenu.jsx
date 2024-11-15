@@ -35,8 +35,9 @@ const SideMenu = () => {
                               </ListItemButton>
                           }>
                     <Tree name={'Динамика'} img={dynamic} link={'dynamic'} />
-                    <Tree name={'Процентование'} img={production_black} link={'realisation'}/>
-                    <Tree name={'Процентование 2'} img={production_black} link={'proc'}/>
+                    <Tree name={'Процентование'} img={production_black} link={'proc'}/>
+                    {/*<Tree name={'Процентование'} img={production_black} link={'realisation'}/>*/}
+
                 </TreeItem>
                 <Divider sx={{borderColor: color}}/>
 

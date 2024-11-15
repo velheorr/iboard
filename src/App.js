@@ -48,9 +48,10 @@ function App() {
 
                     <Route path='*' element={<Page404/>}/>
                     <Route path='/' element={<Layout/>}>
-                        <Route index element={<RequireAuth><Realization/></RequireAuth>}/>
-                        <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
+                        <Route index element={<RequireAuth><Proc/></RequireAuth>}/>
                         <Route  path='/proc' element={<RequireAuth><Proc /></RequireAuth>}/>
+                        <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
+
                         <Route  path='/dynamic' element={<RequireAuth><Dynamics /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Goals /></RequireAuth>}/>

@@ -27,13 +27,12 @@ const Proc = () => {
     const [allData, setAllData] = useState([])
 
     useEffect(()=>{
-        if (!wikiChecker('wiki-realizProc')){setModal('ModalRealizProcWiki')}
+
+        if (!wikiChecker('wiki-Proc')){setModal('ModalRealizProcWiki')}
         if (realization) {
             setAllData(realization)
         }
-    },[])
-
-
+    },[realization])
 
 
     if (isLoading) {return <Skelet option='realization'/>}
@@ -45,9 +44,7 @@ const Proc = () => {
             <ProcFilters allData={allData} realization={realization} setAllData={setAllData}/>
             <Slider {...settingsProc}>
                 {
-                    isLoading
-                        ? <div>Нет данных</div>
-                        : allData.map((item, i) => <ProcBlock item={item} key={i}/>)
+                    allData.map((item, i) => <ProcBlock item={item} key={i}/>)
                 }
             </Slider>
         </div>
