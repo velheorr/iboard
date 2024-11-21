@@ -31,7 +31,7 @@ export const convertForBarChart = (arr, dark) => {
             data: [],
             color: 'transparent',
             pointPadding: 0.4,
-            pointPlacement: -0.4,
+            pointPlacement: -0.3,
             borderColor: {
                 linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1}, // Direction of the gradient
                 stops: [
@@ -44,7 +44,7 @@ export const convertForBarChart = (arr, dark) => {
             name: 'Процентование Факт',
             data: [],
             pointPadding: 0.4,
-            pointPlacement: -0.4,
+            pointPlacement: -0.3,
             color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -58,7 +58,7 @@ export const convertForBarChart = (arr, dark) => {
             name: 'МП План',
             data: [],
             pointPadding: 0.4,
-            pointPlacement: -0.2,
+            pointPlacement: -0.1,
             color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -72,7 +72,7 @@ export const convertForBarChart = (arr, dark) => {
             name: 'МП Факт',
             data: [],
             pointPadding: 0.4,
-            pointPlacement: -0.2,
+            pointPlacement: -0.1,
             color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -86,7 +86,7 @@ export const convertForBarChart = (arr, dark) => {
             name: 'Вложения - ЗиНЗП План',
             data: [],
             pointPadding: 0.4,
-            pointPlacement: 0,
+            pointPlacement: .1,
             color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -100,7 +100,7 @@ export const convertForBarChart = (arr, dark) => {
             name: 'Вложения - ЗиНЗП Факт',
             data: [],
             pointPadding: 0.4,
-            pointPlacement: 0,
+            pointPlacement: .1,
             color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -114,7 +114,7 @@ export const convertForBarChart = (arr, dark) => {
             name: "Операционные издержки План",
             data: [],
             pointPadding: 0.4,
-            pointPlacement: 0.2,
+            pointPlacement: .3,
             color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -128,7 +128,7 @@ export const convertForBarChart = (arr, dark) => {
             name: "Операционные издержки Факт",
             data: [],
             pointPadding: 0.4,
-            pointPlacement: 0.2,
+            pointPlacement: .3,
             color: 'transparent',
             borderColor: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
@@ -138,117 +138,14 @@ export const convertForBarChart = (arr, dark) => {
                 ]
             },
         },
-        /*{
-            name: 'Процентование План',
-            data: [],
-            stack: 'Запроцентовано',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1}, // Direction of the gradient
-                stops: [
-                    [0, '#9ea6bb'], // Цвет вверху
-                    [1, '#6d7998']  // Цвет внизу
-                ]
-            }
-        },
-        {
-            name: 'Процентование Факт',
-            data: [],
-            stack: 'Запроцентовано',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
-                stops: [
-                    [0, '#3d4d76'], // Start color
-                    [1, '#0c2054']  // End color
-                ]
-            },
-        },*/
-        /*{
-            name: 'МП План',
-            data: [],
-            stack: 'Операционная прибыль',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
-                stops: [
-                    [0, '#649c6d'], // Start color
-                    [1, '#54925e']  // End color
-                ]
-            },
-        },
-        {
-            name: 'МП Факт',
-            data: [],
-            stack: 'Операционная прибыль',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
-                stops: [
-                    [0, '#267433'], // Start color
-                    [1, '#166a24']  // End color
-                ]
-            },
-        },*/
-        /*{
-            name: 'Вложения - ЗиНЗП План',
-            data: [],
-            stack: 'Валовая прибыль',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
-                stops: [
-                    [0, '#ff9f60'], // Start color
-                    [1, '#ff8c40']  // End color
-                ]
-            },
-        },
-        {
-            name: 'Вложения - ЗиНЗП Факт',
-            data: [],
-            stack: 'Валовая прибыль',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
-                stops: [
-                    [0, '#ff7920'], // Start color
-                    [1, '#ff6600']  // End color
-                ]
-            },
-        },*/
-        /*{
-            name: "Операционные издержки План",
-            data: [],
-            stack: 'ОИ',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
-                stops: [
-                    [0, '#4D0E0A'], // Start color
-                    [1, '#622a27']  // End color
-                ]
-            },
-        },
-        {
-            name: "Операционные издержки Факт",
-            data: [],
-            stack: 'ОИ',
-            color: 'transparent',
-            borderColor: {
-                linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
-                stops: [
-                    [0, '#DC0404'], // Start color
-                    [1, '#e02222']  // End color
-                ]
-            },
-        },*/
     ]
 
     let ishodnikL = [
         {
             name: 'Процентование План',
             data: [],
-            stack: 'Запроцентовано',
+            pointPadding: 0.4,
+            pointPlacement: -0.3,
             color: {
                 linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1}, // Direction of the gradient
                 stops: [
@@ -260,7 +157,8 @@ export const convertForBarChart = (arr, dark) => {
         {
             name: 'Процентование Факт',
             data: [],
-            stack: 'Запроцентовано',
+            pointPadding: 0.4,
+            pointPlacement: -0.3,
             color: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -272,7 +170,8 @@ export const convertForBarChart = (arr, dark) => {
         {
             name: 'МП План',
             data: [],
-            stack: 'Операционная прибыль',
+            pointPadding: 0.4,
+            pointPlacement: -0.1,
             color: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -284,7 +183,8 @@ export const convertForBarChart = (arr, dark) => {
         {
             name: 'МП Факт',
             data: [],
-            stack: 'Операционная прибыль',
+            pointPadding: 0.4,
+            pointPlacement: -0.1,
             color: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -296,7 +196,8 @@ export const convertForBarChart = (arr, dark) => {
         {
             name: 'Вложения - ЗиНЗП План',
             data: [],
-            stack: 'Валовая прибыль',
+            pointPadding: 0.4,
+            pointPlacement: .1,
             color: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -308,7 +209,8 @@ export const convertForBarChart = (arr, dark) => {
         {
             name: 'Вложения - ЗиНЗП Факт',
             data: [],
-            stack: 'Валовая прибыль',
+            pointPadding: 0.4,
+            pointPlacement: .1,
             color: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -320,7 +222,8 @@ export const convertForBarChart = (arr, dark) => {
         {
             name: "Операционные издержки План",
             data: [],
-            stack: 'ОИ',
+            pointPadding: 0.4,
+            pointPlacement: 0.3,
             color: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
@@ -332,7 +235,8 @@ export const convertForBarChart = (arr, dark) => {
         {
             name: "Операционные издержки Факт",
             data: [],
-            stack: 'ОИ',
+            pointPadding: 0.4,
+            pointPlacement: 0.3,
             color: {
                 linearGradient: { x1: 0, y1: 0, x2:0, y2: 1 }, // Direction of the gradient
                 stops: [
