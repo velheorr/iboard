@@ -25,7 +25,7 @@ const AmgBulletChart2 = ({className, year,month, type, rp}) => {
         credits: {...chartConfig.credits},
         chart: {
             type: 'bar',
-            ...chartConfig.chart, height: 310,
+            ...chartConfig.chart, height: 350,
         },
         title: {
             text: null,

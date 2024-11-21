@@ -25,7 +25,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
-        chart: {type: 'bar', ...chartConfig.chart, height: 310},
+        chart: {type: 'bar', ...chartConfig.chart, height: 325},
         title: {
             text: null,
             align: 'right',
@@ -100,7 +100,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
     const options2 = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
-        chart: {type: 'bar', ...chartConfig.chart, height: 310,},
+        chart: {type: 'bar', ...chartConfig.chart, height: 350,},
         title: {text: null,
             align: 'center',
             y: 20,
@@ -194,7 +194,6 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                     />
                 </div>
             </div>
-
 
         </div>
     );

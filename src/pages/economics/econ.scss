@@ -197,7 +197,16 @@
     flex-wrap: wrap;
     gap: 10px;
     .amgChart {
-        flex-basis: 32%;
+        &.funnel {
+            flex-basis: 31%;
+        }
+        &.double {
+            flex-basis: 31%;
+        }
+        &.bullet {
+            flex-basis: 35%;
+        }
+
         .chartTitle {
             padding-top: 7px;
             text-align: center;

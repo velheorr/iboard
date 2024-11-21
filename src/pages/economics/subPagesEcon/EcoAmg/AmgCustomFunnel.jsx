@@ -27,7 +27,7 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
-        chart: {type: 'bar', ...chartConfig.chart, height: 310,},
+        chart: {type: 'bar', ...chartConfig.chart, height: 350,},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: false,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
@@ -128,7 +128,7 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
 
     return (
         <div className={className}>
-            <div className='chartTitle'>Проход</div>
+            <div className='chartTitle'>МАРЖА</div>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
