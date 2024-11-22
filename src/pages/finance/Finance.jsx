@@ -8,6 +8,7 @@ import fullscreen from "highcharts/modules/full-screen";
 import HighchartsReact from "highcharts-react-official";
 import Sankey from 'highcharts/modules/sankey';
 import {useTheme} from "../../hook/useTheme";
+import Dev from "../../elements/Development/Dev";
 
 CustomEvents(Highcharts);
 exporting(Highcharts);
@@ -58,6 +59,10 @@ const Finance = () => {
         ['Деньги на счетах', 'свыше 5 лет', 5 ],
 
         ['Депозиты', 'свыше 5 лет', 5 ],
+
+        ['До 3-месяцев', 'от 2 до 3 лет', 5 ],
+        ['До 3-месяцев', 'от 3 до 5 лет', 5 ],
+        ['До 3-месяцев', 'Уровень 0', 5 ],
     ]
 
     const options = useMemo(() => ({
@@ -135,6 +140,7 @@ const Finance = () => {
 
     return (
         <div>
+            <Dev/>
             <div className='finBlock'>
                 <div>Распорядители: 100 000</div>
                 <div>Активы: 5 000 000</div>

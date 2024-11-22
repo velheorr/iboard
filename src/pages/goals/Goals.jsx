@@ -5,6 +5,7 @@ import GoalsSelect from "./GoalsSelect";
 import React, {useState} from "react";
 import {Button, Tooltip, Typography} from "@mui/material";
 import ReplyAllIcon from "@mui/icons-material/ReplyAll";
+import Dev from "../../elements/Development/Dev";
 
 const Goals = () => {
     const [show, setShow] = useState(false)
@@ -15,6 +16,7 @@ const Goals = () => {
 
     return (
         <div>
+            <Dev/>
             {
                 !show
                     ?

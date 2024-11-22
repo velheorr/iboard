@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from "@mui/material";
+import {useSelector} from "react-redux";
 
 const Month = ({setEcoMonth}) => {
     const [month, setMonth] = useState([
@@ -16,11 +17,16 @@ const Month = ({setEcoMonth}) => {
         {id: 11, name: 'Ноя', active: false},
         {id: 12, name: 'Дек', active: false},
     ])
-
+    const stateMonth = useSelector(state => state.eco.month)
     const today = new Date().getMonth()
 
     useEffect(()=>{
-        select(today + 1)
+        if (stateMonth === null){
+            select(today + 1)
+        } else {
+            select(stateMonth)
+        }
+
     },[today])
 
     const select = (id)=>{

@@ -80,8 +80,12 @@ const EcoData = ({year, month, type,openModal}) => {
         <div style={{width: '170px', position: 'fixed'}}>
             <Tooltip title={<Typography variant="body2"  gutterBottom>Нажмите для изменения настроек</Typography>}>
                 <div className='ecoDataDate' onClick={openModal}>
-                    <div><span style={{color: 'grey', fontSize: '12px'}}>Дата: </span> {month} / {year}</div>
-                    <div><span style={{color: 'grey', fontSize: '12px'}}>Вид работ: </span>{findWork()}</div>
+                    <div className='ecoSettings'>
+                        <div className='ecoTitle'>Дата: </div> <div>{month} / {year}</div>
+                    </div>
+                    <div className='ecoSettings'>
+                        <div className='ecoTitle'>Вид работ: </div><div>{findWork()}</div>
+                    </div>
                 </div>
             </Tooltip>
             { renderCards}

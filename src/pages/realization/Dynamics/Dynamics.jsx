@@ -3,7 +3,8 @@ import React, {useMemo, useState} from "react";
 import {chartDyn} from "./js/chartConf";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
-import HighchartsMore from 'highcharts/highcharts-more'; // Импортируем модуль для дополнительных типов графиков
+import HighchartsMore from 'highcharts/highcharts-more';
+import Dev from "../../../elements/Development/Dev"; // Импортируем модуль для дополнительных типов графиков
 
 // Подключаем модуль bubble
 HighchartsMore(Highcharts);
@@ -186,6 +187,7 @@ const Dynamics = () => {
 
     return (
         <div style={{padding: '15px'}}>
+            <Dev/>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}

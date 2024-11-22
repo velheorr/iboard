@@ -1,7 +1,7 @@
 import Month from "../../Picker/Month";
 import Work from "../../Picker/Work";
 import Year from "../../Picker/Year";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Button, Tooltip, Typography} from "@mui/material";
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import {useDispatch} from "react-redux";
@@ -18,6 +18,8 @@ const ModalEcon = () => {
     const {exitModal} = useModal()
     const neonGreen = useTheme('neonGreen')
     const neonGreenShadow = useTheme('neonGreenShadow')
+
+
 
     const submit = ()=>{
         dispatch(setDate({ecoYear, ecoMonth, ecoWork}))

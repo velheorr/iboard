@@ -71,8 +71,6 @@ const Econ = () => {
     }
 
 
-
-
     return (
         <div className='econMain'>
             <div className='ecoBlocks'>

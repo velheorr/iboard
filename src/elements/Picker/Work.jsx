@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Switch from "@mui/material/Switch";
 import {FormControlLabel, Tooltip, Typography} from "@mui/material";
+import {useSelector} from "react-redux";
 
 export const workTypes = [
     {
@@ -38,10 +39,15 @@ export const workTypes = [
 
 const Work = ({setEcoWork}) => {
     const [work, setWork] = useState(workTypes)
-
+    const stateWork = useSelector(state => state.eco.work)
 
     useEffect(()=>{
-        select('all')
+        if (stateWork === null){
+            select('all')
+        } else {
+            select(stateWork)
+        }
+
     },[])
 
     const select = (id)=>{

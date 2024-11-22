@@ -16,6 +16,17 @@
             cursor: pointer;
             transition: box-shadow 0.3s;
             &:hover {box-shadow: 0px 0px 15px #818181; }
+            .ecoSettings {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: thin dashed grey;
+                padding: 5px 0;
+                .ecoTitle {
+                    color: grey;
+                    font-size: 12px;
+                }
+            }
         }
         .ecoDataNum {
             margin-bottom: 10px;
