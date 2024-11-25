@@ -5,6 +5,17 @@ import VersionItem from "./subpages/VersionItem";
 const VersionLog = () => {
     const data = [
         {
+            date: '25.11.2024',
+            ver: '1.0.10',
+            list: [
+                {
+                    name: 'Экономика',
+                    li: ['Добавлено окно детализации воронки', 'Обновлена индикация загрузки данных',
+                    ]
+                },
+            ]
+        },
+        {
             date: '22.11.2024',
             ver: '1.0.9',
             list: [

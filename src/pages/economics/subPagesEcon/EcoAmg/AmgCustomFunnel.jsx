@@ -63,9 +63,6 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
                 },
                 events: {
                     click: function (e) {
-                        //alert('Вы кликнули на категорию: ' + this.value);
-                        /*openEcoPage2(e.target.innerText, date.getFullYear())*/
-                        console.log(e.target.innerText)
                         openFunnelDetails(e.target.innerText)
                     }
                 },
