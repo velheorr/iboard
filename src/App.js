@@ -15,7 +15,6 @@ import {Register} from "./pages/login/Register";
 import {ResetPassword} from "./pages/login/ResetPassword";
 
 import TransitionsModal from "./elements/Modal/Modal";
-import Realization from "./pages/realization/Realization";
 import Auth from "./pages/login/Auth";
 import Resources from "./pages/resources/Resources";
 import VersionLog from "./pages/versionLog/VersionLog";
@@ -50,7 +49,6 @@ function App() {
                     <Route path='/' element={<Layout/>}>
                         <Route index element={<RequireAuth><Proc/></RequireAuth>}/>
                         <Route  path='/proc' element={<RequireAuth><Proc /></RequireAuth>}/>
-                        <Route  path='/realisation' element={<RequireAuth><Realization /></RequireAuth>}/>
 
                         <Route  path='/dynamic' element={<RequireAuth><Dynamics /></RequireAuth>}/>
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>

@@ -1,14 +1,14 @@
-import Month from "../../Picker/Month";
-import Work from "../../Picker/Work";
-import Year from "../../Picker/Year";
+import Month from "../../../Picker/Month";
+import Work from "../../../Picker/Work";
+import Year from "../../../Picker/Year";
 import {useEffect, useState} from "react";
 import {Button, Tooltip, Typography} from "@mui/material";
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import {useDispatch} from "react-redux";
-import {setDate} from "../../../pages/economics/js/EcoSlice";
-import {useModal} from "../../../hook/useModal";
+import {setDate} from "../../../../pages/economics/js/EcoSlice";
+import {useModal} from "../../../../hook/useModal";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import {useTheme} from "../../../hook/useTheme";
+import {useTheme} from "../../../../hook/useTheme";
 
 const ModalEcon = () => {
     const [ecoYear, setEcoYear] = useState()

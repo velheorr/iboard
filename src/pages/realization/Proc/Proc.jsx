@@ -5,6 +5,8 @@ import {useGetRealizationData} from "../../../hook/useGetQuery";
 import Skelet from "../../../elements/Skelet";
 import ProcBlock from "./subpages/ProcBlock";
 import './proc.scss'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import {settingsProc} from "./js/sliderConfig";
 

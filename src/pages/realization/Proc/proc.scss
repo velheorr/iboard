@@ -19,6 +19,16 @@
     color: red; /* Change color on hover */
 }
 
+/*slider*/
+.center {
+    .slick-next:before,
+    .slick-prev:before {
+        /*color: #2db432 !important;*/
+        color: #b1b1b1  !important;
+    }
+}
+
+
 .procFilters {
     margin-top: 10px;
     display: flex;

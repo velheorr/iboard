@@ -5,7 +5,8 @@ const initialState = {
     yearDetails: '',
     year: null,
     month: null,
-    work: null
+    work: null,
+    funnelDetails: null
 }
 
 const ecoSlice = createSlice({
@@ -20,7 +21,10 @@ const ecoSlice = createSlice({
             state.year = action.payload.ecoYear
             state.month = action.payload.ecoMonth
             state.work = action.payload.ecoWork
-        }
+        },
+        setFunnelDetails: (state, action) =>{
+            state.funnelDetails = action.payload
+        },
     },
 
 });
@@ -29,5 +33,5 @@ const {actions, reducer} = ecoSlice;
 
 export default reducer;
 export const {
-    setDetails,setDate
+    setDetails,setDate, setFunnelDetails
 } = actions;

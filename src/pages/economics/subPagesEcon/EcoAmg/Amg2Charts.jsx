@@ -12,12 +12,14 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
     const {data: twocharts, isLoading, isError} = useGetEco2charts(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
+    const [total, setTotal] = useState([]);
     const dark = useTheme() // тема
 
     useEffect(()=>{
         if (twocharts){
             const x = twocharts.data.response.data[0]
             setData(x.days)
+            setTotal(x.amount.pop())
             setData2(x.amount)
         }
     },[twocharts])
@@ -193,8 +195,9 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                         options={options2}
                     />
                 </div>
-            </div>
 
+            </div>
+            <div style={{color: '#17f82f', textAlign: 'center', fontSize: '13px'}}>Итого {total}</div>
         </div>
     );
 };

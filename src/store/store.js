@@ -2,13 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import header from "../pages/header/HeaderSlice";
 import modal from '../elements/Modal/ModalSlice'
 import sidemenu from "../pages/sidebar/SideMenuSlice";
-import realisation from "../pages/realization/js/RealizationSlice"
 import eco from "../pages/economics/js/EcoSlice";
 
 
 
 const store = configureStore({
-  reducer: {header, modal, sidemenu, realisation, eco},
+  reducer: {header, modal, sidemenu, eco},
   middleware: getDefaultMiddleware => getDefaultMiddleware(
       {
         serializableCheck: false,

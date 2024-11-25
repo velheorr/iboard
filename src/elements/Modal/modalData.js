@@ -2,11 +2,12 @@ import './modal.scss'
 import {
     RealizNTFACT, RealizNTPLAN, RealizNZP, RealizOF, RealizOFOT, RealizOIM, RealizOS, RealizPFOT, RealizPRIN, RealizPROC, RealizSPD, RealizSPS} from "./subpages/ModalRealization";
 import ModalAuth from "./subpages/ModalAuth";
-import ModalResetPassword from "./subpages/ModalResetPassword";
-import ModalResetPasswordConfirm from "./subpages/ModalResetPasswordConfirm";
+import ModalResetPassword from "./subpages/login/ModalResetPassword";
+import ModalResetPasswordConfirm from "./subpages/login/ModalResetPasswordConfirm";
 import {dark, light} from "../../hook/useTheme";
 import ModalRealizProcWiki from "./subpages/wiki/ModalRealizProcWiki";
-import ModalEcon from "./subpages/ModalEcon";
+import ModalEcon from "./subpages/econ/ModalEcon";
+import ModalEconFunnelDetails from "./subpages/econ/ModalEconFunnelDetails";
 
 
 
@@ -77,6 +78,9 @@ export const modalData = (variant, mode)=>{
             break;
         case 'ModalEcon':
             modalText = <ModalEcon/>
+            break;
+        case 'ModalEconFunnelDetails':
+            modalText = <ModalEconFunnelDetails/>
             break;
     }
 

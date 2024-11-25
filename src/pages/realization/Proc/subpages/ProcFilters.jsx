@@ -69,7 +69,7 @@ const ProcFilters = ({allData, realization, setAllData}) => {
     const resetSearch = ()=> {
         setSearch('')
         setAllData(realization)
-        handleChangeHolding(false, "Все")
+        setHolding("Все")
     }
     /*Обновление поля поиска*/
     const handleSearch = (e) =>{

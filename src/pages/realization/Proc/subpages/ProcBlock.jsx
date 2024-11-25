@@ -25,6 +25,8 @@ const ProcBlock = ({item}) => {
 
     //setModal
     const convert = (info) => {
+        let infoNTplan = info['ПроцентПроцентЗаплНТДинамика'] === undefined ? 0 : info['ПроцентПроцентЗаплНТДинамика']
+
         let ishodnik = [
             {
                 name: '% СПД',
@@ -73,7 +75,7 @@ const ProcBlock = ({item}) => {
             {
                 name: '% НТ (план)',
                 y: info['ПроцентПроцентЗаплНТ'],
-                dynamics: info['ПроцентПроцентЗаплНТДинамика'],
+                dynamics: infoNTplan,
                 color: chartColors('% НТ (план)', item['ПроцентПроцентЗаплНТ'], '', dark)
 
             },

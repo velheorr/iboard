@@ -7,12 +7,17 @@ import {useGetEcoFunnel} from "../../../../hook/useGetEconomics";
 import {convertFunnel, convertFunnel2} from "../convertData";
 import Skelet from "../../../../elements/Skelet";
 import {useTheme} from "../../../../hook/useTheme";
+import {useModal} from "../../../../hook/useModal";
+import {useDispatch} from "react-redux";
+import {setFunnelDetails} from "../../js/EcoSlice";
 
 const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
     const {data: ecofunnel, isLoading, isError} = useGetEcoFunnel(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
     const dark = useTheme() // тема
+    const dispatch = useDispatch()
+    const {setModal} = useModal()
 
     useEffect(()=>{
         if (ecofunnel){
@@ -23,6 +28,11 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
         }
 
     },[ecofunnel, dark])
+
+    const openFunnelDetails = (e)=>{
+        dispatch(setFunnelDetails([e, year,month, type, rp]))
+        setModal('ModalEconFunnelDetails')
+    }
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -41,6 +51,25 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
                 '<span style="color: #16b323/*#17f82f*/;">Маржинальная прибыль</span>',],
             gridLineWidth: 0,
             gridLineDashStyle: 'Dot',
+            labels: {
+                useHTML: true, // Enable HTML for styling
+                formatter: function () {
+                    return `<span class="xaxis-label">${this.value}</span>`;
+                },
+                style: {
+                    color: 'rgb(102, 102, 102)',
+                    fontSize: '13px',
+                    cursor: 'pointer',
+                },
+                events: {
+                    click: function (e) {
+                        //alert('Вы кликнули на категорию: ' + this.value);
+                        /*openEcoPage2(e.target.innerText, date.getFullYear())*/
+                        console.log(e.target.innerText)
+                        openFunnelDetails(e.target.innerText)
+                    }
+                },
+            },
         },
         yAxis: [{
             gridLineWidth: 0,

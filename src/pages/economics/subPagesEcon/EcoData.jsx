@@ -4,7 +4,8 @@ import {useGetEcoCards} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 import {useEffect} from "react";
 import {useTheme} from "../../../hook/useTheme";
-import {workTypes} from "../../../elements/Picker/Work";
+import {workTypes} from "../js/workTypes";
+
 
 
 
