@@ -60,7 +60,7 @@ const Work = ({setEcoWork}) => {
 
     const renderSwitch = () => {
         return work.map(i =>{
-            return <Tooltip key={i.id} title={<Typography variant="body2"  gutterBottom>{i.info}</Typography>}>
+            return <Tooltip placement="top" key={i.id} title={<Typography variant="body2"  gutterBottom>{i.info}</Typography>}>
                         <FormControlLabel sx={{width: '48%'}} control={<Switch checked={i.checked} color="success" onChange={()=>select(i.id)}/>} label={i.name}/>
                     </Tooltip>
         })

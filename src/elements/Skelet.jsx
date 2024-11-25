@@ -12,6 +12,22 @@ const Skelet = ({option = false}) => {
                 <SkeletLine width={200}/>
             )
             break;
+        case 'ecoData':
+            return  newSkelet = (
+                <div>
+                    <div style={{marginBottom: '15px'}}>
+                        <SkeletLine/>
+                        <SkeletLine style={{textAlign: 'center'}} >Загрузка данных...</SkeletLine>
+                        <SkeletLine style={{textAlign: 'center'}} >Пожалуйста подождите</SkeletLine>
+                        <SkeletLine />
+                    </div>
+                    <SkeletEcoData/>
+                    <SkeletEcoData/>
+                    <SkeletEcoData/>
+                    <SkeletEcoData/>
+                </div>
+            )
+            break;
         case 'eco':
             return  newSkelet = (
                 <div>
@@ -84,6 +100,17 @@ const SkeletRealiz = ()=>{
             <SkeletLine width={500}/>
             <SkeletLine width={500}/>
             <SkeletLine width={500}/>
+        </div>
+    )
+}
+
+const SkeletEcoData = () =>{
+    return (
+        <div style={{marginBottom: '15px'}}>
+            <SkeletLine/>
+            <SkeletLine/>
+            <SkeletLine/>
+            <SkeletLine/>
         </div>
     )
 }

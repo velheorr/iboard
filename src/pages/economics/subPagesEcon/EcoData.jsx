@@ -72,7 +72,7 @@ const EcoData = ({year, month, type,openModal}) => {
     }
 
 
-    if (isLoading) {return <Skelet option='eco'/>}
+    if (isLoading) {return <Skelet option='ecoData'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
     if (!ecocards) {return <h3>Нет данных с сервера</h3>}
 
