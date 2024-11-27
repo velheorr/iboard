@@ -8,7 +8,7 @@ import {Login} from "./pages/login/Login";
 import {RequireAuth} from "./hoc/RequireAuth";
 import {AuthProvider} from "./hoc/AuthProvider";
 
-import {createTheme, ThemeProvider} from "@mui/material";
+import {createTheme, dividerClasses, ThemeProvider} from "@mui/material";
 import {themeMode} from "./utils/theme";
 import {useSelector} from "react-redux";
 import {Register} from "./pages/login/Register";
@@ -25,6 +25,7 @@ import EconomicsDetails from "./pages/economics/subPagesEcon/EconomicsDetails";
 import Dynamics from "./pages/realization/Dynamics/Dynamics";
 import HR from "./pages/hr/HR";
 import Proc from "./pages/realization/Proc/Proc";
+import FinDetails from "./pages/finance/subPages/FinDetails";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -54,10 +55,16 @@ function App() {
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Goals /></RequireAuth>}/>
                         <Route  path='/economics' element={<RequireAuth><Econ /></RequireAuth>}/>
-                        <Route  path='/economics/details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>
-                        {/*<Route  path='/economics' element={<RequireAuth><Economics /></RequireAuth>}/>
-                        <Route  path='/economics/details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>*/}
+                        <Route  path='/economics/:details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>
+
                         <Route  path='/finance' element={<RequireAuth><Finance /></RequireAuth>}/>
+                        <Route  path='/finance/:details' element={<RequireAuth><FinDetails /></RequireAuth>}/>
+                       {/* <Route  path='/finance' element={<RequireAuth><Finance /></RequireAuth>}>
+                            <Route index element={<Finance />} />
+                            <Route  path=':details' element={<FinDetails />}/>
+                        </Route>*/}
+
+
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Resources /></RequireAuth>}/>
                         <Route  path='/hr' element={<RequireAuth><HR /></RequireAuth>}/>
@@ -74,3 +81,5 @@ function App() {
 
 
 export default App;
+
+

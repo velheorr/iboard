@@ -9,6 +9,7 @@ import HighchartsReact from "highcharts-react-official";
 import Sankey from 'highcharts/modules/sankey';
 import {useTheme} from "../../hook/useTheme";
 import Dev from "../../elements/Development/Dev";
+import {useNavigate} from "react-router";
 
 CustomEvents(Highcharts);
 exporting(Highcharts);
@@ -18,12 +19,30 @@ Sankey(Highcharts);
 
 
 const Finance = () => {
+    const navigate = useNavigate();
     const dark = useTheme() // тема
 
+    const goDetails = (targ)=>{
+        navigate(`/finance/${targ}`)
+    }
+
+    const aktivi = [
+        'Задолженность заказчиков','Запасы (на складах)','НЗП (кроме запасов)','Авансы поставщикам','Деньги на счетах','Депозиты','Прочие финвложения'
+    ]
+    const sroki = [
+        'Уровень 0','До 3-месяцев','3-6 месяцев','6-12 месяцев','от 1 до 2 лет','от 2 до 3 лет','от 3 до 5 лет','свыше 5 лет'
+    ]
+    const likvidnost = [
+        'Уровень 0',
+    ]
+    const handleClick = (item) => {
+        console.log(item)
+    }
+
     let data = [
-        ['Куликов А.А.', 'Задолженность заказчиков', 3 ],
-        ['Куликов А.А.', 'Запасы (на складах)', 1 ],
-        ['Куликов А.А.', 'НЗП (кроме запасов)', 3 ],
+        ['Куликов А.А.', 'Запасы (на складах)', 4],
+        ['Куликов А.А.', 'Задолженность заказчиков', 4],
+        ['Куликов А.А.', 'НЗП (кроме запасов)', 3],
 
         ['Болотников В.В.', 'Задолженность заказчиков', 3 ],
         ['Болотников В.В.', 'Запасы (на складах)', 3 ],
@@ -71,7 +90,7 @@ const Finance = () => {
             backgroundColor: 'transparent',
         },
         title: {
-            text: 'Basic Sankey Diagram',
+            text: null,
             align: 'left',
             style:{
                 color: '#767676',
@@ -129,26 +148,33 @@ const Finance = () => {
 
         series: [{
             type: 'sankey',
-            keys: ['from', 'to', 'weight'],
+            keys: ['from', 'to', 'weight', 'Herabora'],
             data: data,
-            draggable: true,
             // Optional: Customize the appearance
-            colorByPoint: true
+            colorByPoint: true,
+            point: {
+                events: {
+                    click: function () {
+                        handleClick(this)
+                    }
+                }
+            }
         }],
 
     }),[])
+
+
 
     return (
         <div>
             <Dev/>
             <div className='finBlock'>
-                <div>Распорядители: 100 000</div>
-                <div>Активы: 5 000 000</div>
-                <div>Срок возникновения: 500 000</div>
-                <div>Ликвидность: 500 000</div>
+                <div onClick={()=>{goDetails('Распорядители')}}>Распорядители: 100 000</div>
+                <div onClick={()=>{goDetails('Активы')}}>Активы: 5 000 000</div>
+                <div onClick={()=>{goDetails('Срок возникновения')}}>Срок возникновения: 500 000</div>
+                <div onClick={()=>{goDetails('Ликвидность')}}>Ликвидность: 500 000</div>
             </div>
-            
-            <HighchartsReact
+            <HighchartsReact style={{paddingLeft: '20px'}}
                 highcharts={Highcharts}
                 options={options}
             />

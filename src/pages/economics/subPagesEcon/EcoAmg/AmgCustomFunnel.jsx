@@ -37,7 +37,7 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
-        chart: {type: 'bar', ...chartConfig.chart, height: 350,},
+        chart: {type: 'bar', ...chartConfig.chart, height: 350},
         title: {text: null, ...chartConfig.title},
         legend: {enabled: false,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
@@ -60,6 +60,7 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
                     color: 'rgb(102, 102, 102)',
                     fontSize: '13px',
                     cursor: 'pointer',
+                    textAlign: 'right',
                 },
                 events: {
                     click: function (e) {
