@@ -1,9 +1,9 @@
 import '../goals.scss'
 import BlockShadow from "../../../elements/BlockShadow";
-import Scroll from "../../../elements/Scroll";
 import TableItem from "../../../elements/Table/TableItem";
 import TableHead from "../../../elements/Table/TableHead";
 import MiniLineChart from "./MiniLineChart";
+import Scroll from "../../../elements/Scroll/Scroll";
 
 const GoalMatrix = () => {
     return (

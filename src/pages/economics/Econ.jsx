@@ -63,7 +63,7 @@ const Econ = () => {
     const renderTabs = () => {
         if ( Array.isArray(rp)){
             rp.forEach(i =>{
-                tab.push(<div onClick={()=>handleTab(i.id)}>{i.name}</div>)
+                tab.push(<div onClick={()=>handleTab(i)}>{i.name}</div>)
             })
         }
         tab.sort()

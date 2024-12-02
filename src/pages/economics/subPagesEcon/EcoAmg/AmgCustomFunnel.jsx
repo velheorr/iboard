@@ -11,7 +11,7 @@ import {useModal} from "../../../../hook/useModal";
 import {useDispatch} from "react-redux";
 import {setFunnelDetails} from "../../js/EcoSlice";
 
-const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
+const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false, rpName}) => {
     const {data: ecofunnel, isLoading, isError} = useGetEcoFunnel(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
@@ -30,7 +30,7 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false}) => {
     },[ecofunnel, dark])
 
     const openFunnelDetails = (e)=>{
-        dispatch(setFunnelDetails([e, year,month, type, rp]))
+        dispatch(setFunnelDetails([e, year,month, type, rp, rpName]))
         setModal('ModalEconFunnelDetails')
     }
 

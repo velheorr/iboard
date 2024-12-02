@@ -1,9 +1,9 @@
 import './scroll.scss'
 import {useTheme} from "../../hook/useTheme";
 
-const Scroll = ({children}) => {
+const Scroll = ({children, h = 'h166'}) => {
     return (
-        <div className='scroll' style={{scrollbarColor: `green ${useTheme('scroll')}`}}>
+        <div className={`scroll ${h}`} style={{scrollbarColor: `green ${useTheme('scroll')}`}}>
             {children}
         </div>
     );

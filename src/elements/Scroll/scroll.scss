@@ -3,4 +3,13 @@
     /*scrollbar-color: green black;*/
     overflow: overlay;
     height: calc(100vh - 166px);
+    &.h166 {
+        height: calc(100vh - 166px);
+    }
+    &.h210 {
+        height: calc(100vh - 210px);
+    }
+    &.h230 {
+        height: calc(100vh - 230px);
+    }
 }

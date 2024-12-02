@@ -142,8 +142,8 @@ const Finance = () => {
             headerFormat: null,
             pointFormat:
                 '{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight:.2f} ' +
-                'quads',
-            nodeFormat: '{point.name}: {point.sum:.2f} quads'
+                'млн.',
+            nodeFormat: '{point.name}: {point.sum:.2f} млн.'
         },
 
         series: [{
