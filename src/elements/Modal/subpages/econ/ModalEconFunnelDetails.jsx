@@ -60,7 +60,7 @@ const ModalEconFunnelDetails = () => {
 
     const [load, setLoad] = useState(true)
     useEffect(()=>{
-        setTimeout( ()=> setLoad(false), 3000)
+        setTimeout( ()=> setLoad(false), 2000)
     },[load])
 
     if (isLoading) {return <Loader/>}
@@ -69,7 +69,7 @@ const ModalEconFunnelDetails = () => {
     return (
         <div className='ecoModal'>
             <div className='modalIcon' style={{boxShadow: neonGreenShadow}}><FilterAltIcon/></div>
-            <Typography variant="h5" gutterBottom className='modalAuthTitle' sx={{color: neonGreen}}>Детализация воронки: {funnelDetails[0]}</Typography>
+            <Typography variant="h5" gutterBottom className='modalAuthTitle' sx={{color: neonGreen}}>Детализация воронки [{funnelDetails[0]}]</Typography>
 
             <div style={{display: 'flex', justifyContent: 'space-between', margin: '15px 0'}}>
                 <div>{funnelDetails[2]} / {funnelDetails[1]}</div>
@@ -78,26 +78,82 @@ const ModalEconFunnelDetails = () => {
                 <div>Итого: { !load && new Intl.NumberFormat("ru", {style: "currency", currency: "RUB"}).format(total)}</div>
             </div>
 
+            {
+                rp === undefined
+                ?
+                    <div>
+                        <TableHead>
+                            <div style={{width: '3%'}}><span>#</span></div>
+                            <div style={{width: '40%'}}><span> Объект</span></div>
+                            <div style={{width: '17%', textAlign: 'center'}}><span> Тип работ</span></div>
+                            <div style={{width: '20%', textAlign: 'center'}}><span> РП</span></div>
+                            <div style={{width: '10%', textAlign: 'center'}}> <span> Сумма, р</span></div>
+                            <div style={{width: '10%', textAlign: 'center'}}> <span> Дата</span></div>
+                        </TableHead>
+                        {
+                            load
+                                ? <Loader/>
+                                :    <Scroll h={'h230'}>
+                                    {
+                                        finalData.length > 0 && finalData.map((item, i) =>{
+                                            return  <TableItem key={i}>
+                                                <div style={{width: '3%'}}>{++i}</div>
+                                                <div style={{width: '40%'}}>{item.objectcode}, {item.object}</div>
+                                                <div style={{width: '17%', textAlign: 'right'}}>{item.type}</div>
+                                                <div style={{width: '20%', textAlign: 'right'}}>{item.rp}</div>
+                                                <div style={{width: '10%', textAlign: 'right'}}>{ new Intl.NumberFormat("ru").format(item.amount)}</div>
+                                                <div style={{width: '10%', textAlign: 'right'}}>{dateRefactor(item.date)}</div>
+                                            </TableItem>
+                                        })
+                                    }
+                                </Scroll>
+                        }
+                    </div>
+                    :
+                    <div>
+                        <TableHead>
+                            <div style={{width: '3%'}}><span>#</span></div>
+                            <div style={{width: '50%'}}><span> Объект</span></div>
+                            <div style={{width: '27%', textAlign: 'right'}}><span> Тип работ</span></div>
+                            <div style={{width: '10%', textAlign: 'right'}}> <span> Сумма, р</span></div>
+                            <div style={{width: '10%', textAlign: 'right'}}> <span> Дата</span></div>
+                        </TableHead>
+                        {
+                            load
+                                ? <Loader/>
+                                :    <Scroll h={'h230'}>
+                                    {
+                                        finalData.length > 0 && finalData.map((item, i) =>{
+                                            return  <TableItem key={i}>
+                                                <div style={{width: '3%'}}>{++i}</div>
+                                                <div style={{width: '50%'}}>{item.objectcode}, {item.object}</div>
+                                                <div style={{width: '27%', textAlign: 'right'}}>{item.type}</div>
+                                                <div style={{width: '10%', textAlign: 'right'}}>{ new Intl.NumberFormat("ru").format(item.amount)}</div>
+                                                <div style={{width: '10%', textAlign: 'right'}}>{dateRefactor(item.date)}</div>
+                                            </TableItem>
+                                        })
+                                    }
+                                </Scroll>
+                        }
+                    </div>
 
+            }
 
-            <TableHead>
+            {/*<TableHead>
                 <div style={{width: '5%'}} className='listIcon'><span>#</span></div>
                 <div style={{width: '70%'}} className='listIcon'><span> Объект</span></div>
-                {/*<div style={{width: '25%'}} className='listIcon'><span> Тип работ</span></div>*/}
-               {/* {
-                    rp && <div style={{width: '30%'}} className='listIcon'><span> РП</span></div>
-                }*/}
                 <div style={{width: '12%'}} className='listIcon'> <span> Сумма, р</span></div>
                 <div style={{width: '12%'}} className='listIcon'> <span> Дата</span></div>
-            </TableHead>
-            {
+            </TableHead>*/}
+
+           {/* {
                 load
                 ? <Loader/>
                 :    <Scroll h={'h230'}>
                         {
                             finalData.length > 0 && finalData.map((item, i) =>{
                                 return  <TableItem key={i}>
-                                    <div style={{width: '5%'}}>{++i}</div>
+                                    <div style={{width: '2%'}}>{++i}</div>
                                     <div style={{width: '70%'}}>{item.objectcode}, {item.object}</div>
                                     <div style={{width: '12%'}}>{ new Intl.NumberFormat("ru").format(item.amount)}</div>
                                     <div style={{width: '12%'}}>{dateRefactor(item.date)}</div>
@@ -105,7 +161,7 @@ const ModalEconFunnelDetails = () => {
                             })
                         }
                     </Scroll>
-            }
+            }*/}
 
         </div>
     );
