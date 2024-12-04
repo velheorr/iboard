@@ -9,11 +9,15 @@
     .listIcon {
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-wrap: nowrap;
         svg {
             font-size: 1.1rem;
             padding-right: 5px;
         }
+    }
+    .control {
+        cursor: pointer;
     }
 }
 

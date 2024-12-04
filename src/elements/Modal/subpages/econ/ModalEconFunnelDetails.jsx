@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {useModal} from "../../../../hook/useModal";
+import {useEffect, useState} from 'react';
 import {useTheme} from "../../../../hook/useTheme";
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import TableHead from "../../../Table/TableHead";
 import TableItem from "../../../Table/TableItem";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import {CircularProgress, Typography} from "@mui/material";
+import {IconButton, Typography} from "@mui/material";
 import {workTypes} from "../../../../pages/economics/js/workTypes";
 import { useGetEcoFunnelDetails} from "../../../../hook/useGetEconomics";
-import Skelet from "../../../Skelet";
 import {funnelTypes} from "../../../../pages/economics/js/funnelTypes";
 import Scroll from "../../../Scroll/Scroll";
 import Loader from "../../../Loader/Loader";
+import SortIcon from '@mui/icons-material/Sort';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
 const ModalEconFunnelDetails = () => {
     const neonGreen = useTheme('neonGreen')
@@ -49,6 +49,7 @@ const ModalEconFunnelDetails = () => {
     }, 0)
 
     const dateRefactor = (str) => {
+        if (str === '0001-01-01T00:00:00') return ''
         let options = {
             day: 'numeric',
             month: 'numeric',
@@ -62,6 +63,24 @@ const ModalEconFunnelDetails = () => {
     useEffect(()=>{
         setTimeout( ()=> setLoad(false), 2000)
     },[load])
+
+
+    const [dir,setDir] = useState(true)
+    const sortData = (param) =>{
+        const data = [...finalData].sort((a, b) => {
+            let comparison = 0;
+            if (typeof a[param] === 'string' && typeof b[param] === 'string') {
+                comparison = a[param].localeCompare(b[param]); // Для строк сортируем лексикографически
+            } else {
+                comparison = a[param] - b[param]; // Для чисел
+            }
+            // Проверяем порядок сортировки
+            return dir? comparison : -comparison;
+        });
+        setFinalData(data);
+        setDir(!dir)
+    }
+
 
     if (isLoading) {return <Loader/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
@@ -85,10 +104,10 @@ const ModalEconFunnelDetails = () => {
                         <TableHead>
                             <div style={{width: '3%'}}><span>#</span></div>
                             <div style={{width: '40%'}}><span> Объект</span></div>
-                            <div style={{width: '17%', textAlign: 'center'}}><span> Тип работ</span></div>
-                            <div style={{width: '20%', textAlign: 'center'}}><span> РП</span></div>
-                            <div style={{width: '10%', textAlign: 'center'}}> <span> Сумма, р</span></div>
-                            <div style={{width: '10%', textAlign: 'center'}}> <span> Дата</span></div>
+                            <div onClick={()=> sortData('type')} style={{width: '17%'}} className='listIcon control'><span> Тип работ</span><UnfoldMoreIcon /></div>
+                            <div onClick={()=> sortData('rp')} style={{width: '20%'}} className='listIcon control'><span> РП</span><UnfoldMoreIcon /></div>
+                            <div onClick={()=> sortData('amount')} style={{width: '10%'}} className='listIcon control'> <span> Сумма</span><UnfoldMoreIcon /></div>
+                            <div onClick={()=> sortData('date')} style={{width: '10%'}} className='listIcon control'><span> Дата</span> <UnfoldMoreIcon /></div>
                         </TableHead>
                         {
                             load
@@ -97,9 +116,9 @@ const ModalEconFunnelDetails = () => {
                                     {
                                         finalData.length > 0 && finalData.map((item, i) =>{
                                             return  <TableItem key={i}>
-                                                <div style={{width: '3%'}}>{++i}</div>
+                                                <div style={{width: '4%', textAlign: 'left'}}>{++i}</div>
                                                 <div style={{width: '40%'}}>{item.objectcode}, {item.object}</div>
-                                                <div style={{width: '17%', textAlign: 'right'}}>{item.type}</div>
+                                                <div style={{width: '16%', textAlign: 'right'}}>{item.type}</div>
                                                 <div style={{width: '20%', textAlign: 'right'}}>{item.rp}</div>
                                                 <div style={{width: '10%', textAlign: 'right'}}>{ new Intl.NumberFormat("ru").format(item.amount)}</div>
                                                 <div style={{width: '10%', textAlign: 'right'}}>{dateRefactor(item.date)}</div>
@@ -114,9 +133,9 @@ const ModalEconFunnelDetails = () => {
                         <TableHead>
                             <div style={{width: '3%'}}><span>#</span></div>
                             <div style={{width: '50%'}}><span> Объект</span></div>
-                            <div style={{width: '27%', textAlign: 'right'}}><span> Тип работ</span></div>
-                            <div style={{width: '10%', textAlign: 'right'}}> <span> Сумма, р</span></div>
-                            <div style={{width: '10%', textAlign: 'right'}}> <span> Дата</span></div>
+                            <div onClick={()=> sortData('type')} style={{width: '27%'}} className='listIcon control'><span> Тип работ</span><UnfoldMoreIcon /></div>
+                            <div onClick={()=> sortData('amount')} style={{width: '10%'}} className='listIcon control'><span> Сумма</span><UnfoldMoreIcon /></div>
+                            <div onClick={()=> sortData('date')} style={{width: '10%'}} className='listIcon control'><span> Дата</span><UnfoldMoreIcon /></div>
                         </TableHead>
                         {
                             load
@@ -125,9 +144,9 @@ const ModalEconFunnelDetails = () => {
                                     {
                                         finalData.length > 0 && finalData.map((item, i) =>{
                                             return  <TableItem key={i}>
-                                                <div style={{width: '3%'}}>{++i}</div>
+                                                <div style={{width: '4%', textAlign: 'left'}}>{++i}</div>
                                                 <div style={{width: '50%'}}>{item.objectcode}, {item.object}</div>
-                                                <div style={{width: '27%', textAlign: 'right'}}>{item.type}</div>
+                                                <div style={{width: '26%', textAlign: 'center'}}>{item.type}</div>
                                                 <div style={{width: '10%', textAlign: 'right'}}>{ new Intl.NumberFormat("ru").format(item.amount)}</div>
                                                 <div style={{width: '10%', textAlign: 'right'}}>{dateRefactor(item.date)}</div>
                                             </TableItem>

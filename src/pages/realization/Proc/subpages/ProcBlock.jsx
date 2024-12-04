@@ -220,28 +220,6 @@ const ProcBlock = ({item}) => {
         },
         tooltip: {
             useHTML: true,
-            /*followPointer: true,*/
-            /*positioner: function (labelWidth, labelHeight, point) {
-                // Устанавливаем позицию подсказки
-                let x = point.plotX + this.chart.plotLeft - labelWidth / 2;
-                let y = point.plotY + this.chart.plotTop - labelHeight - 10; // 10 пикселей над точкой
-
-                // Проверяем, чтобы подсказка не выходила за пределы графика
-                if (y < 0) {
-                    y = 0; // Если y меньше 0, устанавливаем его на 0
-                }
-
-                return { x: x, y: y };
-            },*/
-            /*positioner: function (labelWidth, labelHeight, point) {
-                // Пример: позиционирование в верхнем правом углу
-                return {
-                    //x: this.chart.plotWidth - labelWidth - 1, // 10 пикселей от правого края
-                    x: this.chart.plotWidth - labelWidth,
-                    //y: 10 // 10 пикселей от верхнего края
-                    y: labelHeight
-                };
-            },*/
             formatter: function() {
                 return `<b>${this.key}:</b></br> ${this.y}%`;
             }
@@ -260,7 +238,7 @@ const ProcBlock = ({item}) => {
                     formatter: function () {
                         // Добавляем свои данные в метки данных
                         let text
-                        if (this.point.dynamics === 0) {
+                        if (this.point.dynamics === 0 || this.point.dynamics === undefined) {
                             text = ''
                         } else if (this.point.dynamics < 0) {
                             text = this.point.dynamics
