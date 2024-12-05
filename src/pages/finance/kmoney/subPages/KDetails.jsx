@@ -1,16 +1,16 @@
 import React from 'react';
-import NeonButton from "../../../elements/NeonButton/NeonButton";
+import NeonButton from "../../../../elements/NeonButton/NeonButton";
 import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 import {useNavigate} from "react-router";
 import {useParams} from "react-router-dom";
-import TableHead from "../../../elements/Table/TableHead";
-import TableItem from "../../../elements/Table/TableItem";
+import TableHead from "../../../../elements/Table/TableHead";
+import TableItem from "../../../../elements/Table/TableItem";
 
 
-const FinDetails = () => {
+const KDetails = () => {
     const navigate = useNavigate();
     const param = useParams()
-    const goBack = ()=>{navigate('/finance')}
+    const goBack = ()=>{navigate('/kmoney')}
 
 
     return (
@@ -52,4 +52,4 @@ const FinDetails = () => {
     );
 };
 
-export default FinDetails;
+export default KDetails;

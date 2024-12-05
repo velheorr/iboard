@@ -4,13 +4,12 @@ import { useSelector} from "react-redux";
 import TableHead from "../../../Table/TableHead";
 import TableItem from "../../../Table/TableItem";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import {IconButton, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import {workTypes} from "../../../../pages/economics/js/workTypes";
 import { useGetEcoFunnelDetails} from "../../../../hook/useGetEconomics";
 import {funnelTypes} from "../../../../pages/economics/js/funnelTypes";
 import Scroll from "../../../Scroll/Scroll";
 import Loader from "../../../Loader/Loader";
-import SortIcon from '@mui/icons-material/Sort';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
 const ModalEconFunnelDetails = () => {

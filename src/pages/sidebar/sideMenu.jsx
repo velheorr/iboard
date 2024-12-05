@@ -35,16 +35,24 @@ const SideMenu = () => {
                               </ListItemButton>
                           }>
                     <Tree name={'Динамика'} img={dynamic} link={'dynamic'} />
+                    <Tree name={'Производство'} img={production_black} link={'proizvodstvo'}/>
                     <Tree name={'Процентование'} img={production_black} link={'proc'}/>
-                    {/*<Tree name={'Процентование'} img={production_black} link={'realisation'}/>*/}
-
                 </TreeItem>
-                <Divider sx={{borderColor: color}}/>
-
                 <Tree name={'Продажи'} img={sales_black} link={'sales'}/>
                 <Tree name={'Цели показатели'} img={goal_black} link={'goals'}/>
                 <Tree name={'Экономика'} img={economics_black} link={'economics'}/>
-                <Tree name={'Финансы'} img={finance_black} link={'finance'}/>
+                {/*<Tree name={'Финансы'} img={finance_black} link={'finance'}/>*/}
+                <TreeItem itemId={'Финансы'}
+                          label={
+                              <ListItemButton sx={{height: 35}}>
+                                  <img className={`menuIcon ${themeColor}`} src={finance_black} alt={'Финансы'}/>
+                                  <div>Финансы</div>
+                              </ListItemButton>
+                          }>
+                    <Tree name={'КДеньги'} img={finance_black} link={'kmoney'} />
+
+                </TreeItem>
+
                 <Tree name={'Баланс'} img={equality_black} link={'balance'}/>
                 <Tree name={'Ресурсы'} img={resources_black} link={'resources'}/>
                 <Tree name={'Персонал'} img={resources_black} link={'hr'}/>

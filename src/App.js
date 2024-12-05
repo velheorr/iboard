@@ -20,12 +20,13 @@ import Resources from "./pages/resources/Resources";
 import VersionLog from "./pages/versionLog/VersionLog";
 import Econ from "./pages/economics/Econ";
 import Goals from "./pages/goals/Goals";
-import Finance from "./pages/finance/Finance";
+import KMoney from "./pages/finance/kmoney/KMoney";
 import EconomicsDetails from "./pages/economics/subPagesEcon/EconomicsDetails";
 import Dynamics from "./pages/realization/Dynamics/Dynamics";
 import HR from "./pages/hr/HR";
 import Proc from "./pages/realization/Proc/Proc";
-import FinDetails from "./pages/finance/subPages/FinDetails";
+import KDetails from "./pages/finance/kmoney/subPages/KDetails";
+import Proizvodstvo from "./pages/realization/Proizvodstvo/Proizvodstvo";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -50,20 +51,17 @@ function App() {
                     <Route path='/' element={<Layout/>}>
                         <Route index element={<RequireAuth><Proc/></RequireAuth>}/>
                         <Route  path='/proc' element={<RequireAuth><Proc /></RequireAuth>}/>
-
+                        <Route  path='/proizvodstvo' element={<RequireAuth><Proizvodstvo /></RequireAuth>}/>
                         <Route  path='/dynamic' element={<RequireAuth><Dynamics /></RequireAuth>}/>
+
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/goals' element={<RequireAuth><Goals /></RequireAuth>}/>
+
                         <Route  path='/economics' element={<RequireAuth><Econ /></RequireAuth>}/>
                         <Route  path='/economics/:details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>
 
-                        <Route  path='/finance' element={<RequireAuth><Finance /></RequireAuth>}/>
-                        <Route  path='/finance/:details' element={<RequireAuth><FinDetails /></RequireAuth>}/>
-                       {/* <Route  path='/finance' element={<RequireAuth><Finance /></RequireAuth>}>
-                            <Route index element={<Finance />} />
-                            <Route  path=':details' element={<FinDetails />}/>
-                        </Route>*/}
-
+                        <Route  path='/kmoney' element={<RequireAuth><KMoney /></RequireAuth>}/>
+                        <Route  path='/kmoney/:details' element={<RequireAuth><KDetails /></RequireAuth>}/>
 
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Resources /></RequireAuth>}/>

@@ -1,5 +1,5 @@
-import './fin.scss'
-import React, {useMemo, useState} from 'react';
+import './kmoney.scss'
+import {useMemo} from 'react';
 import CustomEvents from "highcharts-custom-events";
 import Highcharts from "highcharts";
 import exporting from "highcharts/modules/exporting";
@@ -7,8 +7,8 @@ import exportData from "highcharts/modules/export-data";
 import fullscreen from "highcharts/modules/full-screen";
 import HighchartsReact from "highcharts-react-official";
 import Sankey from 'highcharts/modules/sankey';
-import {useTheme} from "../../hook/useTheme";
-import Dev from "../../elements/Development/Dev";
+import {useTheme} from "../../../hook/useTheme";
+import Dev from "../../../elements/Development/Dev";
 import {useNavigate} from "react-router";
 
 CustomEvents(Highcharts);
@@ -18,12 +18,12 @@ fullscreen(Highcharts);
 Sankey(Highcharts);
 
 
-const Finance = () => {
+const KMoney = () => {
     const navigate = useNavigate();
     const dark = useTheme() // тема
 
     const goDetails = (targ)=>{
-        navigate(`/finance/${targ}`)
+        navigate(`/kmoney/${targ}`)
     }
 
     const aktivi = [
@@ -182,4 +182,4 @@ const Finance = () => {
     );
 };
 
-export default Finance;
+export default KMoney;
