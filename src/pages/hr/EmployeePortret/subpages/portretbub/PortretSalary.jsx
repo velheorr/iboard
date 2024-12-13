@@ -19,16 +19,12 @@ const PortretSalary = () => {
             ...chartConfig.xAxis,
             min: 0,
             categories: [
-                'Вспомогательный персонал',
-                'ИТР и Специалисты РиО',
-                'ГИП (Лидер АМГ)',
-                'ИТР Команда проекта (РП, РС, Н-к участка, Вед.ин)',
-                'Рабочие',
-                'Проектировщики',
-                'НЕ УЧИТЫВАТЬ В РАСЧЕТЕ ВП',
-                'Команда управления',
-                'Наладчики',
-                'Сервисмен',
+                'до 30 тыс.',
+                '30 - 40 тыс.',
+                '40 - 60 тыс.',
+                '60 - 80 тыс.',
+                '80 - 100 тыс.',
+                'более 100 тыс.',
             ],
             title: {text: null, },
         },
@@ -81,14 +77,13 @@ const PortretSalary = () => {
         },
         series: /*data || []*/
             [{
-
-                data: [5, 3, 4,7,3,6,4,7,5,2]
+                data: [73,66,26,35,7,10]
             }, ]
     }), [isLegendVisible, data])
 
     return (
         <div>
-            <div className='chartHRName'>Уровень зарплаты 36 тыс</div>
+            <div className='chartHRName'>Уровень зарплаты ~36 тыс</div>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
