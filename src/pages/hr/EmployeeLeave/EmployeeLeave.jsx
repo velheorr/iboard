@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Hr = () => {
+const EmployeeLeave = () => {
     return (
         <div>
-            ffff
+            1
         </div>
     );
 };
 
-export default Hr;
+export default EmployeeLeave;

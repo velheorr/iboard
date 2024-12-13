@@ -1,0 +1,31 @@
+$green: #39FF14;
+
+.miniHRblocks {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 25px 15px;
+    >div {
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid $green;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 15%;
+        min-width: 170px;
+        transition: box-shadow 0.3s;
+        &:hover {box-shadow: 0px 0px 15px $green; }
+        :first-child {
+            margin-bottom: 10px;
+        }
+        :last-child {
+            font-size: 24px;
+        }
+    }
+}
+
+.chartHRName {
+    text-align: center;
+    font-size: 20px;
+}

@@ -8,7 +8,7 @@ import {Login} from "./pages/login/Login";
 import {RequireAuth} from "./hoc/RequireAuth";
 import {AuthProvider} from "./hoc/AuthProvider";
 
-import {createTheme, dividerClasses, ThemeProvider} from "@mui/material";
+import {createTheme, ThemeProvider} from "@mui/material";
 import {themeMode} from "./utils/theme";
 import {useSelector} from "react-redux";
 import {Register} from "./pages/login/Register";
@@ -23,10 +23,12 @@ import Goals from "./pages/goals/Goals";
 import KMoney from "./pages/finance/kmoney/KMoney";
 import EconomicsDetails from "./pages/economics/subPagesEcon/EconomicsDetails";
 import Dynamics from "./pages/realization/Dynamics/Dynamics";
-import HR from "./pages/hr/HR";
 import Proc from "./pages/realization/Proc/Proc";
 import KDetails from "./pages/finance/kmoney/subPages/KDetails";
 import Proizvodstvo from "./pages/realization/Proizvodstvo/Proizvodstvo";
+import EmployeeLeave from "./pages/hr/EmployeeLeave/EmployeeLeave";
+import EmployeePortret from "./pages/hr/EmployeePortret/EmployeePortret";
+import Kadru from "./pages/hr/Kadru/Kadru";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -65,7 +67,10 @@ function App() {
 
                         <Route  path='/balance' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route  path='/resources' element={<RequireAuth><Resources /></RequireAuth>}/>
-                        <Route  path='/hr' element={<RequireAuth><HR /></RequireAuth>}/>
+                        <Route  path='/employeeLeave' element={<RequireAuth><EmployeeLeave /></RequireAuth>}/>
+                        <Route  path='/employeeLeavePortret' element={<RequireAuth><EmployeePortret /></RequireAuth>}/>
+                        <Route  path='/kadru' element={<RequireAuth><Kadru /></RequireAuth>}/>
+
                         <Route  path='/lost_develop' element={<RequireAuth><Page404 /></RequireAuth>}/>
                         <Route path='/versionLog' element={<VersionLog/>}/>
                     </Route>

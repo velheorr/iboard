@@ -8,6 +8,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@mui/icons-material": "^5.15.5",
     "@mui/material": "^5.15.5",
+    "@mui/x-data-grid": "^7.23.1",
     "@mui/x-date-pickers": "^7.22.1",
     "@mui/x-tree-view": "^7.9.0",
     "@reduxjs/toolkit": "^1.9.7",

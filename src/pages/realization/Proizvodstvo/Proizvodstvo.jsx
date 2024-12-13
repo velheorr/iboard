@@ -1,41 +1,65 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Proizvodstvo.scss'
 import ElemTab from "../../../elements/Tabs/ElemTab";
-import TableHead from "../../../elements/Table/TableHead";
-import TableItem from "../../../elements/Table/TableItem";
+import Virobotka from "./subfolders/Virobotka";
+import BezVirobotka from "./subfolders/BezVirobotka";
+import Zarobotok from "./subfolders/Zarobotok";
+import Fot from "./subfolders/Fot";
+import Plans from "./subfolders/Plans";
+import Effectivnost from "./subfolders/Effectivnost";
+import {useTheme} from "../../../hook/useTheme";
+import {IconButton, InputAdornment} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
+import {GTextField} from "../../../elements/CustomMui/customMui";
+import Dev from "../../../elements/Development/Dev";
+
+
 
 
 const Proizvodstvo = () => {
+    /*Поиск*/
+    const [search, setSearch] = useState('')
+    /*Очистка поля поиска*/
+    const resetSearch = ()=> {
+        setSearch('')
+        /*setAllData(realization)*/
+    }
+    /*Обновление поля поиска*/
+    const handleSearch = (e) =>{
+        e.preventDefault()
+        setSearch(e.target.value)
+    }
+    /*ф-я поиска*/
+    const handleKeyDown = (e)=>{
+        if (e.key === 'Enter' && search.length > 2) {
+            /*const searchedData = allData.filter(i => {
+                return i['Объект'].toLowerCase().includes(search.toLowerCase()) || i['КодОбъекта'].includes(search)
+            })
+            setAllData(searchedData)*/
+        }
+    }
+
     return (
         <div>
+            <Dev/>
+            <div>
+                <GTextField id="proc_search" sx={{pt: '17px', width: '300px', pr: '15px', color: useTheme('text'), float: 'right'}}  variant="standard" placeholder='Поиск' value={search}
+                            onKeyDown={handleKeyDown}  onChange={handleSearch} InputProps={{
+                    startAdornment: (<InputAdornment position="start"><SearchIcon sx={{color: useTheme('text')}} /></InputAdornment>),
+                    endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon sx={{color: useTheme('text')}} /></IconButton ></InputAdornment>)
+                }}/>
+            </div>
+
             <div style={{padding: '0px 5px'}}>
-                <ElemTab arr={['Без выработки','Выработка','Табель','Заработок',"ФОТ", 'Планы','Эфффективность']}>
-                    <div>
-                        <TableHead extra={'tableFormat'}>
-                            <div style={{flexBasis: '10%'}}><span> Код</span></div>
-                            <div style={{flexBasis: '15%'}}><span> Объект</span></div>
-                            <div style={{flexBasis: '10%'}}><span> РС</span></div>
-                            <div style={{flexBasis: '10%'}}><span> Кол-во Рабочих/Бригадиров</span></div>
-                            <div><span> 24.06.2024</span></div>
-                            <div><span> 25.06.2024</span></div>
-                            <div><span> 27.06.2024</span></div>
-                            <div><span> 28.06.2024</span></div>
-                            <div><span> 29.06.2024</span></div>
-                            <div><span> 30.06.2024</span></div>
-
-                        </TableHead>
-                        <TableItem>
-                            <div style={{flexBasis: '10%'}}>15021</div>
-                            <div style={{flexBasis: '15%'}}>ЛУКОМ-А-УРАЛ ТЦ / 2023 СМР ИЗП Эстакада ТН ЛУКОМ-А-УРАЛ ТЦ</div>
-                            <div style={{flexBasis: '10%'}}>Болотников В.В.</div>
-                            <div style={{flexBasis: '10%'}}>0/0</div>
-                        </TableItem>
-
-                    </div>
-                    <div>2</div>
-                    <div>2</div>
-                    <div>2</div>
-                    <div>2</div>
+                <ElemTab arr={['Без выработки','Выработка','Табель','Заработок',"ФОТ", 'Планы','Эффективность']}>
+                    <Virobotka/>
+                    <BezVirobotka/>
+                    <div>Пусто</div>
+                    <Zarobotok/>
+                    <Fot/>
+                    <Plans/>
+                    <Effectivnost/>
                 </ElemTab>
             </div>
         </div>
