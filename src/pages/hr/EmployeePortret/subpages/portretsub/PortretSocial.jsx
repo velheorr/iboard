@@ -1,10 +1,11 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {chartConfig} from "../../../js/chartConfig";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import '../../../hr.scss'
+import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 
-const PortretAge = () => {
+const PortretSocial = () => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
     const [data, setData] = useState([])
 
@@ -12,18 +13,14 @@ const PortretAge = () => {
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {
-            type: 'column',...chartConfig.chart, height: 350,},
+            type: 'bar',...chartConfig.chart, height: 100},
         title: {...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {
             ...chartConfig.xAxis,
             min: 0,
             categories: [
-                '18-25',
-                '26-35',
-                '36-45',
-                '46-55',
-                '56-65',
+                '',
             ],
             title: {text: null, },
         },
@@ -59,13 +56,16 @@ const PortretAge = () => {
             },
         },
         tooltip: {
+            /*formatter: function() {
+                let color = this.color
+                if (color === 'transparent'){ color = 'black'}
+                return `<b>${this.x}</b><br/><span style="color:${color}">${this.series.userOptions.name}</span>: ${this.y} млн.<br/>`
+            },*/
             format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} чел.<br/>' /*+ 'Total: {point.stackTotal}'*/
         },
         plotOptions: {
-            column: {
-                stacking: 'normal'
-            },
             series: {
+                stacking: 'normal',
                 dataLabels: {
                     enabled: true,
                     y: -1,
@@ -79,23 +79,30 @@ const PortretAge = () => {
         },
         series: /*data || []*/
             [{
-                name: 'Ж',
-                data: [19, 23, 24,13,44]
+                name: 'В разводе',
+                data: [5]
             }, {
-                name: 'М',
-                data: [22, 42, 33,28,34]
+                name: 'В браке',
+                data: [2]
+            }, {
+                name: 'Одинокие',
+                data: [3]
             }]
     }), [isLegendVisible, data])
 
     return (
         <div>
-            <div className='chartHRName'>Уровень зарплаты ~36 тыс</div>
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={options}
-            />
+            <div className='chartHRName'>Социальные характеристики</div>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                <FamilyRestroomIcon/>
+                <HighchartsReact
+                    highcharts={Highcharts}
+                    options={options}
+                />
+            </div>
+
         </div>
     );
 };
 
-export default PortretAge;
+export default PortretSocial;
