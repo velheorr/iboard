@@ -1,9 +1,45 @@
 import React from 'react';
+import LeaveChartDep from "./subpages/LeaveChartDep";
+import LeaveChartPosition from "./subpages/LeaveChartPosition";
+import LeaveSankey from "./subpages/LeaveSankey";
+import LeaveValue from "./subpages/LeaveValue";
 
 const EmployeeLeave = () => {
+    const blocks = [
+        {
+            name: 'Увольнений',
+            amount: '29',
+        },
+        {
+            name: 'Стаж работы',
+            amount: '3,0',
+        },
+        {
+            name: 'Средний возраст',
+            amount: '41',
+        },
+        {
+            name: 'Средняя з/п',
+            amount: '33 тыс.',
+        },
+    ]
+
     return (
         <div>
-            1
+            <div className='miniHRblocks'>
+                {
+                    blocks.map((item,i) =>{
+                        return <div key={i}>
+                            <div>{item.name}</div>
+                            <div>{item.amount}</div>
+                        </div>
+                    })
+                }
+            </div>
+            <LeaveValue/>
+            <LeaveSankey/>
+            <LeaveChartPosition/>
+            <LeaveChartDep/>
         </div>
     );
 };
