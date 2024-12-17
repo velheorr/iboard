@@ -3,6 +3,8 @@ import LeaveChartDep from "./subpages/LeaveChartDep";
 import LeaveChartPosition from "./subpages/LeaveChartPosition";
 import LeaveSankey from "./subpages/LeaveSankey";
 import LeaveValue from "./subpages/LeaveValue";
+import LeaveSalary from "./subpages/LeaveSalary";
+import LeaveStaj from "./subpages/LeaveStaj";
 
 const EmployeeLeave = () => {
     const blocks = [
@@ -36,6 +38,8 @@ const EmployeeLeave = () => {
                     })
                 }
             </div>
+            <LeaveStaj/>
+            <LeaveSalary/>
             <LeaveValue/>
             <LeaveSankey/>
             <LeaveChartPosition/>
