@@ -7,6 +7,7 @@ import '../../../hr.scss'
 const PortretParameters = () => {
     return (
         <div>
+            <div className='chartHRName'>Характеристика по сотрудникам</div>
             <div style={{margin: '15px'}}>
                 <TableHead>
                     <div style={{width: '20%'}} className=''><span> Должность</span></div>

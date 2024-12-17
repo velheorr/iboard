@@ -5,7 +5,7 @@ import Highcharts from "highcharts";
 import '../../../hr.scss'
 
 const PortretAge = () => {
-    const [isLegendVisible, setIsLegendVisible] = useState(false);
+    const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState([])
 
     const options = useMemo(() => ({

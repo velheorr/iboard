@@ -6,7 +6,7 @@ import '../../../hr.scss'
 import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 
 const PortretSocial = () => {
-    const [isLegendVisible, setIsLegendVisible] = useState(false);
+    const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState([])
 
     const options = useMemo(() => ({
