@@ -33,7 +33,7 @@ const LeaveSankey = () => {
 
     const options = useMemo(() => ({
         chart: {
-            height: 350,
+            height: 300,
             backgroundColor: 'transparent',
         },
         title: {

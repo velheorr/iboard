@@ -12,14 +12,14 @@ const LeaveValue = () => {
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {
-            type: 'column',...chartConfig.chart, height: 350,},
+            type: 'column',...chartConfig.chart, height: 300,},
         title: {...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {
             ...chartConfig.xAxis,
             min: 0,
             categories: [
-                ''
+                'Ключевой','Не ключевой',
             ],
             title: {text: null, },
         },
@@ -74,13 +74,18 @@ const LeaveValue = () => {
             }
         },
         series: /*data || []*/
-            [{
+        [{
+            name: 'data',
+            data: [5,2],
+            color: '#d568fb'
+        }],
+            /*[{
                 name: 'Ключевой',
                 data: [5]
             }, {
                 name: 'Не ключевой',
                 data: [2]
-            }]
+            }]*/
     }), [isLegendVisible, data])
 
     return (

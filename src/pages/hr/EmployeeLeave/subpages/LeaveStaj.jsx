@@ -11,14 +11,14 @@ const LeaveStaj = () => {
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {
-            type: 'column',...chartConfig.chart, height: 350,},
+            type: 'column',...chartConfig.chart, height: 300,},
         title: {...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {
             ...chartConfig.xAxis,
             min: 0,
             categories: [
-                ''
+                '< 1','2-3','2-3','3-4','4-5','5+',
             ],
             title: {text: null, },
         },
@@ -74,6 +74,11 @@ const LeaveStaj = () => {
         },
         series: /*data || []*/
             [{
+                name: 'data',
+                data: [1,0,2,3,0,1],
+                color: '#FF5733',
+            }],
+            /*[{
                 name: '< 1',
                 data: [1]
             }, {
@@ -95,7 +100,7 @@ const LeaveStaj = () => {
                     data: [0]
                 },
 
-            ]
+            ]*/
     }), [isLegendVisible, data])
 
     return (

@@ -38,12 +38,16 @@ const EmployeeLeave = () => {
                     })
                 }
             </div>
-            <LeaveStaj/>
-            <LeaveSalary/>
-            <LeaveValue/>
-            <LeaveSankey/>
-            <LeaveChartPosition/>
-            <LeaveChartDep/>
+            <div style={{display:'flex'}}>
+                <div style={{width: '39%'}}><LeaveChartDep/></div>
+                <div style={{width: '60%'}}><LeaveSankey/></div>
+            </div>
+            <div style={{display:'flex'}}>
+                <div style={{width: '35%'}}><LeaveChartPosition/></div>
+                <div style={{width: '15%'}}><LeaveValue/></div>
+                <div style={{width: '25%'}}><LeaveSalary/></div>
+                <div style={{width: '25%'}}><LeaveStaj/></div>
+            </div>
         </div>
     );
 };

@@ -80,21 +80,6 @@ const LeaveChartPosition = () => {
         tooltip: {
             format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} чел.<br/>' /*+ 'Total: {point.stackTotal}'*/
         },
-        /*plotOptions: {
-            series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                    inside: true,
-                    align: 'right',
-                    verticalAlign: 'middle',
-                    /!*format: '{point.y} млн.',*!/
-                    style: {
-                        color: 'white'
-                    }
-                }
-            }
-        },*/
         plotOptions: {
             series:{
                 borderWidth: 0,
@@ -110,13 +95,13 @@ const LeaveChartPosition = () => {
             }
         },
         series: /*data || []  */
-           /* [
+            [
                 {
                     name: 'Дата',
                     data: [2,8,8,6,4],
                 },
-            ],*/
-            [{
+            ],
+            /*[{
                 name: 'Специалист',
                 data: [13],
             },{
@@ -131,7 +116,7 @@ const LeaveChartPosition = () => {
             },{
                 name: 'Старший специалист',
                 data: [2],
-            }],
+            }],*/
     }), [isLegendVisible, data])
 
     return (

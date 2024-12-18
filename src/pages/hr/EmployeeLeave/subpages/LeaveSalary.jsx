@@ -12,7 +12,7 @@ const LeaveSalary = () => {
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {
-            type: 'column',...chartConfig.chart, height: 350,},
+            type: 'column',...chartConfig.chart, height: 300,},
         title: {...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {
@@ -74,7 +74,15 @@ const LeaveSalary = () => {
             }
         },
         series: /*data || []*/
-            [
+            [{
+                name: 'data',
+                data: [
+                    { y: 5, color: '#FF5733' },
+                    { y: 3, color: '#33FF57' },
+                    { y: 2, color: '#3357FF' },
+                ],
+            }],
+            /*[
                 {
                     name: 'Ниже рынка',
                     data: [5,2,3],
@@ -90,18 +98,6 @@ const LeaveSalary = () => {
                     data: [4,4,9],
                     color: '#3357FF'
                 },
-            ]
-            /*[{
-                name: 'Ниже рынка',
-                data: [5]
-            }, {
-                name: 'На уровне рынка',
-                data: [2]
-            },
-                {
-                    name: 'Выше рынка',
-                    data: [2]
-                }
             ]*/
     }), [isLegendVisible, data])
 
