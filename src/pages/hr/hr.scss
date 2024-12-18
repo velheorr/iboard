@@ -5,7 +5,7 @@ $green: #39FF14;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 25px 15px;
-    >div {
+    >div:not(.settings) {
         text-align: center;
         padding: 10px;
         margin-bottom: 15px;

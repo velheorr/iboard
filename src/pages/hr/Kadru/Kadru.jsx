@@ -2,6 +2,7 @@ import '../hr.scss'
 import KadruVoronka from "./subpages/KadruVoronka";
 import KadruStackedBar from "./subpages/KadruStackedBar";
 import KadruFot from "./subpages/KadruFOT";
+import Settings from "./Settings";
 
 const Kadru = () => {
 
@@ -39,6 +40,7 @@ const Kadru = () => {
                         </div>
                     })
                 }
+                <Settings/>
             </div>
             <div style={{display: 'flex'}}>
                 <div style={{width: '49%'}}><KadruStackedBar/></div>
