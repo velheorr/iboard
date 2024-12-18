@@ -96,7 +96,7 @@ const SideMenu = () => {
                 </TreeItem>
                 <Tree name={'Продажи'} img={sales_black} link={'sales'}/>
                 {/*<Tree name={'Цели показатели'} img={goal_black} link={'goals'}/>*/}
-                <TreeItem itemId={'Цели показатели'}
+                <TreeItem itemId={'Цели показатели_'}
                           label={
                               <ListItemButton sx={{height: 35}}>
                                   <img className={`menuIcon ${themeColor}`} src={goal_black} alt={'Цели показатели'}/>
@@ -109,22 +109,22 @@ const SideMenu = () => {
                 </TreeItem>
                 <Tree name={'Экономика'} img={economics_black} link={'economics'}/>
                 {/*<Tree name={'Финансы'} img={finance_black} link={'finance'}/>*/}
-                <TreeItem itemId={'Финансы'}
+                <TreeItem itemId={'Финансы_'}
                           label={
                               <ListItemButton sx={{height: 35}}>
                                   <img className={`menuIcon ${themeColor}`} src={finance_black} alt={'Финансы'}/>
                                   <div>Финансы</div>
                               </ListItemButton>
                           }>
-                    <Tree name={'КДеньги'} img={i12} link={'kmoney'} />
-                    <Tree name={'КДеньги'} img={i10} link={'kmoney'} />
+                    <Tree name={'ГДеньги'} img={i12} link={'kmoney'} />
+                    <Tree name={'ГДеньги2'} img={i10} link={'kmoney'} />
 
                 </TreeItem>
 
                 <Tree name={'Баланс'} img={equality_black} link={'balance'}/>
                 <Tree name={'Ресурсы'} img={resources_black} link={'resources'}/>
                 {/*<Tree name={'Персонал'} img={resources_black} link={'hr'}/>*/}
-                <TreeItem itemId={'Персонал'}
+                <TreeItem itemId={'Персонал_'}
                           label={
                               <ListItemButton sx={{height: 35}}>
                                   <img className={`menuIcon ${themeColor}`} src={finance_black} alt={'Персонал'}/>

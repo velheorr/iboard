@@ -181,7 +181,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
 
     return (
         <div className={className} >
-            <div className='chartTitle'>Вложения</div>
+            <div className='chartTitle'>ВЛОЖЕНИЯ</div>
             <div style={{display: 'flex', flexWrap: 'nowrap'}}>
                 <div style={{width: '25%'}}>
                     <HighchartsReact

@@ -124,7 +124,7 @@ const AmgBulletChart2 = ({className, year,month, type, rp}) => {
 
     return (
         <div className={className}>
-            <div className='chartTitle'>Издержки</div>
+            <div className='chartTitle'>ИЗДЕРЖКИ</div>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}

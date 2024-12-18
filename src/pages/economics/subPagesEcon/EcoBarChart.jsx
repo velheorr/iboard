@@ -50,7 +50,7 @@ const EcoBarChart = ({year, type}) => {
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
         legend: {enabled: isLegendVisible,...chartConfig.legend,
             title: {
-                text: 'Месячные показатели',
+                text: 'Изменения за  месяц',
                 style: {
                     color: '#A0A0A0',
                     fontSize: '16px',

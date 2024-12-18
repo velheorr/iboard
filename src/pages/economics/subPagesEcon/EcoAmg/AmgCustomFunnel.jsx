@@ -10,6 +10,10 @@ import {useTheme} from "../../../../hook/useTheme";
 import {useModal} from "../../../../hook/useModal";
 import {useDispatch} from "react-redux";
 import {setFunnelDetails} from "../../js/EcoSlice";
+import HighchartsMore from "highcharts/highcharts-more";
+
+HighchartsMore(Highcharts);
+
 
 const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false, rpName}) => {
     const {data: ecofunnel, isLoading, isError} = useGetEcoFunnel(year,month,rp, type)
@@ -32,6 +36,10 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false, rpName}
     const openFunnelDetails = (e)=>{
         dispatch(setFunnelDetails([e, year,month, type, rp, rpName]))
         setModal('ModalEconFunnelDetails')
+    }
+
+    const refactorNum = (num)=>{
+        return new Intl.NumberFormat("ru").format(num)
     }
 
     const options = useMemo(() => ({
@@ -117,7 +125,7 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false, rpName}
                 let s = '<b>' + this.x + '</b>';
                 this.points.forEach(point => {
                     if (point.y < 0 ) return
-                    s += `<br/><span style="color:${point.color}">${point.series.name}</span>: ${point.y} млн.`
+                    s += `<br/><span style="color:${point.color}">${point.series.name}</span>: ${point.y} `
                 });
                 return s;
             },
@@ -133,9 +141,12 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false, rpName}
                 enabled: true,
                 inside: true,
                 align: 'left',
-                x: -25,
+                x: -15,
                 verticalAlign: 'middle',
-                format: '{point.y} млн.',
+               /* format: '{point.y} ',*/
+                formatter: function() {
+                    return Highcharts.numberFormat(this.y, 0, '', ' ');
+                },
                 style: {
                     color: 'white'
                 }
