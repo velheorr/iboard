@@ -5,7 +5,7 @@ import Skelet from "../../../elements/Skelet";
 import {useEffect} from "react";
 import {useTheme} from "../../../hook/useTheme";
 import {workTypes} from "../js/workTypes";
-
+import SettingsIcon from '@mui/icons-material/Settings';
 
 
 
@@ -81,11 +81,12 @@ const EcoData = ({year, month, type,openModal}) => {
         <div style={{width: '170px', position: 'fixed'}}>
             <Tooltip title={<Typography variant="body2"  gutterBottom>Нажмите для изменения настроек</Typography>}>
                 <div className='ecoDataDate' onClick={openModal}>
+                    <SettingsIcon sx={{position:'absolute', top: '-2px', left:'31px',fontSize:'110px', color: '#8181815c'}}/>
                     <div className='ecoSettings'>
                         <div className='ecoTitle'>Дата: </div> <div>{month} / {year}</div>
                     </div>
                     <div className='ecoSettings'>
-                        <div className='ecoTitle'>Вид работ: </div><div>{findWork()}</div>
+                        <div className='ecoTitle'>Тип работ: </div><div>{findWork()}</div>
                     </div>
                 </div>
             </Tooltip>

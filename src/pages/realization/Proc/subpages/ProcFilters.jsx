@@ -1,14 +1,16 @@
 import '../proc.scss'
 import {GFormControl, GInputLabel, GTextField} from "../../../../elements/CustomMui/customMui";
 import {useTheme} from "../../../../hook/useTheme";
-import {IconButton, InputAdornment, MenuItem, Select, Typography} from "@mui/material";
+import {IconButton, InputAdornment, MenuItem, Select, Tooltip, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import {holdingSelectImg} from "../js/holdingSelectImg";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import {useModal} from "../../../../hook/useModal";
 
 const ProcFilters = ({allData, realization, setAllData}) => {
-
+    const {setModal} = useModal()
     const [holding, setHolding] = useState('Все');
     const [holdingList, setHoldingList] = useState([]);
     const [zakazchik, setZakazchik] = useState('Все');
@@ -86,6 +88,8 @@ const ProcFilters = ({allData, realization, setAllData}) => {
         }
     }
 
+
+
     return (
         <div className='procFilters'>
             <div>
@@ -160,6 +164,11 @@ const ProcFilters = ({allData, realization, setAllData}) => {
                     endAdornment:(<InputAdornment position="end"><IconButton onClick={resetSearch}><CloseIcon sx={{color: useTheme('text')}} /></IconButton ></InputAdornment>)
                 }}/>
                 <div className='objects' style={{color: useTheme('text'), zIndex: 1000}}>Объектов: {amount}</div>
+            </div>
+            <div>
+                <Tooltip title={<Typography variant="body2"  gutterBottom>Справка по блоку процентования</Typography>}>
+                    <IconButton onClick={()=>setModal('ModalRealizProcWiki')} sx={{color: '#808080bf'}}><HelpOutlineIcon/></IconButton>
+                </Tooltip>
             </div>
         </div>
     );

@@ -6,12 +6,14 @@ import {useGetEcoBullet} from "../../../../hook/useGetEconomics";
 import {convertBullet} from "../convertData";
 import Skelet from "../../../../elements/Skelet";
 import {useTheme} from "../../../../hook/useTheme";
+import {useModal} from "../../../../hook/useModal";
 
 const AmgBulletChart2 = ({className, year,month, type, rp}) => {
     const [isLegendVisible, setIsLegendVisible] = useState(false);
     const {data: bullet, isLoading, isError} = useGetEcoBullet(year,month,rp, type)
     const [data, setData] = useState([]);
     const dark = useTheme() // тема
+    const {setModal} = useModal()
 
     useEffect(()=>{
         if (bullet){
@@ -88,6 +90,12 @@ const AmgBulletChart2 = ({className, year,month, type, rp}) => {
                         },
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
+                        {
+                            text: 'Справка',
+                            onclick: function () {
+                                setModal('ModalEcoBulletWiki'); // Toggle legend visibility
+                            },
+                        },
                     ],
                 },
             },

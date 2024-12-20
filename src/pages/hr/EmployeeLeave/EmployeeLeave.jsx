@@ -5,24 +5,32 @@ import LeaveSankey from "./subpages/LeaveSankey";
 import LeaveValue from "./subpages/LeaveValue";
 import LeaveSalary from "./subpages/LeaveSalary";
 import LeaveStaj from "./subpages/LeaveStaj";
+import ElderlyIcon from '@mui/icons-material/Elderly';
+import FollowTheSignsIcon from '@mui/icons-material/FollowTheSigns';
+import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
+import MessageIcon from '@mui/icons-material/Message';
 
 const EmployeeLeave = () => {
     const blocks = [
         {
             name: 'Увольнений',
             amount: '29',
+            icon: <FollowTheSignsIcon/>
         },
         {
             name: 'Стаж работы',
             amount: '3,0',
+            icon: <MessageIcon/>
         },
         {
             name: 'Средний возраст',
             amount: '41',
+            icon: <ElderlyIcon/>
         },
         {
             name: 'Средняя з/п',
             amount: '33 тыс.',
+            icon: <CurrencyRubleIcon/>
         },
     ]
 
@@ -31,7 +39,9 @@ const EmployeeLeave = () => {
             <div className='miniHRblocks'>
                 {
                     blocks.map((item,i) =>{
-                        return <div key={i}>
+                        return <div key={i} style={{position: 'relative', overflow: 'hidden'}}>
+                            {item.icon}
+                            {/*{item.icon && sx={{position:'absolute', top: '-2px', left:'31px',fontSize:'110px', color: '#8181815c'}} }*/}
                             <div>{item.name}</div>
                             <div>{item.amount}</div>
                         </div>

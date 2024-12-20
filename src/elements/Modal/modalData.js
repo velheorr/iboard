@@ -8,6 +8,11 @@ import {dark, light} from "../../hook/useTheme";
 import ModalRealizProcWiki from "./subpages/wiki/ModalRealizProcWiki";
 import ModalEcon from "./subpages/econ/ModalEcon";
 import ModalEconFunnelDetails from "./subpages/econ/ModalEconFunnelDetails";
+import ModalEcoLineChartWiki from "./subpages/wiki/Eco/ModalEcoLineChartWiki";
+import ModalEcoBarChartWiki from "./subpages/wiki/Eco/ModalEcoBarChartWiki";
+import ModalEcoFunnelWiki from "./subpages/wiki/Eco/ModalEcoFunnelWiki";
+import ModalEcoBulletWiki from "./subpages/wiki/Eco/ModalEcoBulletWiki";
+import ModalEco2chartsWiki from "./subpages/wiki/Eco/ModalEco2chartsWiki";
 
 
 
@@ -81,6 +86,21 @@ export const modalData = (variant, mode)=>{
             break;
         case 'ModalEconFunnelDetails':
             modalText = <ModalEconFunnelDetails/>
+            break;
+        case 'ModalEcoLineChartWiki':
+            modalText = <ModalEcoLineChartWiki/>
+            break;
+        case 'ModalEcoBarChartWiki':
+            modalText = <ModalEcoBarChartWiki/>
+            break;
+        case 'ModalEcoFunnelWiki':
+            modalText = <ModalEcoFunnelWiki/>
+            break;
+        case 'ModalEcoBulletWiki':
+            modalText = <ModalEcoBulletWiki/>
+            break;
+        case 'ModalEco2chartsWiki':
+            modalText = <ModalEco2chartsWiki/>
             break;
     }
 

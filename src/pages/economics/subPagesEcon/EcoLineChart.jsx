@@ -6,11 +6,14 @@ import {chartConfig} from "../js/chartConfig";
 import {useGetEcoLineChart} from "../../../hook/useGetEconomics";
 import Skelet from "../../../elements/Skelet";
 import {useTheme} from "../../../hook/useTheme";
+import {useModal} from "../../../hook/useModal";
+import ModalEcoLineChartWiki from "../../../elements/Modal/subpages/wiki/Eco/ModalEcoLineChartWiki";
 
 const EcoLineChart = ({year, type}) => {
     const {data: ecolinechart, isLoading, isError} = useGetEcoLineChart(year,type)
     const dark = useTheme() // тема
     const date = new Date()
+    const {setModal} = useModal()
 
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState(null);
@@ -83,6 +86,12 @@ const EcoLineChart = ({year, type}) => {
                         },
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
+                        {
+                            text: 'Справка',
+                            onclick: function () {
+                                setModal('ModalEcoLineChartWiki'); // Toggle legend visibility
+                            },
+                        },
                     ],
                 },
             },

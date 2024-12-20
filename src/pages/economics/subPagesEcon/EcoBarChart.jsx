@@ -10,6 +10,8 @@ import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {setDetails} from "../js/EcoSlice";
 import {useTheme} from "../../../hook/useTheme";
+import {useModal} from "../../../hook/useModal";
+
 
 const EcoBarChart = ({year, type}) => {
     const {data: ecobarchart, isLoading, isError, refetch, status} = useGetEcoBarChart(year, type)
@@ -17,6 +19,7 @@ const EcoBarChart = ({year, type}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const dark = useTheme() // тема
+    const {setModal} = useModal()
 
     const [isLegendVisible, setIsLegendVisible] = useState(true);
     const [data, setData] = useState([]);
@@ -109,6 +112,12 @@ const EcoBarChart = ({year, type}) => {
                         },
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
+                        {
+                            text: 'Справка',
+                            onclick: function () {
+                                setModal('ModalEcoLineChartWiki'); // Toggle legend visibility
+                            },
+                        },
                     ],
                 },
             },

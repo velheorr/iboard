@@ -116,6 +116,12 @@ const AmgCustomFunnel = ({className, year,month, type, rp,setRp = false, rpName}
                         },*/
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
+                        {
+                            text: 'Справка',
+                            onclick: function () {
+                                setModal('ModalEcoFunnelWiki'); // Toggle legend visibility
+                            },
+                        },
                     ],
                 },
             },

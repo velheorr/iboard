@@ -31,13 +31,24 @@ const ModalEcon = () => {
             <div className='modalIcon' style={{boxShadow: neonGreenShadow}}><CalendarMonthIcon/></div>
             <Typography variant="h5" gutterBottom className='modalAuthTitle' sx={{color: neonGreen}}>Настройки параметров</Typography>
 
+            <div className='divider'><span className='title'>Общие настройки</span></div>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                <div style={{width: '35%'}}><Year setEcoYear={setEcoYear}/></div>
+                <div style={{width: '50%', margin: '0 auto'}}><Month setEcoMonth={setEcoMonth}/></div>
+            </div>
+
+
+
+
+           {/* <div>Общие настройки</div>
             <div className='divider'><span className='title'>Год</span></div>
             <Year setEcoYear={setEcoYear}/>
             <div className='divider'><span className='title'>Месяц</span></div>
             <div style={{width: '50%', margin: '0 auto'}}>
                 <Month setEcoMonth={setEcoMonth}/>
-            </div>
-            <div className='divider'><span className='title'>Тип работ</span></div>
+            </div>*/}
+
+            <div className='divider'><span className='title'>Тип работ для графиков: МАРЖА, ВЛОЖЕНИЯ, ИЗДЕРЖКИ</span></div>
             <Work setEcoWork={setEcoWork}/>
             <Tooltip title={<Typography variant="body2"  gutterBottom>Сохранить данные</Typography>}>
                 <Button onClick={submit} sx={{float: 'right', marginTop: '25px'}}  variant="contained" type='submit' size='small' color="success" startIcon={<ContentPasteGoIcon />}>Сформировать</Button>

@@ -7,17 +7,17 @@ import Switch from "@mui/material/Switch";
 const ModalRealizProcWiki = () => {
 
     const [check, setCheck] = useState(false)
-    const turnOff = () => {
+    /*const turnOff = () => {
         setCheck(!check)
         localStorage.setItem('wiki-Proc', JSON.stringify(true));
 
     }
-
+*/
     const neonGreen = useTheme('neonGreen')
 
     return (
         <div className='wikiBlock'>
-            <h2 className='wikiTitle' style={{color: neonGreen}}>Добро пожаловать на GUARDIAN iBoard!</h2>
+            <h2 className='wikiTitle' style={{color: neonGreen}}>Добро пожаловать на Панель Процентования!</h2>
             <p>
                 Это <b style={{color: neonGreen}}>Панель Процентования</b>, на которой вы можете видеть блоки Объектов с групповыми гистограммами.
                 Каждый блок имеет рамку, которая окрашивается в один из цветов светофора в зависимости от состояния текущих показателей по Объекту.
@@ -40,7 +40,7 @@ const ModalRealizProcWiki = () => {
             <p>
                 При клике на кнопку <b style={{color: neonGreen}}>Крестик или на свободное место</b> произойдёт возврат на страницу со всеми Объектами.
             </p>
-            <FormControlLabel sx={{color: 'grey', mt: '15px'}} control={<Switch onClick={turnOff} checked={check} color="success"  size="small"/>} label="Не показывать справку по данному разделу" />
+           {/* <FormControlLabel sx={{color: 'grey', mt: '15px'}} control={<Switch onClick={turnOff} checked={check} color="success"  size="small"/>} label="Не показывать справку по данному разделу" />*/}
         </div>
     );
 };

@@ -3,17 +3,20 @@ import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts/highstock";
 import {chartConfig} from "../../js/chartConfig";
 import {useGetEco2charts} from "../../../../hook/useGetEconomics";
-
 import Skelet from "../../../../elements/Skelet";
 import {useTheme} from "../../../../hook/useTheme";
+import {useModal} from "../../../../hook/useModal";
+import {IconButton, Tooltip, Typography} from "@mui/material";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+
 
 const Amg2Charts = ({className, year,month, type, rp}) => {
-    const [isLegendVisible, setIsLegendVisible] = useState(false);
     const {data: twocharts, isLoading, isError} = useGetEco2charts(year,month,rp, type)
     const [data, setData] = useState([]);
     const [data2, setData2] = useState([]);
     const [total, setTotal] = useState([]);
     const dark = useTheme() // тема
+    const {setModal} = useModal()
 
     useEffect(()=>{
         if (twocharts){
@@ -37,7 +40,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                 fontSize: '12px'
             },
         },
-        legend: {enabled: isLegendVisible,...chartConfig.legend},
+        legend: {enabled: false,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
                 'Подтверждено Оим', 'Поступило ОиМ', 'Списано ОиМ', 'Начислено ФОТ (прямой)', 'Вложено на Субчиков',
@@ -61,12 +64,6 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                     ...chartConfig.exporting.buttons.contextButton,
                     menuItems: [
                         'viewFullscreen',
-                        {
-                            text: 'Легенда',
-                            onclick: function () {
-                                setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
-                            },
-                        },
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
                     ],
@@ -97,7 +94,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                 color: dark ? '#0b7e93' : 'rgba(11,126,147,0.57)',
             }
         ]
-    }), [isLegendVisible, data])
+    }), [data])
 
     const options2 = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
@@ -111,7 +108,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                 fontSize: '12px'
             },
         },
-        legend: {enabled: isLegendVisible,...chartConfig.legend},
+        legend: {enabled: false,...chartConfig.legend},
         xAxis: {...chartConfig.xAxis,
             categories: [
                 'Подтверждено Оим', 'Поступило ОиМ', 'Списано ОиМ', 'Начислено ФОТ (прямой)', 'Вложено на Субчиков',
@@ -122,7 +119,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                     color: 'rgb(102, 102, 102)',
                     fontSize: '13px', // Размер шрифта
                 },
-                align: 'center', // Положение подписей
+                align: 'right', // Положение подписей
                 padding: 5,
                 x: -20
             }
@@ -139,12 +136,6 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
                     ...chartConfig.exporting.buttons.contextButton,
                     menuItems: [
                         'viewFullscreen',
-                        {
-                            text: 'Легенда',
-                            onclick: function () {
-                                setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
-                            },
-                        },
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
                     ],
@@ -173,7 +164,7 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
             data: data2 || [],
             color: dark ? '#0b7e93' : 'rgba(11,126,147,0.57)',
         }]
-    }), [isLegendVisible, data2])
+    }), [data2])
 
     if (isLoading) {return <Skelet option='eco'/>}
     if (isError) {return <h3>Нет подключения к серверу</h3>}
@@ -181,7 +172,12 @@ const Amg2Charts = ({className, year,month, type, rp}) => {
 
     return (
         <div className={className} >
-            <div className='chartTitle'>ВЛОЖЕНИЯ</div>
+            <div className='chartTitle'>ВЛОЖЕНИЯ
+                <Tooltip title={<Typography variant="body2"  gutterBottom>Справка по блоку процентования</Typography>}>
+                    <IconButton onClick={()=>setModal('ModalEco2chartsWiki')} sx={{color: '#808080bf', position: 'absolute', right: '0', top: '-5px'}}><HelpOutlineIcon/></IconButton>
+                </Tooltip>
+            </div>
+
             <div style={{display: 'flex', flexWrap: 'nowrap'}}>
                 <div style={{width: '25%'}}>
                     <HighchartsReact
