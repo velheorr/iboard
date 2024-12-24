@@ -8,6 +8,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
 import SensorOccupiedIcon from '@mui/icons-material/SensorOccupied';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import Dev from "../../../elements/Development/Dev";
 
 const Kadru = () => {
 
@@ -41,10 +42,11 @@ const Kadru = () => {
 
     return (
         <div>
+            <Dev/>
             <div className='miniHRblocks'>
                 {
                     blocks.map((item,i) =>{
-                        return <div key={i} style={{position: 'relative', overflow: 'hidden'}}>
+                        return <div key={i}>
                             {item.icon}
                             <div>{item.name}</div>
                             <div>{item.amount}</div>
@@ -56,8 +58,6 @@ const Kadru = () => {
             <div style={{display: 'flex'}}>
                 <div style={{width: '49%'}}><KadruStackedBar/></div>
                 <div style={{width: '49%'}}><KadruVoronka/></div>
-
-
             </div>
             <KadruFot/>
 

@@ -30,7 +30,7 @@ const Proc = () => {
 
     useEffect(()=>{
 
-        if (!wikiChecker('wiki-Proc')){setModal('ModalRealizProcWiki')}
+        //if (!wikiChecker('wiki-Proc')){setModal('ModalRealizProcWiki')}
         if (realization) {
             setAllData(realization)
         }

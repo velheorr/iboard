@@ -9,6 +9,7 @@ import ElderlyIcon from '@mui/icons-material/Elderly';
 import FollowTheSignsIcon from '@mui/icons-material/FollowTheSigns';
 import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
 import MessageIcon from '@mui/icons-material/Message';
+import Dev from "../../../elements/Development/Dev";
 
 const EmployeeLeave = () => {
     const blocks = [
@@ -36,6 +37,7 @@ const EmployeeLeave = () => {
 
     return (
         <div>
+            <Dev/>
             <div className='miniHRblocks'>
                 {
                     blocks.map((item,i) =>{

@@ -3,11 +3,13 @@ import ElemTab from "../../../elements/Tabs/ElemTab";
 import {Stack, Typography} from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PortretMain from "./subpages/PortretMain";
+import Dev from "../../../elements/Development/Dev";
 
 const EmployeePortret = () => {
 
     return (
         <div>
+            <Dev/>
             <div style={{padding: '0px 5px'}}>
                 <ElemTab arr={[<HomeGuardian/>, 'АХЧ и секретариат', 'Бухгалтерия', 'ИТ служба', 'Отдел кадров', 'Отдел планирования', 'Производство', 'Финансовый отдел']} >
                     <PortretMain/>

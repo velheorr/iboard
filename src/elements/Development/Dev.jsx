@@ -1,9 +1,9 @@
-import React from 'react';
+import './dev.scss'
 
 const Dev = () => {
     return (
-        <div style={{textAlign: 'center', fontSize: '34px', color: 'red'}}>
-            Блок находиться в разработке
+        <div className='pinkNeon'>
+            Блок находится в разработке
         </div>
     );
 };

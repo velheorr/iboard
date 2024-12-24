@@ -20,6 +20,7 @@ export default function DropMenu({user, toggleTheme, handleLogout}) {
 
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
+        event.preventDefault()
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
@@ -53,11 +54,19 @@ export default function DropMenu({user, toggleTheme, handleLogout}) {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
+                disableScrollLock={ true }
                 MenuListProps={{'aria-labelledby': 'basic-button', sx: {
                         backgroundColor: useTheme('select'),
                         color: useTheme('text')
                     }}}
-                sx={{ width: 320}}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                }}
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center',
+                }}
             >
                 {/*<MenuItem ><ThemeSwitch toggleTheme={toggleTheme} handleClose={handleClose}/></MenuItem>*/}
                 <MenuItem>

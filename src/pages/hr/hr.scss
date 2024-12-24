@@ -9,13 +9,23 @@ $green: #39FF14;
         text-align: center;
         padding: 10px;
         margin-bottom: 15px;
-        border: 1px solid $green;
+        /*border: 1px solid $green;*/
+        position: relative;
+        overflow: hidden;
+        box-shadow: -3px 3px 1px $green, 3px -3px 1px #4dab3a;
         border-radius: 10px;
         cursor: pointer;
         width: 15%;
         min-width: 170px;
         transition: box-shadow 0.3s;
-        &:hover {box-shadow: 0px 0px 15px $green; }
+        &:hover {
+            box-shadow: 3px 3px 1px #4dab3a, -3px -3px 1px $green;
+            color: #8181815c;
+            svg {
+                color: rgb(156, 156, 156);
+                left: 30%;
+            }
+        }
         :first-child {
             margin-bottom: 10px;
         }
@@ -25,7 +35,8 @@ $green: #39FF14;
     }
     svg {
         position: absolute;
-        top: 2px;
+        transition: color, left 0.5s;
+        top: -4px;
         left: 7px;
         font-size: 78px;
         color: #8181815c;

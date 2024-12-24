@@ -10,6 +10,10 @@ import Sankey from 'highcharts/modules/sankey';
 import {useTheme} from "../../../hook/useTheme";
 import Dev from "../../../elements/Development/Dev";
 import {useNavigate} from "react-router";
+import SavingsIcon from '@mui/icons-material/Savings';
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
 
 CustomEvents(Highcharts);
 exporting(Highcharts);
@@ -163,16 +167,43 @@ const KMoney = () => {
 
     }),[])
 
+    const blocks = [
+        {
+            name: 'Распорядители',
+            amount: '10 000 000',
+            icon: <AccessibilityIcon/>,
+        },
+        {
+            name: 'Активы',
+            amount: '5 000 000 000',
+            icon: <SavingsIcon/>,
+        },
+        {
+            name: 'Срок возникновения',
+            amount: '2 года',
+            icon: <PendingActionsIcon/>,
+        },
+        {
+            name: 'Ликвидность',
+            amount: '500 000',
+            icon: <BusinessCenterIcon/>,
+        },
+    ]
 
 
     return (
         <div>
             <Dev/>
-            <div className='finBlock'>
-                <div onClick={()=>{goDetails('Распорядители')}}>Распорядители: 100 000</div>
-                <div onClick={()=>{goDetails('Активы')}}>Активы: 5 000 000</div>
-                <div onClick={()=>{goDetails('Срок возникновения')}}>Срок возникновения: 500 000</div>
-                <div onClick={()=>{goDetails('Ликвидность')}}>Ликвидность: 500 000</div>
+            <div className='finBlock2'>
+                {
+                    blocks.map((item, i)=>{
+                        return <div key={i} onClick={()=>goDetails(item.name)}>
+                            {item.icon}
+                            <div>{item.name}</div>
+                            <div>{item.amount}</div>
+                        </div>
+                    })
+                }
             </div>
             <HighchartsReact style={{paddingLeft: '20px'}}
                 highcharts={Highcharts}
