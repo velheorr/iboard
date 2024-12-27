@@ -15,16 +15,26 @@
             margin-bottom: 10px;
             cursor: pointer;
             transition: box-shadow 0.3s;
-            &:hover {box-shadow: 0 0 15px #818181; }
+            &:hover {
+                box-shadow: 0 0 15px #818181;
+            }
             .ecoSettings {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-bottom: thin dashed grey;
+                /*border-bottom: thin dashed grey;*/
                 padding: 5px 0;
                 .ecoTitle {
                     color: grey;
                     font-size: 12px;
+                }
+            }
+            svg:hover{
+                animation:spin 8s linear infinite;
+            }
+            @keyframes spin {
+                100% {
+                    transform:rotate(360deg);
                 }
             }
         }

@@ -19,9 +19,9 @@ const Kadru = () => {
             icon: <PeopleAltIcon/>,
         },
         {
-            name: 'Вакансии',
-            amount: '8',
-            icon: <AssignmentIndIcon/>,
+            name: 'CCЧ общая',
+            amount: '350',
+            icon: <SensorOccupiedIcon/>,
         },
         {
             name: 'Текучесть общая',
@@ -29,9 +29,21 @@ const Kadru = () => {
             icon: <SensorOccupiedIcon/>,
         },
         {
+            name: 'CCЧ рабочих',
+            amount: '146',
+            icon: <EngineeringIcon/>,
+        },
+
+
+        {
             name: 'Текучесть рабочих',
             amount: '20%',
             icon: <EngineeringIcon/>,
+        },
+        {
+            name: 'Вакансии',
+            amount: '8',
+            icon: <AssignmentIndIcon/>,
         },
         {
             name: 'ФОТ, руб',

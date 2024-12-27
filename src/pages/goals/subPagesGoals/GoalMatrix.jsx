@@ -5,27 +5,128 @@ import TableHead from "../../../elements/Table/TableHead";
 import MiniLineChart from "./MiniLineChart";
 import Scroll from "../../../elements/Scroll/Scroll";
 
-const GoalMatrix = () => {
+const GoalMatrix = ({data}) => {
+    if (!data){ return ''}
+    console.log(data)
     return (
         <div>
             <div className='headerGoal'>
-                <div>Винокуров АВ</div>
-                <div>ПРОЕКТНЫЙ ДИРЕКТОР</div>
+                <div>ФИО: {data.name}</div>
+                <div>Должность: {data.position}</div>
                 <div>
-                    ЦКП: Своевременно и системно эффективно реализуемый портфель Контрактов с предсказуемыми (в каждый момент времени)
-                    результатами выше плановых и высокой степенью удовлетворенности Заказчика
+                    ЦКП: ----------------
                 </div>
-                <div>Результативность текущая: 106%</div>
-                <div>Руководитель: Тутулин ИА</div>
+                <div>Результативность текущая: ---------</div>
+                <div>Руководитель: -----------</div>
             </div>
-            <div>
+            {
+                data.roles.map((item,i)=>{
+                    //console.log(item)
+                    return <div key={i}>
+                        <div className='headerGoal'>
+                            <div>Результативность текущая: {item.result}</div>
+                            <div>ЦКП: {item.ckp}</div>
+                            <div>Руководитель: {item.boss}</div>
+                        </div>
+                        <BlockShadow >
+                            <TableHead extra={'tac fs13'}>
+                                <div className='blue' style={{width: '3%', fontStyle: 'italic'}} >сфера</div>
+                                <div className='red' style={{width: '3%', fontStyle: 'italic'}} >цель</div>
+                                <div className='green' style={{width: '7%', fontStyle: 'italic'}} >РЕЗУЛЬТИРУЮЩИЕ</div>
+                                <div className='orange' style={{width: '7%', fontStyle: 'italic'}} >ОПЕРЕЖАЮЩИЕ</div>
+
+                                <div style={{width: '10%'}} >Вектор:</div>
+                                <div style={{width: '10%'}} >Вес показателя</div>
+                                <div style={{width: '10%'}} >РЕЗУЛЬТАТИВНОСТЬ</div>
+                                <div style={{width: '6%'}} >СверхЦелевое</div>
+                                <div style={{width: '6%'}} >Целевое</div>
+                                <div style={{width: '6%'}} >Приемлемое</div>
+                                <div style={{width: '6%'}} >Критическое</div>
+                                <div style={{width: '10%'}} >Миниграфик (-6 мес)</div>
+                                <div style={{width: '10%'}} >Тренд</div>
+                                <div style={{width: '6%'}} >ФАКТ значение</div>
+                            </TableHead>
+                        </BlockShadow>
+                        <Scroll h='h268' >
+                            {
+                                item.sfera.map((sf,idx)=>{
+                                    return <div key={idx}>
+                                        <div className='gtitle blue'>{sf.sferaName}</div>
+                                        {
+                                            sf.goals.map((g, idx2)=>{
+                                                return <div key={idx2}>
+                                                    <div className='gtitle red'>{g.goalName}</div>
+                                                    {
+                                                        g.data.map((data, idx3)=>{
+                                                            if(data.resultparam) {
+
+                                                                return <GreenBlock text={data.dataName} key={idx3}>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.vector}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.ves}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.result}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.sverhGoal}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.goal}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.good}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.critical}</div>
+                                                                    <div className='tac' style={{width: '10%'}}>
+                                                                        <MiniLineChart/></div>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.trend}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{new Intl.NumberFormat("ru").format(data.fact)}</div>
+                                                                </GreenBlock>
+                                                            } else {
+                                                                return <OrangeBlock text={data.dataName} key={idx3}>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.vector}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.ves}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.result}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.sverhGoal}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.goal}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.good}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{data.critical}</div>
+                                                                    <div className='tac' style={{width: '10%'}}>
+                                                                        <MiniLineChart/></div>
+                                                                    <div className='tac'
+                                                                         style={{width: '10%'}}>{data.trend}</div>
+                                                                    <div className='tac'
+                                                                         style={{width: '6%'}}>{new Intl.NumberFormat("ru").format(data.fact)}</div>
+                                                                </OrangeBlock>
+                                                            }
+                                                        })
+                                                    }
+                                                </div>
+                                            })
+                                        }
+                                    </div>
+                                })
+                            }
+                        </Scroll>
+                    </div>
+                })
+            }
+
+
+            {/*<div>
                 <BlockShadow >
                     <TableHead extra={'tac fs13'}>
                         <div className='blue' style={{width: '3%', fontStyle: 'italic'}} >сфера</div>
                         <div className='red' style={{width: '3%', fontStyle: 'italic'}} >цель</div>
                         <div className='green' style={{width: '7%', fontStyle: 'italic'}} >РЕЗУЛЬТИРУЮЩИЕ</div>
                         <div className='orange' style={{width: '7%', fontStyle: 'italic'}} >ОПЕРЕЖАЮЩИЕ</div>
-
                         <div style={{width: '10%'}} >Вектор:</div>
                         <div style={{width: '10%'}} >Вес показателя</div>
                         <div style={{width: '10%'}} >РЕЗУЛЬТАТИВНОСТЬ</div>
@@ -157,7 +258,7 @@ const GoalMatrix = () => {
 
                     </OrangeBlock>
                 </Scroll>
-            </div>
+            </div>*/}
         </div>
     );
 };

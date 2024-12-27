@@ -29,6 +29,7 @@ import Proizvodstvo from "./pages/realization/Proizvodstvo/Proizvodstvo";
 import EmployeeLeave from "./pages/hr/EmployeeLeave/EmployeeLeave";
 import EmployeePortret from "./pages/hr/EmployeePortret/EmployeePortret";
 import Kadru from "./pages/hr/Kadru/Kadru";
+import GoalUser from "./pages/goals/GoalUser/GoalUser";
 
 function App() {
     const mode = useSelector(state => state.header.mode);
@@ -57,7 +58,7 @@ function App() {
                         <Route  path='/dynamic' element={<RequireAuth><Dynamics /></RequireAuth>}/>
 
                         <Route  path='/sales' element={<RequireAuth><Page404 /></RequireAuth>}/>
-                        <Route  path='/goals' element={<RequireAuth><Goals /></RequireAuth>}/>
+                        <Route  path='/goals' element={<RequireAuth><GoalUser /></RequireAuth>}/>
 
                         <Route  path='/economics' element={<RequireAuth><Econ /></RequireAuth>}/>
                         <Route  path='/economics/:details' element={<RequireAuth><EconomicsDetails /></RequireAuth>}/>

@@ -11,9 +11,10 @@ const PortretParameters = () => {
             <div style={{margin: '15px'}}>
                 <TableHead>
                     <div style={{width: '20%'}} className=''><span> Должность</span></div>
-                    <div style={{width: '20%'}} className='listIcon'><span> Возраст</span></div>
                     <div style={{width: '20%'}} className='listIcon'><span> ФИО</span></div>
+                    <div style={{width: '20%'}} className='listIcon'><span> Возраст</span></div>
                     <div style={{width: '20%'}} className='listIcon'><span> Стаж</span></div>
+                    <div style={{width: '20%'}} className='listIcon'><span> Рейтинг</span></div>
                     <div style={{width: '20%'}} className='listIcon'><span> Статус</span></div>
                 </TableHead>
                 <TableItem extra={'chartInTable'}>

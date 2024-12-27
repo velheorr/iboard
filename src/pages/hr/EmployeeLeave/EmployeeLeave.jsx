@@ -19,17 +19,17 @@ const EmployeeLeave = () => {
             icon: <FollowTheSignsIcon/>
         },
         {
-            name: 'Стаж работы',
+            name: 'Стаж работы уволенных',
             amount: '3,0',
             icon: <MessageIcon/>
         },
         {
-            name: 'Средний возраст',
+            name: 'Средний возраст уволенных',
             amount: '41',
             icon: <ElderlyIcon/>
         },
         {
-            name: 'Средняя з/п',
+            name: 'Средняя з/п уволенных',
             amount: '33 тыс.',
             icon: <CurrencyRubleIcon/>
         },

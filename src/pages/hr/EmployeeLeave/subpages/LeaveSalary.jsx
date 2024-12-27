@@ -12,7 +12,7 @@ const LeaveSalary = () => {
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
         chart: {
-            type: 'column',...chartConfig.chart, height: 300,},
+            type: 'column',...chartConfig.chart, height: 315,},
         title: {...chartConfig.title},
         legend: {enabled: isLegendVisible,...chartConfig.legend},
         xAxis: {

@@ -50,8 +50,17 @@ const KadruFot = () => {
         tooltip: {
             format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} тыс руб.<br/>' /*+ 'Total: {point.stackTotal}'*/
         },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    inside: true,
+                    format: '{y}' // Отображает значение
+                }
+            }
+        },
         series: /*data || []*/
-            [{
+            /*[{
                 data: [640, 544, 480, 480, 512, 500,277,288,311,610,662,410],
                 color: 'rgba(72,72,72,0.61)',
                 dataLabels: {
@@ -59,7 +68,34 @@ const KadruFot = () => {
                     inside: true,
                     format: '{y}' // Отображает значение
                 }
-            }],
+            }],*/
+            [
+                {
+                    name: '2020',
+                    data: [10,50,45,89,41,56,47,23,12,45,85,12],
+                    color: 'pink',
+
+                },
+                {
+                name: '2021',
+                data: [41,78,56,85,12,35,48,95,62,10,0,30,20],
+                color: 'orange',
+
+            },
+                {
+                    name: '2022',
+                    data: [640, 544, 480, 100, 512, 500,277,288,311,610,662,410],
+                    color: 'green',
+
+                },
+                {
+                    name: '2023',
+                    data: [640, 544, 480, 40, 512, 500,277,288,311,610,200,410],
+                    color: 'yellow',
+
+                },
+
+            ],
 
     }), [data])
 
