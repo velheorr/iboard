@@ -3,17 +3,44 @@ import {chartConfig} from "../../js/chartConfig";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import '../../hr.scss'
+import {useTheme} from "../../../../hook/useTheme";
+import {convertForLineChart} from "../../../economics/subPagesEcon/convertData";
 
 const KadruFot = () => {
     const [data, setData] = useState([])
+    const [isLegendVisible, setIsLegendVisible] = useState(true);
+    const dark = useTheme() // тема
+
+    const [month, setMonth] = useState(null);
+
+    useEffect(()=>{
+        const date = new Date()
+            setMonth(date.getMonth())
+    },[dark])
 
     const options = useMemo(() => ({
         accessibility: {...chartConfig.accessibility},
         credits: {...chartConfig.credits},
-        chart: {
-            type: 'area',...chartConfig.chart, height: 350,},
-        title: {...chartConfig.title},
-        legend: {enabled: false,...chartConfig.legend},
+        chart: {type: 'line', ...chartConfig.chart, height: 350},
+        title: {text: null, ...chartConfig.title, },
+        subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
+        legend: {enabled: isLegendVisible,...chartConfig.legend,
+            title: {
+                text: 'Нарастающим итогом',
+                style: {
+                    color: '#A0A0A0',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                }
+            },
+            itemHoverStyle: {
+                color: dark ? '#FFF' : '#4bb141'
+            },
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            itemMarginTop: 10
+        },
         xAxis: {
             ...chartConfig.xAxis,
             min: 0,
@@ -21,26 +48,31 @@ const KadruFot = () => {
                 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь','Октябрь','Ноябрь','Декабрь',
             ],
             title: {text: null, },
+            plotLines: [{
+                color: 'white', // Цвет линии
+                width: 1, // Ширина линии
+                value: month, // Значение по оси X, где будет линия
+                label: {
+                    text: null, // Подпись к линии
+                    align: 'right',
+                    verticalAlign: 'top'
+                }
+            }]
         },
-        yAxis: {
-            gridLineWidth: 0,
-            gridLineDashStyle: 'Dot',
-            title: null,
-            labels: {
-                enabled: false, // Отключаем подписи по оси
-                style: {
-                    fontSize: '12px' // Установка размера шрифта меток по оси Y
-                },
-            },
-        },
+        yAxis: {...chartConfig.yAxis,},
         lang: {...chartConfig.lang},
         exporting: {
-            enabled: true, // Убедитесь, что экспорт включен
             buttons: {
                 contextButton: {
                     ...chartConfig.exporting.buttons.contextButton,
                     menuItems: [
                         'viewFullscreen',
+                        {
+                            text: 'Легенда',
+                            onclick: function () {
+                                setIsLegendVisible(!isLegendVisible); // Toggle legend visibility
+                            },
+                        },
                         "printChart", "separator",
                         "downloadPNG", "downloadJPEG", "downloadPDF",
                     ],
@@ -49,15 +81,6 @@ const KadruFot = () => {
         },
         tooltip: {
             format: '<b>{key}</b><br/><span style="color:{series.color}">{series.name}</span>: {y} тыс руб.<br/>' /*+ 'Total: {point.stackTotal}'*/
-        },
-        plotOptions: {
-            series: {
-                dataLabels: {
-                    enabled: true,
-                    inside: true,
-                    format: '{y}' // Отображает значение
-                }
-            }
         },
         series: /*data || []*/
             /*[{

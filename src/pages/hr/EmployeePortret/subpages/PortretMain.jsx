@@ -9,6 +9,7 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import SensorOccupiedIcon from "@mui/icons-material/SensorOccupied";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import CurrencyRubleIcon from "@mui/icons-material/CurrencyRuble";
+import PortretPie from "./portretsub/PortretPie";
 
 const PortretMain = () => {
 
@@ -27,8 +28,9 @@ const PortretMain = () => {
             <div style={{display: 'flex'}}>
                 <div style={{width: '49%'}}></div>
                 <div style={{width: '49%'}}>
+                    <PortretPie/>
                     <PortretSocial/>
-                    <PortretSpeedometr/>
+                    {/*<PortretSpeedometr/>*/}
                 </div>
                 <div style={{width: '49%'}}></div>
 
