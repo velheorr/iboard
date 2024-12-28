@@ -52,3 +52,34 @@ $green: #39FF14;
     display: flex;
     align-items: center;
 }
+
+.emplBlock {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0px 5px;
+    .empl1 {
+        flex-basis: 170px;
+        border: 1px solid #818181;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+        position: relative;
+        &:hover {
+            box-shadow: 0 0 15px #818181;
+        }
+        .settings {
+            animation:spin 8s linear infinite;
+        }
+        @keyframes spin {
+            100% {
+                transform:rotate(360deg);
+            }
+        }
+    }
+    .empl2 {
+        width: calc(100% - 170px);
+    }
+}

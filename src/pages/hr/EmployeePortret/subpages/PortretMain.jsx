@@ -33,7 +33,7 @@ const PortretMain = () => {
             </div>
 
 
-            <PortretParameters/>
+
         </div>
     );
 };
