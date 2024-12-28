@@ -21,19 +21,15 @@ const PortretMain = () => {
 
 
             <div style={{display: 'flex'}}>
-                <div style={{width: '49%'}}><PortretSalary/></div>
-                <div style={{width: '49%'}}><PortretAge/></div>
-
+                <div style={{width: '33%'}}><PortretSalary/></div>
+                <div style={{width: '33%'}}><PortretPie/></div>
+                <div style={{width: '33%'}}><PortretAge/></div>
             </div>
-            <div style={{display: 'flex'}}>
-                <div style={{width: '49%'}}></div>
-                <div style={{width: '49%'}}>
-                    <PortretPie/>
+            <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                <div style={{width: '40%'}}>
                     <PortretSocial/>
                     {/*<PortretSpeedometr/>*/}
                 </div>
-                <div style={{width: '49%'}}></div>
-
             </div>
 
 

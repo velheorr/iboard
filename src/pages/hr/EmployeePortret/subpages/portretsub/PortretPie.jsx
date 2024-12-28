@@ -12,7 +12,7 @@ const PortretPie = () => {
 		accessibility: {...chartConfig.accessibility},
 		credits: {...chartConfig.credits},
 		chart: {
-			type: 'pie',...chartConfig.chart, height: 300},
+			type: 'pie',...chartConfig.chart, height: 350},
 		title: {...chartConfig.title},
 		plotOptions: {
 			pie: {
@@ -51,8 +51,7 @@ const PortretPie = () => {
 	return (
 		<div>
 			<div className='chartHRName'>Социальные характеристики</div>
-			<div style={{display: 'flex', alignItems: 'center'}}>
-				<FamilyRestroomIcon/>
+			<div>
 				<HighchartsReact
 					highcharts={Highcharts}
 					options={options}

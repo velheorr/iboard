@@ -26,7 +26,7 @@ const KadruFot = () => {
         subtitle: {text: 'За месяц, млн.', ...chartConfig.subtitle},
         legend: {enabled: isLegendVisible,...chartConfig.legend,
             title: {
-                text: 'Нарастающим итогом',
+                text: 'Фот по годам',
                 style: {
                     color: '#A0A0A0',
                     fontSize: '16px',
